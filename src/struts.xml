@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+    "http://struts.apache.org/dtds/struts-2.3.dtd">
+<struts>
+	<!-- 添加此注解能够解决struts2注解问题，扫描注解类 -->
+	<constant name="struts.convention.action.packages" value="com.shop.control" />
+	<!-- struts2的action由spirng负责实例化 -->
+	<constant name="struts.objectFactory" value="spring" /> 
+	<!-- <constant name="objectFactory" value="org.apache.struts2.sping.StrutsSpingObjectFactory"></constant> -->
+	<!-- constant用于常量的配置 -->
+	<!-- 是否开启动态方法调用 -->
+	<constant name="struts.enable.DynamicMethodInvocation" value="true" />
+	<!-- 是否使用开发者模式 保存后即已默认加载了已变更内容。无需重启server -->
+	<constant name="struts.devMode" value="false" />
+	<constant name="struts.i18n.encoding" value="UTF-8" />  
+	<!-- <package name="default" namespace="/" extends="struts-default"> -->
+		<!-- 测试 -->
+		<!-- 配置拦截器
+		<interceptors>
+			<interceptor name="privilegeInterceptor" class="com.shop.Interceptor.PrivilegeInterceptor" />
+		</interceptors> 
+		-->
+		<!-- 商户注册 -->
+		<!-- <action name="merchantRegister" class="com.shop.Control.MerchantRegisterAction">
+			<result type="stream">
+		     	<param name="contentType">text/html</param>
+		    	<param name="inputName">inputStream</param>
+		   	</result>
+		</action> -->
+		<!-- 商店登录 --><!--
+		<action name="testAction" class="com.shop.control.TestAction">
+			 <result type="stream">
+		     	<param name="contentType">text/html</param>
+		    	<param name="inputName">inputStream</param>
+		   	</result> 
+			<result name="success">/index.jsp</result>
+			<result name="error">/error.jsp</result>
+		</action>-->
+		<!-- <action name="merchant_*" class="com.shop.Control.MerchantAction" method="{1}">
+			<result type="stream">
+		     	<param name="contentType">text/html</param>
+		    	<param name="inputName">inputStream</param>
+		   	</result>
+		</action> -->
+		<!-- 商店登录时验证的获取 -->
+		<!-- <action name="merchantVer" class="com.shop.Control.MerchantVercodeAction">
+			<result type="stream">
+		     	<param name="contentType">text/html</param>
+		    	<param name="inputName">inputStream</param>
+		   	</result>
+		</action> -->
+		<!-- 商店管理 -->
+		<!-- <action name="merchantManage_*" class="com.shop.Control.MerchantManageAction" method="{1}">
+		   	<result type="stream">
+		     	<param name="contentType">text/html</param>
+		    	<param name="inputName">inputStream</param>
+		   	</result>
+		</action> -->
+		<!-- <action name="merchantIndex_*" class="com.shop.Control.MerchantIndexAction" method="{1}">
+		   	<result type="stream">
+		     	<param name="contentType">text/html</param>
+		    	<param name="inputName">inputStream</param>
+		   	</result>
+		</action> -->
+		<!-- 上传图片和修改 -->
+		<!-- <action name="addImage" class="com.shop.Control.UploadImageAction">
+			<result type="stream">
+		     	<param name="contentType">text/html</param>
+		    	<param name="inputName">inputStream</param>
+		   	</result>
+			<interceptor-ref name="defaultStack">
+				<param name="upload.maximumSize">1024000</param>
+				<param name="upload.allowedExtensions">.jpg,.png</param>
+				<param name="upload.allowedTypes">image/jpeg,image/png</param>
+			</interceptor-ref>
+		</action> -->
+		<!-- 添加商品 -->
+		<!-- <action name="addGoods" class="com.shop.Control.MerchantManageAddGoodsAction">
+			<result type="stream">
+		     	<param name="contentType">text/html</param>
+		    	<param name="inputName">inputStream</param>
+		   	</result>
+			<interceptor-ref name="defaultStack">
+				<param name="upload.maximumSize">1024000</param>
+				<param name="upload.allowedExtensions">.jpg,.png</param>
+				<param name="upload.allowedTypes">image/jpeg,image/png</param>
+			</interceptor-ref>
+		</action> -->
+		<!-- 初始化商品页 
+		注释测试
+		<action name="initGoodsPage" class="com.shop.Control.GoodsPageAction">
+			<result type="stream">
+		     	<param name="contentType">text/html</param>
+		    	<param name="inputName">inputStream</param>
+		   	</result>
+		</action>
+		-->
+		
+		<!-- 会员操作
+		注释测试
+		<action name="member_*" class="com.shop.Control.MemberAction" method="{1}">
+			<result type="stream">
+		     	<param name="contentType">text/html</param>
+		    	<param name="inputName">inputStream</param>
+		   	</result>
+		</action>
+		 -->
+		
+		<!-- 会员顶部栏操作 -->
+		<!-- <action name="memberTopBar_*" class="com.shop.Control.MemberTopBarAction" method="{1}">
+			<result type="stream">
+		     	<param name="contentType">text/html</param>
+		    	<param name="inputName">inputStream</param>
+		   	</result>
+		</action> -->
+		<!-- 主页初始化 
+		注释测试
+		<action name="index_*" class="com.shop.Control.InitIndexAction" method="{1}">
+			<result type="stream">
+		     	<param name="contentType">text/html</param>
+		    	<param name="inputName">inputStream</param>
+		   	</result>
+			添加拦截器名 	<interceptor-ref name="privilegeInterceptor" />
+		</action>
+		-->
+		
+	<!-- </package> -->
+	
+</struts>
