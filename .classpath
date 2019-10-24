@@ -14,7 +14,6 @@
 	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.web.container"/>
 	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.module.container"/>
 	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/antlr-2.7.7.jar"/>
-	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/asm-tree-3.3.jar"/>
 	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/aspectjweaver-1.8.9.jar"/>
 	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/c3p0-0.9.2.1.jar"/>
 	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/classmate-1.1.0.jar"/>
@@ -69,5 +68,6 @@
 	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/struts2-spring-plugin-2.5.20.jar"/>
 	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/asm-5.2.jar"/>
 	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/asm-commons-5.2.jar"/>
+	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/asm-tree-5.2.jar"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>
