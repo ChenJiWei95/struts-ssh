@@ -16,7 +16,7 @@
 		testAjax(类前缀)_update(动作方法)
 		testAjax(类前缀)_delete(动作方法)
 		testAjax(类前缀)_list(动作方法)
-		testAjax(类前缀)_chtml(方法，固定为chtml)_success(跳转页面，这里以success.jsp为例)
+		testAjax(类前缀&文件名)_chtml(方法，固定为chtml)_success(跳转页面，这里以success.jsp为例)
 		
 ## 异常收集：    
 	* InvalidMappingException:  
