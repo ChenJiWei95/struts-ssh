@@ -1,5 +1,14 @@
 package com.shop.util;
 
+/**
+ * <b>生成ID</b>
+ * <p>
+ * 描述:<br>
+ * 
+ * @author 威 
+ * @see
+ * @since 1.0
+ */
 public class SnowFlakeGenerator {
 	//起始的时间戳
     private final static long START_STAMP = 1480166465631L;

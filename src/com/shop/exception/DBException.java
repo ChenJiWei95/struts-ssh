@@ -5,12 +5,7 @@ import java.io.PrintWriter;
 
 
 /**
- * 数据库异常
- * @className DBException
- * @Description
- * @author rjht
- * @contact qq 676342073
- * @date 2014-9-26 下午03:47:20
+ * 数据库异常 
  */
 public class DBException extends RuntimeException {
 

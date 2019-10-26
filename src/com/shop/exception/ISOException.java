@@ -4,12 +4,7 @@ import java.io.PrintStream;
 import java.io.PrintWriter;
 
 /**
- * 自定义异常 ISO
- * @className ISOException
- * @Description
- * @author rjht
- * @contact qq 676342073
- * @date 2014-10-10 上午10:07:11
+ * 自定义异常 ISO 
  */
 public class ISOException extends Exception{
 

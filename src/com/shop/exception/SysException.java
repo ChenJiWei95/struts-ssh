@@ -5,12 +5,7 @@ import java.io.PrintWriter;
 
 
 /**
- * 系统异常
- * @className SysException
- * @Description
- * @author rjht
- * @contact qq 676342073
- * @date 2015-2-10 下午05:10:15
+ * 系统异常 
  */
 public class SysException extends RuntimeException {
 

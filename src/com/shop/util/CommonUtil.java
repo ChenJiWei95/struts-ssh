@@ -17,13 +17,14 @@ import sun.misc.BASE64Decoder;
 import sun.misc.BASE64Encoder;
 
 /**
- * 通用工具类
+ * <b>通用工具类</b>
+ * <p>
+ * 描述:<br>
  * 
- * @className CommonUtil
- * @Description
- * @author rjht
- * @contact qq 676342073
- * @date 2014-10-22 下午03:06:42
+ * @author 威 
+ * <br>2019年10月27日 上午1:26:01 
+ * @see
+ * @since 1.0
  */
 public class CommonUtil {
 
