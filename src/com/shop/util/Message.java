@@ -3,10 +3,11 @@ package com.shop.util;
 /**
  * 信息消息
  * @className Message
- * @Description
- * @author rjht
- * @contact qq 676342073
- * @date 2014-10-27 下午12:04:01
+ * @Description 
+ * @author 威 
+ * <br>2019年10月26日 下午6:16:07 
+ * @see
+ * @since 1.0
  */
 public class Message { 
 	
