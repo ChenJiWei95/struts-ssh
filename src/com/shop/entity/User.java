@@ -10,14 +10,14 @@ import javax.persistence.Table;
 public class User {
 	@Id
 	@Column(name = "id")
-	private Integer id;
+	private Long id;
 	@Column(name = "username")
 	private String username; 
 	
-	public Integer getId() {
+	public Long getId() {
 		return id;
 	}
-	public void setId(Integer id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 	public String getUsername() {
@@ -25,5 +25,11 @@ public class User {
 	}
 	public void setUsername(String username) {
 		this.username = username;
+	}
+	public String toString(){
+		return User.class + "["
+				+ "id = " + id
+				+ ", username = " + username
+				+ "]";
 	}
 }

@@ -9,10 +9,14 @@ import com.shop.entity.User;
 import com.shop.service.UserService;
 
 /** 
- * <b>一句话描述该类<b>
+ * <b>一句话描述该类</b>
+ * <p>
+ * 描述:<br>
+ * 
  * @author 威 
- * <br>2018年3月15日 下午3:50:08 
- *  
+ * <br>2019年10月26日 下午6:04:52 
+ * @see
+ * @since 1.0
  */
 @Service("userServiceImpl")
 public class UserServiceImpl extends BaseServiceImpl<User> implements UserService{

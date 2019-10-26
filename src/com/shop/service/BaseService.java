@@ -13,12 +13,15 @@ import com.shop.Page;
 import com.shop.exception.DBException;
 
 /**
+ * <b>一句话描述该类</b>
+ * <p>
+ * 描述:<br>
  * 
- * @className BaseService
- * @Description
- * @author rjht
- * @contact qq 676342073
- * @date 2014-9-29 下午03:35:42
+ * @author 威 
+ * <br>2019年10月26日 下午6:04:32 
+ * @see
+ * @since 1.0
+ * @param <T>
  */
 public interface BaseService<T>{
 

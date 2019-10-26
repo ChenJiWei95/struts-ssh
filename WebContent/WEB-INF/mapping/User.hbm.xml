@@ -6,7 +6,9 @@
 <hibernate-mapping package="com.shop.entity">
     <class name="User" table="User"> 
         <id name="id" column="id">
-            <generator class="native"></generator>
+        	<!-- native 表示主键由库自动分配； assigned 表示主键由人工分配 -->
+            <generator class="assigned"></generator>
+            <!-- <generator class="native"></generator> -->
         </id>
         <property name="username"></property> 
     </class>

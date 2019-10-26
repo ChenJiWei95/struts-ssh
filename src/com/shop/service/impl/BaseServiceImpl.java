@@ -16,12 +16,15 @@ import com.shop.dao.BaseDao;
 import com.shop.exception.DBException;
 import com.shop.service.BaseService;
 /**
+ * <b>一句话描述该类</b>
+ * <p>
+ * 描述:<br>
  * 
- * @className BaseServiceImpl
- * @Description
- * @author rjht
- * @contact qq 676342073
- * @date 2014-9-29 下午03:35:26
+ * @author 威 
+ * <br>2019年10月26日 下午6:04:13 
+ * @see 
+ * @since 1.0
+ * @param <T>
  */
 public class BaseServiceImpl<T> implements BaseService<T> {
 

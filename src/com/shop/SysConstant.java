@@ -2,10 +2,7 @@ package com.shop;
 
 /**
  * 常量
- * @className Constant
- * @Description
- * @author rjht
- * @contact qq 676342073
+ * @className Constant 
  * @date 2014-9-26 下午12:13:09
  */
 public interface SysConstant {

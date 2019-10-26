@@ -7,10 +7,7 @@ import org.apache.commons.lang.builder.HashCodeBuilder;
 
 /**
  * 排序
- * @className Order
- * @Description
- * @author rjht
- * @contact qq 676342073
+ * @className Order 
  * @date 2014-10-23 下午05:21:52
  */
 public class Order implements Serializable {

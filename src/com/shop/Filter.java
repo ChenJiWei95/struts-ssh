@@ -7,10 +7,7 @@ import org.apache.commons.lang.builder.HashCodeBuilder;
 
 /**
  * 筛选
- * @className Filter
- * @Description
- * @author rjht
- * @contact qq 676342073
+ * @className Filter 
  * @date 2014-10-23 下午05:19:00
  */
 public class Filter implements Serializable {

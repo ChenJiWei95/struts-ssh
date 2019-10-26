@@ -8,10 +8,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 /**
  * 分页
- * @className Page
- * @Description
- * @author rjht
- * @contact qq 676342073
+ * @className Page 
  * @date 2014-9-29 上午09:15:27
  */
 public class Page<T> implements Serializable {
