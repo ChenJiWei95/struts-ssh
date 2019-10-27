@@ -75,7 +75,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 						<div class="layui-col-md2 c-nav"><font>小家电</font></div>
 						<div class="layui-col-md2 c-nav"><font>洗护</font></div>
 						<div class="layui-col-md2 c-nav"><font>厨具</font></div>
-						<div class="layui-col-md2 c-nav"><font>日用品</font></div> 
+							<div class="layui-col-md2 c-nav"><font>日用品</font></div> 
 					</div>
 				</div>
 			</div>

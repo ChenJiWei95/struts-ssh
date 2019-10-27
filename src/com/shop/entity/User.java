@@ -13,6 +13,7 @@ public class User {
 	private Long id;
 	@Column(name = "username")
 	private String username; 
+	private String password;
 	
 	public Long getId() {
 		return id;
@@ -32,4 +33,5 @@ public class User {
 				+ ", username = " + username
 				+ "]";
 	}
+
 }
