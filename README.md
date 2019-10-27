@@ -1,7 +1,9 @@
 # struts-ssh   
 
 ## 引言  
-	* 第一步：注解和配置  
+	* 案例页面  
+		http://localhost:8080/strust-ssh/main_main_practice
+	* 注解和配置  
 		请求件TestAction类
 		1、配置文件的方式构建：
 	 	struts整合spring之后也就代表着struts action对象可以归spirng容器管理，此时需要添加注解@Component() 、@Scope("prototype")
@@ -9,15 +11,27 @@
 	 	
 	 	2、注解方式配置
 	 	请见test()方法，此时struts配置文件无需添加任何相关配置
-	* 第二步：请求优化  
+	* 请求优化  
 		请求件TestAjaxAction类
 		通配符优化请求方式，使请求控制数据的操作；以当前测试类为参考，请求链接如下
 		testAjax(类前缀)_save(动作方法)
 		testAjax(类前缀)_update(动作方法)
 		testAjax(类前缀)_delete(动作方法)
 		testAjax(类前缀)_list(动作方法)
-		testAjax(类前缀&文件名)_chtml(方法，固定为chtml)_success(跳转页面，这里以success.jsp为例)
-		
+		testAjax(类前缀&文件名)_chtml(动作方法，固定为chtml为页面跳转处理)_success(跳转页面，这里以success.jsp为例)
+	* 参数的获取    	 
+		模型驱动
+			TestParameAction.java
+			WEB-INF/views/testparam/saveorupdate.jsp
+		对象驱动  
+			TestParame2Action.java
+			WEB-INF/views/testparam2/saveorupdate.jsp
+		属性驱动
+			TestParame3Action.java
+			WEB-INF/views/testparam3/saveorupdate.jsp
+		request请求
+			TestParame4Action.java
+			WEB-INF/views/testparam4/saveorupdate.jsp
 ## 异常收集：    
 	* InvalidMappingException:  
 		Could not parse mapping document from input stream

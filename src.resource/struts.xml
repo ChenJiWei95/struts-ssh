@@ -17,6 +17,18 @@
 	<constant name="struts.devMode" value="false" />
 	<constant name="struts.i18n.encoding" value="UTF-8" />  
 	<package name="default" namespace="/" extends="json-default">
+		<!-- <interceptors>
+			<interceptor-stack name="parentStack">
+				<interceptor-ref name="paramsPrepareParamsStack">
+					<param name="prepare.alwaysInvokePrepare">false</param>
+				</interceptor-ref>
+			</interceptor-stack>
+		</interceptors> -->
+		<!-- 设置默认的拦截器栈 设置为参数准备拦截器栈 在放入model之前先把参数给栈顶的Action对象 -->
+		<!-- <default-interceptor-ref name="parentStack"></default-interceptor-ref> -->
+		<!-- 没有匹配的动作时，默认跳转到首页 -->
+		<default-action-ref name="index" /> 
+		
 		<action name="testAction" class="testAction">
 			<result type="stream">
 				<!-- 以流的方式反回一个文本 -->
@@ -27,12 +39,17 @@
 			<!-- <result name="success">/index.jsp</result>
 			<result name="error">/error.jsp</result> -->
 		</action>
+		
 		<!-- ajax请求返回Message对象
 		name为root的param是说明返回时被序列化的对象 -->
 		<!-- 通配符
 		
 		 -->
 		<action name="*_*_*" class="{1}Action" method="{2}">
+			<!-- <interceptor-ref name="defaultStack">     -->
+                <!-- 渲染页面前刷新model在ValueStack的root的引用 -->    
+              <!--   <param name="modelDriven.refreshModelBeforeResult">true</param>    
+            </interceptor-ref> -->
 			<result name="stream" type="stream">
 				<!-- 以流的方式反回一个文本 -->
 		     	<param name="contentType">text/html</param>
@@ -44,8 +61,9 @@
 		   		<param name="root">message</param>
 		  	</result>  
 		  	<result name="chtml">WEB-INF/views/{1}/{3}.jsp</result>
+		  	<result name="main">{3}.jsp</result>
 			<result name="error">/error.jsp</result>
-		  	<allowed-methods>update, save, delete, list, chtml</allowed-methods>
+		  	<allowed-methods>update, save, delete, list, chtml, main</allowed-methods>
 		</action>
 	</package>
 </struts>
