@@ -35,6 +35,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     .layui-breadcrumb a:hover {
     	color: #a77f2a69 !important;
     }
+    .span-separator a:hover {
+    	color: #fff !important;
+    }
   </style>
  </head>
  <body>
@@ -45,25 +48,28 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				<a href="" style="line-height: 40px; padding: 10px;">欢迎 123787客官 光临有间商城</a>
 			</span>
 			<span class="layui-breadcrumb" lay-separator="|" style="float: right;">
-			  <a href="" style="line-height: 40px; padding: 10px;">登录</a>
+			  <a href="<%=basePath%>main_main_login" style="line-height: 40px; padding: 10px;">登录</a>
 			  <a href="" style="line-height: 40px; padding: 10px;">我的订单</a>
 			  <a href="" style="line-height: 40px; padding: 10px;">个人中心</a> 
 			</span>
 		</div>
 		<hr>
 		<div class="layui-container" style="overflow: hidden;">
-			<div style="height: 60px; " class="layui-row" style="padding: 11px;">
+			<div style="height: 66px; " class="layui-row" style="padding: 11px;">
 				<div class="layui-col-md2"> 
-					<h1 style="color: #a77f2a69; font-size: 35px; line-height: 65px; margin-left: 10px; font-family: cursive;">有间商城</h1>
+					<h1 style="color: #a77f2a69; font-size: 41px; line-height: 58px; margin-left: 10px; font-family: cursive;">有间商城</h1>
    	 			</div>
    	 			<div class="layui-col-md5" style="height: 100%;"> 
    	 			</div>
    	 			<div class="layui-col-md5" > 
-   	 				<div class="layui-form" style="height: 34px; line-height: 36px; border: 1px solid #a77f2a69; width: 90%; padding: 3px; margin: 8px; ">
-   	 					<input type="text" class="layui-input" placeholder="搜索商品" style="width: 382px; border: none; float: left; height: 36px;" />
+   	 				<div class="layui-form" style="height: 34px; line-height: 36px; border: 1px solid #a77f2a69; width: 86%; padding: 1px; margin: 13px -5px; float: left;">
+   	 					<input type="text" class="layui-input" placeholder="搜索商品" style="width: 382px; border: none; float: left; height: 35px;" />
    	 					<i class="layui-icon layui-icon-search" style="font-size: 20px; cursor: pointer; color: #a77f2a69;"></i>
    	 					<button lay-submit lay-filter="c-form-add" class="layui-hide">search</button>
    	 				</div>
+   	 				<i class="layui-icon layui-icon-cart" style="font-size: 32px; cursor: pointer; color: #a77f2a69; float: right; margin-top: 14px;">
+   	 					<span class="layui-badge" style="position: absolute; margin: -35px 20px; border-radius: 10px;">2</span>	
+   	 				</i>
    	 			</div>
 			</div>
 			<div style="height: 60px; " class="layui-row" style="padding: 11px;">
@@ -104,11 +110,28 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		</div>
 	</div>
 	<!-- start bom --> 
-	<div class="layui-container">
-		<div style="height: 50px; " class="layui-row">
+	<div style="width: 100%;  background: #000000d4; position: fixed; bottom: 0;">
+		<div class="layui-container" style="height: 50px; ">
+			<div class="layui-row">
+				<div style="height: 60px; padding: 11px; text-align: center;" class="layui-row"> 
+					<span class="span-separator">
+					  <a href="" style="line-height: 40px; padding: 28px; color: #ffffffb3;">关于我们</a>
+					  <span class="lay-separator" style="color: #ffffffb3;">|</span>
+					  <a href="" style="line-height: 40px; padding: 28px; color: #ffffffb3;">帮助中心</a>
+					  <span class="lay-separator" style="color: #ffffffb3;">|</span>
+					  <a href="" style="line-height: 40px; padding: 28px; color: #ffffffb3;">售后服务</a> 
+					  <span class="lay-separator" style="color: #ffffffb3;">|</span>
+					  <a href="" style="line-height: 40px; padding: 28px; color: #ffffffb3;">配送服务</a> 
+					  <span class="lay-separator" style="color: #ffffffb3;">|</span>
+					  <a href="" style="line-height: 40px; padding: 28px; color: #ffffffb3;">关于货源</a> 
+					</span>	
+				</div>
+			</div>
 		</div>
-		<li style="color:#586069;list-style:none;padding:10px 245px; text-align: center;">Copyright ©2019 <span style="color:#a71d5d;cursor:pointer;" title="shop">shop</span> Powered By <span  style="color:#a71d5d;cursor:pointer;" title="程序目录">Login</span> Version 1.0.0</li>
-	</div>	
+		<div class="layui-container">
+			<li style="color: #ffffffb3	; list-style: none; padding:10px 245px; text-align: center; ">Copyright ©2019 <!-- <span style="color:#a71d5d;cursor:pointer;" title="shop">shop</span> -->Powered By <span  style="color: #ffffffb3; font-family: cursive; cursor:pointer;" title="有间商城">有间商城</span> Version 1.0.0</li>
+		</div>
+	</div>
 	<!-- bom end -->
 	<script src="<%=basePath%>resource/layui/layui.js"></script>
 	<script>
