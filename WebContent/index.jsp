@@ -12,7 +12,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   <link rel="stylesheet" href="<%=basePath%>resource/layui/css/layui.css" media="all">
   <style contenteditable="" draggable="true">
 	.border { border: 1px solid #ddd;} 
-	.red { background: red; height: 100%;}
+	.red { background: red; height: 100%;} 
 	.blue { background: blue; height: 100%;}
 	.aqua { background: aqua; height: 100%;}
 	.white { background: white; height: 100%;}
