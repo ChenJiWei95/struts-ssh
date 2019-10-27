@@ -1,0 +1,74 @@
+	/* S - main_box */
+	.main_box{width:1000px; height:800px; background:#fff; margin:auto; font-size:12px;}
+	.main_box i{display:block; width:16px; height:16px;}
+	.main_box ul {list-style-type:none;}
+	container_box {height: 750px; overflow: hidden;}
+	
+	/*左边导航*/
+	.main_box .left_nav{width:166px; height:100%; border:1px solid #ddd; float:left;}
+	.left_nav li{background:rgb(246, 244, 240); width:100%; border-bottom:1px solid #ddd; color:#555; cursor:pointer; text-align:center; font-size:14px; line-height: 35px;}
+	.left_nav li:nth-child(1) {background:#555; color:rgb(246, 244, 240);}
+	.left_nav li:hover{background:#555; color:#fff;}
+
+	/*右边内容*/
+	.main_box .right_con{width:831px; height:100%; border:1px solid #ddd; float:left; border-left:none;}
+	.left-nav-cnt{display:none;}
+	.left-nav-cnt:nth-child(1) {display:block;} 
+	.in_nav,.type1_Title,.type2_Title {border-bottom:1px solid #ddd; overflow:hidden;}
+	.type1_Title,.type2_Title {height:50px;}
+	.right_con .in_nav li {background:rgb(246, 244, 240); float:left; width:120px; height:35px; text-align:center; line-height:40px; color:#555; cursor:pointer;}
+	.right_con .in_nav li:nth-child(1) {background:#555; color:rgb(246, 244, 240);}
+	
+	.in-cnt-1{width:100%; height:713px; display:none; overflow: hidden;}
+	.in-cnt-1:nth-child(1) {display:block;}
+
+	.type1_Title label:nth-child(1){float:left; }
+	.type1_Title label:last-child{float:right; }
+	.type1_Title label input {margin:17px 11px; border:none; border-bottom:1px solid #e6e6e6; width:160px; height:25px; padding-left:25px; border-radius:0px; color:#888;}
+	.type1_Title .search_i {position:absolute; margin:22px 15px; background:url(../image/manage/search.png); cursor:pointer;}
+	.type1_Title .search_i:hover{background:url(../image/manage/search_hover.png); cursor:pointer;}
+	.type1_Title span, .type2_Title span {width: 140px; height: 27px;display: block; font-size: 20px; font-family: sans-serif; color: #7b7b7a; margin: 0px 30px; padding-top: 10px; border-bottom: 4px solid #ccc;}
+
+	.goods_con{padding:5px;}
+	.goods_new,.goods_ing,.goods_ed {width:744px; height:500px; background:#ddd;}
+	.goods_ing,.goods_ed {display:none;}
+
+	.goods_new,.goods_ing,.goods_ed{overflow-y:auto;overflow-x:hidden;}
+	.con_goods table{text-align:center; width:820px;}
+	.con_goods table tbody tr{height: 30px; background: #ddd;}
+	.con_goods table tbody tr:hover{box-shadow:1px 1px 8px -1px #555;}
+	.con_goods table tbody .tr_top{background:#ccc; height:35px;}
+	.con_goods table tbody .tr_addsingular{background: #b8d9e8;}
+	.con_goods table tbody tr td{width:162px; border-bottom:1px solid #ccc;  }
+	.con_goods table tbody tr td input[type="text"]{width: 150px; height: 22px; border: 0px; background:rgba(0,0,0,0); text-align: center; cursor:pointer; color:#fff;}
+	.con_goods table tbody tr .oprate_td{width:26px;}
+	.con_goods table tbody tr td:last-child{width:60px;}
+
+	.update_i{background:url(image/manage/update.png); cursor:pointer;}
+	.update_i:hover{background:url(image/manage/update_hover.png);}
+	.delete_i{background:url(image/manage/dele.png); cursor:pointer;}
+	.delete_i:hover{background:url(image/manage/dele2.png);}
+	/* E - main_box */
+
+	/*收藏 足迹*/
+	.car_con, .colle_con, .foot_con {padding:10px 80px;}  /*收藏 */
+	.lictn{height:60px; border-bottom:1px solid rgba(204, 207, 208, 0.26); padding:2px; background:#fff; cursor:pointer; overflow:hidden;}
+	.lictn label{display:block;}
+	.lictn:hover{box-shadow:1px 1px 6px 0px #ccc;}
+	.goodspho{width:60px; height:60px; float:left;}
+	.goodspho img{display:block; cursor:pointer;}
+
+	.goodsdes{float:left; width:566px; height:60px; margin:0 5px;}
+	.goodsdes label {line-height:80px;}
+
+	.goods-infor font:nth-child(1) {font-weight:bold; color:red;}
+	.goods-infor font:nth-child(2) {font-size:16px; font-family: sans-serif;font-style: normal;}
+	.goods-name, .goods-size, .goods-num, .goods-color, .goods-price, .foot-time {text-align:center; float:left; color:#756e6e; font-size:12px;font-family: serif;} 
+	.goods-name {width:180px;}
+	.goods-color {width:80px;}
+	.goods-num, .goods-size{width:60px}
+	.goods-price {width:100px;}
+	.foot-time {width:120px;}
+	.colle-bt, .operate {overflow:hidden;}
+	.colle-bt img {margin:28px 80px; display:block; cursor:pointer; float:right;}
+	.operate img{margin:28px 40px; display:block; cursor:pointer; float:right;}

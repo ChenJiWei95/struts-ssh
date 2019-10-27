@@ -1,0 +1,50 @@
+	/* start shop car */
+	.shopcar{position:fixed;right:0;top:0;width:32px;height:100%; display:none;}
+	.shopcarcnt{width:282px;height:100%;}
+	
+	.shopcarclick{float:left;width:32px;height:100%;background:#000;}
+	.shopcarclick ul {}
+	.shopcarclick ul .clicknav {width:32px; height:32px; margin-top:10px; padding-left:3px;}
+	.shopcarclick ul .clicknav img {cursor:pointer;}
+
+	.list_cont{float:left;width:250px;height:100%;background:#F8F9E0;overflow:hidden;}
+	/* head 购物车标题 */
+	.shopping_head{font-size:14px; font-family:"宋体"; height:40px; text-align:center; line-height:40px; background:rgb(62, 62, 62); color:#fff;border-bottom: 4px solid rgba(204, 204, 204, 0.29);box-shadow:0px -6px 20px 1px #000; position: relative;}
+
+	/* 购物车清单 */
+	.shopping_list{width:100%; overflow: hidden; overflow-y: auto; overflow-x:hidden;}
+	.shopping_list::-webkit-scrollbar {width: 4px;border-radius:2px;}
+	.shopping_list::-webkit-scrollbar-button {background-color: #fff;}
+	.shopping_list::-webkit-scrollbar-track {height:100px;background: #fff;}
+	.shopping_list::-webkit-scrollbar-thumb {background: #ccc; border-radius: 5px;}
+	
+	/*所有容器*/
+	.shop_list_cnt{width: 250px;}
+
+	/*单个清单*/
+	.lictn{height:60px; border-bottom:1px solid #e6e6e6; padding:2px; background:#fff; cursor:pointer; overflow:hidden;}
+	.lictn label{display:block;}
+	.lictn:hover{box-shadow:1px 1px 6px 0px #ccc;}
+	.goodspho{width:60px; height:60px; float:left;}
+	.goodspho img{display:block; cursor:pointer;}
+
+	.goodsdes{float:left; width:170px; height:60px; margin:0 5px;}
+	.goodsdes label {line-height:40px;}
+
+	.goods-name {height:28px;}
+	.goods-name span {font-size:12px;font-family: serif;color:#888;}
+
+	.goods-infor font:nth-child(1) {font-weight:bold; color:red;}
+	.goods-infor font:nth-child(2) {font-size:16px; font-family: sans-serif;font-style: normal;}
+	.goods-size, .goods-num, .goods-price {float:left; color:#888; font-size:12px;font-family: serif;} 
+	.goods-size {margin-left:55px;}
+	.goods-num, .goods-price {margin-left:20px;}
+
+
+	/*购物结算结果*/
+	.shopping_result{width:100%; height:66px; background:#fff; border:1px solid rgba(204, 204, 204, 0.52);box-shadow:0px 6px 20px 0px #000;}
+	.shopping_result .RMB_result{height:30px; text-align:center; line-height:30px; font-size:14px;font-family:"宋体";}
+	.shopping_result .result_button{height:30px; text-align:center;}
+	.shopping_result .result_button input{cursor:pointer; width:80%; height:28px; border-style:none; border-radius:5px; background:#ea5209; outline:none;}
+	.RMB_NUM{font-weight: 900; color: red;}
+	/* shop car end */

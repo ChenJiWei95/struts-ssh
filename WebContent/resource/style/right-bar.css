@@ -1,0 +1,57 @@
+	/*收藏 足迹 个人 购物车未登录提示*/
+	.shop-car-other {position:fixed; right:32px; border:1px solid #ddd; }
+	.other-cnt {width:279px;}
+
+	.bar-my-colle,.bar-my-food {display:none; position:absolute; left:0px;  width:280px; height:330px; background:#fff; border:1px solid #e6e6e6;}
+
+	/*
+	.infor_close_i, .car_close_i, .colle_close_i, .food_close_i {width:16px; height:16px; display:block; cursor:pointer;}
+	.label_close {float:right; width:16px; height:16px;}
+	.label_close i {background:url(/image/leftX.png);}
+	.label_close i:hover {background:url(../image/leftX_hover.png);}
+	*/
+	
+	/*未登录 & 登录*/
+	.bar-nologin , .bar-login {background:#fff; overflow:hidden; border:1px solid #e6e6e6; position:absolute; top:-4px; right:35px; width:0px;  transition:all 0.2s ease-out; color:#888;}
+	/*会员 购物登录提示 收藏 足迹 未登录时的情况*/
+	.shopcarclick .clicknav {position:relative;}
+	.bar-nologin {height:32px; /*transition:2s; */}
+	.bar-in-com-nologin {text-align:center; line-height:32px; color:#888;}/*未登录*/
+	
+	.shopcarclick .clicknav:hover .bar-nologin{ width:120px;}
+	
+	/*会员 购物登录提示 收藏 足迹 登录时的情况*/
+	.bar-login {height:227;}
+	.bar-in-com {padding:6px; height:189px; overflow:hidden;}
+	.shopcarclick .clicknav:hover .bar-login { width:280px;}
+	
+	.bar-in-bom {margin:8px;}
+	.bar-in-bom label{float:right; margin:0px 5px; font-family: serif; color:skyblue; cursor:pointer;}
+	.bar-in-bom label:hover{color:#000;}
+	
+	.bar-my-colle, .bar-my-food , .bar-my-infor{overflow:hidden}
+	
+
+	/*.bar-my-colle .bar-in-top, .bar-my-infor  .bar-in-top, .bar-my-food  .bar-in-top {overflow:hidden; height:30px; background:#555;}*/
+
+	.bar-my-colle .bar-in-com, .bar-my-food .bar-in-com , .bar-my-infor .bar-in-com{ overflow:hidden; }
+
+	.in-top-title {font-family: serif; color:#fff; padding-left:5px; display:block; margin:8px;}
+	
+	.lictn .colledes {float:left; width:170px; height:60px; margin:0px 5px;}
+	.lictn .colle-infor {line-height:80px; font-size:12px;}
+	.colle-name, .colle-price {margin-left:20px; float:left; color:#756e6e; font-family: serif;}
+	
+	/*会员 已登录*/
+	.shopcarclick .clicknav:nth-child(1) .bar-login {height:70px; }
+	.shopcarclick .clicknav:nth-child(1) .bar-login .bar-in-com {padding:10px; font-family: serif;}
+	.head-pi {width:50px; height:50px; border-radius:25px; overflow:hidden; float:left;}
+	.menber-name {float:left;  margin:17px 20px;}
+	.menber-integral {float:left; margin:26px 0px; }
+	
+	/*收藏 已登录 为空*/
+	.bar-login-null {height:32px;}
+	.shopcarclick .clicknav:hover .bar-login-null { width:120px;}
+	
+	
+	

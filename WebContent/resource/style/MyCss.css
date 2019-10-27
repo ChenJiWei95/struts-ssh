@@ -1,0 +1,68 @@
+	/*
+	2017/9/24
+	全局格式样式，可以插入插件
+	*/
+	/*全局默认外边距，内边距为0*/*{margin: 0; padding: 0; font-size: 12px; }
+	/*顶部窗口*/.body-top{height: 100px; position: relative; border-bottom: 1px solid #ccc;}
+	/*底部窗口*/.body-bom{height: 90px;}
+	.clearFloat{overflow:hidden;}
+	
+
+	/*
+	2017/9/24
+	图标i标签
+	*/
+	i{display:block; width: 32px; height: 32px;}
+
+	/*
+	2017/9/24
+	对常用按钮的设定
+	*/
+	/*一般样式*/.input-submit, .input-button, .select-button, .select-input{width: 150px; height: 35px;cursor: pointer; border: 0px; border-radius: 5px; outline: none; color: #fff; }
+	/*鼠标进入时的样式*/.input-submit:hover, .input-button:hover{background: #8e8787;}
+	.select-button {height:30px; width:75px; margin:0px 10px; color:#ccc;}
+	.select-input {height:30px; display:block; margin:0px 10px; color:#ccc;}
+	.button-red {width:100px; height:35px; color:white; cursor:pointer; background-color:#cc0000; border:1px solid #ccc; border-radius:5px; font-size:14px; outline:none;}
+	.button-red:hover {box-shadow:0px 0px 10px 0px #ccc;}
+
+	/*
+	2017/9/24
+	输入框的样式设定
+	placeholder 提示文字
+	required 不允许为空
+	*/
+	.input-text{display:block; width: 200px; height: 30px; border: 1px solid #ddd; border-radius:5px; outline: none; padding: 0px 5px; color: #777171;}
+	/*获取焦点时*/.input-focus{border: 1px solid deepskyblue;}
+
+	/*
+	模态框样式，默认全屏
+	*/
+	.modal_Box{display: block; position: fixed; z-index: 1; right: 0; top: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.3);}
+
+
+	/*
+	2017/9/24
+	menu bar菜单栏
+	menu item菜单项
+	其中包含item自动分配空间 flex-direction row-reverse
+
+
+	*/
+	/*menu_Bar*/.menu_Bar{border: 1px solid #efe1e1;}
+
+	.menu_Bar ul{height: 35px; margin-top: -1px; flex-direction: row-reverse; display: -webkit-flex; text-align: center;}
+	.menu_Bar ul #menu_Item_Left{}/*最左边的项*/
+	.menu_Bar ul #menu_Item_Right{}/*最右边的项*/
+	.menu_Bar ul .menu_Item{float: left; list-style-type: none; flex: 1;}
+	.menu_Bar ul .menu_Item a{display: block; margin-top: 12px; height: 18px; border-right: 1px solid #efe1e1;}
+	.menu_Bar ul .menu_Item a:hover{}
+
+	.nolist{list-style-type:none;}
+	
+	/*2017/12/31 横格式*/
+	.rowli {list-style-type:none;}
+	.rowli li {float:left; width:60px; height:25px; text-align:center; line-height:25px; cursor:pointer; color:#555;}
+	/*2017/12/31 列格式*/
+	.colli {list-style-type:none;}
+	.colli li {width:120px; height:25px; cursor:pointer; text-align:center; line-height:25px; color:#555;}
+	.colli li:hover,/*.colli li:nth-child(1), .rowli li:nth-child(1),*/ .rowli li:hover{background:#555; color:#fff;}
