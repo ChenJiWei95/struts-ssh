@@ -11,8 +11,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   <title>商城首页- 模块- 整体框架</title> 
   <link rel="stylesheet" href="<%=basePath%>resource/layui/css/layui.css" media="all">
   <style contenteditable="" draggable="true">
-	.border { border: 1px solid #ddd;}
-	.red { background: red; height: 100%;}
+	.border { border: 1px solid #ddd;} 
+	.red { background: red; height: 100%;} 
 	.blue { background: blue; height: 100%;}
 	.aqua { background: aqua; height: 100%;}
 	.white { background: white; height: 100%;}
