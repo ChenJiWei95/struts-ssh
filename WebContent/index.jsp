@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@taglib prefix="s" uri="/struts-tags" %>
 <%
 // basePath：localhost:8080/项目名/
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+request.getContextPath()+"/";
@@ -58,7 +59,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		<div class="layui-container" style="overflow: hidden;">
 			<div style="height: 66px; " class="layui-row" style="padding: 11px;">
 				<div class="layui-col-md2"> 
-					<h1 style="color: #a77f2a69; font-size: 41px; line-height: 58px; margin-left: 10px; font-family: cursive;">有间商城</h1>
+					<h1 style="color: #a77f2a69; font-size: 41px; line-height: 58px; margin-left: 10px; font-family: cursive;"><s:text name="shop.common.mallName" /> </h1>
    	 			</div>
    	 			<div class="layui-col-md5" style="height: 100%;"> 
    	 			</div>
@@ -130,9 +131,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			</div>
 		</div>
 		<div class="layui-container">
-			<li style="color: #ffffffb3	; list-style: none; padding:10px 245px; text-align: center; ">Copyright ©2019 <!-- <span style="color:#a71d5d;cursor:pointer;" title="shop">shop</span> -->Powered By <span  style="color: #ffffffb3; font-family: cursive; cursor:pointer;" title="有间商城">有间商城</span> Version 1.0.0</li>
+			<li style="color: #ffffffb3	; list-style: none; padding:10px 245px; text-align: center; ">Copyright ©2019 <!-- <span style="color:#a71d5d;cursor:pointer;" title="shop">shop</span> -->Powered By <span  style="color: #ffffffb3; font-family: cursive; cursor:pointer;" title="<s:text name="shop.common.mallName" /> "><s:text name="shop.common.mallName" /> </span> Version 1.0.0</li>
 		</div>
-	</div>
+	</div> 
 	<!-- bom end -->
 	<script src="<%=basePath%>resource/layui/layui.js"></script>
 	<script>

@@ -13,6 +13,9 @@
 	<!-- 是否开启动态方法调用 -->
 	<constant name="struts.enable.DynamicMethodInvocation" value="false" />
 	
+	<constant name="struts.custom.i18n.resources" value="message_en_US, message_zh_CN"/>
+	<!-- <constant name="struts.custom.i18n.resources" value=""/> -->
+	
 	<!-- 是否使用开发者模式 保存后即已默认加载了已变更内容。无需重启server -->
 	<constant name="struts.devMode" value="false" />
 	<constant name="struts.i18n.encoding" value="UTF-8" />  

@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="/struts-tags" prefix="s"%>
 <%
 // basePath：localhost:8080/项目名/
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+request.getContextPath()+"/";
@@ -12,6 +13,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		<link rel="stylesheet" href="<%=basePath%>resource/layui/css/layui.css" media="all">
 	</head>
 	<body style="padding: 30px;">
+		国际化处理<s:text name="welcome" /> 
 		<a class="layui-btn layui-btn-primary layui-btn-radius" href="<%=basePath%>testAjax_chtml_success">请求uri：testAjax_chtml_success跳转到success.jsp页面，实现方式通配符动态匹配</a> 
 		<a class="layui-btn layui-btn-primary layui-btn-radius" href="<%=basePath%>testParame_chtml_saveorupdate">前往测试获取参数-ModelDriven</a> 
 		<a class="layui-btn layui-btn-primary layui-btn-radius" href="<%=basePath%>testParame2_chtml_saveorupdate2">前往测试获取参数-对象驱动</a> 

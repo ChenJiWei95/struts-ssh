@@ -57,7 +57,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<!-- start picture -->
 	<div style="width: 100%; height: 680px; background-image: url(<%=basePath%>resource/img/bg.jpg); overflow: hidden;" class="aqua">
 		<div class="layui-form" style="width: 254px; height: 300px; background: #fff; margin: 118px auto; padding: 29px; ">
-			<div class="layui-form-item" style="text-align: center; line-height: 65px; font-family: cursive; color: #a77f2a69;"><h1>有间商城</h1></div>
+			<div class="layui-form-item" style="text-align: center; line-height: 65px; font-family: cursive; color: #a77f2a69;"><h1><s:text name="shop.common.mallName" /> </h1></div>
 			<div class="layui-form-item" style="margin-top: 0px;">
 				<!-- <i class="layui-icon layui-icon-user" style="position: absolute; font-size: 28px; "></i> -->
 				<input class="layui-input" type="text" placeholder="INPUT USERNAME" style="height: 46px;"/>
@@ -90,7 +90,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			</div>
 		</div>
 		<div class="layui-container">
-			<li style="color: #ffffffb3	; list-style: none; padding:10px 245px; text-align: center; ">Copyright ©2019 <!-- <span style="color:#a71d5d;cursor:pointer;" title="shop">shop</span> -->Powered By <span  style="color: #ffffffb3; font-family: cursive; cursor:pointer;" title="有间商城">有间商城</span> Version 1.0.0</li>
+			<li style="color: #ffffffb3	; list-style: none; padding:10px 245px; text-align: center; ">Copyright ©2019 <!-- <span style="color:#a71d5d;cursor:pointer;" title="shop">shop</span> -->Powered By <span  style="color: #ffffffb3; font-family: cursive; cursor:pointer;" title="<s:text name="shop.common.mallName" /> "><s:text name="shop.common.mallName" /> </span> Version 1.0.0</li>
 		</div>
 	</div>
 	</body>
