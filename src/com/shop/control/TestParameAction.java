@@ -16,6 +16,7 @@ import com.opensymphony.xwork2.Preparable;
 import com.shop.entity.UserTest;
 import com.shop.service.UserTestService;
 import com.shop.util.Message;
+import com.shop.util.RedisService;
 import com.shop.util.SnowFlakeGenerator;
 
 /**
@@ -50,10 +51,12 @@ public class TestParameAction extends SuperActionSupport implements ModelDriven<
 	@Autowired
 	private UserTestService userTestServiceImpl; 		// @autowired查找bean首先是先通过byType查，如果发现找到有很多bean，则按照byName方式对比获取
 	
+	@Autowired
+	private RedisService redisService; 					// @autowired查找bean首先是先通过byType查，如果发现找到有很多bean，则按照byName方式对比获取
+	
 	// 添加方法 测试
 	// 链接格式 当前类为例：testAjax(类前缀)_save(方法)
-	public String save(){
-		
+	public String save(){ 
 		log.info("测试前台ajax请求--添加数据：");
 		user.setId(new SnowFlakeGenerator(2, 2).nextId());
 		log.info(user);
@@ -102,6 +105,9 @@ public class TestParameAction extends SuperActionSupport implements ModelDriven<
 	
 	// 根据url末端名称 声明此方法名称，作用是使用EL表达式的方式向前台传值。
 	public void saveorupdate(HttpServletRequest request){
+		log.info("redis测试："+redisService);
+		log.info(redisService.set("key1", "123456"));
+		log.info(redisService.get("key1"));
 		log.info("反射执行saveorupdate");
 		request.setAttribute("text", "模型驱动");
 	}

@@ -54,6 +54,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			</span>
 		</div>
 		<hr>
+		<!-- start search -->
 		<div class="layui-container" style="overflow: hidden;">
 			<div style="height: 66px; " class="layui-row" style="padding: 11px;">
 				<div class="layui-col-md2"> 
@@ -72,6 +73,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
    	 				</i>
    	 			</div>
 			</div>
+			<!-- start nav -->
 			<div style="height: 60px; " class="layui-row" style="padding: 11px;">
 				<div class="layui-col-md1 white"> </div>
 				<div class="layui-col-md10">
@@ -81,13 +83,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 						<div class="layui-col-md2 c-nav"><font>小家电</font></div>
 						<div class="layui-col-md2 c-nav"><font>洗护</font></div>
 						<div class="layui-col-md2 c-nav"><font>厨具</font></div>
-							<div class="layui-col-md2 c-nav"><font>日用品</font></div> 
+						<div class="layui-col-md2 c-nav"><font>日用品</font></div> 
 					</div>
 				</div>
 			</div>
 		</div>
 	</div>
-	<!-- start search&nav -->
 	
 	<!-- start flow picture -->
 	<div style="width: 100%; height: 480px; background-image: url(<%=basePath%>resource/img/bg.jpg);" class="aqua">

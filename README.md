@@ -32,6 +32,16 @@
 		request请求
 			TestParame4Action.java
 			WEB-INF/views/testparam4/saveorupdate.jsp
+	* 测试redis
+		依赖架包： 
+			commons-pool-1.5.4.jar 
+			commons-pool.jar 
+			commons-pool2-2.4.2.jar 
+			jedis-2.9.0.jar 
+			spring-data-redis-1.7.10.RELEASE.jar
+		RedisService 为工具类
+		TestParameAction.saveorupdate中进行测试插入，获取数据。测试结果正常
+		在http://localhost:8080/strust-ssh/main_main_practice页面进行模型驱动测试即可测试redis
 ## 异常收集：    
 	* InvalidMappingException:  
 		Could not parse mapping document from input stream
