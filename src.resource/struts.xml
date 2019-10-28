@@ -13,8 +13,7 @@
 	<!-- 是否开启动态方法调用 -->
 	<constant name="struts.enable.DynamicMethodInvocation" value="false" />
 	
-	<constant name="struts.custom.i18n.resources" value="message_en_US, message_zh_CN"/>
-	<!-- <constant name="struts.custom.i18n.resources" value=""/> -->
+	<constant name="struts.custom.i18n.resources" value="message"/>
 	
 	<!-- 是否使用开发者模式 保存后即已默认加载了已变更内容。无需重启server -->
 	<constant name="struts.devMode" value="false" />
@@ -58,7 +57,7 @@
 		     	<param name="contentType">text/html</param>
 		     	<!-- name对应action中的inputStream的属性名 -->
 		    	<param name="inputName">inputStream</param>
-		   	</result> 
+		   	</result>
 			<result name="json" type="json">
 				<!-- name=root代表着该对象会被序列化，对应action中的message的属性名，此处我定义回传对象为Message -->
 		   		<param name="root">message</param>

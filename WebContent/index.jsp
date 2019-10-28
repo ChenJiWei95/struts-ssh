@@ -9,7 +9,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <html>
  <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-  <title>商城首页- 模块- 整体框架</title> 
+  <title><s:text name="shop.common.homePage"/></title> 
   <link rel="stylesheet" href="<%=basePath%>resource/layui/css/layui.css" media="all">
   <style contenteditable="" draggable="true">
 	.border { border: 1px solid #ddd;} 
@@ -42,16 +42,18 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   </style>
  </head>
  <body>
+ 	<a href="<%=basePath%>main_main_index?request_locale=zh_CN"><s:text name="shop.common.chinese"/></a>
+    <a href="<%=basePath%>main_main_index?request_locale=en_US"><s:text name="shop.common.english"/></a>
 	<!-- start top -->
 	<div style="width: 100%;  ">
 		<div class="layui-container" style="height: 30px;">  
 			<span class="layui-breadcrumb" style="float: left; ">
-				<a href="" style="line-height: 40px; padding: 10px;">欢迎 123787客官 光临有间商城</a>
+				<a href="" style="line-height: 40px; padding: 10px;"><s:text name="shop.common.welcome" /> 双十一采购队长<%-- ${user.name} --%></a>
 			</span>
 			<span class="layui-breadcrumb" lay-separator="|" style="float: right;">
-			  <a href="<%=basePath%>main_main_login" style="line-height: 40px; padding: 10px;">登录</a>
-			  <a href="" style="line-height: 40px; padding: 10px;">我的订单</a>
-			  <a href="" style="line-height: 40px; padding: 10px;">个人中心</a> 
+			  <a href="<%=basePath%>main_main_login" style="line-height: 40px; padding: 10px;"><s:text name="shop.common.login"/></a>
+			  <a href="" style="line-height: 40px; padding: 10px;"><s:text name="shop.common.orders"/></a>
+			  <a href="" style="line-height: 40px; padding: 10px;"><s:text name="shop.common.personalCenter"/></a> 
 			</span>
 		</div>
 		<hr>
@@ -59,13 +61,13 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		<div class="layui-container" style="overflow: hidden;">
 			<div style="height: 66px; " class="layui-row" style="padding: 11px;">
 				<div class="layui-col-md2"> 
-					<h1 style="color: #a77f2a69; font-size: 41px; line-height: 58px; margin-left: 10px; font-family: cursive;"><s:text name="shop.common.mallName" /> </h1>
+					<h1 style="color: #a77f2a69; font-size: 41px; line-height: 58px; margin-left: 10px; font-family: cursive;"><s:text name="shop.common.mallName" /></h1>
    	 			</div>
    	 			<div class="layui-col-md5" style="height: 100%;"> 
    	 			</div>
    	 			<div class="layui-col-md5" > 
    	 				<div class="layui-form" style="height: 34px; line-height: 36px; border: 1px solid #a77f2a69; width: 86%; padding: 1px; margin: 13px -5px; float: left;">
-   	 					<input type="text" class="layui-input" placeholder="搜索商品" style="width: 382px; border: none; float: left; height: 35px;" />
+   	 					<input type="text" class="layui-input" placeholder='<s:text name="shop.common.search"/>' style="width: 382px; border: none; float: left; height: 35px;" />
    	 					<i class="layui-icon layui-icon-search" style="font-size: 20px; cursor: pointer; color: #a77f2a69;"></i>
    	 					<button lay-submit lay-filter="c-form-add" class="layui-hide">search</button>
    	 				</div>
@@ -79,12 +81,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				<div class="layui-col-md1 white"> </div>
 				<div class="layui-col-md10">
 					<div style="height: 60px; " class="layui-row" style="padding: 11px;">
-						<div class="layui-col-md2 c-nav" style="color: #a77f2a69"><font>首页</font></div> 
-						<div class="layui-col-md2 c-nav"><font>家具用品</font></div>
-						<div class="layui-col-md2 c-nav"><font>小家电</font></div>
-						<div class="layui-col-md2 c-nav"><font>洗护</font></div>
-						<div class="layui-col-md2 c-nav"><font>厨具</font></div>
-						<div class="layui-col-md2 c-nav"><font>日用品</font></div> 
+						<div class="layui-col-md2 c-nav" style="color: #a77f2a69"><font><s:text name="shop.common.nav1"/></font></div> 
+						<div class="layui-col-md2 c-nav"><font><s:text name="shop.common.nav2"/></font></div>
+						<div class="layui-col-md2 c-nav"><font><s:text name="shop.common.nav3"/></font></div>
+						<div class="layui-col-md2 c-nav"><font><s:text name="shop.common.nav4"/></font></div>
+						<div class="layui-col-md2 c-nav"><font><s:text name="shop.common.nav5"/></font></div>
+						<div class="layui-col-md2 c-nav"><font><s:text name="shop.common.nav6"/></font></div> 
 					</div>
 				</div>
 			</div>
@@ -117,21 +119,21 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			<div class="layui-row">
 				<div style="height: 60px; padding: 11px; text-align: center;" class="layui-row"> 
 					<span class="span-separator">
-					  <a href="" style="line-height: 40px; padding: 28px; color: #ffffffb3;">关于我们</a>
+					  <a href="" style="line-height: 40px; padding: 28px; color: #ffffffb3;"><s:text name="shop.common.aboutUs"/></a>
 					  <span class="lay-separator" style="color: #ffffffb3;">|</span>
-					  <a href="" style="line-height: 40px; padding: 28px; color: #ffffffb3;">帮助中心</a>
+					  <a href="" style="line-height: 40px; padding: 28px; color: #ffffffb3;"><s:text name="shop.common.help"/></a>
 					  <span class="lay-separator" style="color: #ffffffb3;">|</span>
-					  <a href="" style="line-height: 40px; padding: 28px; color: #ffffffb3;">售后服务</a> 
+					  <a href="" style="line-height: 40px; padding: 28px; color: #ffffffb3;"><s:text name="shop.common.aftersaleService"/></a> 
 					  <span class="lay-separator" style="color: #ffffffb3;">|</span>
-					  <a href="" style="line-height: 40px; padding: 28px; color: #ffffffb3;">配送服务</a> 
+					  <a href="" style="line-height: 40px; padding: 28px; color: #ffffffb3;"><s:text name="shop.common.deliveryService"/></a> 
 					  <span class="lay-separator" style="color: #ffffffb3;">|</span>
-					  <a href="" style="line-height: 40px; padding: 28px; color: #ffffffb3;">关于货源</a> 
+					  <a href="" style="line-height: 40px; padding: 28px; color: #ffffffb3;"><s:text name="shop.common.supplySource"/></a> 
 					</span>	
 				</div>
 			</div>
 		</div>
 		<div class="layui-container">
-			<li style="color: #ffffffb3	; list-style: none; padding:10px 245px; text-align: center; ">Copyright ©2019 <!-- <span style="color:#a71d5d;cursor:pointer;" title="shop">shop</span> -->Powered By <span  style="color: #ffffffb3; font-family: cursive; cursor:pointer;" title="<s:text name="shop.common.mallName" /> "><s:text name="shop.common.mallName" /> </span> Version 1.0.0</li>
+			<li style="color: #ffffffb3	; list-style: none; padding:10px 245px; text-align: center; ">Copyright ©2019 Powered By <span  style="color: #ffffffb3; font-family: cursive; cursor:pointer;" title="<s:text name="shop.common.mallName" />"><s:text name="shop.common.mallName" /></span> Version 1.0.0</li>
 		</div>
 	</div> 
 	<!-- bom end -->
@@ -139,7 +141,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<script>
  	layui.use(['layer', 'element'], function(){
  		var element = layui.element;
- 		layui.layer.msg("正在使用layui。");
+ 		layui.layer.msg("<s:text name="shop.common.homeLayuiAlert"/>");
  	})
 	</script>
  </body>
