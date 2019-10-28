@@ -35,7 +35,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   </div>
   <script src="<%=basePath%>resource/layui/layui.js"></script>  
   <script>
-  layui.use(['form', 'layer'], function(){
+  layui.use(['form', 'layer', 'util'], function(){
     var $ = layui.$
     ,layer = layui.layer
     ,form = layui.form
@@ -43,20 +43,14 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	,b = 'c-form-update'
 	form.on("submit("+a+")", function(data){
 		console.log(data.field);
-		$.ajax({
+		layui.util.formAjax({
 			url: '<%=basePath%>testParame_save'
-			,type: 'post'
-			,dataType: 'json'
-			,data: data.field
-			,success: function(msg){
-				console.log(msg);
-			}
-			,error: function(msg){
-				console.log(msg);
-			}
+			,data: data.field 
 		});
 		return false;
-	})
+	});
+		
+ 		 
 	 
   })
   </script>

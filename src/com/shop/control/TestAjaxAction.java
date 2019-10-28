@@ -8,8 +8,8 @@ import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
 import com.opensymphony.xwork2.ModelDriven;
-import com.shop.entity.User;
-import com.shop.service.UserService;
+import com.shop.entity.UserTest;
+import com.shop.service.UserTestService;
 import com.shop.util.Message;
 import com.shop.util.PropertiesUtil;
 import com.shop.util.SnowFlakeGenerator;
@@ -38,7 +38,7 @@ public class TestAjaxAction extends SuperActionSupport{
 	private static Logger log = Logger.getLogger(TestAjaxAction.class); // 日志对象 
 	
 	@Autowired
-	private UserService userServiceImpl; 		//@autowired查找bean首先是先通过byType查，如果发现找到有很多bean，则按照byName方式对比获取
+	private UserTestService userTestServiceImpl; 		//@autowired查找bean首先是先通过byType查，如果发现找到有很多bean，则按照byName方式对比获取
 	
 	// 添加方法 测试
 	// 链接格式 当前类为例：testAjax(类前缀)_save(方法)
@@ -78,7 +78,7 @@ public class TestAjaxAction extends SuperActionSupport{
 		
 		log.info("测试前台ajax请求--获取数据：");
 		log.info("测试前台ajax请求--获取完毕：");
-		User u = new User();
+		UserTest u = new UserTest();
 		u.setId(new SnowFlakeGenerator(2, 2).nextId());
 		u.setUsername("xiaoming");
 		setMessage(Message.success("操作成功", 

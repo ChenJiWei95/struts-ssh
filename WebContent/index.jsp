@@ -137,7 +137,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<script>
  	layui.use(['layer', 'element'], function(){
  		var element = layui.element;
- 		layui.layer.msg("正在使用layui。")
+ 		layui.layer.msg("正在使用layui。");
  	})
 	</script>
  </body>

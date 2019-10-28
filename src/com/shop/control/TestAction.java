@@ -8,8 +8,8 @@ import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
 import com.opensymphony.xwork2.ModelDriven;
-import com.shop.entity.User;
-import com.shop.service.UserService;
+import com.shop.entity.UserTest;
+import com.shop.service.UserTestService;
 import com.shop.util.Message;
 import com.shop.util.SnowFlakeGenerator;
 
@@ -40,14 +40,14 @@ import com.shop.util.SnowFlakeGenerator;
  */
 @Component	 			// 表示此类将被spring容器托管，能实现依赖对象的控制反转，例如：@Autowired注解获取userServiceImpl对象
 @Scope("prototype")		// 表示每次获得bean都会生成一个新的对象
-public class TestAction extends SuperActionSupport implements ModelDriven<User>{
+public class TestAction extends SuperActionSupport implements ModelDriven<UserTest>{
 	private static final long serialVersionUID = 7539369474585568995L;
 	private static Logger log = Logger.getLogger(TestAction.class);
 	
 	@Autowired
-	private UserService userServiceImpl; //@autowired查找bean首先是先通过byType查，如果发现找到有很多bean，则按照byName方式对比获取
+	private UserTestService userTestServiceImpl; //@autowired查找bean首先是先通过byType查，如果发现找到有很多bean，则按照byName方式对比获取
 	
-	private User user = new User();
+	private UserTest user = new UserTest();
 	
 	/**
 	 * 模板驱动  获取前台参数 <br>
@@ -55,16 +55,16 @@ public class TestAction extends SuperActionSupport implements ModelDriven<User>{
 	 * @see com.opensymphony.xwork2.ModelDriven#getModel()
 	 */
 	@Override
-	public User getModel() {
+	public UserTest getModel() {
 		return user;
 	}
 
 	public String execute(){
 		log.info("配置文件的方式构建action：开始执行"); 
-		User u = new User();
+		UserTest u = new UserTest();
 		u.setId(new SnowFlakeGenerator(2, 2).nextId());
 		u.setUsername("xiaoming");
-		userServiceImpl.save(u);
+		userTestServiceImpl.save(u);
 		print("true");  // 如果是以ajax请求 返回数据 此处得有流输出，否则报此异常Can not find a java.io.InputStream with the name
 		return SUCCESS;
 	}
@@ -80,7 +80,7 @@ public class TestAction extends SuperActionSupport implements ModelDriven<User>{
 	public String json(){
 		log.info("测试前台ajax请求--返回对象序列化数据：");
 		log.info("前台获取数据： "+user);
-		User u = new User();
+		UserTest u = new UserTest();
 		u.setId(new SnowFlakeGenerator(2, 2).nextId());
 		u.setUsername("xiaoming"); 
 		setMessage(Message.success("请求成功", u));

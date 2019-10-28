@@ -1,8 +1,8 @@
 package com.shop.dao;
 
-import com.shop.entity.User;
+import com.shop.entity.UserTest;
 
-public interface UserDao extends BaseDao<User>{ 
+public interface UserTestDao extends BaseDao<UserTest>{ 
 	
 }
 	

@@ -1,7 +1,7 @@
 package com.shop.service;
 
-import com.shop.entity.User;
+import com.shop.entity.UserTest;
 
-public interface UserService extends BaseService<User>{
+public interface UserTestService extends BaseService<UserTest>{
 
 }

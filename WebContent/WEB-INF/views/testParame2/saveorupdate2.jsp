@@ -56,14 +56,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			}
 		});
 		return false;
-	})
-	,form.on("submit("+b+")", function(data){
-		admin.cajax({
-			method: 'update'
-			,id: l
-			,data: data.field  
-		});
-		return false;
 	}) 
 	
   })

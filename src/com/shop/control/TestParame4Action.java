@@ -11,8 +11,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
-import com.shop.entity.User;
-import com.shop.service.UserService;
+import com.shop.entity.UserTest;
+import com.shop.service.UserTestService;
 import com.shop.util.ActionUtil;
 import com.shop.util.Message;
 import com.shop.util.SnowFlakeGenerator;
@@ -35,7 +35,7 @@ public class TestParame4Action extends SuperActionSupport{
 	private static final Logger log = Logger.getLogger(TestParame4Action.class); // 日志对象
 	
 	@Autowired
-	private UserService userServiceImpl; 		// @autowired查找bean首先是先通过byType查，如果发现找到有很多bean，则按照byName方式对比获取
+	private UserTestService userTestServiceImpl; 		// @autowired查找bean首先是先通过byType查，如果发现找到有很多bean，则按照byName方式对比获取
 	
 	// 添加方法 测试
 	// 链接格式 当前类为例：testAjax(类前缀)_save(方法)
@@ -44,12 +44,12 @@ public class TestParame4Action extends SuperActionSupport{
 		log.info(ActionUtil.read(request));
 		Map<String, String> parame = ActionUtil.getRequestParameterMap(request);
 		log.info(parame);
-		User user = new User();
+		UserTest user = new UserTest();
 		log.info("测试前台ajax请求--添加数据：");
 		user.setId(new SnowFlakeGenerator(2, 2).nextId());
 		user.setUsername(parame.get("username"));
 		log.info(user);
-		userServiceImpl.save(user);
+		userTestServiceImpl.save(user);
 		log.info("测试前台ajax请求--添加完毕：");
 		setMessage(Message.success("操作成功", user)); 	// 返回Message序列化对象， 状态成功，返回data=null
 		return JSON;
@@ -83,7 +83,7 @@ public class TestParame4Action extends SuperActionSupport{
 		
 		log.info("测试前台ajax请求--获取数据：");
 		log.info("测试前台ajax请求--获取完毕：");
-		User u = new User();
+		UserTest u = new UserTest();
 		u.setId(new SnowFlakeGenerator(2, 2).nextId());
 		u.setUsername("xiaoming");
 		setMessage(Message.success("操作成功", 

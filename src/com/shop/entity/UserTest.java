@@ -7,7 +7,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "User")
-public class User {
+public class UserTest {
 	@Id
 	@Column(name = "id")
 	private Long id;
@@ -28,7 +28,7 @@ public class User {
 		this.username = username;
 	}
 	public String toString(){
-		return User.class + "["
+		return UserTest.class + "["
 				+ "id = " + id
 				+ ", username = " + username
 				+ "]";

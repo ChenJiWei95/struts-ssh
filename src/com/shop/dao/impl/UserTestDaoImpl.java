@@ -2,8 +2,8 @@ package com.shop.dao.impl;
 
 import org.springframework.stereotype.Repository;
 
-import com.shop.dao.UserDao;
-import com.shop.entity.User;
+import com.shop.dao.UserTestDao;
+import com.shop.entity.UserTest;
 
 /**
  * <b></b>
@@ -16,6 +16,6 @@ import com.shop.entity.User;
  * @since 1.0
  */
 @Repository
-public class UserDaoImpl extends BaseDaoImpl<User> implements UserDao{
+public class UserTestDaoImpl extends BaseDaoImpl<UserTest> implements UserTestDao{
 	
 }

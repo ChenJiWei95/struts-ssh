@@ -13,8 +13,8 @@ import org.springframework.stereotype.Component;
 
 import com.opensymphony.xwork2.ModelDriven;
 import com.opensymphony.xwork2.Preparable;
-import com.shop.entity.User;
-import com.shop.service.UserService;
+import com.shop.entity.UserTest;
+import com.shop.service.UserTestService;
 import com.shop.util.Message;
 import com.shop.util.SnowFlakeGenerator;
 
@@ -30,25 +30,25 @@ import com.shop.util.SnowFlakeGenerator;
  */
 @Component 				// 表示此类将被spring容器托管，能实现依赖对象的控制反转，例如：@Autowired注解获取userServiceImpl对象
 @Scope("prototype")		// 表示每次获得bean都会生成一个新的对象
-public class TestParameAction extends SuperActionSupport implements ModelDriven<User>,Preparable{
+public class TestParameAction extends SuperActionSupport implements ModelDriven<UserTest>,Preparable{
 	private static final long serialVersionUID = 7539369474585568995L;
 	
 	private static Logger log = Logger.getLogger(TestParameAction.class); // 日志对象 
 	
 	// ModelDriven 此处获取参数的方式为模型驱动，请求方式为get
-	private User user; 
+	private UserTest user; 
 
 	@Override
-	public User getModel() {
+	public UserTest getModel() {
 		if ( user == null ){   
-			user = new User();   
+			user = new UserTest();   
 	   	//user.setUsername(" 这是原来的 User 对象 ");   
 		}
 		return user;
 	}
 	
 	@Autowired
-	private UserService userServiceImpl; 		// @autowired查找bean首先是先通过byType查，如果发现找到有很多bean，则按照byName方式对比获取
+	private UserTestService userTestServiceImpl; 		// @autowired查找bean首先是先通过byType查，如果发现找到有很多bean，则按照byName方式对比获取
 	
 	// 添加方法 测试
 	// 链接格式 当前类为例：testAjax(类前缀)_save(方法)
@@ -57,7 +57,7 @@ public class TestParameAction extends SuperActionSupport implements ModelDriven<
 		log.info("测试前台ajax请求--添加数据：");
 		user.setId(new SnowFlakeGenerator(2, 2).nextId());
 		log.info(user);
-		userServiceImpl.save(user);
+		userTestServiceImpl.save(user);
 		log.info("测试前台ajax请求--添加完毕：");
 		setMessage(Message.success("操作成功", user)); 	// 返回Message序列化对象， 状态成功，返回data=null
 		return JSON;
@@ -91,7 +91,7 @@ public class TestParameAction extends SuperActionSupport implements ModelDriven<
 		
 		log.info("测试前台ajax请求--获取数据：");
 		log.info("测试前台ajax请求--获取完毕：");
-		User u = new User();
+		UserTest u = new UserTest();
 		u.setId(new SnowFlakeGenerator(2, 2).nextId());
 		u.setUsername("xiaoming");
 		setMessage(Message.success("操作成功", 
