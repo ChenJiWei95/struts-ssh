@@ -58,7 +58,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			<hr>
 	</div> 
 	<!-- start picture -->
-	<div style="width: 100%; height: 680px; background-image: url(<%=basePath%>resource/img/bg.jpg); overflow: hidden;" class="aqua">
+	<div style="width: 100%; height: 680px; background-image: url(<%=basePath%>resource/img/bg.jpg); overflow: hidden; background-size: cover;" class="aqua">
 		<div class="layui-form" style="width: 254px; height: 300px; background: #fff; margin: 118px auto; padding: 29px; ">
 			<div class="layui-form-item" style="text-align: center; line-height: 65px; font-family: cursive; color: #a77f2a69;"><h1><s:text name="shop.common.mallName"/></h1></div>
 			<div class="layui-form-item" style="margin-top: 0px;">

@@ -94,13 +94,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	</div>
 	
 	<!-- start flow picture -->
-	<div style="width: 100%; height: 480px; background-image: url(<%=basePath%>resource/img/bg.jpg);" class="aqua">
+	<div style="width: 100%; height: 480px; background-image: url(<%=basePath%>resource/img/temp2.png); background-size: cover;" class="aqua">
 		
 	</div>
 	<!-- start con goods red -->
 	<div class="layui-container">
-		<div style="height: 50px; " class="layui-row">
-		</div>
+		<div style="height: 50px; " class="layui-row"> </div>
 		<div style="height: 50px; " class="layui-row">
 			<h2 style="font-size: 20px; font-weight: bold; color: #555;">热门分类</h2>
 		</div>
@@ -114,6 +113,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		</div>
 	</div>
 	<!-- start bom --> 
+	<div style="height: 100px; " class="layui-row"> </div>
 	<div style="width: 100%;  background: #000000d4; position: fixed; bottom: 0;">
 		<div class="layui-container" style="height: 50px; ">
 			<div class="layui-row">
