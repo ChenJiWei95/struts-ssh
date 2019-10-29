@@ -23,14 +23,14 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		font-family: "SFMono-Regular",Consolas,"Liberation Mono",Menlo,Courier,monospace;
 	}
 	
-	.c-nav { 
+	.c-nav{ 
 		color: #555;
     	text-align: center;
    	 	line-height: 71px;
    		height: 100%;
    		cursor: pointer;
     }
-    .c-nav:hover {
+    .c-nav a:hover {
     	color: #a77f2a69;
     }
     .layui-breadcrumb a:hover {
@@ -81,12 +81,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				<div class="layui-col-md1 white"> </div>
 				<div class="layui-col-md10">
 					<div style="height: 60px; " class="layui-row" style="padding: 11px;">
-						<div class="layui-col-md2 c-nav" style="color: #a77f2a69"><font><s:text name="shop.common.nav1"/></font></div> 
-						<div class="layui-col-md2 c-nav"><font><s:text name="shop.common.nav2"/></font></div>
-						<div class="layui-col-md2 c-nav"><font><s:text name="shop.common.nav3"/></font></div>
-						<div class="layui-col-md2 c-nav"><font><s:text name="shop.common.nav4"/></font></div>
-						<div class="layui-col-md2 c-nav"><font><s:text name="shop.common.nav5"/></font></div>
-						<div class="layui-col-md2 c-nav"><font><s:text name="shop.common.nav6"/></font></div> 
+						<div class="layui-col-md2 c-nav"><a href="javascript:void(0)" style="color: #a77f2a69"><s:text name="shop.common.nav1"/></a></div> 
+						<div class="layui-col-md2 c-nav"><a href="<%=basePath%>fonts_chtml_furnishing"><s:text name="shop.common.nav2"/></a></div>
+						<div class="layui-col-md2 c-nav"><a href="javascript:void(0)"><s:text name="shop.common.nav3"/></a></div>
+						<div class="layui-col-md2 c-nav"><a href="javascript:void(0)"><s:text name="shop.common.nav4"/></a></div>
+						<div class="layui-col-md2 c-nav"><a href="javascript:void(0)"><s:text name="shop.common.nav5"/></a></div>
+						<div class="layui-col-md2 c-nav"><a href="javascript:void(0)"><s:text name="shop.common.nav6"/></a></div> 
 					</div>
 				</div>
 			</div>
@@ -101,15 +101,18 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<div class="layui-container">
 		<div style="height: 50px; " class="layui-row"> </div>
 		<div style="height: 50px; " class="layui-row">
-			<h2 style="font-size: 20px; font-weight: bold; color: #555;">热门分类</h2>
+			<h2 style="font-size: 20px; font-weight: bold; color: #555;"><s:text name="shop.common.hotClassification"/></h2>
 		</div>
-		<div style="" class="layui-row">
-			<div class="layui-col-md4 red" style="height: 200px">
+		<div class="layui-row" style="height: 174px; background-image: url(<%=basePath%>resource/img/hot.png); background-size: cover;">
+			<div class="layui-col-md4" style="height: 174px; cursor: pointer;"></div>
+			<div class="layui-col-md4" style="height: 174px; cursor: pointer"></div>
+			<div class="layui-col-md4" style="height: 174px; cursor: pointer "></div>
+			<%-- <div class="layui-col-md4 red" style="height: 200px">
 				<div  style="babackground-repeat: repeat-x; background: url(<%=basePath%>resource/img/goods1.jpg); height: 100%; cursor: pointer;"></div></div> 
 			<div class="layui-col-md4 red" style="height: 200px">
 				<div  style="babackground-repeat:repeat-x; background-image:url(<%=basePath%>resource/img/goods17.jpg); height: 100%; cursor: pointer;"></div></div> 
 			<div class="layui-col-md4 red" style="height: 200px">
-				<div  style="babackground-repeat:repeat-x; background-image:url(<%=basePath%>resource/img/goods2.jpg); height: 100%; cursor: pointer;"></div></div> 
+				<div  style="babackground-repeat:repeat-x; background-image:url(<%=basePath%>resource/img/goods2.jpg); height: 100%; cursor: pointer;"></div></div>  --%>
 		</div>
 	</div>
 	<!-- start bom --> 

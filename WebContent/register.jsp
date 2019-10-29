@@ -12,8 +12,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<title><s:text name="shop.common.loginPage"/></title>
 	<link rel="stylesheet" href="<%=basePath%>resource/layui/css/layui.css" media="all">
 	<style>
-	.border { border: 1px solid #ddd;}
-	.red { background: red; height: 100%;}
+	.border { border: 1px solid #ddd;} 
+	.red { background: red; height: 100%;} 
 	.blue { background: blue; height: 100%;}
 	.aqua { background: aqua; height: 100%;}
 	.white { background: white; height: 100%;}
@@ -39,15 +39,15 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	</style>
   </head>
   <body style="height: 100%;" >
-  	<a href="<%=basePath%>main_main_login?request_locale=zh_CN"><s:text name="shop.common.chinese"/></a>
-    <a href="<%=basePath%>main_main_login?request_locale=en_US"><s:text name="shop.common.english"/></a>
+  	<a href="<%=basePath%>main_main_register?request_locale=zh_CN"><s:text name="shop.common.chinese"/></a>
+    <a href="<%=basePath%>main_main_register?request_locale=en_US"><s:text name="shop.common.english"/></a>
 	<div style="width: 100%;  ">
 			<div class="layui-container"> 
 				<div class="layui-col-md1 white"> </div>
 				<div class="layui-col-md10">
 					<div style="height: 60px; " class="layui-row" style="padding: 11px;">
-						<div class="layui-col-md2 c-nav"><a href="<%=basePath%>main_main_index"><s:text name="shop.common.nav1"/></a></div> 
-						<div class="layui-col-md2 c-nav"><a href="<%=basePath%>fonts_chtml_furnishing"><s:text name="shop.common.nav2"/></a></div>
+						<div class="layui-col-md2 c-nav"><a href="<%=basePath%>main_main_index" style="color: #a77f2a69"><s:text name="shop.common.nav1"/></a></div> 
+						<div class="layui-col-md2 c-nav"><a href="<%=basePath%>main_main_index"><s:text name="shop.common.nav2"/></a></div>
 						<div class="layui-col-md2 c-nav"><a href="javascript:void(0)"><s:text name="shop.common.nav3"/></a></div>
 						<div class="layui-col-md2 c-nav"><a href="javascript:void(0)"><s:text name="shop.common.nav4"/></a></div>
 						<div class="layui-col-md2 c-nav"><a href="javascript:void(0)"><s:text name="shop.common.nav5"/></a></div>
@@ -59,7 +59,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	</div> 
 	<!-- start picture -->
 	<div style="width: 100%; height: 680px; background-image: url(<%=basePath%>resource/img/bg.jpg); overflow: hidden; background-size: cover;" class="aqua">
-		<div class="layui-form" style="width: 254px; height: 300px; background: #fff; margin: 118px auto; padding: 29px; ">
+		<div class="layui-form" style="width: 254px; height: 466px; background: #fff; margin: 80px auto; padding: 29px; ">
 			<div class="layui-form-item" style="text-align: center; line-height: 65px; font-family: cursive; color: #a77f2a69;"><h1><s:text name="shop.common.mallName"/></h1></div>
 			<div class="layui-form-item" style="margin-top: 0px;">
 				<!-- <i class="layui-icon layui-icon-user" style="position: absolute; font-size: 28px; "></i> -->
@@ -69,11 +69,19 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				<!-- <i class="layui-icon"></i> -->
 				<input class="layui-input" type="text" name="password" placeholder='<s:text name="shop.login.password"/>' style="height: 46px;"/>
 			</div>
-			
-			<div class="layui-form-item" style="margin-top: 30px;">
-				<button lay-submit class="layui-btn layui-btn-fluid" style="background: #a77f2a69; "><s:text name="shop.common.login"/></button>
+			<div class="layui-form-item" style="margin-top: 10px;">
+				<!-- <i class="layui-icon"></i> -->
+				<input class="layui-input" type="text" name="repassword" placeholder='<s:text name="shop.login.repassword"/>' style="height: 46px;"/>
 			</div>
-			<%-- <a href="<%=basePath%>main_main_register" style="float: right; margin-right: 20px; color: #ccc;"><s:text name="shop.common.register"/></a> --%>
+			<div class="layui-form-item" style="margin-top: 10px;">
+				<input class="layui-input" type="text" name="email" placeholder='<s:text name="shop.login.email"/>' style="height: 46px;"/>
+			</div>
+			<div class="layui-form-item" style="margin-top: 10px;">
+				<input class="layui-input" type="text" name="phone" placeholder='<s:text name="shop.login.phone"/>' style="height: 46px;"/>
+			</div>
+			<div class="layui-form-item" style="margin-top: 30px;">
+				<button lay-submit class="layui-btn layui-btn-fluid" style="background: #a77f2a69; "><s:text name="shop.common.register"/></button>
+			</div>
 		</div>
 	</div>
 	<div style="width: 100%;  background: #000000d4;">
@@ -89,7 +97,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					  <span class="lay-separator" style="color: #ffffffb3;">|</span>
 					  <a href="" style="line-height: 40px; padding: 28px; color: #ffffffb3;"><s:text name="shop.common.deliveryService"/></a>
 					  <span class="lay-separator" style="color: #ffffffb3;">|</span>
-					  <a href="" style="line-height: 40px; padding: 28px; color: #ffffffb3; "><s:text name="shop.common.supplySource"/></a>
+					  <a href="" style="line-height: 40px; padding: 28px; color: #ffffffb3;"><s:text name="shop.common.supplySource"/></a>
 					</span>	
 				</div>
 			</div>

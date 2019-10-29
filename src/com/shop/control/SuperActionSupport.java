@@ -8,10 +8,13 @@ import java.lang.reflect.Method;
 
 import javax.servlet.http.HttpServletRequest;
 
+import org.apache.log4j.Logger;
 import org.apache.struts2.ServletActionContext;
 
 import com.opensymphony.xwork2.ActionSupport;
+import com.shop.entity.UserTest;
 import com.shop.util.Message;
+import com.shop.util.SnowFlakeGenerator;
 /**
  * Action父类，当请求需要返回数据时继承此类<b>
  * <p>
@@ -25,6 +28,8 @@ import com.shop.util.Message;
  * @since 1.0
  */ 
 public class SuperActionSupport extends ActionSupport {
+	
+	private static final Logger log = Logger.getLogger(SuperActionSupport.class); // 日志对象
 	
 	private static final long serialVersionUID = 1L;
 	
@@ -94,8 +99,10 @@ public class SuperActionSupport extends ActionSupport {
 		try {
 			Method method = clazz.getMethod(name, HttpServletRequest.class);
 			if(method != null) method.invoke(this, request);
-		} catch (NoSuchMethodException | SecurityException | IllegalAccessException | IllegalArgumentException | InvocationTargetException e) {
+		} catch (SecurityException | IllegalAccessException | IllegalArgumentException | InvocationTargetException e) {
 			e.printStackTrace();
+		} catch (NoSuchMethodException e){
+			// 找不到方法不操作
 		}
 	}	
 	
@@ -108,6 +115,54 @@ public class SuperActionSupport extends ActionSupport {
 	
 	public Object getBean(String beanName){
 		return com.shop.util.BeanUtil.getBean(beanName);
+	}
+	
+	// 添加方法 测试
+	// 链接格式 当前类为例：testAjax(类前缀)_save(方法)
+	public String save(){
+		
+		// 不支持
+		new UnsupportedOperationException("不支持：save");
+		return null;
+		
+	}	
+		
+	// 修改方法 测试
+	// 链接格式 当前类为例：testAjax(类前缀)_update(方法)
+	public String update(){
+		
+		// 不支持
+		new UnsupportedOperationException("不支持：update");
+		return null;
+		
+	}	
+	
+	// 删除方法 测试
+	// 链接格式 当前类为例：testAjax(类前缀)_delete(方法)
+	public String delete(){
+		
+		// 不支持
+		new UnsupportedOperationException("不支持：delete");
+		return null;
+		
+	}	
+		
+	// 获取方法 测试
+	// 链接格式 当前类为例：testAjax(类前缀)_list(方法)
+	public String list(){
+		
+		// 不支持
+		new UnsupportedOperationException("不支持：list");
+		return null;
+		
+	}	
+	
+	public String main(){
+		
+		// 不支持
+		new UnsupportedOperationException("不支持：main");
+		return null;
+		
 	}
 	
 }
