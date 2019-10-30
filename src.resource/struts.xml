@@ -62,9 +62,9 @@
 				<!-- name=root代表着该对象会被序列化，对应action中的message的属性名，此处我定义回传对象为Message -->
 		   		<param name="root">message</param>
 		  	</result>  
-		  	<result name="chtml">WEB-INF/views/{1}/{3}.jsp</result>
-		  	<result name="main">{3}.jsp</result>
-			<result name="error">/error.jsp</result>
+		  	<result name="chtml">WEB-INF/jsp/fore/{1}/{3}.jsp</result>
+		  	<result name="main">WEB-INF/jsp/{1}/{3}.jsp</result>
+			<result name="error">WEB-INF/jsp/fore/error.jsp</result>
 		  	<allowed-methods>update, save, delete, list, chtml, main</allowed-methods>
 		</action>
 	</package>
