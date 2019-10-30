@@ -37,9 +37,17 @@
 	
 	<script src="<%=basePath%>resource/layui/layui.js"></script>
 	<script>
- 	layui.use(['layer', 'element'], function(){
- 		var element = layui.element;
+ 	layui.use(['carousel', 'layer', 'element'], function(){
+ 		var element = layui.element
+ 		,carousel = layui.carousel;
  		layui.layer.msg("<s:text name="shop.common.homeLayuiAlert"/>");
+ 		carousel.render({
+ 		    elem: '#test2'
+ 		    ,interval: 1800
+ 		    ,width: '100%'
+ 		    ,height: '480px'
+ 		    ,anim: 'fade' 
+ 		});
  	})
 	</script>
  </body>

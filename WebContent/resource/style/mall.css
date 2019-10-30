@@ -7,6 +7,7 @@
 	.lang {position: absolute; margin: 9px;}
 	.default-color {color: #999 !important;}
 	.var-color {color: #a77f2a69!important;}
+	 hr {background-color: #e6e6e657 !important}
 	* {
 		padding: 0px; 
 		margin: 0px;
@@ -20,7 +21,8 @@
    		height: 100%;
    		cursor: pointer;
     }
-    .c-nav a:hover {
+    
+    .c-nav2 li a:hover, .c-nav a:hover {
     	color: #a77f2a69;
     }
     .layui-breadcrumb a:hover {
@@ -39,3 +41,96 @@
 	.filter label:hover {
 	    color: #a77f2a69;
 	}
+	/* 个人中心 */
+	.cnt {
+		width: 100%;background: #dddddd59; padding: 20px;
+		overflow: hidden;
+	}
+	.left-nav {
+		width: 196px; 
+		float: left; 
+		background: #fff; 
+		border: 1px solid #99999926; 
+		padding-left: 20px; 
+		padding-right: 20px;
+	}
+	
+	.c-nav2 li{
+    	color: #999;
+    	cursor: pointer;
+    	padding: 24px 20px; 
+    	text-align: center; 
+    	border-bottom: 1px solid #ddd;
+    }
+    .c-nav2 li a{
+    	color: #999;
+    }
+    .c-nav2 li:last-child {
+    	border-bottom: none !important;
+    }
+    
+    
+    .cartlist-cnt {
+  		margin-top: 40px; 
+    	border: 1px solid #e6e6e657;
+    	padding-left: 0;
+    	padding-right: 0;
+    	cursor: pointer;
+    }
+    
+    .cartlist-cnt .layui-form-checkbox, .settlement-bar .layui-form-checkbox {
+    	margin-top: 0 !important;
+    }
+    
+    .cartlist-cnt del {
+    	font-style: oblique;
+    } 
+    
+    .cartlist {
+    	background: #99999930; 
+    }
+    
+    .cartlist-etc {
+    	padding: 10px;
+    	line-height: 100px;	
+    }
+    
+    .cartlist > div{
+    	height: 50px;
+    	line-height: 50px;
+    }
+    .cartlist > div ,.cartlist-etc > div, .settlement-bar div {
+     	text-align: center;
+     	color: #999;	
+    }
+    
+    .cartlist .check {
+    	height: 50px;
+   	 	display: block;
+    	padding: 17px;
+    }
+    
+    .cartlist-etc .check {
+    	padding: 34px 7px;
+    }
+    
+    .cartlist-etc .delete:hover , .all-delete:hover {
+    	color: #a77f2a94;
+    	cursor: pointer;
+    }
+    
+    .cartlist-etc .layui-form-checkbox[lay-skin=primary]:hover i, .settlement-bar .layui-form-checkbox[lay-skin=primary]:hover i, .cartlist .layui-form-checkbox[lay-skin=primary]:hover i{
+    	border-color: #a77f2a8c !important;
+    }
+    .cartlist-etc .layui-form-checked i, .settlement-bar .layui-form-checked i, .cartlist .layui-form-checked i{
+    	border-color: #a77f2a69 !important;
+    	background-color: #a77f2a69 !important;
+    }
+    
+    .settlement-bar .check {
+    	/* padding: 20px 7px; */
+    }
+    .settlement-bar div {
+    	line-height: 80px;
+    }
+    

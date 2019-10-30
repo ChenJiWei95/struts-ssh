@@ -8,8 +8,8 @@
 			</span>
 			<span class="layui-breadcrumb" lay-separator="|" style="float: right;">
 			  <a href="<%=basePath%>fore_main_login" style="line-height: 40px; padding: 10px;"><s:text name="shop.common.login"/></a>
-			  <a href="" style="line-height: 40px; padding: 10px;"><s:text name="shop.common.orders"/></a>
-			  <a href="" style="line-height: 40px; padding: 10px;"><s:text name="shop.common.personalCenter"/></a> 
+			  <a href="<%=basePath%>ucenter_chtml_myorder" style="line-height: 40px; padding: 10px;"><s:text name="shop.common.orders"/></a>
+			  <a href="<%=basePath%>ucenter_chtml_pcenter" style="line-height: 40px; padding: 10px;"><s:text name="shop.common.personalCenter"/></a> 
 			</span>
 		</div>
 		<hr>

@@ -39,9 +39,13 @@ public class TestParame4Action extends SuperActionSupport{
 	
 	// 添加方法 测试
 	// 链接格式 当前类为例：testAjax(类前缀)_save(方法)
-	public String save() throws IOException{
+	public String save(){
 		HttpServletRequest request = ServletActionContext.getRequest();
-		log.info(ActionUtil.read(request));
+		try {
+			log.info(ActionUtil.read(request));
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 		Map<String, String> parame = ActionUtil.getRequestParameterMap(request);
 		log.info(parame);
 		UserTest user = new UserTest();

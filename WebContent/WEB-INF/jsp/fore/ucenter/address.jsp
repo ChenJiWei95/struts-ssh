@@ -8,30 +8,34 @@
 <html>
  <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-  <title><s:text name="shop.common.furnis"/></title> 
+  <title><s:text name="shop.common.address"/></title> 
   <link rel="stylesheet" href="<%=basePath%>resource/layui/css/layui.css" media="all">
   <link rel="stylesheet" href="<%=basePath%>resource/style/mall.css" media="all">
  </head>
  <body>
  	<%@ include file="../../include/forePage/mall/languageBt.jsp" %>
 	
-	<!-- nav text -->
-	<div class="layui-container" style=" ">
-		<span class="layui-breadcrumb" lay-separator=">" style="line-height: 55px;">
-		  <a href="<%=basePath%>fore_main_index"><s:text name="shop.common.nav1"/></a>
-		  <a href="javascript:void(0)" class="var-color"><s:text name="shop.common.nav2"/></a>
-		</span>
+	<%@ include file="../../include/forePage/mall/siteNav.jsp" %>
+	<%@ include file="../../include/forePage/mall/search.jsp" %>
+	<%@ include file="../../include/forePage/mall/mallNav.jsp" %>
+	
+	<div class="cnt">
+		<!-- nav text -->
+		<div class="layui-container" style="height: 30px;">
+			<span class="layui-breadcrumb" lay-separator=">" style="line-height: 30px;">
+			  <a href="<%=basePath%>fore_main_index"><s:text name="shop.common.nav1"/></a>
+			  <a href="javascript:void(0)" class="var-color"><s:text name="shop.common.address"/></a>
+			</span>
+		</div>
+		<div class="layui-container" style="margin-top: 20px; ">
+			<%@ include file="../../include/forePage/ucenter/centerNav.jsp" %>
+			<!-- <div class="right-con " style="float: right; width: 905px;">
+				
+			</div>  -->
+			<%@ include file="../../include/forePage/ucenter/addressCon.jsp" %>
+		</div>
 	</div>
 	
-	<!-- start picture -->
-	<div class="layui-container" style="height: 180px; background-image: url(<%=basePath%>resource/img/temp2.png); background-size: cover;" class="aqua">
-	</div>
-	
-	<!-- start filter --> 
-	<%@ include file="../../include/forePage/mall/searchFilter.jsp" %>
-	
-	<!-- start goods list -->
-	<%@ include file="../../include/forePage/mall/goodsList.jsp" %>
 	
 	<!-- start bom --> 
 	<%@ include file="../../include/forePage/mall/bom.jsp" %>
@@ -40,6 +44,7 @@
  	layui.use(['layer', 'element'], function(){
  		var element = layui.element;
  		layui.layer.msg("<s:text name="shop.common.homeLayuiAlert"/>");
+ 		layui.$(".address").eq(0).addClass("var-color");
  	})
 	</script>
  </body>

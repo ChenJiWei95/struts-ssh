@@ -14,9 +14,9 @@
    	 					<i class="layui-icon layui-icon-search" style="font-size: 20px; cursor: pointer; color: #a77f2a69;"></i>
    	 					<button lay-submit lay-filter="c-form-add" class="layui-hide">search</button>
    	 				</div>
-   	 				<i class="layui-icon layui-icon-cart" style="font-size: 32px; cursor: pointer; color: #a77f2a69; float: right; margin-top: 14px;">
+   	 				<a href="<%=basePath%>ucenter_chtml_shopcart"><i class="layui-icon layui-icon-cart" style="font-size: 32px; cursor: pointer; color: #a77f2a69; float: right; margin-top: 14px;">
    	 					<span class="layui-badge" style="position: absolute; margin: -35px 20px; border-radius: 10px;">2</span>	
-   	 				</i>
+   	 				</i></a>
    	 			</div>
 			</div>
 		</div>
