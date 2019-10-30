@@ -7,7 +7,7 @@
 				<a href="" style="line-height: 40px; padding: 10px;"><s:text name="shop.common.welcome" /> 双十一采购队长<%-- ${user.name} --%></a>
 			</span>
 			<span class="layui-breadcrumb" lay-separator="|" style="float: right;">
-			  <a href="<%=basePath%>main_main_login" style="line-height: 40px; padding: 10px;"><s:text name="shop.common.login"/></a>
+			  <a href="<%=basePath%>fore_main_login" style="line-height: 40px; padding: 10px;"><s:text name="shop.common.login"/></a>
 			  <a href="" style="line-height: 40px; padding: 10px;"><s:text name="shop.common.orders"/></a>
 			  <a href="" style="line-height: 40px; padding: 10px;"><s:text name="shop.common.personalCenter"/></a> 
 			</span>

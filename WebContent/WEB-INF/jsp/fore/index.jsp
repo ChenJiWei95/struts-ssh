@@ -42,8 +42,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   </style>
  </head>
  <body>
- 	<a href="<%=basePath%>main_main_index?request_locale=zh_CN"><s:text name="shop.common.chinese"/></a>
-    <a href="<%=basePath%>main_main_index?request_locale=en_US"><s:text name="shop.common.english"/></a>
+ 	<a href="<%=basePath%>fore_main_index?request_locale=zh_CN"><s:text name="shop.common.chinese"/></a>
+    <a href="<%=basePath%>fore_main_index?request_locale=en_US"><s:text name="shop.common.english"/></a>
 	
 	<!-- start site nav -->
 	

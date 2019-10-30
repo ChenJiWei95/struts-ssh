@@ -39,8 +39,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	</style>
   </head>
   <body style="height: 100%;" >
-  	<a href="<%=basePath%>main_main_register?request_locale=zh_CN"><s:text name="shop.common.chinese"/></a>
-    <a href="<%=basePath%>main_main_register?request_locale=en_US"><s:text name="shop.common.english"/></a>
+  	<a href="<%=basePath%>fore_main_register?request_locale=zh_CN"><s:text name="shop.common.chinese"/></a>
+    <a href="<%=basePath%>fore_main_register?request_locale=en_US"><s:text name="shop.common.english"/></a>
 	<!-- start mall nav -->
 	<%@ include file="../include/forePage/mall/mallNav.jsp" %>
 	

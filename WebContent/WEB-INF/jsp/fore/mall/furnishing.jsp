@@ -56,13 +56,13 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   </style>
  </head>
  <body>
- 	<a href="<%=basePath%>fonts_chtml_furnishing?request_locale=zh_CN"><s:text name="shop.common.chinese"/></a>
-    <a href="<%=basePath%>fonts_chtml_furnishing?request_locale=en_US"><s:text name="shop.common.english"/></a>
+ 	<a href="<%=basePath%>mall_chtml_furnishing?request_locale=zh_CN"><s:text name="shop.common.chinese"/></a>
+    <a href="<%=basePath%>mall_chtml_furnishing?request_locale=en_US"><s:text name="shop.common.english"/></a>
 	
 	<!-- nav text -->
 	<div class="layui-container" style="height: 30px;">
 		<span class="layui-breadcrumb" lay-separator=">" style="line-height: 30px;">
-		  <a href="<%=basePath%>main_main_index"><s:text name="shop.common.nav1"/></a>
+		  <a href="<%=basePath%>fore_main_index"><s:text name="shop.common.nav1"/></a>
 		  <a href="javascript:void(0)" class="var-color"><s:text name="shop.common.nav2"/></a>
 		</span>
 	</div>
