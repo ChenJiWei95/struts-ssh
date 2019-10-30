@@ -19,13 +19,16 @@
 	<constant name="struts.devMode" value="false" />
 	<constant name="struts.i18n.encoding" value="UTF-8" />  
 	<package name="default" namespace="/" extends="json-default">
-		<!-- <interceptors>
+		<interceptors>
+			<interceptor name="commonInterceptor" class="com.shop.interceptor.CommonInterceptor" />
 			<interceptor-stack name="parentStack">
 				<interceptor-ref name="paramsPrepareParamsStack">
 					<param name="prepare.alwaysInvokePrepare">false</param>
 				</interceptor-ref>
+				<interceptor-ref name="defaultStack"></interceptor-ref>
+				<interceptor-ref name="commonInterceptor" />
 			</interceptor-stack>
-		</interceptors> -->
+		</interceptors>
 		<!-- 设置默认的拦截器栈 设置为参数准备拦截器栈 在放入model之前先把参数给栈顶的Action对象 -->
 		<!-- <default-interceptor-ref name="parentStack"></default-interceptor-ref> -->
 		<!-- 没有匹配的动作时，默认跳转到首页 -->
@@ -52,6 +55,7 @@
                 <!-- 渲染页面前刷新model在ValueStack的root的引用 -->    
               <!--   <param name="modelDriven.refreshModelBeforeResult">true</param>    
             </interceptor-ref> -->
+            <interceptor-ref name="parentStack" />
 			<result name="stream" type="stream">
 				<!-- 以流的方式反回一个文本 -->
 		     	<param name="contentType">text/html</param>

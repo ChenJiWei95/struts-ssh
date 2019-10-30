@@ -25,12 +25,14 @@ public class ForeAction extends SuperActionSupport implements ServletRequestAwar
 	
 	private HttpServletRequest request;
 	
+	
+	
 	@Override  
     public void setServletRequest(HttpServletRequest arg0) {  
         request = arg0;  
     }  
 	
-    public HttpServletRequest getRequest() {  
+    public HttpServletRequest getRequest() {   
         return request;  
     }
 	

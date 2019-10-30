@@ -1,0 +1,41 @@
+ 	.border { border: 1px solid #ddd;} 
+	.red { background: red; height: 100%;} 
+	.blue { background: blue; height: 100%;}
+	.aqua { background: aqua; height: 100%;}
+	.white { background: white; height: 100%;}
+	.pointer {cursor: pointer;} .pointer:hover {box-shadow: 1px 1px 20px -2px #ddd;}
+	.lang {position: absolute; margin: 9px;}
+	.default-color {color: #999 !important;}
+	.var-color {color: #a77f2a69!important;}
+	* {
+		padding: 0px; 
+		margin: 0px;
+		font-family: "SFMono-Regular",Consolas,"Liberation Mono",Menlo,Courier,monospace;
+	}
+	
+	.c-nav{ 
+		color: #555;
+    	text-align: center;
+   	 	line-height: 71px;
+   		height: 100%;
+   		cursor: pointer;
+    }
+    .c-nav a:hover {
+    	color: #a77f2a69;
+    }
+    .layui-breadcrumb a:hover {
+    	color: #a77f2a69 !important;
+    }
+    .span-separator a:hover {
+    	color: #fff !important;
+    }
+    .filter label {
+	    color: #999;
+	    cursor: pointer;
+	}
+	.filter span {
+		color: #999;
+	}
+	.filter label:hover {
+	    color: #a77f2a69;
+	}

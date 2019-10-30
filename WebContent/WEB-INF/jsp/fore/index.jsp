@@ -1,49 +1,20 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@taglib prefix="s" uri="/struts-tags" %>
-<%
-// basePath：localhost:8080/项目名/
-String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+request.getContextPath()+"/";
-%>
+
+<%@ include file="../include/forePage/common.jsp" %>
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
  <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
   <title><s:text name="shop.common.homePage"/></title> 
   <link rel="stylesheet" href="<%=basePath%>resource/layui/css/layui.css" media="all">
-  <style contenteditable="" draggable="true">
-	.border { border: 1px solid #ddd;} 
-	.red { background: red; height: 100%;} 
-	.blue { background: blue; height: 100%;}
-	.aqua { background: aqua; height: 100%;}
-	.white { background: white; height: 100%;}
-	* {
-		padding: 0px; 
-		margin: 0px;
-		font-family: "SFMono-Regular",Consolas,"Liberation Mono",Menlo,Courier,monospace;
-	}
-	
-	.c-nav{ 
-		color: #555;
-    	text-align: center;
-   	 	line-height: 71px;
-   		height: 100%;
-   		cursor: pointer;
-    }
-    .c-nav a:hover {
-    	color: #a77f2a69;
-    }
-    .layui-breadcrumb a:hover {
-    	color: #a77f2a69 !important;
-    }
-    .span-separator a:hover {
-    	color: #fff !important;
-    }
-  </style>
+  <link rel="stylesheet" href="<%=basePath%>resource/style/mall.css" media="all">
+ 	
  </head>
- <body>
- 	<a href="<%=basePath%>fore_main_index?request_locale=zh_CN"><s:text name="shop.common.chinese"/></a>
-    <a href="<%=basePath%>fore_main_index?request_locale=en_US"><s:text name="shop.common.english"/></a>
+ <body> 
+ 	<%@ include file="../include/forePage/mall/languageBt.jsp" %>
 	
 	<!-- start site nav -->
 	

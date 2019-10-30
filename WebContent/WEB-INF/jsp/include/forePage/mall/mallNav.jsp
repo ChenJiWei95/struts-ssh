@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!-- start nav -->
+	<div style="width: 100%; border-bottom: 2px solid #ddd;">
 		<div class="layui-container" style="overflow: hidden;">
 			<div style="height: 60px; " class="layui-row" style="padding: 11px;">
 				<div class="layui-col-md1 white"> </div>
@@ -16,3 +17,4 @@
 				</div>
 			</div>
 		</div>
+	</div>

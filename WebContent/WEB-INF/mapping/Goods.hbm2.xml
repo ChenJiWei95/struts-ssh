@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>    
+<!DOCTYPE hibernate-mapping PUBLIC     
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"    
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">   
+  
+<hibernate-mapping package="com.shop.entity">
+    <class name="Goods" table="goods"> 
+        <id name="id" column="id">
+        	<!-- native 表示主键由库自动分配； assigned 表示主键由人工分配 -->
+            <generator class="assigned"></generator>
+            <!-- <generator class="native"></generator> -->
+        </id>
+        <property name="create_date"></property> 
+        <property name="update_date"></property> 
+        <property name="name"></property> 
+        <property name="price"></property> 
+        <property name="discount"></property> 
+        <property name="url"></property> 
+        <property name="msg"></property> 
+    </class>
+</hibernate-mapping> 

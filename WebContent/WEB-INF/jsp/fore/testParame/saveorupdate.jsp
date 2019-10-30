@@ -26,9 +26,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		</div>
 	</div>
 	<div class="layui-form-item">
-		<label class="layui-form-label">username</label>
+		<!-- 测试商品表 -->
+		<label class="layui-form-label">name</label>
 		<div class="layui-input-inline">
-			<input type="text" name="username" placeholder="请输入..." autocomplete="off" class="layui-input">
+			<input type="text" name="name" placeholder="请输入..." autocomplete="off" class="layui-input">
 		</div>
 		<button lay-submit lay-filter="c-form-add" class="layui-btn layui-btn-primary" id="c-form-add">添加</button>
 	</div> 
@@ -44,7 +45,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	form.on("submit("+a+")", function(data){
 		console.log(data.field);
 		layui.util.formAjax({
-			url: '<%=basePath%>testParame_save'
+			url: '<%=basePath%>goods_save'
 			,data: data.field 
 		});
 		return false;
