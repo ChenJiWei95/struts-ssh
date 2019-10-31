@@ -31,7 +31,7 @@ function(t) {
 				,data: object.data
 				,dataType: "json"
 				,success: function(data){
-					data.code == '0' && ('function' == typeof object.success && object.success(data.data, data.msg), layer.close(c), parent.layer.msg(data.msg)),
+					data.code == '0' && ('function' == typeof object.success && object.success(data.data, data.msg), layer.close(c), parent.layer.msg(data.msg, object.layCallback)),
 					data.code == '2' && ('function' == typeof object.error && object.error(data.data, data.msg), layer.close(c), layer.msg(data.msg));
 				} 
 				,error: function(data){

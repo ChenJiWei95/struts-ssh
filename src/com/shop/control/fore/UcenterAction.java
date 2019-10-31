@@ -3,6 +3,7 @@ package com.shop.control.fore;
 import javax.servlet.http.HttpServletRequest;
 
 import org.apache.log4j.Logger;
+import org.apache.struts2.ServletActionContext;
 import org.apache.struts2.interceptor.ServletRequestAware;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
@@ -32,5 +33,12 @@ public class UcenterAction extends SuperActionSupport implements ServletRequestA
 	public HttpServletRequest getRequest() {  
         return request;  
     }
+	
+	// 负责页面跳转 
+	// 链接格式 当前类为例：testAjax(类前缀)_chtml(方法，固定为chtml)_success(跳转页面，这里以success.jsp为例)
+	public String chtml(){
+		backhaul(ServletActionContext.getRequest()); 
+		return CHTML;
+	}	
 
 }

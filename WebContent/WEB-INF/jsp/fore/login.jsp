@@ -25,21 +25,40 @@
 			<div class="layui-form-item" style="text-align: center; line-height: 65px; font-family: cursive; color: #a77f2a69;"><h1><s:text name="shop.common.mallName"/></h1></div>
 			<div class="layui-form-item" style="margin-top: 0px;">
 				<!-- <i class="layui-icon layui-icon-user" style="position: absolute; font-size: 28px; "></i> -->
-				<input class="layui-input" type="text" name="username" placeholder='<s:text name="shop.login.username"/>' style="height: 46px;"/>
+				<input class="layui-input" type="text" lay-verify="required" name="user.username" placeholder='<s:text name="shop.login.username"/>' style="height: 46px;"/>
 			</div>
 			<div class="layui-form-item" style="margin-top: 10px;">
 				<!-- <i class="layui-icon"></i> -->
-				<input class="layui-input" type="text" name="password" placeholder='<s:text name="shop.login.password"/>' style="height: 46px;"/>
+				<input class="layui-input" type="password" lay-verify="required" name="user.password" placeholder='<s:text name="shop.login.password"/>' style="height: 46px;"/>
 			</div>
 			
 			<div class="layui-form-item" style="margin-top: 30px;">
-				<button lay-submit class="layui-btn layui-btn-fluid" style="background: #a77f2a69; "><s:text name="shop.common.login"/></button>
+				<button lay-submit lay-filter="c-form-sub" class="layui-btn layui-btn-fluid" style="background: #a77f2a69; "><s:text name="shop.common.login"/></button>
 			</div>
 			<%-- <a href="<%=basePath%>main_main_register" style="float: right; margin-right: 20px; color: #ccc;"><s:text name="shop.common.register"/></a> --%>
 		</div>
 	</div>
 	
 	<!-- start bom -->
-	<%@ include file="../include/forePage/mall/bom.jsp" %>
-	</body>
+	<%@ include file="../include/forePage/mall/bom.jsp" %> 
+  <script src="<%=basePath%>resource/layui/layui.js"></script> 
+  <script>
+  layui.use(['form', 'layer', 'util'], function(){
+    var layer = layui.layer
+    ,form = layui.form
+    ,util = layui.util
+	,a = "c-form-sub"
+	form.on("submit("+a+")", function(data){
+		util.formAjax({
+			url: '<%=basePath%>user_login'
+			,data: data.field
+			,layCallback: function() {
+				location.href = '<%=basePath%>fore_main_index';
+			}  
+		});
+		return false;
+	})
+  })
+  </script>
+</body>
 </html>

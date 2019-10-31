@@ -1,11 +1,16 @@
-package com.shop.control;
+package com.shop.control.fore;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.apache.log4j.Logger;
 import org.apache.struts2.interceptor.ServletRequestAware;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
+
+import com.shop.Constant;
+import com.shop.control.SuperActionSupport;
+import com.shop.entity.User;
 
 /**
  * @version: V-1.0 
@@ -38,8 +43,15 @@ public class ForeAction extends SuperActionSupport implements ServletRequestAwar
 	
 	public String main(){	
 		log.info("----------------------"+request.getSession().getAttribute("WW_TRANS_I18N_LOCALE"));
-		log.info("主要页面跳转：");
-		log.info("跳转完毕：");
+		/*log.info("主要页面跳转：");
+		log.info("跳转完毕：");*/
+		backhaul(request);
 		return MAIN;
+	}
+	
+	public void index(HttpServletRequest request) {
+		HttpSession session = (HttpSession) request.getSession();
+		User user = (User) session.getAttribute(Constant.LOGIN_SIGN);
+		session.setAttribute("username", user.getUsername());
 	}
 }

@@ -3,6 +3,7 @@ package com.shop.control.fore;
 import javax.servlet.http.HttpServletRequest;
 
 import org.apache.log4j.Logger;
+import org.apache.struts2.ServletActionContext;
 import org.apache.struts2.interceptor.ServletRequestAware;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
@@ -32,5 +33,11 @@ public class MallAction extends SuperActionSupport implements ServletRequestAwar
 	public HttpServletRequest getRequest() {  
         return request;  
     }
+	
+	
+	public String chtml(){
+		backhaul(ServletActionContext.getRequest()); 
+		return CHTML;
+	}
 
 }

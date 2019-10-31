@@ -4,9 +4,9 @@ import javax.annotation.Resource;
 
 import org.springframework.stereotype.Service;
 
-import com.shop.dao.UserTestDao;
-import com.shop.entity.UserTest;
-import com.shop.service.UserTestService;
+import com.shop.dao.UserDao;
+import com.shop.entity.User;
+import com.shop.service.UserService;
 
 /** 
  * <b>一句话描述该类</b>
@@ -19,13 +19,13 @@ import com.shop.service.UserTestService;
  * @since 1.0
  */
 @Service
-public class UserTestServiceImpl extends BaseServiceImpl<UserTest> implements UserTestService{
+public class UserServiceImpl extends BaseServiceImpl<User> implements UserService{
 	
 	@Resource
-	UserTestDao userTestDao;
+	UserDao userDao;
 
 	@Resource
-	public void setBaseDao(UserTestDao userDao) {
+	public void setBaseDao(UserDao userDao) {
 		super.setBaseDao(userDao);
 	}
 }

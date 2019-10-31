@@ -38,6 +38,7 @@ public class SuperActionSupport extends ActionSupport {
 	public static final String CHTML 	= "chtml"; 		// 页面跳转处理
 	public static final String MAIN 	= "main"; 		// 主要页面跳转处理
 	public static final String ERROR 	= "error"; 		// 错误页面
+	public static final String LOGIN 	= "login"; 	// 登录页面
 	
 	/*
 	inputStream属性和配置文件中的inputStream对应，并且需要gettersetter方法getInputStream，setInputStream
@@ -106,62 +107,104 @@ public class SuperActionSupport extends ActionSupport {
 		}
 	}	
 	
-	// 负责页面跳转 
-	// 链接格式 当前类为例：testAjax(类前缀)_chtml(方法，固定为chtml)_success(跳转页面，这里以success.jsp为例)
-	public String chtml(){
-		backhaul(ServletActionContext.getRequest()); 
-		return CHTML;
-	}			
+				
 	
 	public Object getBean(String beanName){
 		return com.shop.util.BeanUtil.getBean(beanName);
 	}
 	
-	// 添加方法 测试
-	// 链接格式 当前类为例：testAjax(类前缀)_save(方法)
+	public String chtml(){
+		
+		// 不支持
+		new UnsupportedOperationException("不支持：save");
+		return ERROR;
+		
+	}
+	
+	/**
+	 * 添加方法 测试
+	 * 链接格式 当前类为例：testAjax(类前缀)_save(方法)
+	 * @return
+	 */
 	public String save(){
 		
 		// 不支持
 		new UnsupportedOperationException("不支持：save");
-		return null;
+		return ERROR;
 		
 	}	
 		
-	// 修改方法 测试
-	// 链接格式 当前类为例：testAjax(类前缀)_update(方法)
+	/**
+	 * 修改方法 测试
+	 * 链接格式 当前类为例：testAjax(类前缀)_update(方法)
+	 * @return
+	 */
 	public String update(){
 		
 		// 不支持
 		new UnsupportedOperationException("不支持：update");
-		return null;
+		return ERROR;
 		
 	}	
 	
-	// 删除方法 测试
-	// 链接格式 当前类为例：testAjax(类前缀)_delete(方法)
+	/**
+	 * 删除方法 测试
+	 * 链接格式 当前类为例：testAjax(类前缀)_delete(方法)
+	 * @return
+	 */
 	public String delete(){
 		
 		// 不支持
 		new UnsupportedOperationException("不支持：delete");
-		return null;
+		return ERROR;
 		
 	}	
 		
-	// 获取方法 测试
-	// 链接格式 当前类为例：testAjax(类前缀)_list(方法)
+	/**
+	 * 获取方法 测试
+	 * 链接格式 当前类为例：testAjax(类前缀)_list(方法)
+	 * @return
+	 */
 	public String list(){
 		
 		// 不支持
 		new UnsupportedOperationException("不支持：list");
-		return null;
+		return ERROR;
 		
 	}	
 	
 	public String main(){
 		
+		new UnsupportedOperationException("不支持：main");
+		return ERROR;
+		
+	}
+	
+	/**
+	 * 获取方法 测试
+	 * 链接格式 当前类为例：testAjax(类前缀)_list(方法)
+	 * @return
+	 */
+	@SuppressWarnings("static-access")
+	public String get(){
+		
 		// 不支持
 		new UnsupportedOperationException("不支持：main");
-		return null;
+		return ERROR;
+		
+	}
+	
+	/**
+	 * 获取方法 测试
+	 * 链接格式 当前类为例：testAjax(类前缀)_list(方法)
+	 * @return
+	 */
+	@SuppressWarnings("static-access")
+	public String delBatch(){
+		
+		// 不支持
+		new UnsupportedOperationException("不支持：main");
+		return ERROR;
 		
 	}
 	
