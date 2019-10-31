@@ -39,8 +39,15 @@ function(t) {
 					layer.msg("服务器异常，操作失败！"),
 					'function' == typeof object.serverError && object.serverError(data, data.msg);
 				}
-			});	
+			});
     	} 
+    	,layHref: function(){
+    		e("body").on('click', "*[lay-href]",
+    	    function() {//打开一个标签页
+    	    	var t = e(this);
+    	    	location.href = t.attr("lay-href");
+    	    })
+    	}	
         ,fixbar: function(t) {
             var i, n, a = "layui-fixbar",
             o = "layui-fixbar-top",

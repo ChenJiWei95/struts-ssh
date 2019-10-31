@@ -49,7 +49,7 @@ public class ForeAction extends SuperActionSupport implements ServletRequestAwar
 		return MAIN;
 	}
 	
-	public void index(HttpServletRequest request) {
+	public void index() {
 		HttpSession session = (HttpSession) request.getSession();
 		User user = (User) session.getAttribute(Constant.LOGIN_SIGN);
 		session.setAttribute("username", user.getUsername());

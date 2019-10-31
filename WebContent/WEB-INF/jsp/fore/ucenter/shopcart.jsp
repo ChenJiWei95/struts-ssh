@@ -42,7 +42,13 @@
 				<span>轻奢休闲套桌</span>
 			</div>
 			<div class="layui-col-md2"><span><font style="color: red; font-size: 16px;">￥200</font><del>￥240</del></span></div>
-			<div class="layui-col-md2">2</div>
+			<div class="layui-col-md2">
+				<div style="float: left; margin-left: 20px;">
+					<span class="subtraction border">-</span>
+					<input type="text" class="border number" value="2"/>
+					<span class="addition border">+</span>
+				</div>
+			</div>
 			<div class="layui-col-md2"><span>￥400</span></div>
 			<div class="layui-col-md1"><span class="delete"><s:text name="shop.common.delete"/></span></div>
 		</div>
@@ -60,7 +66,13 @@
 			<div class="layui-col-md2">
 				<span><font style="color: red; font-size: 16px;">￥200</font>
 				<del>￥240</del></span></div>
-			<div class="layui-col-md2">2</div>
+			<div class="layui-col-md2">
+				<div style="float: left; margin-left: 20px;">
+					<span class="subtraction border">-</span>
+					<input type="text" class="border number" value="2"/>
+					<span class="addition border">+</span>
+				</div>
+			</div>
 			<div class="layui-col-md2"><span>￥400</span></div>
 			<div class="layui-col-md1"><span class="delete"><s:text name="shop.common.delete"/></span></div>
 		</div>

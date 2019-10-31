@@ -4,7 +4,7 @@
 	<div class="layui-container">
 		<div style="height: 50px; " class="layui-row"> </div>
 		<div style="height: 50px; " class="layui-row">
-			<h2 style="font-size: 20px; font-weight: bold; color: #555;"><s:text name="shop.common.hotClassification"/></h2>
+			<h2 style="font-size: 20px; font-weight: bold;" class="default-color"><s:text name="shop.common.hotClassification"/></h2>
 		</div>
 		<div class="layui-row" style="height: 174px; background-image: url(<%=basePath%>resource/img/hot.png); background-size: cover;">
 			<div class="layui-col-md4" style="height: 174px; cursor: pointer;"></div>

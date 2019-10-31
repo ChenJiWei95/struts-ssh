@@ -9,6 +9,7 @@ import com.opensymphony.xwork2.ActionInvocation;
 import com.opensymphony.xwork2.interceptor.AbstractInterceptor;
 import com.shop.Constant;
 import com.shop.control.SuperActionSupport;
+import com.shop.util.Message;
 
 public class PrivilegeInterceptor extends AbstractInterceptor {
 	 
@@ -17,33 +18,26 @@ public class PrivilegeInterceptor extends AbstractInterceptor {
 	
 	@Override
 	public String intercept(ActionInvocation invocation) throws Exception {
+		
 		/*ActionContext ac = invocation.getInvocationContext();*/
 		HttpServletRequest request= (HttpServletRequest) invocation.getInvocationContext().get(ServletActionContext.HTTP_REQUEST);
-		
-		/*
-		if(no login)
-			return login
-		*/
+		// 授权  通过  
+		// 未授权 返回登录页面 赦免【register login】
 		String uri = request.getRequestURI();
-		Integer index;
-		if(null != request.getSession().getAttribute(Constant.LOGIN_SIGN)) {
-			if((index = uri.indexOf("_")) != -1) {
-				int endIndex;
-				if((endIndex = uri.indexOf("_", index)) != -1) {
-					String targetDo = uri.substring(index+1, endIndex);
-					if("main".equals(targetDo) || "chtml".equals(targetDo)) {
-						log.info("进行授权判断："+request.getSession().getAttribute("URIPath"));
-						if("register".equals(uri.substring(endIndex+1)) || "login".equals(uri.substring(endIndex+1)) || null != request.getSession().getAttribute(Constant.LOGIN_SIGN)) 
-							return invocation.invoke();
-					}
-				} else {
-					// 数据请求
-					return JSON
-				}
-			}
+		if(null == request.getSession().getAttribute(Constant.LOGIN_SIGN)) {
+			int endIndex;
+			if((endIndex = uri.indexOf("_", uri.indexOf("_")+1)) != -1) {
+				// 页面跳转
+				String targetDo = uri.substring(endIndex+1);
+				log.info("进行授权判断：targetDo="+targetDo);
+				if("register".equals(targetDo) || "login".equals(targetDo)) {
+					return invocation.invoke();
+				} 
+				return SuperActionSupport.LOGIN;	// 数据请求
+			}  	
+			if(!"login".equals(uri.substring(uri.indexOf("_")+1)) && !(uri.indexOf("user_save") != -1))
+				return SuperActionSupport.LOGIN;
 		}
-		
-		log.info("进行授权判断："+request.getSession().getAttribute("URIPath")+"未授权");
-		return SuperActionSupport.LOGIN;
+		return invocation.invoke();
 	} 	
 }

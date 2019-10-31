@@ -98,8 +98,8 @@ public class SuperActionSupport extends ActionSupport {
 		String path = request.getRequestURI();
 		String name = path.substring(path.lastIndexOf("_")+1);
 		try {
-			Method method = clazz.getMethod(name, HttpServletRequest.class);
-			if(method != null) method.invoke(this, request);
+			Method method = clazz.getMethod(name);
+			if(method != null) method.invoke(this);
 		} catch (SecurityException | IllegalAccessException | IllegalArgumentException | InvocationTargetException e) {
 			e.printStackTrace();
 		} catch (NoSuchMethodException e){

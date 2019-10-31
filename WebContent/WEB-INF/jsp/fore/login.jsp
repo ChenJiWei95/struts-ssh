@@ -35,7 +35,7 @@
 			<div class="layui-form-item" style="margin-top: 30px;">
 				<button lay-submit lay-filter="c-form-sub" class="layui-btn layui-btn-fluid" style="background: #a77f2a69; "><s:text name="shop.common.login"/></button>
 			</div>
-			<%-- <a href="<%=basePath%>main_main_register" style="float: right; margin-right: 20px; color: #ccc;"><s:text name="shop.common.register"/></a> --%>
+			<a href="<%=basePath%>fore_main_register" class="loginUpLink"><s:text name="shop.common.register"/></a>
 		</div>
 	</div>
 	

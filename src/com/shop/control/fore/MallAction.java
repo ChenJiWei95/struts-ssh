@@ -39,5 +39,9 @@ public class MallAction extends SuperActionSupport implements ServletRequestAwar
 		backhaul(ServletActionContext.getRequest()); 
 		return CHTML;
 	}
+	
+	public void goodsdetails(){
+		log.info(request.getParameter("id"));
+	}
 
 }

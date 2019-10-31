@@ -8,7 +8,7 @@
 <html>
  <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-  <title><s:text name="shop.common.furnis"/></title> 
+  <title><s:text name="shop.common.nav6"/></title> 
   <link rel="stylesheet" href="<%=basePath%>resource/layui/css/layui.css" media="all">
   <link rel="stylesheet" href="<%=basePath%>resource/style/mall.css" media="all">
  </head>
@@ -18,8 +18,8 @@
 	<!-- nav text -->
 	<div class="layui-container" style=" ">
 		<span class="layui-breadcrumb" lay-separator=">" style="line-height: 55px;">
-		  <a href="<%=basePath%>fore_main_index"><s:text name="shop.common.nav1"/></a>
-		  <a href="javascript:void(0)" class="var-color"><s:text name="shop.common.nav2"/></a>
+		  <a href="<%=basePath%>fore_main_index"><s:text name="shop.common.nav6"/></a>
+		  <a href="javascript:void(0)" class="var-color"><s:text name="shop.common.nav6"/></a>
 		</span>
 	</div>
 	

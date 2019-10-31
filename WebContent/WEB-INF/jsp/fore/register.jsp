@@ -21,7 +21,7 @@
 	
 	<!-- start picture and register form -->
 	<div style="width: 100%; height: 680px; background-image: url(<%=basePath%>resource/img/bg.jpg); overflow: hidden; background-size: cover;" class="aqua">
-		<div class="layui-form" lay-filter="c-register-form" id="c-register-form" style="width: 254px; height: 518px; background: #fff; margin: 80px auto; padding: 29px; ">
+		<div class="layui-form" lay-filter="c-register-form" id="c-register-form" style="width: 254px; height: 537px; background: #fff; margin: 80px auto; padding: 29px; ">
 			<div class="layui-form-item" style="text-align: center; line-height: 65px; font-family: cursive; color: #a77f2a69;"><h1><s:text name="shop.common.mallName"/></h1></div>
 			<div class="layui-form-item" style="margin-top: 0px;">
 				<!-- <i class="layui-icon layui-icon-user" style="position: absolute; font-size: 28px; "></i> -->
@@ -47,6 +47,7 @@
 			<div class="layui-form-item" style="margin-top: 30px;">
 				<button lay-submit lay-filter="c-form-sub" class="layui-btn layui-btn-fluid" style="background: #a77f2a69; "><s:text name="shop.common.register"/></button>
 			</div>
+			<a href="<%=basePath%>fore_main_login" class="loginUpLink"><s:text name="shop.common.login"/></a>
 		</div>
 	</div>
 	

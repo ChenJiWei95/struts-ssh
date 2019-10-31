@@ -25,7 +25,7 @@
     .c-nav2 li a:hover, .c-nav a:hover {
     	color: #a77f2a69;
     }
-    .layui-breadcrumb a:hover {
+    .loginUpLink:hover, .layui-breadcrumb a:hover {
     	color: #a77f2a69 !important;
     }
     .span-separator a:hover {
@@ -35,12 +35,17 @@
 	    color: #999;
 	    cursor: pointer;
 	}
-	.filter span {
+	.filter span, .message-text {
 		color: #999;
 	}
 	.filter label:hover {
 	    color: #a77f2a69;
 	}
+    /* 登录 */
+    .loginUpLink {
+    	float: right; margin-top: 27px; color: #ccc;
+    } 
+	
 	/* 个人中心 */
 	.cnt {
 		width: 100%;background: #dddddd59; padding: 20px;
@@ -134,3 +139,546 @@
     	line-height: 80px;
     }
     
+    /* gooodsdetails */
+    .colorBtn, .sizeBtn {
+    	border-color: #e6e6e6bf; 
+    	padding: 4px 20px;
+    	margin-left: 15px;
+    	color: #999;
+    }
+    .subtraction, .number, .addition {
+    	border-color: #e6e6e6bf; 
+    	padding: 4px 20px; 
+    	color: #999; 
+    	text-align: center;
+    }
+    .number  {
+    	width: 30px;
+    	padding: 4px 10px;
+    	margin-left: -7px;
+    	margin-right: -7px;
+    	border-left: none;
+    	border-right: none;
+    }
+    
+    .more-btn:hover, .buyNow:hover, .addCarList:hover, .addColect:hover, .colorBtn:hover, .subtraction:hover, .addition:hover {
+    	border-color: #a77f2a8c !important;
+    	cursor: pointer;
+    }
+    
+    .buyNow, .addCarList, .addColect {
+    	border-color: #e6e6e6bf;
+    	cursor: pointer;
+    	color: #999;
+    } 
+    .buyNow {
+   	 	padding: 18px 52px;
+   	 	background: #fbf6f2;
+   	 	border-color: #a77f2a69;
+   	 	color: #a77f2a69;
+   	 	font-size: 20px;
+    }
+    .addCarList {
+   	 	padding: 18px 48px;
+   	 	background: #a77f2a69;
+   	 	color: #fff;
+   	 	font-size: 20px;
+    }
+    .addColect {
+   	 	padding: 18px 14px;
+   	 	font-size: 20px;
+   	 	border-color: #ddd;
+    }
+    
+    .more-btn {
+    	background: #a77f2a69 !important;
+    	font-size: 20px !important;
+    } 
+    
+    .layui-tab-title li {
+    	color: #999;
+    }
+    
+    .layui-tab-brief>.layui-tab-title .layui-this {
+    	color: #a77f2a69 !important;
+    }
+    .layui-tab-brief>.layui-tab-more li.layui-this:after, .layui-tab-brief>.layui-tab-title .layui-this:after{
+    	border-bottom: 2px solid #a77f2a69 !important; 
+    }
+    
+    layadmin-homepage-list-imgtxt .layui-col-sm10,.layadmin-homepage-list-imgtxt .layui-col-sm2 {
+		background: 0 0
+	}
+	
+	.layadmin-homepage-list-imgtxt .panel-body {
+		padding: 15px 20px 25px;
+		overflow: hidden;
+		margin-bottom: 15px
+	}
+	
+	.layadmin-homepage-list-imgtxt .panel-body .media-left {
+		display: block;
+		float: left;
+		vertical-align: top;
+		padding-right: 10px
+	}
+	
+	.layadmin-homepage-list-imgtxt .panel-body .media-left img {
+		border-radius: 50%
+	}
+	
+	.layadmin-homepage-list-imgtxt .media-body {
+		width: auto;
+		display: block;
+		overflow: hidden
+	}
+	
+	.layadmin-homepage-list-imgtxt .media-body .pad-btm {
+		padding-bottom: 15px
+	}
+	
+	.layadmin-homepage-list-imgtxt .media-body .pad-btm p:first-child {
+		padding-bottom: 5px
+	}
+	
+	.layadmin-homepage-list-imgtxt .media-body .min-font {
+		margin-bottom: 10px
+	}
+	
+	.layadmin-homepage-list-imgtxt .media-body .min-font .layui-breadcrumb a {
+		font-size: 11px
+	}
+	
+	.layui-breadcrumb span[lay-separator] {
+		margin: 0 5px
+	}
+	
+	.layadmin-homepage-list-imgtxt .media-body .pad-btm .fontColor a {
+		font-weight: 600;
+		color: #337ab7
+	}
+	
+	.layadmin-homepage-list-imgtxt .media-body .pad-btm .fontColor span {
+		color: #758697;
+		font-weight: 600
+	}
+	
+	.layadmin-homepage-list-imgtxt .media-body .h-img {
+		display: block;
+		max-width: 100%;
+		height: auto;
+		margin-top: 10px
+	}
+	
+	.layadmin-homepage-list-imgtxt .img-xs {
+		width: 32px;
+		height: 32px;
+		border-radius: 50%
+	}
+	
+	.layadmin-homepage-list-imgtxt .media-body .media {
+		margin-top: 15px;
+		overflow: hidden
+	}
+	
+	.layadmin-homepage-list-imgtxt .media-body .media .media-right {
+		float: right;
+		padding-top: 10px
+	}
+	
+	.layadmin-homepage-list-imgtxt .media-body .media .media-right .list-inline {
+		margin-bottom: 10px
+	}
+	
+	.layadmin-homepage-list-imgtxt .media-body .media .list-inline li {
+		padding: 0 5px;
+		display: inline-block
+	}
+	
+	.layadmin-homepage-list-imgtxt .media-body .media .media-right .list-inline li span {
+		font-weight: 600
+	}
+	
+	.layadmin-homepage-list-imgtxt .media-body .media .media-left {
+		display: block;
+		overflow: hidden;
+		width: auto
+	}
+	
+	.layadmin-homepage-list-imgtxt .media-body .media .media-left .font-blod {
+		font-weight: 700;
+		color: #758697
+	}
+	
+	.layadmin-homepage-list-imgtxt .media-body .media-list {
+		padding-top: 15px;
+		margin-top: 15px;
+		border-top: 1px solid #e9e9e9
+	}
+	
+	.layadmin-homepage-list-imgtxt .media-body .media-list .media-item {
+		padding-bottom: 15px;
+		margin-top: 15px
+	}
+	
+	.layadmin-homepage-list-imgtxt .media-body .media-list .media-item-left {
+		display: inline-block;
+		padding-right: 10px;
+		margin-bottom: 5px
+	}
+	
+	.layadmin-homepage-list-imgtxt .media-body .media-list .media-item-left img {
+		display: block;
+		float: left
+	}
+	
+	.layadmin-homepage-list-imgtxt .media-body .media-list .media-text {
+		overflow: hidden;
+		width: auto;
+		display: inline-block
+	}
+	
+	.layadmin-homepage-list-imgtxt .media-body .media-list .media-text a {
+		margin-right: 10px;
+		font-weight: 600;
+		display: inline-block
+	}
+	
+	.layadmin-homepage-list-imgtxt .media-body .media-list .media-text div:nth-child(2) {
+		margin-top: 5px
+	}
+	
+	.layadmin-homepage-list-imgtxt .media-body .media-list .layui-btn {
+		height: 24px;
+		line-height: 24px;
+		font-size: 12px;
+		padding: 0 20px;
+		margin-bottom: 10px
+	}
+	
+	.homepage-top .layui-card-body img {
+		width: 100%
+	}
+	
+	.homepage-top .layui-card-body .margin-top10 {
+		margin-top: 10px
+	}
+	
+	.homepage-top .layui-card-body .layui-btn {
+		width: 100%;
+		display: block
+	}
+	
+	.homepage-top {
+		padding-bottom: 20px
+	}
+	
+	.layadmin-privateletterlist-item {
+		position: relative;
+		display: block;
+		padding: 10px 15px
+	}
+	
+	.homepage-bottom .layui-card-body {
+		padding: 0
+	}
+	
+	.homepage-bottom .layui-card-body img {
+		width: 32px;
+		height: 32px;
+		border-radius: 50%;
+		margin-top: 10px
+	}
+	
+	.homepage-bottom .layui-card-body .meida-left {
+		display: table-cell;
+		padding-right: 10px
+	}
+	
+	.homepage-bottom .layui-card-body .meida-right {
+		display: table-cell;
+		vertical-align: top
+	}
+	
+	.homepage-bottom .layui-card-body a:hover {
+		background: #F2F2F2
+	}
+	
+	.homepage-bottom .layui-card-body {
+		background: #fff
+	}
+	
+	.layui-card-header .panel-title .layui-icon {
+		position: relative;
+		left: 0;
+		right: 0
+	}
+	
+	.layadmin-cmdlist-fluid {
+		padding-bottom: 60px
+	}
+	
+	.cmdlist-container {
+		background: #fff;
+		border: 1px solid transparent
+	}
+	
+	.cmdlist-container:hover {
+		border: 1px solid #e8e8e8
+	}
+	
+	.cmdlist-container img {
+		width: 100%
+	}
+	
+	.cmdlist-text {
+		padding: 20px
+	}
+	
+	.cmdlist-text .info {
+		height: 40px;
+		font-size: 14px;
+		line-height: 20px;
+		width: 100%;
+		overflow: hidden;
+		color: #666;
+		margin-bottom: 10px
+	}
+	
+	.cmdlist-text .price {
+		font-size: 14px
+	}
+	
+	.cmdlist-text .price b {
+		margin-right: 20px
+	}
+	
+	.cmdlist-text .price p {
+		display: inline-block
+	}
+	
+	.cmdlist-text .flow {
+		text-align: right;
+		float: right
+	}
+	
+	#demo0 {
+		text-align: center
+	}
+	
+	.layadmin-message-fluid .layui-col-md12 {
+		background: #fff;
+		height: auto;
+		padding-bottom: 50px
+	}
+	
+	.layadmin-message-fluid .layui-input-block {
+		margin-left: 0
+	}
+	
+	.layadmin-message-fluid .layui-form {
+		padding: 45px 40px 0
+	}
+	
+	.layadmin-message-fluid .layui-form-label {
+		text-align: left;
+		font-size: 18px;
+		padding-left: 10px
+	}
+	
+	.layadmin-message-fluid .layui-textarea {
+		min-height: 100px;
+		font-size: 16px
+	}
+	
+	.layadmin-message-fluid .layui-input-right {
+		float: right
+	}
+	
+	.layadmin-messag-icon {
+		overflow: hidden;
+		float: left;
+		margin-top: 4px
+	}
+	
+	.layadmin-messag-icon .layui-icon {
+		font-size: 24px;
+		line-height: 30px;
+		margin-right: 15px;
+		color: #C4CBCF
+	}
+	
+	.message-content {
+		padding: 0 40px
+	}
+	
+	.message-content .media-body {
+		margin-bottom: 60px
+	}
+	
+	.message-content .media-body .pad-btm {
+		padding-bottom: 0
+	}
+	
+	.message-content .media-left {
+		float: left;
+		margin-right: 10px
+	}
+	
+	.message-content .media-left img {
+		border-radius: 50%
+	}
+	
+	.message-text {
+		padding-top: 10px
+	}
+	
+	.message-content-btn {
+		text-align: center
+	}
+	
+	.message-content .layui-btn {
+		height: auto;
+		line-height: 26px;
+		padding: 5px 30px;
+		font-size: 16px
+	}
+	
+	.layadmin-serach-main .layui-card-header {
+		height: auto;
+		line-height: 24px;
+		padding: 15px
+	}
+	
+	.layadmin-serach-list {
+		margin-bottom: 10px;
+		padding: 10px 0;
+		border-bottom: 1px solid #f6f6f6
+	}
+	
+	.layadmin-serach-list h3 {
+		padding: 10px 0
+	}
+	
+	.layadmin-serach-list h3 .layui-badge {
+		top: -2px
+	}
+	
+	.layadmin-serach-list p {
+		color: #666
+	}
+	
+	.layadmin-serach-list li {
+		margin-bottom: 20px;
+		padding-bottom: 20px;
+		clear: both
+	}
+	
+	.layui-serachlist-cover {
+		float: left;
+		margin-right: 15px
+	}
+	
+	.layui-serachlist-cover img {
+		width: 90px;
+		height: 90px
+	}
+	
+	.layadmin-caller {
+		background: #fff;
+		padding: 30px
+	}
+	
+	.layadmin-caller em {
+		font-style: normal
+	}
+	
+	.layadmin-caller .caller-fl {
+		float: left
+	}
+	
+	.layadmin-caller .caller-fr {
+		float: right
+	}
+	
+	.layadmin-caller .caller-seach {
+		position: relative;
+		padding-bottom: 40px
+	}
+	
+	.layadmin-caller .caller-seach .caller-icon {
+		font-size: 18px;
+		position: absolute;
+		top: 9px
+	}
+	
+	.layadmin-caller .caller-seach-icon {
+		left: 6px
+	}
+	
+	.layadmin-caller .caller-dump-icon {
+		right: 6px;
+		cursor: pointer
+	}
+	
+	.layadmin-caller .caller-pl32 {
+		padding: 0 32px
+	}
+	
+	.layadmin-caller .caller-tab {
+		margin: 0
+	}
+	
+	.layadmin-caller .caller-contar {
+		padding-bottom: 20px
+	}
+	
+	.layadmin-caller .caller-contar .caller-item {
+		padding: 25px 0;
+		overflow: hidden;
+		border-bottom: 1px solid #e0e0e0
+	}
+	
+	.layadmin-caller .caller-contar .caller-item .caller-main {
+		margin-left: 20px
+	}
+	
+	.layadmin-caller .caller-contar .caller-item .caller-main p {
+		line-height: 100%;
+		padding: 8px 0
+	}
+	
+	.layadmin-caller .caller-contar .caller-item .caller-main p:first-child {
+		padding-top: 0
+	}
+	
+	.layadmin-caller .caller-contar .caller-item .caller-main em {
+		margin-left: 5px
+	}
+	
+	.layadmin-caller .caller-contar .caller-item .caller-main .caller-adds i {
+		padding-right: 5px;
+		margin: 0
+	}
+	
+	.layadmin-caller .caller-contar .caller-item .caller-main .caller-adds {
+		padding-bottom: 12px
+	}
+	
+	.layadmin-caller .caller-contar .caller-iconset i {
+		margin: 0 5px
+	}
+	
+	.layadmin-caller .caller-contar .caller-iconset i:first-child {
+		margin-left: 0
+	}
+	
+	.layadmin-caller .caller-contar button {
+		margin-top: 22px
+	}
+	
+	.layadmin-caller .caller-contar .caller-img {
+		width: 40px;
+		height: 40px;
+		border-radius: 100%
+	}
