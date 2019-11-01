@@ -1,0 +1,8 @@
+package com.shop.dao;
+
+import com.shop.entity.#name#;
+
+public interface #name#Dao extends BaseDao<#name#>{ 
+	
+}
+	

@@ -1,0 +1,7 @@
+package com.shop.service;
+
+import com.shop.entity.#name#;
+
+public interface #name#Service extends BaseService<#name#>{
+
+}

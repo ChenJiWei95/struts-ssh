@@ -29,9 +29,6 @@
 		</div>
 		<div class="layui-container" style="margin-top: 20px; ">
 			<%@ include file="../../include/forePage/ucenter/centerNav.jsp" %>
-			<!-- <div class="right-con " style="float: right; width: 905px;">
-				
-			</div>  -->
 			<%@ include file="../../include/forePage/ucenter/collectionCon.jsp" %>
 		</div>
 	</div>
@@ -41,8 +38,9 @@
 	<%@ include file="../../include/forePage/mall/bom.jsp" %>
 	<script src="<%=basePath%>resource/layui/layui.js"></script>
 	<script>
- 	layui.use(['layer', 'element'], function(){
+ 	layui.use(['layer', 'element', 'util'], function(){
  		var element = layui.element;
+ 		layui.util.layHref();
  		layui.layer.msg("<s:text name="shop.common.homeLayuiAlert"/>");
  		layui.$(".collection").eq(0).addClass("var-color");
  	})

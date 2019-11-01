@@ -27,11 +27,8 @@
 			  <a href="javascript:void(0)" class="var-color"><s:text name="shop.common.orders"/></a>
 			</span>
 		</div>
-		<div class="layui-container" style="margin-top: 20px; ">
+		<div class="layui-container" style="margin-top: 20px;">
 			<%@ include file="../../include/forePage/ucenter/centerNav.jsp" %>
-			<!-- <div class="right-con " style="float: right; width: 905px;">
-				
-			</div>  -->
 			<%@ include file="../../include/forePage/ucenter/myorderCon.jsp" %>
 		</div>
 	</div>

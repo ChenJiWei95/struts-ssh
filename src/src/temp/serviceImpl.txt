@@ -1,0 +1,86 @@
+package com.blog.service.impl;
+
+import javax.annotation.Resource;
+
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
+import com.blog.dao.#name#Dao;
+import com.blog.dao.BaseDao;
+import com.blog.entity.#name#;
+import com.blog.service.#name#Service;
+import com.blog.util.sql.AssociaInterface;
+
+@Service
+@Transactional
+public class #name#ServiceImpl extends BasiServiceImpl<#name#, Object> implements #name#Service, AssociaInterface  {
+	@Resource
+	#name#Dao #name_#Dao; 
+	
+	public BaseDao<#name#> getDao(){
+		return #name_#Dao;
+	}
+	
+	@Override
+	public String getBrige_table() {
+		return "";
+	}
+	@Override
+	public String getBrige_key() {
+		return "";
+	}
+	@Override
+	public String getBrige_association_key() {
+		return "";
+	}
+	@Override
+	public String getAssociation_table() {
+		return "";
+	}
+	@Override
+	public String getAssociation_table_id() {
+		return "";
+	}
+	@Override
+	public String getId() {
+		return "id";
+	}
+	@Override
+	public String getTable() {
+		return "#table#";
+	}
+}
+
+package com.shop.service.impl;
+
+import javax.annotation.Resource;
+
+import org.springframework.stereotype.Service;
+
+import com.shop.dao.#name#Dao;
+import com.shop.entity.#name#;
+import com.shop.service.#name#Service;
+
+/** 
+ * <b>一句话描述该类</b>
+ * <p>
+ * 描述:<br>
+ * 
+ * @author 威 
+ * <br>2019年10月26日 下午6:04:52 
+ * @see
+ * @since 1.0
+ */
+@Service
+public class #name#ServiceImpl extends BaseServiceImpl<#name#> implements #name#Service{
+	
+	@Resource
+	#name#Dao #name_#Dao;
+
+	@Resource
+	public void setBaseDao(#name#Dao #name_#Dao) {
+		super.setBaseDao(#name_#Dao);
+	}
+}
+
+

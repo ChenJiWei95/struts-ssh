@@ -41,6 +41,42 @@ function(t) {
 				}
 			});
     	} 
+    	,addSubCtrlbtn: function(callback){
+    		// 加减控件
+    		// 回调方法
+    		// 返回type【add、sub】 value e【$(this)】 
+    		this.shopClick({
+     			subtraction: function(e){
+     				if(isNaN(e.next().val())){
+     					layer.msg("不是数字，已置零");
+     					e.next().val(0);
+     					return;
+     				}
+     				if(e.next().val() > 0){
+     					e.next().val(Number(e.next().val())-1);
+     				} 
+     				'function' == typeof callback && callback({type: 'sub', value: e.next().val(), e: e})
+     			}
+     			,addition: function(e){
+     				if(isNaN(e.prev().val())){
+     					layer.msg("不是数字，已置零");
+     					e.prev().val(0);
+     					return;
+     				}
+     				e.prev().val(Number(e.prev().val())+1);
+     				'function' == typeof callback && callback({type: 'add', value: e.prev().val(), e: e})
+     			}
+     		});
+    	}
+    	,shopClick: function(active){
+    		// 类似addSubCtrlbtn方法使用的方式调用
+    		// 需要标明shop-clcik
+    		e("body").on('click', '*[shop-click]', function(){
+     			var o = e(this)
+     			,layClick = o.attr('shop-click');
+     			'function' == typeof active[layClick] && active[layClick].call(this, o);
+     		});
+    	}
     	,layHref: function(){
     		e("body").on('click', "*[lay-href]",
     	    function() {//打开一个标签页

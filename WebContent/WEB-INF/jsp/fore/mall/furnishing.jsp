@@ -40,7 +40,7 @@
  	layui.use(['layer', 'element', 'util'], function(){
  		var element = layui.element;
  		layui.layer.msg("<s:text name="shop.common.homeLayuiAlert"/>");
- 		layui.util.layHref();
+ 		layui.util.layHref(); // 链接跳转 
  	})
 	</script>
  </body>

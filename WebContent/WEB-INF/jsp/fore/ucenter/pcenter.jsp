@@ -29,9 +29,6 @@
 		</div>
 		<div class="layui-container" style="margin-top: 20px; ">
 			<%@ include file="../../include/forePage/ucenter/centerNav.jsp" %>
-			<!-- <div class="right-con " style="float: right; width: 905px;">
-				
-			</div>  -->
 			<%@ include file="../../include/forePage/ucenter/pcenterCon.jsp" %>
 		</div>
 	</div>

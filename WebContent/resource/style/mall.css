@@ -45,6 +45,55 @@
     .loginUpLink {
     	float: right; margin-top: 27px; color: #ccc;
     } 
+    
+    /* goods details */
+	.item {
+		height: 300px; 
+		border:1px solid #dddddd73;
+	}
+	
+	.item .item-img{
+		background-size: cover; 
+		width: 100%; 
+		height: 248px;
+	}
+	 
+	.item .item-text {
+		color: #555; 
+		padding-left: 10px; 
+		line-height: 30px; 
+		height: 26px;
+	}
+	
+	.item .item-amount  {
+		color: red; 
+		padding-left: 10px; 
+		line-height: 26px; 
+		height: 26px; 
+	}
+	
+	/* collection */
+	.c-item {
+		border: none;
+		position: relative;
+	}
+	.item .c-item-text {
+		text-align: center;
+	}
+	.item .c-item-amount {
+		text-align: center;
+	}
+	.righttop-close { 
+		width: 32px;
+		height: 32px;
+	    display: none;
+	    position: absolute;
+	    right: -3px;
+	    top: -3px;
+	}
+	.c-item:hover .righttop-close { 
+		display: block;
+	}
 	
 	/* 个人中心 */
 	.cnt {
@@ -74,7 +123,25 @@
     	border-bottom: none !important;
     }
     
+    .info-tab {
+    	float: left; 
+    	line-height: 25px; 
+    	padding-top: 22px;  
+    	padding-left: 20px; 
+    	width: 20%;
+    	height: 100%;
+    	color: #999;
+    }
+    .info-tab span {
+    	padding: 0 4px;
+    	font-size: 12px;
+    	
+    }
+    .info-tab span:last-child {
+    	cursor: pointer;
+    }
     
+    /* shopping cart */
     .cartlist-cnt {
   		margin-top: 40px; 
     	border: 1px solid #e6e6e657;

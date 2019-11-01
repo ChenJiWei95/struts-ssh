@@ -43,20 +43,20 @@
 			<div style="padding-left: 45px;">
 				<div style="width: 100%; height: 46px; ">
 
-					<span class="layui-badge" style="background: #a77f2a69; font-size: 12px; padding: 2px 6px;">爆款</span>
+					<span class="layui-badge" style="background: #a77f2a69; font-size: 12px; padding: 2px 6px;"><s:text name="shop.common.hot" /></span>
 					<label style="font-size: 16px; font-weight: bold;">洛丽塔休闲套装</label>
-					<label style="float: right; ">好评率 95%</label>
+					<label style="float: right; " class="default-color"><s:text name="shop.common.favorableRate" /> 95%</label>
 				</div>
 				<div style="width: 100%; height: 60px; background: #fbf6f2; line-height: 60px;">
 					<div style="padding-left: 20px;">
 					<span style="color: red;">￥</span><span style="color: red; font-size: 30px;">200</span>
-					原价
-					<span class="default-color">￥</span><span style="font-size: 20px;"><del class="default-color">200</del></span>
+					<s:text name="shop.common.originalPrice" />
+					<span class="default-color">￥</span><span style="font-size: 20px;"><del class="default-color">210</del></span>
 					</div>
 				</div>
 				<div style="width: 100%; line-height: 60px;">
 					<div style="padding-left: 10px;">
-					<span class="default-color">颜色</span>
+					<span class="default-color"><s:text name="shop.common.colour" /></span>
 					<span class="border colorBtn">白色</span>
 					<span class="border colorBtn">雅灰</span>
 					<span class="border colorBtn">银灰</span>
@@ -65,7 +65,7 @@
 				</div>
 				<div style="width: 100%; line-height: 60px;">
 					<div style="padding-left: 10px;">
-					<span class="default-color">尺寸</span>
+					<span class="default-color"><s:text name="shop.common.size" /></span>
 					<span class="border colorBtn">S</span>
 					<span class="border colorBtn">M</span>
 					<span class="border colorBtn">L</span>
@@ -74,19 +74,19 @@
 				</div>	
 				<div style="width: 100%; line-height: 60px; overflow: hidden;">
 					<div style="padding-left: 10px;">
-						<div style="float: left;"><span class="default-color">数量</span></div>
+						<div style="float: left;"><span class="default-color"><s:text name="shop.common.count" /></span></div>
 						<div style="float: left; margin-left: 20px;">
-							<span class="subtraction border">-</span>
+							<span class="subtraction border" shop-click="subtraction">-</span>
 							<input type="text" class="border number" value="2"/>
-							<span class="addition border">+</span>
+							<span class="addition border" shop-click="addition">+</span>
 						</div>
 					</div>
 				</div>
 				<div style="width: 100%; line-height: 80px;">
 					<div style="padding-left: 10px;">
-						<span class="buyNow border">立即购买</span>
-						<span class="addCarList border"><i class="layui-icon layui-icon-cart" style="color: #fff;font-size: 20px; margin-right: 4px;"></i>加入购物车</span>
-						<span class="addColect border">收藏<i class="layui-icon layui-icon-rate" style="color: #a77f2a8c;font-size: 20px; margin-right: 4px;"></i></span>
+						<span class="buyNow border"><s:text name="shop.common.buy" /></span>
+						<span class="addCarList border"><i class="layui-icon layui-icon-cart" style="color: #fff;font-size: 20px; margin-right: 4px;"></i><s:text name="shop.common.addShopCart" /></span>
+						<span class="addColect border"><s:text name="shop.common.addCollection" /><i class="layui-icon layui-icon-rate" style="color: #a77f2a8c;font-size: 20px; margin-right: 4px;"></i></span>
 					</div>
 				</div>
 			</div>
@@ -96,8 +96,8 @@
 	<div class="layui-container"  style="margin-top: 20px;">
 		<div class="layui-tab layui-tab-brief" lay-filter="docDemoTabBrief">
 		  <ul class="layui-tab-title">
-		    <li class="layui-this">详情</li>
-		    <li>评论</li>
+		    <li class="layui-this"><s:text name="shop.common.details" /></li>
+		    <li><s:text name="shop.common.comment" /></li>
 		  </ul>
 		  <div class="layui-tab-content" style="height: 100px;">
 		    <!-- 	详情 -->
@@ -155,9 +155,14 @@
 	<%-- <%@ include file="../../include/forePage/mall/bom.jsp" %> --%>
 	<script src="<%=basePath%>resource/layui/layui.js"></script>
 	<script>
- 	layui.use(['layer', 'element'], function(){
- 		var element = layui.element;
- 		layui.layer.msg("<s:text name="shop.common.homeLayuiAlert"/>");
+ 	layui.use(['layer', 'element', 'util'], function(){
+ 		var element = layui.element
+ 		,util = layui.util
+ 		,layer = layui.layer;
+ 		util.addSubCtrlbtn(function(data){ // 加减器
+ 			layer.msg(data.type);
+ 		});
+ 		layer.msg("<s:text name="shop.common.homeLayuiAlert"/>");
  	})
 	</script>
  </body>

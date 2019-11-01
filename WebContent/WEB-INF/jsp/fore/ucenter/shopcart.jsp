@@ -8,7 +8,7 @@
 <html>
  <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-  <title><s:text name="shop.common.service"/></title> 
+  <title><s:text name="shop.common.addShopCart"/></title> 
   <link rel="stylesheet" href="<%=basePath%>resource/layui/css/layui.css" media="all">
   <link rel="stylesheet" href="<%=basePath%>resource/style/mall.css" media="all">
  </head>
@@ -36,7 +36,7 @@
 					<input type="checkbox" name="all" lay-skin="primary" title="">
 				</div>
 			</div>
-			<div class="layui-col-md4">
+			<div class="layui-col-md4" lay-href="<%=basePath%>mall_chtml_goodsdetails?id=123456">
 				<%-- <div style="background-image: url(<%=basePath%>resource/img/good2.png); width: 100px; height: 100px; float: left;"></div>
 				 --%><img src="<%=basePath%>resource/img/good2.png" width="100px" height= "100px"/>
 				<span>轻奢休闲套桌</span>
@@ -44,9 +44,9 @@
 			<div class="layui-col-md2"><span><font style="color: red; font-size: 16px;">￥200</font><del>￥240</del></span></div>
 			<div class="layui-col-md2">
 				<div style="float: left; margin-left: 20px;">
-					<span class="subtraction border">-</span>
+					<span class="subtraction border" shop-click="subtraction">-</span>
 					<input type="text" class="border number" value="2"/>
-					<span class="addition border">+</span>
+					<span class="addition border" shop-click="addition">+</span>
 				</div>
 			</div>
 			<div class="layui-col-md2"><span>￥400</span></div>
@@ -58,7 +58,7 @@
 					<input type="checkbox" name="all" lay-skin="primary" title="">
 				</div>
 			</div>
-			<div class="layui-col-md4">
+			<div class="layui-col-md4" lay-href="<%=basePath%>mall_chtml_goodsdetails?id=123456">
 				<%-- <div style="background-image: url(<%=basePath%>resource/img/good2.png); width: 100px; height: 100px; float: left;"></div>
 				 --%><img src="<%=basePath%>resource/img/good2.png" width="100px" height= "100px"/>
 				<span>轻奢休闲套桌</span>
@@ -68,9 +68,9 @@
 				<del>￥240</del></span></div>
 			<div class="layui-col-md2">
 				<div style="float: left; margin-left: 20px;">
-					<span class="subtraction border">-</span>
+					<span class="subtraction border" shop-click="subtraction">-</span>
 					<input type="text" class="border number" value="2"/>
-					<span class="addition border">+</span>
+					<span class="addition border" shop-click="addition">+</span>
 				</div>
 			</div>
 			<div class="layui-col-md2"><span>￥400</span></div>
@@ -102,10 +102,16 @@
 	<%-- <%@ include file="../../include/forePage/mall/bom.jsp" %> --%>
 	<script src="<%=basePath%>resource/layui/layui.js"></script>
 	<script>
- 	layui.use(['layer', 'element', 'form'], function(){
+ 	layui.use(['layer', 'element', 'form', 'util'], function(){
  		var element = layui.element
- 		$ = layui.$
- 		form = layui.form;
+ 		,$ = layui.$
+ 		,form = layui.form
+ 		,layer = layui.layer
+ 		,util = layui.util;
+ 		util.layHref(); // 链接跳转
+ 		util.addSubCtrlbtn(function(data){  // 加减器
+ 			layer.msg(data.type + " - " + data.value + " - " + data.e)
+ 		});
  		layui.layer.msg("<s:text name="shop.common.homeLayuiAlert"/>");
  		$(".service").eq(0).addClass("var-color");
  	})
