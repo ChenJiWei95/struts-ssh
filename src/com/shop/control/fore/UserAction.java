@@ -218,7 +218,8 @@ public class UserAction extends SuperActionSupport implements ServletRequestAwar
 		try {
 			User temp;
 			if(null != (temp = userServiceImpl.find("from User where username = ?", user.getUsername()))) {
-			    if (temp.getLoginCount() >= 5) {
+			    System.out.println(temp);
+				if (temp.getLoginCount() >= 5) {
 			    	setMessage(new Message().error(getText("shop.error.accountLocked")));
 			    } else if(Constant.COMMON_STATUS_DISABLEED.equals(temp.getState())) {
 					setMessage(new Message().error(getText("shop.error.passError")));

@@ -4,6 +4,9 @@ import java.io.Serializable;
 import java.util.List;
 import java.util.Map;
 
+import org.aspectj.lang.annotation.Around;
+import org.aspectj.lang.annotation.Aspect;
+import org.aspectj.lang.annotation.Pointcut;
 import org.hibernate.Session;
 import org.hibernate.criterion.Criterion;
 import org.springframework.transaction.annotation.Propagation;
@@ -88,7 +91,7 @@ public class BaseServiceImpl<T> implements BaseService<T> {
 		
 		return baseDao.get(c, id);
 	}
-
+	
 	@Transactional(readOnly = true)
 	public T find(String hql, String... values) throws DBException {
 		return baseDao.find(hql, values);

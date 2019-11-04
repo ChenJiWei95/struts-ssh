@@ -65,7 +65,7 @@ public class User {
 	}
 	
 	public String toString(){
-		return UserTest.class + "["
+		return User.class + "["
 				+ "id = " + id
 				+ ", username = " + username
 				+ ", password = " + password

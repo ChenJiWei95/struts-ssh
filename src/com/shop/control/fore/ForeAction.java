@@ -53,5 +53,6 @@ public class ForeAction extends SuperActionSupport implements ServletRequestAwar
 		HttpSession session = (HttpSession) request.getSession();
 		User user = (User) session.getAttribute(Constant.LOGIN_SIGN);
 		session.setAttribute("username", user.getUsername());
+		System.out.println("执行index，。。。。");
 	}
 }
