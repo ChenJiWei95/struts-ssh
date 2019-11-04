@@ -1,0 +1,11 @@
+package com.shop.dao.impl;
+
+import org.springframework.stereotype.Repository;
+
+import com.shop.dao.#name#Dao;
+import com.shop.entity.#name#;
+
+@Repository
+public class #name#DaoImpl extends BaseDaoImpl<#name#> implements #name#Dao{
+	
+}

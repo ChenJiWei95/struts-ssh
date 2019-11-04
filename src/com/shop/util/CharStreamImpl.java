@@ -71,7 +71,16 @@ public class CharStreamImpl {
 	}
 	//附加
 	private BufferedWriter bw = null;
-	//append:true 写入在尾部/false 重开始位置写起，覆盖 
+	
+	/**
+	 * append:true 写入在尾部/false 重开始位置写起，覆盖 
+	 * <p>	 
+	 * @param str
+	 * @param append
+	 * void
+	 * @see
+	 * @since 1.0
+	 */
 	public void write(String str, boolean append){
 		if(bw == null) bw = cs.getWrite(append);
 		try {

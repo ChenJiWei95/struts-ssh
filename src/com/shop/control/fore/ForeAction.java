@@ -8,7 +8,7 @@ import org.apache.struts2.interceptor.ServletRequestAware;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
-import com.shop.Constant;
+import com.shop.Constants;
 import com.shop.control.SuperActionSupport;
 import com.shop.entity.User;
 
@@ -51,7 +51,7 @@ public class ForeAction extends SuperActionSupport implements ServletRequestAwar
 	
 	public void index() {
 		HttpSession session = (HttpSession) request.getSession();
-		User user = (User) session.getAttribute(Constant.LOGIN_SIGN);
+		User user = (User) session.getAttribute(Constants.LOGIN_SIGN);
 		session.setAttribute("username", user.getUsername());
 	}
 }

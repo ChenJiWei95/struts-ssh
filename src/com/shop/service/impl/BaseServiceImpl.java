@@ -142,7 +142,7 @@ public class BaseServiceImpl<T> implements BaseService<T> {
 	}
 
 	@Transactional(readOnly = true)
-	public List<T> findList(String hql, String... values) throws DBException {
+	public List<T> findList(String hql, Object... values) throws DBException {
 		
 		return baseDao.findList(hql, values);
 	}

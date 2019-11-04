@@ -22,12 +22,14 @@
 		<interceptors>
 			<interceptor name="commonInterceptor" class="com.shop.interceptor.CommonInterceptor" />
 			<interceptor name="privilegeInterceptor" class="com.shop.interceptor.PrivilegeInterceptor" />
+			<interceptor name="requestTypeInterceptor" class="com.shop.interceptor.RequestTypeInterceptor" />
 			<interceptor-stack name="parentStack">
 				<interceptor-ref name="paramsPrepareParamsStack">
 					<param name="prepare.alwaysInvokePrepare">false</param>
 				</interceptor-ref>
 				<interceptor-ref name="defaultStack"></interceptor-ref>
 				<interceptor-ref name="commonInterceptor" />
+				<interceptor-ref name="requestTypeInterceptor" />
 				<interceptor-ref name="privilegeInterceptor" />
 			</interceptor-stack>
 		</interceptors>

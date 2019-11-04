@@ -160,7 +160,7 @@ public class BaseDaoImpl<T> implements BaseDao<T> {
 		session.update(entity);
 	}
 
-	public List<T> findList(String hql, String... values) throws DBException {
+	public List<T> findList(String hql, Object... values) throws DBException {
 		Query query = this.getCurrentSession().createQuery(hql);
 		for (int i = 0; i < values.length; i++) {
 			query.setParameter(i, values[i]);

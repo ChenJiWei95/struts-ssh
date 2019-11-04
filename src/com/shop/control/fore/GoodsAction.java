@@ -5,11 +5,13 @@ import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
 import com.opensymphony.xwork2.ModelDriven;
+import com.shop.annotation.RequestTypeAnno;
 import com.shop.control.SuperActionSupport;
 import com.shop.entity.Goods;
 import com.shop.service.GoodsService;
 import com.shop.util.Message;
 import com.shop.util.SnowFlakeGenerator;
+import com.shop.util.enums.RequestType;
 
 @Component	 		
 @Scope("prototype")	
@@ -36,6 +38,7 @@ public class GoodsAction extends SuperActionSupport implements ModelDriven<Goods
 	
 	// 添加方法 测试
 	// 链接格式 当前类为例：testAjax(类前缀)_save(方法)
+	@RequestTypeAnno(RequestType.POST)
 	public String save(){
 		try {
 			goods.setId(String.valueOf(new SnowFlakeGenerator(2, 2).nextId()));
@@ -49,6 +52,7 @@ public class GoodsAction extends SuperActionSupport implements ModelDriven<Goods
 	
 	// 修改方法 测试
 	// 链接格式 当前类为例：testAjax(类前缀)_update(方法)
+	@RequestTypeAnno(RequestType.POST)
 	public String update(){
 		try {
 			goodsServiceImpl.update(goods);
@@ -61,6 +65,7 @@ public class GoodsAction extends SuperActionSupport implements ModelDriven<Goods
 	
 	// 删除方法 测试
 	// 链接格式 当前类为例：testAjax(类前缀)_delete(方法)
+	@RequestTypeAnno(RequestType.POST)
 	public String delete(){
 		try {
 			goodsServiceImpl.delete(goods);

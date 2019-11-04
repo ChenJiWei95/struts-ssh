@@ -7,7 +7,7 @@ import org.apache.struts2.ServletActionContext;
 
 import com.opensymphony.xwork2.ActionInvocation;
 import com.opensymphony.xwork2.interceptor.AbstractInterceptor;
-import com.shop.Constant;
+import com.shop.Constants;
 import com.shop.control.SuperActionSupport;
 import com.shop.util.Message;
 
@@ -24,7 +24,7 @@ public class PrivilegeInterceptor extends AbstractInterceptor {
 		// 授权  通过  
 		// 未授权 返回登录页面 赦免【register login】
 		String uri = request.getRequestURI();
-		if(null == request.getSession().getAttribute(Constant.LOGIN_SIGN)) {
+		if(null == request.getSession().getAttribute(Constants.LOGIN_SIGN)) {
 			int endIndex;
 			if((endIndex = uri.indexOf("_", uri.indexOf("_")+1)) != -1) {
 				// 页面跳转

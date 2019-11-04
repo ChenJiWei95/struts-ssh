@@ -187,7 +187,7 @@ public interface BaseService<T>{
 	 * @return
 	 * @throws DBException
 	 */
-	public List<T> findList(String hql, String... values) throws DBException;
+	public List<T> findList(String hql, Object... values) throws DBException;
 
 	/**
 	 * 通过hql和条件获取对象列表

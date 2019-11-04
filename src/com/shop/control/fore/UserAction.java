@@ -14,8 +14,7 @@ import org.springframework.stereotype.Component;
 
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
-import com.mysql.jdbc.exceptions.jdbc4.MySQLIntegrityConstraintViolationException;
-import com.shop.Constant;
+import com.shop.Constants;
 import com.shop.control.SuperActionSupport;
 import com.shop.entity.User;
 import com.shop.entity.UserInfor;
@@ -83,7 +82,7 @@ public class UserAction extends SuperActionSupport implements ServletRequestAwar
 			String id = String.valueOf(new SnowFlakeGenerator(2,2).nextId());
 			user.setId(id);
 			user.setLoginCount(0);
-			user.setState(Constant.COMMON_STATUS_ENABLEED);
+			user.setState(Constants.COMMON_STATUS_ENABLEED);
 			userServiceImpl.save(user);
 			userInfor.setId(String.valueOf(new SnowFlakeGenerator(2,2).nextId()));
 			userInfor.setUserId(id);
@@ -105,6 +104,10 @@ public class UserAction extends SuperActionSupport implements ServletRequestAwar
 	 */
 	@SuppressWarnings("static-access")
 	public String update(){
+		// 只能修改 当前账号
+		User loginUser = (User) request.getSession().getAttribute(Constants.LOGIN_SIGN);
+		if(!loginUser.getId().equals(user.getId()) || !loginUser.getUsername().equals(user.getUsername()))
+			return ERROR;
 		try {
 			userServiceImpl.update(user);
 			setMessage(new Message().success(getText("shop.error.updateOk")));
@@ -121,7 +124,8 @@ public class UserAction extends SuperActionSupport implements ServletRequestAwar
 	 * 链接格式 当前类为例：testAjax(类前缀)_delete(方法)
 	 * @return
 	 */
-	@SuppressWarnings("static-access")
+	// 特殊权限 管理员权限
+	/*@SuppressWarnings("static-access")
 	public String delete(){
 		
 		try {
@@ -134,19 +138,18 @@ public class UserAction extends SuperActionSupport implements ServletRequestAwar
 		}
 		return JSON;
 		
-	}	
+	}	*/
 	/**
 	 * 删除方法 测试
 	 * 链接格式 当前类为例：testAjax(类前缀)_delete(方法)
 	 * @return
 	 */
-	@SuppressWarnings("static-access")
+	// 特殊权限 管理员权限
+	/*@SuppressWarnings("static-access")
 	public String delBatch(){
 		
 		try {
 			JSONArray json = JSONObject.parseArray(ActionUtil.read(request));
-			StringBuffer sb = new StringBuffer();
-			StringBuffer sb1 = new StringBuffer();
 			String[] ids = new String[json.size()];
 			for(int i = 0; i < json.size(); i++) 
 				ids[i] = json.getJSONObject(i).getString("id");
@@ -160,54 +163,55 @@ public class UserAction extends SuperActionSupport implements ServletRequestAwar
 		}
 		return JSON;
 		
-	}	
+	}*/	
 		
 	/**
 	 * 获取方法 测试
 	 * 链接格式 当前类为例：testAjax(类前缀)_list(方法)
 	 * @return
 	 */
-	@SuppressWarnings("static-access")
+	
+	/*@SuppressWarnings("static-access")
 	public String list(){
 		
 		try {
 			Map<String, String> map = ActionUtil.getRequestParameterMap(request);
 			StringBuilder eq = new StringBuilder("from User where 1=1");
-			List<String> param = new ArrayList<String>(map.size());
+			List<Object> param = new ArrayList<Object>(map.size());
 			for(Map.Entry<String, String> item : map.entrySet()) {
 				eq.append("AND"+item.getKey()+"=?");
 				param.add(item.getValue());
 			}
-			userServiceImpl.findList(eq.toString(), (String[]) param.toArray());	
-			setMessage(new Message().success(getText("shop.error.deleteOk")));
+			List<User> list = userServiceImpl.findList(eq.toString(), param.toArray());	
+			setMessage(new Message().success(getText("shop.error.getOk"), list));
 		}catch(Exception e) {
 			log.info("异常"+e);
 			e.printStackTrace();
-			setMessage(new Message().error(getText("shop.error.deleteError")));
+			setMessage(new Message().error(getText("shop.error.getError")));
 		}
 		return JSON;
 		
-	}
+	}*/
 	
 	/**
 	 * 获取方法 测试
 	 * 链接格式 当前类为例：testAjax(类前缀)_list(方法)
 	 * @return
 	 */
-	@SuppressWarnings("static-access")
+	/*@SuppressWarnings("static-access")
 	public String get(){
 		
 		try {
-			userServiceImpl.get(user.getId());	
-			setMessage(new Message().success(getText("shop.error.deleteOk")));
+			User t = userServiceImpl.get(user.getId());	
+			setMessage(new Message().success(getText("shop.error.getOk"), t));
 		}catch(Exception e) {
 			log.info("异常"+e);
 			e.printStackTrace();
-			setMessage(new Message().error(getText("shop.error.deleteError")));
+			setMessage(new Message().error(getText("shop.error.getError")));
 		}
 		return JSON;
 		
-	}
+	}*/
 	
 	/**
 	 * 登录判断
@@ -220,7 +224,7 @@ public class UserAction extends SuperActionSupport implements ServletRequestAwar
 			if(null != (temp = userServiceImpl.find("from User where username = ?", user.getUsername()))) {
 			    if (temp.getLoginCount() >= 5) {
 			    	setMessage(new Message().error(getText("shop.error.accountLocked")));
-			    } else if(Constant.COMMON_STATUS_DISABLEED.equals(temp.getState())) {
+			    } else if(Constants.COMMON_STATUS_DISABLEED.equals(temp.getState())) {
 					setMessage(new Message().error(getText("shop.error.passError")));
 				} else if(!temp.getPassword().equals(user.getPassword())) {
 					setMessage(new Message().error(getText("shop.error.passError")));
@@ -232,7 +236,7 @@ public class UserAction extends SuperActionSupport implements ServletRequestAwar
 					    userServiceImpl.update(temp);
 			    	}
 				    setMessage(new Message().success(getText("shop.error.loginSuccess")));
-				    request.getSession().setAttribute(Constant.LOGIN_SIGN, temp);
+				    request.getSession().setAttribute(Constants.LOGIN_SIGN, temp);
 				    return JSON;
 			    }
 			} else {
