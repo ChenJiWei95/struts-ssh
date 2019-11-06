@@ -70,7 +70,7 @@
         <property name="hashValueSerializer">
             <bean class="org.springframework.data.redis.serializer.JdkSerializationRedisSerializer" />
         </property>
-         <!--开启事务  -->  
+        <!--开启事务  -->  
         <property name="enableTransactionSupport" value="true"></property>  
     </bean>
     

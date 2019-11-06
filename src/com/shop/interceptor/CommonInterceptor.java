@@ -19,6 +19,7 @@ public class CommonInterceptor extends AbstractInterceptor {
 	@Override
 	public void destroy() {
 		// 销毁
+		// 销毁才执行
 		System.out.println("CommonInterceptor end");
 		log.info(ac.getClass().getName());
 	}

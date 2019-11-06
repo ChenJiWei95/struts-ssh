@@ -7,11 +7,15 @@ import java.util.concurrent.TimeUnit;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.data.redis.core.Cursor;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.data.redis.core.ScanOptions;
 import org.springframework.data.redis.core.ZSetOperations;
 import org.springframework.util.CollectionUtils;
+
+import com.alibaba.druid.support.spring.stat.SpringStatUtils;
 
 public class RedisService {
 	
@@ -19,13 +23,19 @@ public class RedisService {
 	
     private final RedisTemplate<String, Object> redisTemplate;
     
+    public static void main(String[] args) {
+    	ApplicationContext context = new ClassPathXmlApplicationContext("classpath:applicationContext.xml");
+    	RedisService s = (RedisService) context.getBean("redisService");
+    	s.set("name", "cjw");
+    	System.out.println(s.hasKey("name"));
+    }
+    
     public RedisService(RedisTemplate<String, Object> redisTemplate) {
         this.redisTemplate = redisTemplate;
     }
 
     /**
      * 指定缓存失效时间
-     *
      * @param key  键
      * @param time 时间(秒)
      * @return
