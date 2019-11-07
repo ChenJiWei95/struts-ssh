@@ -15,6 +15,9 @@ import org.springframework.transaction.annotation.Transactional;
 import com.shop.Filter;
 import com.shop.Order;
 import com.shop.Page;
+import com.shop.annotation.RCacheEvict;
+import com.shop.annotation.RCacheable;
+import com.shop.annotation.RParamer;
 import com.shop.dao.BaseDao;
 import com.shop.exception.DBException;
 import com.shop.service.BaseService;
@@ -36,6 +39,9 @@ public class BaseServiceImpl<T> implements BaseService<T> {
 
 	public void setBaseDao(BaseDao<T> baseDao) {
 		this.baseDao = baseDao;
+	}
+	public BaseDao<T> getBaseDao() {
+		return baseDao;
 	}
 
 	@Transactional(readOnly = true)
@@ -81,7 +87,7 @@ public class BaseServiceImpl<T> implements BaseService<T> {
 	}
 
 	@Transactional(readOnly = true)
-	public T get(Serializable id) throws DBException {
+	public T get(String id) throws DBException {
 		
 		return baseDao.get(id);
 	}
@@ -217,7 +223,8 @@ public class BaseServiceImpl<T> implements BaseService<T> {
 	}
 
 	@Transactional
-	public void update(T entity) throws DBException {
+//	@RCacheEvict(key="#user.id")
+	public void update(/*@RParamer("user")*/T entity) throws DBException {
 		
 		baseDao.update(entity);
 

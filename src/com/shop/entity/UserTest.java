@@ -1,5 +1,7 @@
 package com.shop.entity;
 
+import java.io.Serializable;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -7,7 +9,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "User")
-public class UserTest {
+public class UserTest implements Serializable {
 	@Id
 	@Column(name = "id")
 	private Long id;

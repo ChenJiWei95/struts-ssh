@@ -19,6 +19,6 @@ import com.shop.util.enums.RequestType;
 @Retention(RetentionPolicy.RUNTIME)
 @Target(ElementType.METHOD)
 public @interface RCacheable {
-	String key();
-	long time();
+	String key() default "";
+	long time() default 3600;
 }

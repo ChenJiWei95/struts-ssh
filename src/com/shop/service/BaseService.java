@@ -10,6 +10,8 @@ import org.hibernate.criterion.Criterion;
 import com.shop.Filter;
 import com.shop.Order;
 import com.shop.Page;
+import com.shop.annotation.RCacheEvict;
+import com.shop.annotation.RCacheable;
 import com.shop.exception.DBException;
 
 /**
@@ -47,6 +49,7 @@ public interface BaseService<T>{
 	 * @param entity
 	 * @throws DBException
 	 */
+	
 	public void update(T entity) throws DBException;
 
 	/**
@@ -105,7 +108,7 @@ public interface BaseService<T>{
 	 * @return
 	 * @throws DBException
 	 */
-	public T get(Serializable id) throws DBException;
+	public T get(String id) throws DBException;
 
 	/**
 	 * 根据id获取对象

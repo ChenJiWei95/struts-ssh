@@ -17,7 +17,7 @@ import com.shop.util.enums.RequestType;
  * @since 1.0
  */
 @Retention(RetentionPolicy.RUNTIME)
-@Target(ElementType.METHOD)
+@Target(ElementType.PARAMETER)
 public @interface RParamer {
 	String value();
 }

@@ -49,22 +49,21 @@ public class AudienceAround {
 	}
   	@Around("performance()")
   	public Object watchPerformance(ProceedingJoinPoint joinPoint) throws Throwable{
-  		log.info("获取RedisServer不为空则正常：redisService="+redisService);
-  		log.info("前置通知");
+  		/*log.info("获取RedisServer不为空则正常：redisService="+redisService);
+  		log.info("前置通知");*/
   		
-  		OgnlContext ctx = new OgnlContext ();
-  		Object root = ctx.getRoot();
   		
   		// 获取该方法的注解  RCacheable  RCacheEvict
   		// 执行前对key进行获取并判断是否有缓存，有 则在缓存中读； 无 则在数据库读，然后在载入缓存 
   		// 数据保存24小时
     	Object result = joinPoint.proceed();
     	// 缓存中无数据  则在数据库读，然后在载入缓存 
-    	log.info("后置通知");
+    	log.info("后置通知"); 
     	Class<?>[] clazz = new Class<?>[joinPoint.getArgs().length];
     	for(int i = 0; i < joinPoint.getArgs().length; i++)// 没有传key 那么就用参数拼接 中间无任何分隔符
     	{
-    		log.info("第"+(i+1)+"个参数："+joinPoint.getArgs()[i]);
+//    		log.info("第"+(i+1)+"个参数："+joinPoint.getArgs()[i].getClass().toString());
+//    		if("class [Ljava.lang.String;".equals(joinPoint.getArgs()[i].getClass().toString())) log.info("是一个数组");
     		clazz[i] = joinPoint.getArgs()[i].getClass(); // 拼接所注解方法的传入参数类型
     	}
     		
@@ -72,37 +71,44 @@ public class AudienceAround {
     	log.info("代理对象："+joinPoint.getTarget().getClass().getName());
     	Method method = joinPoint.getTarget().getClass().getMethod(joinPoint.getSignature().getName(), 
     			clazz);
-    	// 获取参数注解--> 根据注解获取对应值 --》获取缓存key
-    	for(int i = 0; i < method.getParameters().length; i++){
-    		for(Annotation annotation : method.getParameters()[i].getAnnotations()) {
-    			if(annotation instanceof RParamer) {
-    				RParamer rParamer = (RParamer) annotation;
-    				ctx.put(rParamer.value(), joinPoint.getArgs()[i]);
-    			}
-    		}
-    	}
+    	
+    	log.info("返回值："+method.getReturnType().getSimpleName()); // 结果：Object 
+    	
+    	List<String> l = new ArrayList<>(1);
+    	log.info("返回值：getClass.getSimpleName"+l.getClass().getSimpleName()); // 结果：ArrayList 
+    	// 根据返回类型判断执行的缓存方式
     	
     	Annotation[] annotations = method.getAnnotations();
     	for (Annotation annotation : annotations) {
     		log.info("存在注解"+annotation.toString());
 			if (annotation instanceof RCacheable) {
+				log.info("方法包含缓存注解：RCacheable");
 				// 标注RCacheable注解 缓存+读取 
 				RCacheable rCacheable = (RCacheable) annotation;
 				// 判断RCacheable注解 是否包含key
 				String key = "";
-				if("".equals(rCacheable.key())) // RCacheable未标明key就用所有参数的拼接作为key
-					for(int i = 0; i < joinPoint.getArgs().length; i++)
-						key += joinPoint.getArgs()[i];
-				else // RCacheable存在
-					key = (String) key_(rCacheable.key(), ctx, root);
-				
+				if("".equals(rCacheable.key())) // RCacheable未标明key   就用所有参数的拼接作为key
+					for(int i = 0; i < joinPoint.getArgs().length; i++) {
+						if("class [Ljava.lang.String;".equals(joinPoint.getArgs()[i].getClass().toString()))// 判断数组格式的对象分开处理
+							for(String arg : (String[]) joinPoint.getArgs()[i]) key += arg;
+						else 
+							key += joinPoint.getArgs()[i].toString();}
+				else { // RCacheable存在key
+					// 查找参数中的注解 返回ctx
+					key = (String) key_(rCacheable.key(), createOgnl(joinPoint, method));}
+				// 确定key之后 -- 进行缓存读取或者写入
 				// 执行前对key进行获取并判断是否有缓存，有 则在缓存中读； 无 则在数据库读，然后在载入缓存 
-				if(redisService.hasKey(key)) {log.info("从缓存中读取。。。");
+				if(redisService.hasKey(key)) {
+					// 根据不同的返回类型进行读取
+					log.info("从缓存中读取。。。，key："+key);
 					return redisService.get(key);}
-				else { log.info("载入缓存");
+				else { 
+					// 根据不同的类返回型进行写入
+					log.info("载入缓存，key："+key);
 					redisService.set(key, result);
 				}
 			} else if (annotation instanceof RCacheEvict) {
+				log.info("方法包含缓存注解：RCacheEvict");
 				// 删除缓存
 				RCacheEvict rCacheEvict = (RCacheEvict) annotation;
 				// 判断注解 是否包含key
@@ -111,9 +117,10 @@ public class AudienceAround {
 					for(int i = 0; i < joinPoint.getArgs().length; i++)
 						key += joinPoint.getArgs()[i];
 				else // 注解存在
-					key = (String) key_(rCacheEvict.key(), ctx, root);
+					key = (String) key_(rCacheEvict.key(), createOgnl(joinPoint, method));
 				if(redisService.hasKey(key)) redisService.del(key);
 			} else if (annotation instanceof RCachePut) {
+				log.info("方法包含缓存注解：RCachePut");
 				// 载入缓存
 				RCachePut rCachePut = (RCachePut) annotation;
 				// 判断注解 是否包含key
@@ -122,29 +129,46 @@ public class AudienceAround {
 					for(int i = 0; i < joinPoint.getArgs().length; i++)
 						key += joinPoint.getArgs()[i];
 				else // 注解存在
-					key = (String) key_(rCachePut.key(), ctx, root);
+					key = (String) key_(rCachePut.key(), createOgnl(joinPoint, method));
 				redisService.set(key, result);
 			} 
-		}
-    	
-    	log.info("反射获取方法："+method);
-    	log.info("方法："+joinPoint.getSignature());
-    	log.info("方法名："+joinPoint.getSignature().getName()); 
-    	log.info("返回值："+result);
+		} 
     	
     	return result;
   	}
+  	/**
+  	 * 通过包含RParamer注解的参数获取key 当前返回OgnlContext对象
+  	 * @param joinPoint
+  	 * @param method
+  	 * @return
+  	 */
+	protected OgnlContext createOgnl(ProceedingJoinPoint joinPoint, Method method) {
+		OgnlContext ctx = null;
+    	// 获取参数注解--> 根据注解获取对应值 --》获取缓存key
+    	for(int i = 0; i < method.getParameters().length; i++){
+    		log.info("第"+(i+1)+"个参数："+method.getParameters()[i].toString());
+    		for(Annotation annotation : method.getParameters()[i].getAnnotations()) {
+    			if(annotation instanceof RParamer) {
+    				RParamer rParamer = (RParamer) annotation;
+//    				log.info("参数有注解，"+rParamer.value()+"，"+joinPoint.getArgs()[i]);
+    				ctx = ctx == null ? new OgnlContext () : ctx;
+    				ctx.put(rParamer.value(), joinPoint.getArgs()[i]);
+    			}
+    		}
+    	}
+		return ctx;
+	}
   	/**
   	 * 处理#id 通过ognl取值
   	 * #user.id
   	 * @return
   	 */
-  	private Object key_(String key, OgnlContext ctx, Object root) {
+  	private Object key_(String key, OgnlContext ctx) {
   		log.info(key.indexOf("#"));
   		if(key.indexOf("#") == 0) {
   			try {
-  				log.info("Ognl.getValue"+key+"："+Ognl.getValue(key, ctx, root));
-				return Ognl.getValue(key, ctx, root);
+  				log.info("Ognl.getValue "+key+"："+Ognl.getValue(key, ctx, ctx.getRoot()));
+				return Ognl.getValue(key, ctx, ctx.getRoot());
 			} catch (OgnlException e) {
 				e.printStackTrace();
 			}

@@ -1,9 +1,5 @@
 package com.shop.control.fore;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
-
 import javax.servlet.http.HttpServletRequest;
 
 import org.apache.log4j.Logger;
@@ -12,15 +8,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
-import com.alibaba.fastjson.JSONArray;
-import com.alibaba.fastjson.JSONObject;
 import com.shop.Constants;
 import com.shop.control.SuperActionSupport;
 import com.shop.entity.User;
 import com.shop.entity.UserInfor;
 import com.shop.service.UserInforService;
 import com.shop.service.UserService;
-import com.shop.util.ActionUtil;
 import com.shop.util.Message;
 import com.shop.util.SnowFlakeGenerator;
 /**
@@ -219,6 +212,7 @@ public class UserAction extends SuperActionSupport implements ServletRequestAwar
 	 */
 	@SuppressWarnings("static-access")
 	public String login() {
+		log.info("get:"+userServiceImpl.get("387316976525254656"));
 		try {
 			User temp;
 			if(null != (temp = userServiceImpl.find("from User where username = ?", user.getUsername()))) {
