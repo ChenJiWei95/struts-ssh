@@ -212,7 +212,6 @@ public class UserAction extends SuperActionSupport implements ServletRequestAwar
 	 */
 	@SuppressWarnings("static-access")
 	public String login() {
-		log.info("get:"+userServiceImpl.get("387316976525254656"));
 		try {
 			User temp;
 			if(null != (temp = userServiceImpl.find("from User where username = ?", user.getUsername()))) {

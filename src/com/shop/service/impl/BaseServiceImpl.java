@@ -39,10 +39,7 @@ public class BaseServiceImpl<T> implements BaseService<T> {
 
 	public void setBaseDao(BaseDao<T> baseDao) {
 		this.baseDao = baseDao;
-	}
-	public BaseDao<T> getBaseDao() {
-		return baseDao;
-	}
+	} 
 
 	@Transactional(readOnly = true)
 	public long count(String hql, String... values) throws DBException {

@@ -5,10 +5,14 @@ import javax.servlet.http.HttpServletRequest;
 import org.apache.log4j.Logger;
 import org.apache.struts2.ServletActionContext;
 import org.apache.struts2.interceptor.ServletRequestAware;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
+import com.shop.Constants;
 import com.shop.control.SuperActionSupport;
+import com.shop.entity.User;
+import com.shop.service.CartListService;
 /**
  * @version: V 1.0 
  * @Description:
@@ -25,6 +29,9 @@ public class UcenterAction extends SuperActionSupport implements ServletRequestA
 	
 	private HttpServletRequest request;
 	
+	@Autowired
+	private CartListService cartListServiceImpl; 
+	
 	@Override
 	public void setServletRequest(HttpServletRequest arg0) {
 		request = arg0;
@@ -40,5 +47,12 @@ public class UcenterAction extends SuperActionSupport implements ServletRequestA
 		backhaul(ServletActionContext.getRequest()); 
 		return CHTML;
 	}	
+	
+	public void shopcart(){
+		User user = (User) request.getSession().getAttribute(Constants.LOGIN_SIGN);
+		StringBuilder hql = new StringBuilder("from cart_list where 1 = 1 ");
+		hql.append("AND u_id = ?");
+		cartListServiceImpl.findList(hql.toString(), user.getId());
+	}
 
 }

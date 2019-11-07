@@ -116,7 +116,6 @@ public class SuperActionSupport extends ActionSupport {
 	public String chtml(){
 		
 		// 不支持
-		new UnsupportedOperationException("不支持：save");
 		return ERROR;
 		
 	}
@@ -129,7 +128,6 @@ public class SuperActionSupport extends ActionSupport {
 	public String save(){
 		
 		// 不支持
-		new UnsupportedOperationException("不支持：save");
 		return ERROR;
 		
 	}	
@@ -142,7 +140,6 @@ public class SuperActionSupport extends ActionSupport {
 	public String update(){
 		
 		// 不支持
-		new UnsupportedOperationException("不支持：update");
 		return ERROR;
 		
 	}	
@@ -155,7 +152,6 @@ public class SuperActionSupport extends ActionSupport {
 	public String delete(){
 		
 		// 不支持
-		new UnsupportedOperationException("不支持：delete");
 		return ERROR;
 		
 	}	
@@ -168,14 +164,12 @@ public class SuperActionSupport extends ActionSupport {
 	public String list(){
 		
 		// 不支持
-		new UnsupportedOperationException("不支持：list");
 		return ERROR;
 		
 	}	
 	
 	public String main(){
 		
-		new UnsupportedOperationException("不支持：main");
 		return ERROR;
 		
 	}
@@ -185,11 +179,9 @@ public class SuperActionSupport extends ActionSupport {
 	 * 链接格式 当前类为例：testAjax(类前缀)_list(方法)
 	 * @return
 	 */
-	@SuppressWarnings("static-access")
 	public String get(){
 		
 		// 不支持
-		new UnsupportedOperationException("不支持：main");
 		return ERROR;
 		
 	}
@@ -199,11 +191,9 @@ public class SuperActionSupport extends ActionSupport {
 	 * 链接格式 当前类为例：testAjax(类前缀)_list(方法)
 	 * @return
 	 */
-	@SuppressWarnings("static-access")
 	public String delBatch(){
 		
 		// 不支持
-		new UnsupportedOperationException("不支持：main");
 		return ERROR;
 		
 	}

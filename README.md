@@ -1,6 +1,24 @@
 # struts-ssh   
 
 ## 引言  
+	* 表	
+		物流表（logistics）
+			id province city area street order_id name phone nickname
+			logisticsId province city area street orderId name phone nickname
+			String String String String String String String String String
+		订单项表(order_item)
+			id name url price discount count total g_id colour size order_id
+			orderItemId name url price discount count total goodsId colour size orderId
+			String String String j String Integer Integer j String String String String
+		购物车(cart_list)
+			id name url count g_id u_id colour size
+			id name url count goodsId userId colour size
+			String String String Integer String String String String
+		订单(order)
+			id create_date payment_status logistics_status total_amount original_amount
+			id createDate paymentStatus logisticsStatus totalAmount originalAmount
+			String String String String j j
+			
 	* 案例页面  
 		http://localhost:8080/strust-ssh/main_main_practice
 	* 注解和配置  

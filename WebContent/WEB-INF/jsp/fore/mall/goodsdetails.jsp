@@ -29,13 +29,13 @@
 	 
 	<div class="layui-container" style="overflow: hidden;"> 
 		<div style="float: left; width: 45%; height: 398px;" class="">
-			<div style="float: left; width: 80%; height: 100%; background-image:url(<%=basePath%>resource/img/good2.png); background-size: cover;" ></div>
+			<div style="float: left; width: 80%; height: 100%; background-image:url(<%=basePath%>${goods.url}); background-size: cover;" ></div>
 			<div style="float: left; width: 20%; height: 100%;">
 				<div style="width: 85%; float: right; height: 100%;"> 
-					<div style="width: 96px; height: 90px; background-image:url(<%=basePath%>resource/img/good2.png); background-size: cover;"></div>
-					<div style="width: 96px; height: 90px; margin-top: 13px; background-image:url(<%=basePath%>resource/img/good2.png); background-size: cover;"></div>
-					<div style="width: 96px; height: 90px; margin-top: 13px; background-image:url(<%=basePath%>resource/img/good2.png); background-size: cover;"></div>
-					<div style="width: 96px; height: 90px; margin-top: 13px; background-image:url(<%=basePath%>resource/img/good2.png); background-size: cover;"></div>
+					<div style="width: 96px; height: 90px; background-image:url(<%=basePath%>${goods.url}); background-size: cover;"></div>
+					<div style="width: 96px; height: 90px; margin-top: 13px; background-image:url(<%=basePath%>${goods.url}); background-size: cover;"></div>
+					<div style="width: 96px; height: 90px; margin-top: 13px; background-image:url(<%=basePath%>${goods.url}); background-size: cover;"></div>
+					<div style="width: 96px; height: 90px; margin-top: 13px; background-image:url(<%=basePath%>${goods.url}); background-size: cover;"></div>
 				</div>
 			</div> 
 		</div>
@@ -44,12 +44,12 @@
 				<div style="width: 100%; height: 46px; ">
 
 					<span class="layui-badge" style="background: #a77f2a69; font-size: 12px; padding: 2px 6px;"><s:text name="shop.common.hot" /></span>
-					<label style="font-size: 16px; font-weight: bold;">洛丽塔休闲套装</label>
+					<label style="font-size: 16px; font-weight: bold;">${goods.name}</label>
 					<label style="float: right; " class="default-color"><s:text name="shop.common.favorableRate" /> 95%</label>
 				</div>
 				<div style="width: 100%; height: 60px; background: #fbf6f2; line-height: 60px;">
 					<div style="padding-left: 20px;">
-					<span style="color: red;">￥</span><span style="color: red; font-size: 30px;">200</span>
+					<span style="color: red;">￥</span><span style="color: red; font-size: 30px;">${goods.price}</span>
 					<s:text name="shop.common.originalPrice" />
 					<span class="default-color">￥</span><span style="font-size: 20px;"><del class="default-color">210</del></span>
 					</div>
@@ -77,7 +77,7 @@
 						<div style="float: left;"><span class="default-color"><s:text name="shop.common.count" /></span></div>
 						<div style="float: left; margin-left: 20px;">
 							<span class="subtraction border" shop-click="subtraction">-</span>
-							<input type="text" class="border number" value="2"/>
+							<input type="text" class="border number" value="1"/>
 							<span class="addition border" shop-click="addition">+</span>
 						</div>
 					</div>

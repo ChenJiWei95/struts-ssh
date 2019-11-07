@@ -318,42 +318,21 @@ public class Filter implements Serializable {
 	 * @return
 	 */
 	public String getQueryOperator(){
-		
-		if(this.getOperator().equals(Operator.eq)){
-			return " = ";
-		}
-		if(this.getOperator().equals(Operator.ne)){
-			return " != ";
-		}
-		if(this.getOperator().equals(Operator.gt)){
-			return " > ";
-		}
-		if(this.getOperator().equals(Operator.lt)){
-			return " < ";
-		}
-		if(this.getOperator().equals(Operator.ge)){
-			return " >= ";
-		}
-		if(this.getOperator().equals(Operator.le)){
-			return " <= ";
-		}
-		if(this.getOperator().equals(Operator.in)){
-			return " in ";
-		}
-		if(this.getOperator().equals(Operator.lk)){
-			return " like ";
-		}
-		if(this.getOperator().equals(Operator.slk)){
-			return " like ";
-		}
-		if(this.getOperator().equals(Operator.is)){
-			return " is null ";
-		}
-		if(this.getOperator().equals(Operator.no)){
-			return " is not null ";
-		}
-		return null;
-			
+		switch (this.getOperator()) {
+			case eq: return " = ";
+			case ne: return " != ";
+			case gt: return " > ";
+			case lt: return " < ";
+			case ge: return " >= ";
+			case le: return " <= ";
+			case in: return " in ";
+			case slk: return " like ";
+			case lk: return " like ";
+			case is: return " is null ";
+			case no: return " is not null ";
+			default:
+				return null;
+		}    
 	}
 	
 	/**

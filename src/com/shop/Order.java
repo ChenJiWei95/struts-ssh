@@ -125,16 +125,15 @@ public class Order implements Serializable {
 
 	@Override
 	public boolean equals(Object obj) {
-		if (obj == null) {
+		// 为空  或者类型不相同 返回false
+		if (obj == null || getClass() != obj.getClass()) {
 			return false;
-		}
-		if (getClass() != obj.getClass()) {
-			return false;
-		}
+		} 
 		if (this == obj) {
 			return true;
 		}
 		Order other = (Order) obj;
+		// EqualsBuilder 此对象专门用于比较多个值，append左边为原值，append右边为新值。最后调用isEquals 得出结果
 		return new EqualsBuilder().append(getProperty(), other.getProperty()).append(getDirection(), other.getDirection()).isEquals();
 	}
 

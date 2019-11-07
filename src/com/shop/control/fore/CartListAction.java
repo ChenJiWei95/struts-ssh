@@ -15,8 +15,8 @@ import org.springframework.stereotype.Component;
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 import com.shop.control.SuperActionSupport;
-import com.shop.entity.#name#;
-import com.shop.service.#name#Service;
+import com.shop.entity.CartList;
+import com.shop.service.CartListService;
 import com.shop.util.ActionUtil;
 import com.shop.util.Message;
 import com.shop.util.SnowFlakeGenerator;
@@ -25,18 +25,18 @@ import com.shop.util.enums.RequestType;
 
 @Component	 		
 @Scope("prototype")
-public class #name#Action extends SuperActionSupport implements ServletRequestAware{
+public class CartListAction extends SuperActionSupport implements ServletRequestAware{
 
-	private static final Logger log = Logger.getLogger(#name#Action.class); // 日志对象
+	private static final Logger log = Logger.getLogger(CartListAction.class); // 日志对象
 
-	private #name# #name_#; 
+	private CartList cartList; 
 	
 	@Autowired
-	private #name#Service #name_#ServiceImpl; 
+	private CartListService cartListServiceImpl; 
 	
-	public #name# get#name#() {
-		#name_# = #name_# == null ? new #name#() : #name_#;
-		return #name_#;
+	public CartList getCartList() {
+		cartList = cartList == null ? new CartList() : cartList;
+		return cartList;
 	}	
 	
 	private HttpServletRequest request;
@@ -58,9 +58,9 @@ public class #name#Action extends SuperActionSupport implements ServletRequestAw
 	@RequestTypeAnno(RequestType.POST)
 	public String save(){
 		try {
-			#name_#.setId(String.valueOf(new SnowFlakeGenerator(2, 2).nextId()));
-			#name_#ServiceImpl.save(#name_#);
-			setMessage(Message.success("添加成功", #name_#));
+			cartList.setId(String.valueOf(new SnowFlakeGenerator(2, 2).nextId()));
+			cartListServiceImpl.save(cartList);
+			setMessage(Message.success("添加成功", cartList));
 		} catch (Exception e) {
 			setMessage(Message.success("添加失败"));
 		}
@@ -75,7 +75,7 @@ public class #name#Action extends SuperActionSupport implements ServletRequestAw
 	@RequestTypeAnno(RequestType.POST)
 	public String update(){
 		try {
-			#name_#ServiceImpl.update(#name_#);
+			cartListServiceImpl.update(cartList);
 			setMessage(new Message().success(getText("shop.error.updateOk")));
 		}catch(Exception e) {
 			log.info("异常"+e);
@@ -95,7 +95,7 @@ public class #name#Action extends SuperActionSupport implements ServletRequestAw
 	public String delete(){
 		
 		try {
-			#name_#ServiceImpl.delete(#name_#);
+			cartListServiceImpl.delete(cartList);
 			setMessage(new Message().success(getText("shop.error.deleteOk")));
 		}catch(Exception e) {
 			log.info("异常"+e);
@@ -120,7 +120,7 @@ public class #name#Action extends SuperActionSupport implements ServletRequestAw
 			for(int i = 0; i < json.size(); i++) 
 				ids[i] = json.getJSONObject(i).getString("id");
 			if(json.size() > 0) 
-				#name_#ServiceImpl.delBatch(ids);
+				cartListServiceImpl.delBatch(ids);
 			setMessage(new Message().success(getText("shop.error.deleteOk")));
 		}catch(Exception e) {
 			log.info("异常"+e);
@@ -141,13 +141,13 @@ public class #name#Action extends SuperActionSupport implements ServletRequestAw
 		
 		try {
 			Map<String, String> map = ActionUtil.getRequestParameterMap(request);
-			StringBuilder eq = new StringBuilder("from #name# where 1=1");
+			StringBuilder eq = new StringBuilder("from CartList where 1=1");
 			List<String> param = new ArrayList<String>(map.size());
 			for(Map.Entry<String, String> item : map.entrySet()) {
 				eq.append("AND"+item.getKey()+"=?");
 				param.add(item.getValue());
 			}
-			List<#name#> list = #name_#ServiceImpl.findList(eq.toString(), param.toArray());	
+			List<CartList> list = cartListServiceImpl.findList(eq.toString(), param.toArray());	
 			setMessage(new Message().success(getText("shop.error.getOk"), list));
 		}catch(Exception e) {
 			log.info("异常"+e);
@@ -167,7 +167,7 @@ public class #name#Action extends SuperActionSupport implements ServletRequestAw
 	public String get(){
 		
 		try {
-			#name# t = #name_#ServiceImpl.get(#name_#.getId());	
+			CartList t = cartListServiceImpl.get(cartList.getId());	
 			setMessage(new Message().success(getText("shop.error.getOk"), t));
 		}catch(Exception e) {
 			log.info("异常"+e);

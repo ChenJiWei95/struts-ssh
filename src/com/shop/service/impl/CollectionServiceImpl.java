@@ -23,7 +23,7 @@ public class CollectionServiceImpl extends BaseServiceImpl<Collection> implement
 	
 	@Resource
 	CollectionDao collectionDao;
-
+	
 	@Resource
 	public void setBaseDao(CollectionDao collectionDao) {
 		super.setBaseDao(collectionDao);

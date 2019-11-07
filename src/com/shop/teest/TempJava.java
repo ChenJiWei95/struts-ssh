@@ -56,21 +56,21 @@ public class TempJava {
 //	private static Integer[] commond = {0, 1, 2, 3, 4, 5, 6, 7};
 //	private static Integer[] commond = {};
 //	private static Integer[] commond = {0, 1, 2, 3, 4, 5, 6};
-//	private static Integer[] commond = {2, 1, 0, 4, 5, 8};
+	private static Integer[] commond = {2, 1, 0, 4, 5, 8};
 //	private static Integer[] commond = {2, 1, 0, 4, 8};
-	private static Integer[] commond = {5};
+//	private static Integer[] commond = {5};
 	// 实体类策略  普通通【GENERAL_STRATEGY】 hibernate注解【HIBER_ANNOTATION_STRATEGY】
 	private static String entityStrategy = HIBER_ANNOTATION_STRATEGY;
 	
 	public static void main(String[] args) throws IOException {
-		String fileds 	= "id name price goodsId";
-		String columns	= "id name price goods_id";	// 其中的值对应 fileds 用于数据库表字段的对应
-		String types  	= "String String BigDecimal String"; // BigDecimal String Integer
+		String fileds 	= "id name url count goodsId userId colour size";
+		String columns	= "id name url count g_id u_id colour size";	// 其中的值对应 fileds 用于数据库表字段的对应
+		String types  	= "String String String Integer String String String String"; // BigDecimal String Integer
 		String texts 	= "ID 描述 时间 状态";
 		
 		ContextConfig c = new ContextConfig();
-		c.setTable("user");
-		c.setName_("userInfor");
+		c.setTable("cart_list");
+		c.setName_("cartList");
 		c.setFileds(fileds);
 		c.setColumns(columns);
 		c.setTypes(types);

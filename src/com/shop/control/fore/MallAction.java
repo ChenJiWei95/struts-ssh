@@ -1,14 +1,19 @@
 package com.shop.control.fore;
 
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 
 import org.apache.log4j.Logger;
 import org.apache.struts2.ServletActionContext;
 import org.apache.struts2.interceptor.ServletRequestAware;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
 import com.shop.control.SuperActionSupport;
+import com.shop.entity.Goods;
+import com.shop.service.GoodsService;
 /**
  * @version: V 1.0 
  * @Description:
@@ -24,6 +29,9 @@ public class MallAction extends SuperActionSupport implements ServletRequestAwar
 	private static final Logger log = Logger.getLogger(MallAction.class); // 日志对象
 	
 	private HttpServletRequest request;
+	
+	@Autowired
+	private GoodsService goodsServiceImpl;
 	
 	@Override
 	public void setServletRequest(HttpServletRequest arg0) {
@@ -41,7 +49,34 @@ public class MallAction extends SuperActionSupport implements ServletRequestAwar
 	}
 	
 	public void goodsdetails(){
-		log.info(request.getParameter("id"));
+		Goods goods = goodsServiceImpl.get(request.getParameter("id"));
+		request.getSession().setAttribute("goods", goods);
+	}
+	public void furnishing(){
+		// 调用家居页面
+		StringBuilder eq = new StringBuilder("from Goods where type=?");
+		List<Goods> goodsList = goodsServiceImpl.findList(eq.toString(), "01");
+		request.getSession().setAttribute("goodsList", goodsList);
+	}
+	public void homeappliances(){
+		StringBuilder eq = new StringBuilder("from Goods where type=?");
+		List<Goods> goodsList = goodsServiceImpl.findList(eq.toString(), "02");
+		request.getSession().setAttribute("goodsList", goodsList);
+	}
+	public void washandcare(){
+		StringBuilder eq = new StringBuilder("from Goods where type=?");
+		List<Goods> goodsList = goodsServiceImpl.findList(eq.toString(), "03");
+		request.getSession().setAttribute("goodsList", goodsList);
+	}
+	public void kitchenutensils(){
+		StringBuilder eq = new StringBuilder("from Goods where type=?");
+		List<Goods> goodsList = goodsServiceImpl.findList(eq.toString(), "04");
+		request.getSession().setAttribute("goodsList", goodsList);
+	}
+	public void necessities(){
+		StringBuilder eq = new StringBuilder("from Goods where type=?");
+		List<Goods> goodsList = goodsServiceImpl.findList(eq.toString(), "05");
+		request.getSession().setAttribute("goodsList", goodsList);
 	}
 
 }

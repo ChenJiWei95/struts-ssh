@@ -38,20 +38,20 @@ public class UserServiceImpl extends BaseServiceImpl<User> implements UserServic
 	/*@Transactional(readOnly = true)
 	@RCacheable(key="#id")
 	public User get(@RParamer("id")String id) throws DBException {
-		return getBaseDao().get(id);
+		return userDao.get(id);
 	}*/
 	
 	// 缓存 key未指定 默认参数拼接作为key
 	/*@Transactional(readOnly = true)
 	@RCacheable
 	public User find(String hql, String... values) throws DBException {
-		return getBaseDao().find(hql, values);
+		return userDao.find(hql, values);
 	}*/
 	
 	// 清除
 	/*@Transactional
 	@RCacheEvict(key="#user.id")
 	public void update(@RParamer("user")User entity) throws DBException {
-		getBaseDao().update(entity);
+		userDao.update(entity);
 	}*/
 }
