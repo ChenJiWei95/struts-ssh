@@ -7,7 +7,14 @@ import org.apache.struts2.ServletActionContext;
 
 import com.opensymphony.xwork2.ActionInvocation;
 import com.opensymphony.xwork2.interceptor.AbstractInterceptor;
-
+/**
+ * @version: V 1.0 
+ * @Description: 
+ * 更好的支持struts中英文国际化<br>
+ * 传自身uri让语言切换模块化自动提供uri
+ * @author: cjw 
+ * @date: 
+ */
 public class CommonInterceptor extends AbstractInterceptor {
  
 	private static final long serialVersionUID = 5543269481004367532L;

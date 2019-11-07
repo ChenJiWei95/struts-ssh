@@ -160,7 +160,7 @@ public class BaseDaoImpl<T> implements BaseDao<T> {
 		session.update(entity);
 	}
 
-	public List<T> findList(String hql, String... values) throws DBException {
+	public List<T> findList(String hql, Object... values) throws DBException {
 		Query query = this.getCurrentSession().createQuery(hql);
 		for (int i = 0; i < values.length; i++) {
 			query.setParameter(i, values[i]);
@@ -646,7 +646,6 @@ public class BaseDaoImpl<T> implements BaseDao<T> {
 			}
 			System.out.println(hql);
 		}
-
 		//所有占位符拼接完成后进行数据库查询条数
 		Object count = query.uniqueResult();*/
 		
