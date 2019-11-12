@@ -1,5 +1,5 @@
 # struts-ssh   
-
+	项目依托Spring、Struts2、Hibernate 环境运行，并集成redis分布式缓存的商城项目。始于19年十月，对相关技术的进一步验证与实践。
 ## 引言  
 	* 表	
 		物流表（logistics）

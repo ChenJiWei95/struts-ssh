@@ -1,6 +1,8 @@
 package com.shop.entity;
 
 
+import java.math.BigDecimal;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -8,7 +10,7 @@ import javax.persistence.Table;
 
 
 @Entity
-@Table(name = "cartList")
+@Table(name = "cart_list")
 public class CartList {
 	@Id
 	@Column(name = "id")
@@ -27,6 +29,10 @@ public class CartList {
 	private String colour;
 	@Column(name = "size")
 	private String size;
+	@Column(name = "price")
+	private BigDecimal price;
+	@Column(name = "discount")
+	private Integer discount;
 
 
 	public String getId() {
@@ -77,4 +83,17 @@ public class CartList {
 	public void setSize(String size) {
 		this.size = size;
 	}
+	public BigDecimal getPrice() {
+		return price;
+	}
+	public void setPrice(BigDecimal price) {
+		this.price = price;
+	}
+	public Integer getDiscount() {
+		return discount;
+	}
+	public void setDiscount(Integer discount) {
+		this.discount = discount;
+	}
+	 
 }

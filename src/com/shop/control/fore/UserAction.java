@@ -219,7 +219,7 @@ public class UserAction extends SuperActionSupport implements ServletRequestAwar
 				if (temp.getLoginCount() >= 5) {
 			    	setMessage(new Message().error(getText("shop.error.accountLocked")));
 			    } else if(Constants.COMMON_STATUS_DISABLEED.equals(temp.getState())) {
-					setMessage(new Message().error(getText("shop.error.passError")));
+					setMessage(new Message().error(getText("shop.error.accountsDisabled")));
 				} else if(!temp.getPassword().equals(user.getPassword())) {
 					setMessage(new Message().error(getText("shop.error.passError")));
 					temp.setLoginCount(temp.getLoginCount()+1);

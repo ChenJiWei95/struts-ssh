@@ -30,8 +30,6 @@ public class ForeAction extends SuperActionSupport implements ServletRequestAwar
 	
 	private HttpServletRequest request;
 	
-	
-	
 	@Override  
     public void setServletRequest(HttpServletRequest arg0) {  
         request = arg0;  
@@ -41,10 +39,7 @@ public class ForeAction extends SuperActionSupport implements ServletRequestAwar
         return request;  
     }
 	
-	public String main(){	
-		log.info("----------------------"+request.getSession().getAttribute("WW_TRANS_I18N_LOCALE"));
-		/*log.info("主要页面跳转：");
-		log.info("跳转完毕：");*/
+	public String main(){	 
 		backhaul(request);
 		return MAIN;
 	}

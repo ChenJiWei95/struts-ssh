@@ -14,13 +14,17 @@ import org.springframework.stereotype.Component;
 
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
+import com.shop.Constants;
+import com.shop.annotation.RequestTypeAnno;
 import com.shop.control.SuperActionSupport;
 import com.shop.entity.CartList;
+import com.shop.entity.Goods;
+import com.shop.entity.User;
 import com.shop.service.CartListService;
+import com.shop.service.GoodsService;
 import com.shop.util.ActionUtil;
 import com.shop.util.Message;
 import com.shop.util.SnowFlakeGenerator;
-import com.shop.annotation.RequestTypeAnno;
 import com.shop.util.enums.RequestType;
 
 @Component	 		
@@ -33,6 +37,9 @@ public class CartListAction extends SuperActionSupport implements ServletRequest
 	
 	@Autowired
 	private CartListService cartListServiceImpl; 
+	
+	@Autowired
+	private GoodsService goodsServiceImpl; 
 	
 	public CartList getCartList() {
 		cartList = cartList == null ? new CartList() : cartList;
@@ -58,7 +65,22 @@ public class CartListAction extends SuperActionSupport implements ServletRequest
 	@RequestTypeAnno(RequestType.POST)
 	public String save(){
 		try {
+			User user = (User) request.getSession().getAttribute(Constants.LOGIN_SIGN);
+			if(cartList == null) cartList = new CartList();
 			cartList.setId(String.valueOf(new SnowFlakeGenerator(2, 2).nextId()));
+			cartList.setUserId(user.getId());
+			
+			cartList.setGoodsId("");//传值
+			cartList.setColour("");	//传值
+			cartList.setUrl("");	//传值
+			cartList.setCount(0);	//传值
+			cartList.setSize("");	//传值
+			
+			Goods goods = goodsServiceImpl.get("");//传值
+			cartList.setName(goods.getName());
+			cartList.setDiscount(goods.getDiscount());
+			cartList.setPrice(goods.getPrice());
+			
 			cartListServiceImpl.save(cartList);
 			setMessage(Message.success("添加成功", cartList));
 		} catch (Exception e) {

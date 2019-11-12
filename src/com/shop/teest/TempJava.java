@@ -434,7 +434,7 @@ public class TempJava {
 		c.write(System.lineSeparator(), true);
 		
 		c.write("@Entity", true);
-		c.write("@Table(name = \""+ conf.getName_() +"\")", true);
+		c.write("@Table(name = \""+ conf.getTable() +"\")", true);
 		c.write("public class "+conf.getName()+" {", true);
 		
 		String[] fileds = conf.getFileds();
