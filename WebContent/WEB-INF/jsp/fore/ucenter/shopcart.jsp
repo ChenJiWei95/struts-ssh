@@ -12,7 +12,7 @@
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
   <title><s:text name="shop.common.addShopCart"/></title> 
   <link rel="stylesheet" href="<%=basePath%>resource/layui/css/layui.css" media="all">
-  <link rel="stylesheet" href="<%=basePath%>resource/style/mall.css" media="all">
+  <link rel="stylesheet" href="<%=basePath%>resource/style/mall.css" media="all"> 
  </head>
  <body>
  	<%@ include file="../../include/forePage/mall/languageBt.jsp" %>
