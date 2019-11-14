@@ -144,7 +144,7 @@ public class #name#Action extends SuperActionSupport implements ServletRequestAw
 			StringBuilder eq = new StringBuilder("from #name# where 1=1");
 			List<String> param = new ArrayList<String>(map.size());
 			for(Map.Entry<String, String> item : map.entrySet()) {
-				eq.append("AND"+item.getKey()+"=?");
+				eq.append(" AND "+item.getKey()+"=?");
 				param.add(item.getValue());
 			}
 			List<#name#> list = #name_#ServiceImpl.findList(eq.toString(), param.toArray());	

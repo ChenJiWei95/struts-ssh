@@ -1,5 +1,7 @@
 package com.shop.control.fore;
 
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 
 import org.apache.log4j.Logger;
@@ -11,6 +13,7 @@ import org.springframework.stereotype.Component;
 
 import com.shop.Constants;
 import com.shop.control.SuperActionSupport;
+import com.shop.entity.CartList;
 import com.shop.entity.User;
 import com.shop.service.CartListService;
 /**
@@ -52,7 +55,8 @@ public class UcenterAction extends SuperActionSupport implements ServletRequestA
 		User user = (User) request.getSession().getAttribute(Constants.LOGIN_SIGN);
 		StringBuilder hql = new StringBuilder("from cart_list where 1 = 1 ");
 		hql.append("AND u_id = ?");
-		cartListServiceImpl.findList(hql.toString(), user.getId());
+		 List<CartList> cartlist = cartListServiceImpl.findList(hql.toString(), user.getId());
+		 request.getSession().setAttribute("cartlist", cartlist);
 	}
 
 }

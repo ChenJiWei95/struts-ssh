@@ -7,6 +7,7 @@ import java.util.Map;
 import javax.servlet.http.HttpServletRequest;
 
 import org.apache.log4j.Logger;
+import org.apache.struts2.dispatcher.Parameter;
 import org.apache.struts2.interceptor.ServletRequestAware;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
@@ -14,6 +15,7 @@ import org.springframework.stereotype.Component;
 
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
+import com.opensymphony.xwork2.ActionContext;
 import com.shop.Constants;
 import com.shop.annotation.RequestTypeAnno;
 import com.shop.control.SuperActionSupport;
@@ -65,23 +67,27 @@ public class CartListAction extends SuperActionSupport implements ServletRequest
 	@RequestTypeAnno(RequestType.POST)
 	public String save(){
 		try {
+			Map<String, String> map = ActionUtil.getRequestParameterMap(request);
+			
 			User user = (User) request.getSession().getAttribute(Constants.LOGIN_SIGN);
 			if(cartList == null) cartList = new CartList();
 			cartList.setId(String.valueOf(new SnowFlakeGenerator(2, 2).nextId()));
 			cartList.setUserId(user.getId());
 			
-			cartList.setGoodsId("");//传值
-			cartList.setColour("");	//传值
+			cartList.setGoodsId(map.get("id"));//传值
+			cartList.setColour("墨绿");//传值
 			cartList.setUrl("");	//传值
 			cartList.setCount(0);	//传值
-			cartList.setSize("");	//传值
+			cartList.setSize("L");	//传值
 			
-			Goods goods = goodsServiceImpl.get("");//传值
+			Goods goods = goodsServiceImpl.get(map.get("id"));//传值
+			if("".equals(cartList.getUrl())) cartList.setUrl(goods.getUrl());	
 			cartList.setName(goods.getName());
 			cartList.setDiscount(goods.getDiscount());
 			cartList.setPrice(goods.getPrice());
 			
 			cartListServiceImpl.save(cartList);
+			user = null;
 			setMessage(Message.success("添加成功", cartList));
 		} catch (Exception e) {
 			setMessage(Message.success("添加失败"));
@@ -166,9 +172,12 @@ public class CartListAction extends SuperActionSupport implements ServletRequest
 			StringBuilder eq = new StringBuilder("from CartList where 1=1");
 			List<String> param = new ArrayList<String>(map.size());
 			for(Map.Entry<String, String> item : map.entrySet()) {
-				eq.append("AND"+item.getKey()+"=?");
+				eq.append(" AND "+item.getKey()+"=?");
 				param.add(item.getValue());
 			}
+			User user = (User) request.getSession().getAttribute(Constants.LOGIN_SIGN);
+			eq.append(" AND u_id="+user.getId());
+			user = null;
 			List<CartList> list = cartListServiceImpl.findList(eq.toString(), param.toArray());	
 			setMessage(new Message().success(getText("shop.error.getOk"), list));
 		}catch(Exception e) {

@@ -51,7 +51,7 @@
 					<div style="padding-left: 20px;">
 					<span style="color: red;">￥</span><span style="color: red; font-size: 30px;">${goods.price}</span>
 					<s:text name="shop.common.originalPrice" />
-					<span class="default-color">￥</span><span style="font-size: 20px;"><del class="default-color">210</del></span>
+					<span class="default-color">￥</span><span style="font-size: 20px;"><del class="default-color">${goods.price}</del></span>
 					</div>
 				</div>
 				<div style="width: 100%; line-height: 60px;">
@@ -84,9 +84,9 @@
 				</div>
 				<div style="width: 100%; line-height: 80px;">
 					<div style="padding-left: 10px;">
-						<span class="buyNow border"><s:text name="shop.common.buy" /></span>
-						<span class="addCarList border"><i class="layui-icon layui-icon-cart" style="color: #fff;font-size: 20px; margin-right: 4px;"></i><s:text name="shop.common.addShopCart" /></span>
-						<span class="addColect border"><s:text name="shop.common.addCollection" /><i class="layui-icon layui-icon-rate" style="color: #a77f2a8c;font-size: 20px; margin-right: 4px;"></i></span>
+						<span class="buyNow border" shop-click="buy"><s:text name="shop.common.buy" /></span>
+						<span class="addCarList border" shop-click="addCart"><i class="layui-icon layui-icon-cart" style="color: #fff;font-size: 20px; margin-right: 4px;"></i><s:text name="shop.common.addShopCart" /></span>
+						<span class="addColect border" shop-click="addCol"><s:text name="shop.common.addCollection" /><i class="layui-icon layui-icon-rate" style="color: #a77f2a8c;font-size: 20px; margin-right: 4px;"></i></span>
 					</div>
 				</div>
 			</div>
@@ -158,9 +158,30 @@
  	layui.use(['layer', 'element', 'util'], function(){
  		var element = layui.element
  		,util = layui.util
+ 		,$ = layui.$
  		,layer = layui.layer;
  		util.addSubCtrlbtn(function(data){ // 加减器
- 			layer.msg(data.type);
+ 			layer.msg(data.type); 
+ 		});
+ 		util.shopClick({
+ 			buy: function(){
+ 				util.formAjax({
+ 					url: '<%=basePath%>'
+ 					,data: {id: '${goods.id}'}
+ 				});
+ 			}
+ 			,addCart: function(){
+ 				util.formAjax({
+ 					url: '<%=basePath%>cartList_save'
+ 					,data: {id: '${goods.id}', count: $(".number").eq(0)}
+ 				});
+ 			}
+ 			,addCol: function(){
+ 				util.formAjax({
+ 					url: '<%=basePath%>collection_save'
+ 					,data: {id: '${goods.id}'}
+ 				});
+ 			}
  		});
  		layer.msg("<s:text name="shop.common.homeLayuiAlert"/>");
  	})

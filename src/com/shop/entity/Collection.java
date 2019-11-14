@@ -22,6 +22,10 @@ public class Collection implements Serializable {
 	private BigDecimal price;
 	@Column(name = "goods_id")
 	private String goodsId;
+	@Column(name = "user_id")
+	private String userId;
+	@Column(name = "url")
+	private String url;
 
 
 	public String getId() {
@@ -47,5 +51,17 @@ public class Collection implements Serializable {
 	}
 	public void setGoodsId(String goodsId) {
 		this.goodsId = goodsId;
+	}
+	public String getUserId() {
+		return userId;
+	}
+	public void setUserId(String userId) {
+		this.userId = userId;
+	}
+	public String getUrl() {
+		return url;
+	}
+	public void setUrl(String url) {
+		this.url = url;
 	}
 }

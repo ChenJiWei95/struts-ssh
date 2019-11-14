@@ -2,6 +2,8 @@
     pageEncoding="UTF-8"%>
 <%@taglib prefix="s" uri="/struts-tags" %>
 
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+
 <%@ include file="../../include/forePage/common.jsp" %>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -30,15 +32,39 @@
 			<div class="layui-col-md2"><s:text name="shop.common.subtotal"/></div>
 			<div class="layui-col-md1"><s:text name="shop.common.operation"/></div>
 		</div>
+		<c:forEach begin="0" items="${cartlist}" step="1" var="CartList" varStatus="varsta">
 		<div class="layui-row cartlist-etc pointer" style="overflow: hidden;">
 			<div class="layui-col-md1 check">
 				<div class="layui-form-item">
 					<input type="checkbox" name="all" lay-skin="primary" title="">
 				</div>
 			</div>
-			<div class="layui-col-md4" lay-href="<%=basePath%>mall_chtml_goodsdetails?id=123456">
+			<div class="layui-col-md4" lay-href="<%=basePath%>mall_chtml_goodsdetails?id=${CartList.goodsId}">
 				<%-- <div style="background-image: url(<%=basePath%>resource/img/good2.png); width: 100px; height: 100px; float: left;"></div>
-				 --%><img src="<%=basePath%>resource/img/good2.png" width="100px" height= "100px"/>
+				 --%><img src="<%=basePath%>${CartList.url}" width="100px" height= "100px"/>
+				<span>${CartList.name}</span>
+			</div>
+			<div class="layui-col-md2"><span><font style="color: red; font-size: 16px;">￥${CartList.price}</font><del>￥${CartList.price}</del></span></div>
+			<div class="layui-col-md2">
+				<div style="float: left; margin-left: 20px;">
+					<span class="subtraction border" shop-click="subtraction">-</span>
+					<input type="text" class="border number" value="${CartList.count}"/>
+					<span class="addition border" shop-click="addition">+</span>
+				</div>
+			</div>
+			<div class="layui-col-md2"><span>￥${CartList.price*CartList.count}</span></div>
+			<div class="layui-col-md1"><span class="delete"><s:text name="shop.common.delete"/></span></div>
+		</div>
+		</c:forEach>
+		<%-- <div class="layui-row cartlist-etc pointer" style="overflow: hidden;">
+			<div class="layui-col-md1 check">
+				<div class="layui-form-item">
+					<input type="checkbox" name="all" lay-skin="primary" title="">
+				</div>
+			</div>
+			<div class="layui-col-md4" lay-href="<%=basePath%>mall_chtml_goodsdetails?id=123456">
+				<div style="background-image: url(<%=basePath%>resource/img/good2.png); width: 100px; height: 100px; float: left;"></div>
+				<img src="<%=basePath%>resource/img/good2.png" width="100px" height= "100px"/>
 				<span>轻奢休闲套桌</span>
 			</div>
 			<div class="layui-col-md2"><span><font style="color: red; font-size: 16px;">￥200</font><del>￥240</del></span></div>
@@ -59,8 +85,8 @@
 				</div>
 			</div>
 			<div class="layui-col-md4" lay-href="<%=basePath%>mall_chtml_goodsdetails?id=123456">
-				<%-- <div style="background-image: url(<%=basePath%>resource/img/good2.png); width: 100px; height: 100px; float: left;"></div>
-				 --%><img src="<%=basePath%>resource/img/good2.png" width="100px" height= "100px"/>
+				<div style="background-image: url(<%=basePath%>resource/img/good2.png); width: 100px; height: 100px; float: left;"></div>
+				<img src="<%=basePath%>resource/img/good2.png" width="100px" height= "100px"/>
 				<span>轻奢休闲套桌</span>
 			</div>
 			<div class="layui-col-md2">
@@ -75,7 +101,7 @@
 			</div>
 			<div class="layui-col-md2"><span>￥400</span></div>
 			<div class="layui-col-md1"><span class="delete"><s:text name="shop.common.delete"/></span></div>
-		</div>
+		</div> --%>
 	</div>
 	<div class="layui-container settlement-bar" style="padding-left: 0; padding-right: 0; height: 80px; background: #99999930;">
 		<div class="layui-row">
