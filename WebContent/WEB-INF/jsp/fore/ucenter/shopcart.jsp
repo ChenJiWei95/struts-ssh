@@ -94,9 +94,11 @@
  		});
  		util.shopClick({
  			goodsDelete: function(e){
+ 				var data = {};
+ 				data["cartList.id"] = e.data("id");
  				util.formAjax({
  					url: '<%=basePath%>cartList_delete'
- 					,data: {cartList.id: e.data("id")}
+ 					,data: data
  				});
  			}
  			,selected: function(e){
@@ -118,9 +120,9 @@
  				// 触发金额计算
  			}
  			,selectedAll: function(e){
- 				if(e.checked) $(".select-box").forEach(item->item.removeAttr("checked"))
+ 				if(e.checked) $(".select-box").forEach(item => item.removeAttr("checked"))
  				else {
- 					$(".select-box").forEach(item->item.prop("checked","checked"))
+ 					$(".select-box").forEach(item => item.prop("checked","checked"))
  					$(".total-amount").eq(0).text('<s:text name="shop.common.currency"/>0.00')
  				}
  				// 触发金额计算
@@ -131,6 +133,13 @@
  		// 计算总金额
  		function calAmount(){
  			// 1 加减数量    2 勾选     
+ 			var sum = 0; 
+ 			$(".cartlist-etc").forEach(item=>{
+ 				// 找到勾选计算总计
+ 				if(item.find(".select-box").checked){
+ 					sum += item.find(".mini-total-amount").text();
+ 				}
+ 			});
  		}
  		// 总数据 根据id选择数据
  	})

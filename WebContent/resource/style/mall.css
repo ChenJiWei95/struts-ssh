@@ -237,10 +237,7 @@
     }
     
     .color-selected-btn, .size-selected-btn {
-    	border-color: #a77f2a8c;
-    	padding: 4px 20px;
-    	margin-left: 15px;
-    	color: #999;
+    	border-color: #a77f2a8c !important; 
     }
     
     .buyNow, .addCarList, .addColect {

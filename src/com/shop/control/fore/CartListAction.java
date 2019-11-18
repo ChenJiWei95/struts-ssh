@@ -46,7 +46,7 @@ public class CartListAction extends SuperActionSupport implements ServletRequest
 	public CartList getCartList() {
 		cartList = cartList == null ? new CartList() : cartList;
 		return cartList;
-	}	
+	}
 	
 	private HttpServletRequest request;
 	
