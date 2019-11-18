@@ -29,7 +29,7 @@
 	 
 	<div class="layui-container" style="overflow: hidden;"> 
 		<div style="float: left; width: 45%; height: 398px;" class="">
-			<div style="float: left; width: 80%; height: 100%; background-image:url(<%=basePath%>${goods.url}); background-size: cover;" ></div>
+			<div class="main-img" style="float: left; width: 80%; height: 100%; background-image:url(<%=basePath%>${goods.url}); background-size: cover;" ></div>
 			<div style="float: left; width: 20%; height: 100%;">
 				<div style="width: 85%; float: right; height: 100%;"> 
 					<div style="width: 96px; height: 90px; background-image:url(<%=basePath%>${goods.url}); background-size: cover;"></div>
@@ -49,7 +49,7 @@
 				</div>
 				<div style="width: 100%; height: 60px; background: #fbf6f2; line-height: 60px;">
 					<div style="padding-left: 20px;">
-					<span style="color: red;">￥</span><span style="color: red; font-size: 30px;">${goods.price}</span>
+					<span style="color: red;">￥</span><span style="color: red; font-size: 30px;">${goods.price*goods.discount}</span>
 					<s:text name="shop.common.originalPrice" />
 					<span class="default-color">￥</span><span style="font-size: 20px;"><del class="default-color">${goods.price}</del></span>
 					</div>
@@ -57,21 +57,21 @@
 				<div style="width: 100%; line-height: 60px;">
 					<div style="padding-left: 10px;">
 					<span class="default-color"><s:text name="shop.common.colour" /></span>
-					<span class="border colorBtn">白色</span>
-					<span class="border colorBtn">雅灰</span>
-					<span class="border colorBtn">银灰</span>
-					<span class="border colorBtn">墨绿</span> 
+					<span class="border color-selected-btn" shop-click="colorSelect">白色</span>
+					<span class="border color-btn" shop-click="colorSelect">雅灰</span>
+					<span class="border color-btn" shop-click="colorSelect">银灰</span>
+					<span class="border color-btn" shop-click="colorSelect">墨绿</span> 
 					</div>
 				</div>
 				<div style="width: 100%; line-height: 60px;">
 					<div style="padding-left: 10px;">
 					<span class="default-color"><s:text name="shop.common.size" /></span>
-					<span class="border colorBtn">S</span>
-					<span class="border colorBtn">M</span>
-					<span class="border colorBtn">L</span>
-					<span class="border colorBtn">XL</span> 
+					<span class="border size-selected-btn" shop-click="sizeSelect">S</span>
+					<span class="border size-btn" shop-click="sizeSelect">M</span>
+					<span class="border size-btn" shop-click="sizeSelect">L</span>
+					<span class="border size-btn" shop-click="sizeSelect">XL</span>
 					</div>
-				</div>	
+				</div>
 				<div style="width: 100%; line-height: 60px; overflow: hidden;">
 					<div style="padding-left: 10px;">
 						<div style="float: left;"><span class="default-color"><s:text name="shop.common.count" /></span></div>
@@ -120,7 +120,7 @@
 			                <a href="javascript:;">从移动</a>
 			                <a href="javascript:;">11分钟前</a>
 			              </span>
-			            </p>         
+			            </p>
 			         </div>
 			          <p class="message-text">历经打磨，@索尼中国 再献新作品—OLED电视A8F完美诞生。很开心一起参加了A8F的“首映礼”！[鼓掌]正如我们演员对舞台的热爱，索尼对科技与艺术的追求才创造出了让人惊喜的作品。作为A1兄弟款，A8F沿袭了黑科技“屏幕发声技术”和高清画质，色彩的出众表现和高端音质，让人在体验的时候如同身临其境。A8F，这次的“视帝”要颁发给你！  索尼官网预售： O网页链接 索尼旗舰店预售：</p>
 			       </div>
@@ -173,7 +173,12 @@
  			,addCart: function(){
  				util.formAjax({
  					url: '<%=basePath%>cartList_save'
- 					,data: {id: '${goods.id}', count: $(".number").eq(0)}
+ 					,data: {id: '${goods.id}'
+ 						, count: $(".number").eq(0)
+ 						, color: $(".color-selected-btn").eq(0).text()
+ 						, size: $(".size-selected-btn").eq(0).text()
+ 						, url: '${goods.url}'
+ 					}
  				});
  			}
  			,addCol: function(){
@@ -181,6 +186,14 @@
  					url: '<%=basePath%>collection_save'
  					,data: {id: '${goods.id}'}
  				});
+ 			}
+ 			,colorSelect: function(e){
+ 				$(".color-selected-btn").eq.removeClass("color-selected-btn").addClass("color-btn");
+ 				e.removeClass("color-btn").addClass("color-selected-btn");
+ 			}
+ 			,sizeSelect: function(e){
+ 				$(".size-selected-btn").eq.removeClass("size-selected-btn").addClass("size-btn");
+ 				e.removeClass("size-btn").addClass("size-selected-btn");
  			}
  		});
  		layer.msg("<s:text name="shop.common.homeLayuiAlert"/>");

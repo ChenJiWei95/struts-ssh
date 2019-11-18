@@ -28,7 +28,7 @@ public class Goods implements Serializable {
 	private BigDecimal price;
 	
 	@Column(name = "discount")
-	private Integer discount;
+	private BigDecimal discount;
 	
 	@Column(name = "url")
 	private String url;
@@ -75,12 +75,12 @@ public class Goods implements Serializable {
 	public void setPrice(BigDecimal price) {
 		this.price = price;
 	}
-
-	public Integer getDiscount() {
+    
+	public BigDecimal getDiscount() {
 		return discount;
 	}
 
-	public void setDiscount(Integer discount) {
+	public void setDiscount(BigDecimal discount) {
 		this.discount = discount;
 	}
 

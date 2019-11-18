@@ -202,23 +202,26 @@
     .settlement-bar .check {
     	/* padding: 20px 7px; */
     }
+    
     .settlement-bar div {
     	line-height: 80px;
     }
     
     /* gooodsdetails */
-    .colorBtn, .sizeBtn {
+    .color-btn, .size-btn {
     	border-color: #e6e6e6bf; 
     	padding: 4px 20px;
     	margin-left: 15px;
     	color: #999;
     }
+    
     .subtraction, .number, .addition {
     	border-color: #e6e6e6bf; 
     	padding: 4px 20px; 
     	color: #999; 
     	text-align: center;
     }
+    
     .number  {
     	width: 30px;
     	padding: 4px 10px;
@@ -231,6 +234,13 @@
     .more-btn:hover, .buyNow:hover, .addCarList:hover, .addColect:hover, .colorBtn:hover, .subtraction:hover, .addition:hover {
     	border-color: #a77f2a8c !important;
     	cursor: pointer;
+    }
+    
+    .color-selected-btn, .size-selected-btn {
+    	border-color: #a77f2a8c;
+    	padding: 4px 20px;
+    	margin-left: 15px;
+    	color: #999;
     }
     
     .buyNow, .addCarList, .addColect {

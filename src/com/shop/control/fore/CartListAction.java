@@ -75,10 +75,10 @@ public class CartListAction extends SuperActionSupport implements ServletRequest
 			cartList.setUserId(user.getId());
 			
 			cartList.setGoodsId(map.get("id"));//传值
-			cartList.setColour("墨绿");//传值
-			cartList.setUrl("");	//传值
-			cartList.setCount(0);	//传值
-			cartList.setSize("L");	//传值
+			cartList.setColour(map.get("color"));//传值
+			cartList.setUrl(map.get("url"));	//传值
+			cartList.setCount(Integer.parseInt(map.get("count")));	//传值
+			cartList.setSize(map.get("size"));	//传值
 			
 			Goods goods = goodsServiceImpl.get(map.get("id"));//传值
 			if("".equals(cartList.getUrl())) cartList.setUrl(goods.getUrl());	
@@ -87,7 +87,7 @@ public class CartListAction extends SuperActionSupport implements ServletRequest
 			cartList.setPrice(goods.getPrice());
 			
 			cartListServiceImpl.save(cartList);
-			user = null;
+			user = null; map = null;
 			setMessage(Message.success("添加成功", cartList));
 		} catch (Exception e) {
 			setMessage(Message.success("添加失败"));

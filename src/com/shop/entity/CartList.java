@@ -32,7 +32,7 @@ public class CartList {
 	@Column(name = "price")
 	private BigDecimal price;
 	@Column(name = "discount")
-	private Integer discount;
+	private BigDecimal discount;
 
 
 	public String getId() {
@@ -89,11 +89,12 @@ public class CartList {
 	public void setPrice(BigDecimal price) {
 		this.price = price;
 	}
-	public Integer getDiscount() {
+	public BigDecimal getDiscount() {
 		return discount;
 	}
-	public void setDiscount(Integer discount) {
+	public void setDiscount(BigDecimal discount) {
 		this.discount = discount;
 	}
+	
 	 
 }
