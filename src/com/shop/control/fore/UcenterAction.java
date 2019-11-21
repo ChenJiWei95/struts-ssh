@@ -14,8 +14,10 @@ import org.springframework.stereotype.Component;
 import com.shop.Constants;
 import com.shop.control.SuperActionSupport;
 import com.shop.entity.CartList;
+import com.shop.entity.Collection;
 import com.shop.entity.User;
 import com.shop.service.CartListService;
+import com.shop.service.CollectionService;
 /**
  * @version: V 1.0 
  * @Description:
@@ -35,6 +37,9 @@ public class UcenterAction extends SuperActionSupport implements ServletRequestA
 	@Autowired
 	private CartListService cartListServiceImpl; 
 	
+	@Autowired
+	private CollectionService collectionServiceImpl; 
+	
 	@Override
 	public void setServletRequest(HttpServletRequest arg0) {
 		request = arg0;
@@ -53,10 +58,19 @@ public class UcenterAction extends SuperActionSupport implements ServletRequestA
 	
 	public void shopcart(){
 		User user = (User) request.getSession().getAttribute(Constants.LOGIN_SIGN);
-		StringBuilder hql = new StringBuilder("from cart_list where 1 = 1 ");
-		hql.append("AND u_id = ?");
-		 List<CartList> cartlist = cartListServiceImpl.findList(hql.toString(), user.getId());
-		 request.getSession().setAttribute("cartlist", cartlist);
+		StringBuilder hql = new StringBuilder("from CartList where 1 = 1 ");
+		hql.append("AND userId = ?");
+		List<CartList> cartlist = cartListServiceImpl.findList(hql.toString(), user.getId());
+		request.getSession().setAttribute("cartlist", cartlist);
+		
+	}
+	
+	public void collection() {
+		User user = (User) request.getSession().getAttribute(Constants.LOGIN_SIGN);
+		StringBuilder hql = new StringBuilder("from Collection where 1 = 1 ");
+		hql.append("AND userId = ?");
+		List<Collection> list = collectionServiceImpl.findList(hql.toString(), user.getId());
+		request.getSession().setAttribute("collList", list);
 	}
 
 }

@@ -167,6 +167,15 @@ public class BaseDaoImpl<T> implements BaseDao<T> {
 		}
 		return (List<T>) query.list();
 	}
+	public List<T> findByPage(String hql, int page, int size, Object...values) throws DBException {
+		
+		Query query = this.getCurrentSession().createQuery(hql);
+		for (int i = 0; i < values.length; i++) {
+			query.setParameter(i, values[i]);
+		}
+		query.setFirstResult((page-1)*size).setMaxResults(size);
+		return query.list();
+	}
 
 	public List<T> findList(String hql, Map<String, Object> params) throws DBException {
 		Query query = this.getCurrentSession().createQuery(hql);

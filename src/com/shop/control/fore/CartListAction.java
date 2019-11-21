@@ -1,13 +1,14 @@
 package com.shop.control.fore;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Map.Entry;
 
 import javax.servlet.http.HttpServletRequest;
 
 import org.apache.log4j.Logger;
-import org.apache.struts2.dispatcher.Parameter;
 import org.apache.struts2.interceptor.ServletRequestAware;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
@@ -15,12 +16,12 @@ import org.springframework.stereotype.Component;
 
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
-import com.opensymphony.xwork2.ActionContext;
 import com.shop.Constants;
 import com.shop.annotation.RequestTypeAnno;
 import com.shop.control.SuperActionSupport;
 import com.shop.entity.CartList;
 import com.shop.entity.Goods;
+import com.shop.entity.ResponseData;
 import com.shop.entity.User;
 import com.shop.service.CartListService;
 import com.shop.service.GoodsService;
@@ -39,9 +40,6 @@ public class CartListAction extends SuperActionSupport implements ServletRequest
 	
 	@Autowired
 	private CartListService cartListServiceImpl; 
-	
-	@Autowired
-	private GoodsService goodsServiceImpl; 
 	
 	public CartList getCartList() {
 		cartList = cartList == null ? new CartList() : cartList;
@@ -67,30 +65,22 @@ public class CartListAction extends SuperActionSupport implements ServletRequest
 	@RequestTypeAnno(RequestType.POST)
 	public String save(){
 		try {
-			Map<String, String> map = ActionUtil.getRequestParameterMap(request);
-			
 			User user = (User) request.getSession().getAttribute(Constants.LOGIN_SIGN);
-			if(cartList == null) cartList = new CartList();
+			CartList cartList2 = cartListServiceImpl.find("FROM CartList WHERE colour = '"+cartList.getColour()+"' AND userId = '"+user.getId()+"' AND size = '"+cartList.getSize()+"' AND goodsId = '"+cartList.getGoodsId()+"'");
+			if(cartList2 != null) {
+				cartList2.setCount(cartList2.getCount()+cartList.getCount());
+				cartListServiceImpl.update(cartList2);
+				setMessage(Message.success(getText("shop.error.cartSuccess")));
+				return JSON;
+			}
 			cartList.setId(String.valueOf(new SnowFlakeGenerator(2, 2).nextId()));
 			cartList.setUserId(user.getId());
-			
-			cartList.setGoodsId(map.get("id"));//传值
-			cartList.setColour(map.get("color"));//传值
-			cartList.setUrl(map.get("url"));	//传值
-			cartList.setCount(Integer.parseInt(map.get("count")));	//传值
-			cartList.setSize(map.get("size"));	//传值
-			
-			Goods goods = goodsServiceImpl.get(map.get("id"));//传值
-			if("".equals(cartList.getUrl())) cartList.setUrl(goods.getUrl());	
-			cartList.setName(goods.getName());
-			cartList.setDiscount(goods.getDiscount());
-			cartList.setPrice(goods.getPrice());
-			
 			cartListServiceImpl.save(cartList);
-			user = null; map = null;
-			setMessage(Message.success("添加成功", cartList));
+			user = null; 
+			setMessage(Message.success(getText("shop.error.cartSuccess")));
 		} catch (Exception e) {
-			setMessage(Message.success("添加失败"));
+			e.printStackTrace();
+			setMessage(Message.error(getText("shop.error.cartfail")));
 		}
 		return JSON;
 	}	
@@ -101,9 +91,28 @@ public class CartListAction extends SuperActionSupport implements ServletRequest
 	 */
 	@SuppressWarnings("static-access")
 	@RequestTypeAnno(RequestType.POST)
-	public String update(){
+	public String update(){	
 		try {
-			cartListServiceImpl.update(cartList);
+			JSONObject json = JSONObject.parseObject(ActionUtil.read(request));
+			log.info(json.toString());
+			StringBuilder eqS = new StringBuilder(" WHERE");
+			JSONObject query = json.getJSONObject("query");
+			for(Entry<String, Object> item : query.entrySet())
+				eqS.append(" u."+item.getKey() + " = " + (item.getValue() instanceof String ? "'"+item.getValue()+"'" : item.getValue())).append(" AND");
+			
+			StringBuilder setS = new StringBuilder(" SET"); //`count` = 3
+			JSONObject set = json.getJSONObject("set");
+			Map<String, Object> setMap = new HashMap<String, Object>();
+			for(Entry<String, Object> item : set.entrySet()) {
+				setMap.put(item.getKey(), item.getValue());
+				setS.append(" u."+item.getKey() + " = " + ":"+item.getKey()).append(" AND");
+			}
+			if(setS.toString().length() > 4) setS.delete(setS.toString().length()-4, setS.toString().length());
+			if(eqS.toString().length() > 12) eqS.delete(eqS.toString().length()-4, eqS.toString().length());
+			//update User u set u.userName=:userName where u.userId=:userId
+			log.info("UPDATE CartList u"+setS.toString()+eqS.toString());
+			cartListServiceImpl.update("UPDATE CartList u"+setS.toString()+eqS.toString(), setMap);
+			 
 			setMessage(new Message().success(getText("shop.error.updateOk")));
 		}catch(Exception e) {
 			log.info("异常"+e);
@@ -123,6 +132,7 @@ public class CartListAction extends SuperActionSupport implements ServletRequest
 	public String delete(){
 		
 		try {
+			log.info(cartList);
 			cartListServiceImpl.delete(cartList);
 			setMessage(new Message().success(getText("shop.error.deleteOk")));
 		}catch(Exception e) {
@@ -208,4 +218,19 @@ public class CartListAction extends SuperActionSupport implements ServletRequest
 		return JSON;
 		
 	}	
+	@SuppressWarnings("static-access")
+	public String count() {
+		try {
+			User user = (User) request.getSession().getAttribute(Constants.LOGIN_SIGN);
+			ResponseData d  =new ResponseData();
+			d.setCount(cartListServiceImpl.count("FROM CartList where userId = ?", user.getId()));
+			setMessage(new Message().success(getText("shop.error.getOk"), d));
+			user = null;
+		}catch(Exception e) {
+			log.info("异常"+e);
+			e.printStackTrace();
+			setMessage(new Message().error(getText("shop.error.getError")));
+		}
+		return JSON;
+	}
 }

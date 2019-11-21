@@ -221,12 +221,12 @@ public class BaseServiceImpl<T> implements BaseService<T> {
 
 	@Transactional
 //	@RCacheEvict(key="#user.id")
-	public void update(/*@RParamer("user")*/T entity) throws DBException {
+	public void update(T entity) throws DBException {
 		
 		baseDao.update(entity);
 
 	}
-	//老建峰指导写出来的
+	 
 	@Transactional(propagation=Propagation.REQUIRED)
 	public void updateWithTransction(T entity) throws DBException {
 		
@@ -266,7 +266,6 @@ public class BaseServiceImpl<T> implements BaseService<T> {
 
 	@Transactional
 	public long updateBySql(String sql, String... values) throws DBException {
-		
 		return baseDao.updateBySql(sql, values);
 	}
 
@@ -320,6 +319,7 @@ public class BaseServiceImpl<T> implements BaseService<T> {
 
 	@Transactional
 	public void delBatch(Serializable[] ids) throws DBException {
+		
 		baseDao.delBatch(ids);
 	}
 
@@ -375,6 +375,13 @@ public class BaseServiceImpl<T> implements BaseService<T> {
 	public Page<T> findPageByDateType(Page page, String selectConditions, String tables, String specialCondetions, String dateType) throws DBException {
 		
 		return baseDao.findPageByDateType(page, selectConditions, tables, specialCondetions, dateType);
+	}
+
+	@Override
+	@Transactional(readOnly=true)
+	public List<T> findByPage(String hql, int page, int size, Object...values) throws DBException {
+		// TODO Auto-generated method stub
+		return baseDao.findByPage(hql, page, size);
 	}
 
 }

@@ -4,6 +4,8 @@
 
 <%@ include file="../../include/forePage/common.jsp" %>
 
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
  <head>
@@ -49,15 +51,15 @@
 				</div>
 				<div style="width: 100%; height: 60px; background: #fbf6f2; line-height: 60px;">
 					<div style="padding-left: 20px;">
-					<span style="color: red;">￥</span><span style="color: red; font-size: 30px;">${goods.price*goods.discount}</span>
+					<span style="color: red;"></span><span style="color: red; font-size: 30px;">￥<fmt:formatNumber type="number" value="${goods.price*goods.discount}" maxFractionDigits="2"/></span>
 					<s:text name="shop.common.originalPrice" />
-					<span class="default-color">￥</span><span style="font-size: 20px;"><del class="default-color">${goods.price}</del></span>
+					<span class="default-color"></span><span style="font-size: 20px;"><del class="default-color">￥<fmt:formatNumber type="number" value="${goods.price}" maxFractionDigits="2"/></del></span>
 					</div>
 				</div>
 				<div style="width: 100%; line-height: 60px;">
 					<div style="padding-left: 10px;">
 					<span class="default-color"><s:text name="shop.common.colour" /></span>
-					<span class="border color-selected-btn" shop-click="colorSelect">白色</span>
+					<span class="border color-btn color-selected-btn" shop-click="colorSelect">白色</span>
 					<span class="border color-btn" shop-click="colorSelect">雅灰</span>
 					<span class="border color-btn" shop-click="colorSelect">银灰</span>
 					<span class="border color-btn" shop-click="colorSelect">墨绿</span> 
@@ -66,7 +68,7 @@
 				<div style="width: 100%; line-height: 60px;">
 					<div style="padding-left: 10px;">
 					<span class="default-color"><s:text name="shop.common.size" /></span>
-					<span class="border size-selected-btn" shop-click="sizeSelect">S</span>
+					<span class="border size-btn size-selected-btn" shop-click="sizeSelect">S</span>
 					<span class="border size-btn" shop-click="sizeSelect">M</span>
 					<span class="border size-btn" shop-click="sizeSelect">L</span>
 					<span class="border size-btn" shop-click="sizeSelect">XL</span>
@@ -161,7 +163,6 @@
  		,$ = layui.$
  		,layer = layui.layer;
  		util.addSubCtrlbtn(function(data){ // 加减器
- 			layer.msg(data.type); 
  		});
  		util.shopClick({
  			buy: function(){
@@ -171,29 +172,50 @@
  				});
  			}
  			,addCart: function(){
+ 				var data = {};
+ 				data["cartList.goodsId"] = '${goods.id}';
+ 				data["cartList.count"] = parseInt($(".number").eq(0).val());
+ 				data["cartList.colour"] = $(".color-selected-btn").eq(0).text();
+ 				data["cartList.size"] = $(".size-selected-btn").eq(0).text();
+ 				data["cartList.url"] = '${goods.url}';
+ 				data["cartList.name"] = '${goods.name}';
+ 				data["cartList.price"] = '${goods.price}';
+ 				data["cartList.discount"] = '${goods.discount}';
  				util.formAjax({
  					url: '<%=basePath%>cartList_save'
- 					,data: {id: '${goods.id}'
- 						, count: $(".number").eq(0)
- 						, color: $(".color-selected-btn").eq(0).text()
- 						, size: $(".size-selected-btn").eq(0).text()
- 						, url: '${goods.url}'
+ 					,data: data
+ 					,success: function(){
+ 						util.CAjax({
+ 							url: '<%=basePath%>cartList_count'
+ 							,isHints: !1
+ 							,success: function(data){
+ 								$(".cartListCount").eq(0).text(data.count)
+ 							}
+ 						})
+ 						
  					}
  				});
  			}
  			,addCol: function(){
+ 				var data = {};
+ 				data["collection.url"] = '${goods.url}';
+ 				data["collection.goodsId"] = '${goods.id}';
+ 				data["collection.price"] = '${goods.price}';
+ 				data["collection.name"] = '${goods.name}';
  				util.formAjax({
  					url: '<%=basePath%>collection_save'
- 					,data: {id: '${goods.id}'}
+ 					,data: data
  				});
  			}
  			,colorSelect: function(e){
- 				$(".color-selected-btn").eq.removeClass("color-selected-btn").addClass("color-btn");
- 				e.removeClass("color-btn").addClass("color-selected-btn");
+ 				e.siblings().removeClass("color-selected-btn");
+ 				e.addClass("color-selected-btn");
  			}
  			,sizeSelect: function(e){
- 				$(".size-selected-btn").eq.removeClass("size-selected-btn").addClass("size-btn");
- 				e.removeClass("size-btn").addClass("size-selected-btn");
+ 				e.siblings().removeClass("size-selected-btn");
+ 				e.addClass("size-selected-btn");
+ 				//$(".size-selected-btn").eq.removeClass("size-selected-btn").addClass("size-btn");
+ 				//e.removeClass("size-btn").addClass("size-selected-btn");
  			}
  		});
  		layer.msg("<s:text name="shop.common.homeLayuiAlert"/>");

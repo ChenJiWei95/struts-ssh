@@ -5,12 +5,14 @@ import javax.servlet.http.HttpSession;
 
 import org.apache.log4j.Logger;
 import org.apache.struts2.interceptor.ServletRequestAware;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
 import com.shop.Constants;
 import com.shop.control.SuperActionSupport;
 import com.shop.entity.User;
+import com.shop.service.CartListService;
 
 /**
  * @version: V-1.0 
@@ -30,6 +32,9 @@ public class ForeAction extends SuperActionSupport implements ServletRequestAwar
 	
 	private HttpServletRequest request;
 	
+	@Autowired
+	private CartListService cartListServiceImpl; 
+	
 	@Override  
     public void setServletRequest(HttpServletRequest arg0) {  
         request = arg0;  
@@ -48,6 +53,6 @@ public class ForeAction extends SuperActionSupport implements ServletRequestAwar
 		HttpSession session = (HttpSession) request.getSession();
 		User user = (User) session.getAttribute(Constants.LOGIN_SIGN);
 		session.setAttribute("username", user.getUsername());
-		System.out.println("执行index，。。。。");
+		request.getSession().setAttribute("cartListCount", cartListServiceImpl.count("from CartList where userId = ?", user.getId()));
 	}
 }

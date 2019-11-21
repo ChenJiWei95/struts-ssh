@@ -3,6 +3,7 @@ package com.shop.control.fore;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.apache.log4j.Logger;
 import org.apache.struts2.ServletActionContext;
@@ -11,8 +12,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
+import com.shop.Constants;
 import com.shop.control.SuperActionSupport;
 import com.shop.entity.Goods;
+import com.shop.entity.User;
+import com.shop.service.CartListService;
 import com.shop.service.GoodsService;
 /**
  * @version: V 1.0 
@@ -33,6 +37,9 @@ public class MallAction extends SuperActionSupport implements ServletRequestAwar
 	@Autowired
 	private GoodsService goodsServiceImpl;
 	
+	@Autowired
+	private CartListService cartListServiceImpl; 
+	
 	@Override
 	public void setServletRequest(HttpServletRequest arg0) {
 		request = arg0;
@@ -49,8 +56,13 @@ public class MallAction extends SuperActionSupport implements ServletRequestAwar
 	}
 	
 	public void goodsdetails(){
+		HttpSession session = (HttpSession) request.getSession();
 		Goods goods = goodsServiceImpl.get(request.getParameter("id"));
-		request.getSession().setAttribute("goods", goods);
+		session.setAttribute("goods", goods);
+		
+		User user = (User) session.getAttribute(Constants.LOGIN_SIGN);
+		request.getSession().setAttribute("cartListCount", cartListServiceImpl.count("from CartList where userId = ?", user.getId()));
+		
 	}
 	public void furnishing(){
 		// 调用家居页面

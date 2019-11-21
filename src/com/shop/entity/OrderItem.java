@@ -1,7 +1,6 @@
 package com.shop.entity;
 
 
-import java.io.Serializable;
 import java.math.BigDecimal;
 
 import javax.persistence.Column;
@@ -9,40 +8,40 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
-import org.hibernate.engine.jdbc.SerializableBlobProxy;
-
 
 @Entity
-@Table(name = "cart_list")
-public class CartList implements Serializable{
+@Table(name = "order_item")
+public class OrderItem {
 	@Id
 	@Column(name = "id")
-	private String id;
+	private String orderItemId;
 	@Column(name = "name")
 	private String name;
 	@Column(name = "url")
 	private String url;
-	@Column(name = "count")
-	private Integer count;
-	@Column(name = "g_id")
-	private String goodsId;
-	@Column(name = "u_id")
-	private String userId;
-	@Column(name = "colour")
-	private String colour;
-	@Column(name = "size")
-	private String size;
 	@Column(name = "price")
 	private BigDecimal price;
 	@Column(name = "discount")
 	private BigDecimal discount;
+	@Column(name = "count")
+	private Integer count;
+	@Column(name = "total")
+	private BigDecimal total;
+	@Column(name = "g_id")
+	private String goodsId;
+	@Column(name = "colour")
+	private String colour;
+	@Column(name = "size")
+	private String size;
+	@Column(name = "order_id")
+	private String orderId;
 
 
-	public String getId() {
-		return id;
+	public String getOrderItemId() {
+		return orderItemId;
 	}
-	public void setId(String id) {
-		this.id = id;
+	public void setOrderItemId(String orderItemId) {
+		this.orderItemId = orderItemId;
 	}
 	public String getName() {
 		return name;
@@ -56,23 +55,35 @@ public class CartList implements Serializable{
 	public void setUrl(String url) {
 		this.url = url;
 	}
+	public BigDecimal getPrice() {
+		return price;
+	}
+	public void setPrice(BigDecimal price) {
+		this.price = price;
+	}
+	public BigDecimal getDiscount() {
+		return discount;
+	}
+	public void setDiscount(BigDecimal discount) {
+		this.discount = discount;
+	}
 	public Integer getCount() {
 		return count;
 	}
 	public void setCount(Integer count) {
 		this.count = count;
 	}
+	public BigDecimal getTotal() {
+		return total;
+	}
+	public void setTotal(BigDecimal total) {
+		this.total = total;
+	} 
 	public String getGoodsId() {
 		return goodsId;
 	}
 	public void setGoodsId(String goodsId) {
 		this.goodsId = goodsId;
-	}
-	public String getUserId() {
-		return userId;
-	}
-	public void setUserId(String userId) {
-		this.userId = userId;
 	}
 	public String getColour() {
 		return colour;
@@ -86,22 +97,10 @@ public class CartList implements Serializable{
 	public void setSize(String size) {
 		this.size = size;
 	}
-	public BigDecimal getPrice() {
-		return price.setScale(2,BigDecimal.ROUND_HALF_DOWN);
+	public String getOrderId() {
+		return orderId;
 	}
-	public void setPrice(BigDecimal price) {
-		this.price = price;
+	public void setOrderId(String orderId) {
+		this.orderId = orderId;
 	}
-	public BigDecimal getDiscount() {
-		return discount;
-	}
-	public void setDiscount(BigDecimal discount) {
-		this.discount = discount;
-	}
-	
-	
-	public String toString() {
-		return "[id = "+id+"]";
-	}
-	 
 }

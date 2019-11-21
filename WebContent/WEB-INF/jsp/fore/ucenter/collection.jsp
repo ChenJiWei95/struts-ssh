@@ -4,6 +4,9 @@
 
 <%@ include file="../../include/forePage/common.jsp" %>
 
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
  <head>
@@ -39,10 +42,25 @@
 	<script src="<%=basePath%>resource/layui/layui.js"></script>
 	<script>
  	layui.use(['layer', 'element', 'util'], function(){
- 		var element = layui.element;
- 		layui.util.layHref();
+ 		var element = layui.element
+ 		,util = layui.util;
+ 		util.layHref();
  		layui.layer.msg("<s:text name="shop.common.homeLayuiAlert"/>");
  		layui.$(".collection").eq(0).addClass("var-color");
+ 		util.shopClick({
+ 			collDelete: function(e){
+ 				var data = {};
+ 				data["collection.id"] = e.data("id");
+ 				util.formAjax({
+ 					url: '<%=basePath%>collection_delete'
+ 					,data: data
+ 					,success: function(){
+ 						e.parents(".layui-col-md3").eq(0).remove()
+ 					}
+ 				});
+ 			}
+ 		});
+ 		
  	})
 	</script>
  </body>

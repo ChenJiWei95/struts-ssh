@@ -2,6 +2,10 @@
 	项目依托Spring、Struts2、Hibernate 环境运行，并集成redis分布式缓存的商城项目。始于19年十月，对相关技术的进一步验证与实践。
 ## 引言  
 	* 表	
+		地址表（address）
+			id province city area street user_id name phone nickname
+			id province city area street userId name phone nickname
+			String String String String String String String String String
 		物流表（logistics）
 			id province city area street order_id name phone nickname
 			logisticsId province city area street orderId name phone nickname

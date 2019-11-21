@@ -9,12 +9,10 @@ import java.lang.reflect.Method;
 import javax.servlet.http.HttpServletRequest;
 
 import org.apache.log4j.Logger;
-import org.apache.struts2.ServletActionContext;
 
 import com.opensymphony.xwork2.ActionSupport;
-import com.shop.entity.UserTest;
 import com.shop.util.Message;
-import com.shop.util.SnowFlakeGenerator;
+import com.shop.util.TimeUtil;
 /**
  * Action父类，当请求需要返回数据时继承此类<b>
  * <p>
@@ -196,6 +194,10 @@ public class SuperActionSupport extends ActionSupport {
 		// 不支持
 		return ERROR;
 		
+	}
+	
+	protected String getNowTime() {
+		return TimeUtil.getDatetime();
 	}
 	
 }

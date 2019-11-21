@@ -16,13 +16,16 @@ import org.springframework.stereotype.Component;
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 import com.shop.Constants;
+import com.shop.annotation.RequestTypeAnno;
 import com.shop.control.SuperActionSupport;
+import com.shop.entity.CartList;
 import com.shop.entity.Collection;
 import com.shop.entity.User;
 import com.shop.service.CollectionService;
 import com.shop.util.ActionUtil;
 import com.shop.util.Message;
 import com.shop.util.SnowFlakeGenerator;
+import com.shop.util.enums.RequestType;
 
 @Component	 		
 @Scope("prototype")
@@ -56,23 +59,24 @@ public class CollectionAction extends SuperActionSupport implements ServletReque
 	 * 链接格式 当前类为例：user(类前缀)_save(方法)
 	 * @return
 	 */
+	@RequestTypeAnno(RequestType.POST)
 	public String save(){
 		try {
-			collection.setId(String.valueOf(new SnowFlakeGenerator(2, 2).nextId()));
-			
-			Map<String, String> map = ActionUtil.getRequestParameterMap(request);
-			collection.setGoodsId(map.get("id"));
-			collection.setPrice(new BigDecimal(map.get("price")));
-			collection.setName(map.get("name"));
-			collection.setUrl(map.get("url"));
-			map = null;
-			
 			User user = (User) request.getSession().getAttribute(Constants.LOGIN_SIGN);
+			Collection collection2 = collectionServiceImpl.find("FROM Collection WHERE userId = '"+user.getId()+"'  AND goodsId = '"+collection.getGoodsId()+"'");
+			if(collection2 != null) {
+				setMessage(Message.success(getText("shop.error.collexist"), collection));
+				return JSON;
+			}
+				
+			collection.setId(String.valueOf(new SnowFlakeGenerator(2, 2).nextId()));
 			collection.setUserId(user.getId()); user = null;
 			collectionServiceImpl.save(collection);
-			setMessage(Message.success("添加成功", collection));
+			setMessage(Message.success(getText("shop.error.collSuccess"), collection));
+			user = null;
 		} catch (Exception e) {
-			setMessage(Message.success("添加失败"));
+			e.printStackTrace();
+			setMessage(Message.error(getText("shop.error.collfail")));
 		}
 		return JSON;
 	}	

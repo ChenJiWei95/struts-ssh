@@ -74,7 +74,7 @@
 		  	<result name="chtml">WEB-INF/jsp/fore/{1}/{3}.jsp</result>
 		  	<result name="main">WEB-INF/jsp/{1}/{3}.jsp</result>
 		  	<result name="login">WEB-INF/jsp/fore/login.jsp</result>
-		  	<allowed-methods>login, update, save, delete, list, get, delBatch, chtml, main</allowed-methods>
+		  	<allowed-methods>login, update, save, delete, list, get, delBatch, chtml, main, count</allowed-methods>
 		</action>
 		 
 	</package>

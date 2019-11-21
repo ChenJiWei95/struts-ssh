@@ -27,7 +27,6 @@ public class Collection implements Serializable {
 	@Column(name = "url")
 	private String url;
 
-
 	public String getId() {
 		return id;
 	}

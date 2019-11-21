@@ -150,6 +150,8 @@ public interface BaseDao<T> {
 	 * @throws DBException
 	 */
 	public List<T> findList(String hql, Object... values) throws DBException;
+	
+	public List<T> findByPage(String hql, int page, int size, Object...values) throws DBException;
 
 	/**
 	 * 通过hql和条件获取对象列表

@@ -9,16 +9,18 @@
 		    <!-- 	收藏 -->
 		    <div class="layui-tab-item layui-show" style="width: 100%; height: 500px;">
 			  <div class="layui-row layui-col-space20">
+			  	<c:forEach begin="0" items="${collList}" step="1" var="Collection" varStatus="varsta">
 		        <div class="layui-col-md3">
-		          <div class="grid-demo grid-demo-bg1 pointer item c-item" lay-href="<%=basePath%>mall_chtml_goodsdetails?id=123456">
-					<i class="righttop-close" style="background-image:url(<%=basePath%>resource/img/rit-top-close.svg);"></i>
-					<div class="item-img" style="background-image:url(<%=basePath%>resource/img/good1.png);">
+		          <div class="grid-demo grid-demo-bg1 pointer item c-item">
+		            <i class="righttop-close" shop-click="collDelete" style="background-image:url(<%=basePath%>resource/img/rit-top-close.svg);" data-id="${Collection.id}"></i>
+					<div class="item-img" lay-href="<%=basePath%>mall_chtml_goodsdetails?id=${Collection.goodsId}" style="background-image:url(<%=basePath%>${Collection.url});">
 					</div>
-					<div class="default-color item-text c-item-text">轻奢休闲套桌</div>
-					<div class="item-amount c-item-amount">￥200</div>
+					<div class="default-color item-text c-item-text">${Collection.name}</div>
+					<div class="item-amount c-item-amount">￥<fmt:formatNumber type="number" value="${Collection.price}" maxFractionDigits="2"/></div>
 				  </div>
 		        </div>
-		        <div class="layui-col-md3">
+			  	</c:forEach>
+		        <%-- <div class="layui-col-md3">
 		          <div class="grid-demo grid-demo-bg1 pointer item c-item" lay-href="<%=basePath%>mall_chtml_goodsdetails?id=123456">
 					<i class="righttop-close" style="background-image:url(<%=basePath%>resource/img/rit-top-close.svg);"></i>
 					<div class="item-img" style="background-image:url(<%=basePath%>resource/img/good2.png);"></div>
@@ -49,7 +51,7 @@
 					<div class="default-color item-text c-item-text">轻奢休闲套桌</div>
 					<div class="item-amount c-item-amount">￥200</div>
 				  </div>
-		        </div> 
+		        </div>  --%>
 		      </div>
 		    </div> 
 		</div>

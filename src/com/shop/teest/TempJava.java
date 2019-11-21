@@ -63,14 +63,14 @@ public class TempJava {
 	private static String entityStrategy = HIBER_ANNOTATION_STRATEGY;
 	
 	public static void main(String[] args) throws IOException {
-		String fileds 	= "id name url count goodsId userId colour size";
-		String columns	= "id name url count g_id u_id colour size";	// 其中的值对应 fileds 用于数据库表字段的对应
-		String types  	= "String String String Integer String String String String"; // BigDecimal String Integer
+		String fileds 	= "id province city area street userId name phone nickname";
+		String columns	= "id province city area street user_id name phone nickname";	// 其中的值对应 fileds 用于数据库表字段的对应
+		String types  	= "String String String String String String String String String"; // BigDecimal String Integer
 		String texts 	= "ID 描述 时间 状态";
 		
 		ContextConfig c = new ContextConfig();
-		c.setTable("cart_list");
-		c.setName_("cartList");
+		c.setTable("address");
+		c.setName_("address");
 		c.setFileds(fileds);
 		c.setColumns(columns);
 		c.setTypes(types);

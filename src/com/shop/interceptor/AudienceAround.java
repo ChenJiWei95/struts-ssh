@@ -43,98 +43,101 @@ public class AudienceAround {
 	private RedisService redisService;
 	
 	//使用@Pointcut注解声明频繁使用的切入点表达式
-	@Pointcut("execution(* com.shop.service.impl.*.*(..))")
+	/*@Pointcut("execution(* com.shop.service.impl.*.*(..))")*/
   	public void performance(){
 		log.info("performance....");
 	}
-  	@Around("performance()")
+  	/*@Around("performance()")*/
   	public Object watchPerformance(ProceedingJoinPoint joinPoint) throws Throwable{
-  		/*log.info("获取RedisServer不为空则正常：redisService="+redisService);
-  		log.info("前置通知");*/
-  		
-  		
-  		// 获取该方法的注解  RCacheable  RCacheEvict
-  		// 执行前对key进行获取并判断是否有缓存，有 则在缓存中读； 无 则在数据库读，然后在载入缓存 
-  		// 数据保存24小时
-    	Object result = joinPoint.proceed();
-    	// 缓存中无数据  则在数据库读，然后在载入缓存 
-    	log.info("后置通知"); 
-    	Class<?>[] clazz = new Class<?>[joinPoint.getArgs().length];
-    	for(int i = 0; i < joinPoint.getArgs().length; i++)// 没有传key 那么就用参数拼接 中间无任何分隔符
-    	{
-//    		log.info("第"+(i+1)+"个参数："+joinPoint.getArgs()[i].getClass().toString());
-//    		if("class [Ljava.lang.String;".equals(joinPoint.getArgs()[i].getClass().toString())) log.info("是一个数组");
-    		clazz[i] = joinPoint.getArgs()[i].getClass(); // 拼接所注解方法的传入参数类型
-    	}
-    		
-    	
-    	log.info("代理对象："+joinPoint.getTarget().getClass().getName());
-    	Method method = joinPoint.getTarget().getClass().getMethod(joinPoint.getSignature().getName(), 
-    			clazz);
-    	
-    	log.info("返回值："+method.getReturnType().getSimpleName()); // 结果：Object 
-    	
-    	List<String> l = new ArrayList<>(1);
-    	log.info("返回值：getClass.getSimpleName"+l.getClass().getSimpleName()); // 结果：ArrayList 
-    	// 根据返回类型判断执行的缓存方式
-    	
-    	Annotation[] annotations = method.getAnnotations();
-    	for (Annotation annotation : annotations) {
-    		log.info("存在注解"+annotation.toString());
-			if (annotation instanceof RCacheable) {
-				log.info("方法包含缓存注解：RCacheable");
-				// 标注RCacheable注解 缓存+读取 
-				RCacheable rCacheable = (RCacheable) annotation;
-				// 判断RCacheable注解 是否包含key
-				String key = "";
-				if("".equals(rCacheable.key())) // RCacheable未标明key   就用所有参数的拼接作为key
-					for(int i = 0; i < joinPoint.getArgs().length; i++) {
-						if("class [Ljava.lang.String;".equals(joinPoint.getArgs()[i].getClass().toString()))// 判断数组格式的对象分开处理
-							for(String arg : (String[]) joinPoint.getArgs()[i]) key += arg;
-						else 
-							key += joinPoint.getArgs()[i].toString();}
-				else { // RCacheable存在key
-					// 查找参数中的注解 返回ctx
-					key = (String) key_(rCacheable.key(), createOgnl(joinPoint, method));}
-				// 确定key之后 -- 进行缓存读取或者写入
-				// 执行前对key进行获取并判断是否有缓存，有 则在缓存中读； 无 则在数据库读，然后在载入缓存 
-				if(redisService.hasKey(key)) {
-					// 根据不同的返回类型进行读取
-					log.info("从缓存中读取。。。，key："+key);
-					return redisService.get(key);}
-				else { 
-					// 根据不同的类返回型进行写入
-					log.info("载入缓存，key："+key);
+  		try {
+	  		/*log.info("获取RedisServer不为空则正常：redisService="+redisService);
+	  		log.info("前置通知");*/
+	  		
+	  		// 获取该方法的注解  RCacheable  RCacheEvict
+	  		// 执行前对key进行获取并判断是否有缓存，有 则在缓存中读； 无 则在数据库读，然后在载入缓存 
+	  		// 数据保存24小时
+	    	Object result = joinPoint.proceed();
+	    	// 缓存中无数据  则在数据库读，然后在载入缓存 
+	    	log.info("后置通知"); 
+	    	Class<?>[] clazz = new Class<?>[joinPoint.getArgs().length];
+	    	for(int i = 0; i < joinPoint.getArgs().length; i++)// 没有传key 那么就用参数拼接 中间无任何分隔符
+	    	{
+	//    		log.info("第"+(i+1)+"个参数："+joinPoint.getArgs()[i].getClass().toString());
+	//    		if("class [Ljava.lang.String;".equals(joinPoint.getArgs()[i].getClass().toString())) log.info("是一个数组");
+	    		clazz[i] = joinPoint.getArgs()[i].getClass(); // 拼接所注解方法的传入参数类型
+	    	}
+	    		
+	    	
+	    	log.info("代理对象："+joinPoint.getTarget().getClass().getName());
+	    	Method method = joinPoint.getTarget().getClass().getMethod(joinPoint.getSignature().getName(), 
+	    			clazz);
+	    	
+	    	log.info("返回值："+method.getReturnType().getSimpleName()); // 结果：Object 
+	    	
+	    	List<String> l = new ArrayList<>(1);
+	    	log.info("返回值：getClass.getSimpleName"+l.getClass().getSimpleName()); // 结果：ArrayList 
+	    	// 根据返回类型判断执行的缓存方式
+	    	
+	    	Annotation[] annotations = method.getAnnotations();
+	    	for (Annotation annotation : annotations) {
+	    		log.info("存在注解"+annotation.toString());
+				if (annotation instanceof RCacheable) {
+					log.info("方法包含缓存注解：RCacheable");
+					// 标注RCacheable注解 缓存+读取 
+					RCacheable rCacheable = (RCacheable) annotation;
+					// 判断RCacheable注解 是否包含key
+					String key = "";
+					if("".equals(rCacheable.key())) // RCacheable未标明key   就用所有参数的拼接作为key
+						for(int i = 0; i < joinPoint.getArgs().length; i++) {
+							if("class [Ljava.lang.String;".equals(joinPoint.getArgs()[i].getClass().toString()))// 判断数组格式的对象分开处理
+								for(String arg : (String[]) joinPoint.getArgs()[i]) key += arg;
+							else 
+								key += joinPoint.getArgs()[i].toString();}
+					else { // RCacheable存在key
+						// 查找参数中的注解 返回ctx
+						key = (String) key_(rCacheable.key(), createOgnl(joinPoint, method));}
+					// 确定key之后 -- 进行缓存读取或者写入
+					// 执行前对key进行获取并判断是否有缓存，有 则在缓存中读； 无 则在数据库读，然后在载入缓存 
+					if(redisService.hasKey(key)) {
+						// 根据不同的返回类型进行读取
+						log.info("从缓存中读取。。。，key："+key);
+						return redisService.get(key);}
+					else { 
+						// 根据不同的类返回型进行写入
+						log.info("载入缓存，key："+key);
+						redisService.set(key, result);
+					}
+				} else if (annotation instanceof RCacheEvict) {
+					log.info("方法包含缓存注解：RCacheEvict");
+					// 删除缓存
+					RCacheEvict rCacheEvict = (RCacheEvict) annotation;
+					// 判断注解 是否包含key
+					String key = "";
+					if("".equals(rCacheEvict.key())) // RCacheable未标明key就用所有参数的拼接作为key
+						for(int i = 0; i < joinPoint.getArgs().length; i++)
+							key += joinPoint.getArgs()[i];
+					else // 注解存在
+						key = (String) key_(rCacheEvict.key(), createOgnl(joinPoint, method));
+					if(redisService.hasKey(key)) redisService.del(key);
+				} else if (annotation instanceof RCachePut) {
+					log.info("方法包含缓存注解：RCachePut");
+					// 载入缓存
+					RCachePut rCachePut = (RCachePut) annotation;
+					// 判断注解 是否包含key
+					String key = "";
+					if("".equals(rCachePut.key())) // RCacheable未标明key就用所有参数的拼接作为key
+						for(int i = 0; i < joinPoint.getArgs().length; i++)
+							key += joinPoint.getArgs()[i];
+					else // 注解存在
+						key = (String) key_(rCachePut.key(), createOgnl(joinPoint, method));
 					redisService.set(key, result);
-				}
-			} else if (annotation instanceof RCacheEvict) {
-				log.info("方法包含缓存注解：RCacheEvict");
-				// 删除缓存
-				RCacheEvict rCacheEvict = (RCacheEvict) annotation;
-				// 判断注解 是否包含key
-				String key = "";
-				if("".equals(rCacheEvict.key())) // RCacheable未标明key就用所有参数的拼接作为key
-					for(int i = 0; i < joinPoint.getArgs().length; i++)
-						key += joinPoint.getArgs()[i];
-				else // 注解存在
-					key = (String) key_(rCacheEvict.key(), createOgnl(joinPoint, method));
-				if(redisService.hasKey(key)) redisService.del(key);
-			} else if (annotation instanceof RCachePut) {
-				log.info("方法包含缓存注解：RCachePut");
-				// 载入缓存
-				RCachePut rCachePut = (RCachePut) annotation;
-				// 判断注解 是否包含key
-				String key = "";
-				if("".equals(rCachePut.key())) // RCacheable未标明key就用所有参数的拼接作为key
-					for(int i = 0; i < joinPoint.getArgs().length; i++)
-						key += joinPoint.getArgs()[i];
-				else // 注解存在
-					key = (String) key_(rCachePut.key(), createOgnl(joinPoint, method));
-				redisService.set(key, result);
+				} 
 			} 
-		} 
-    	
-    	return result;
+	    	return result;
+  		}catch (NoSuchMethodException e) {
+  			e.printStackTrace();
+    	}
+    	return null;
   	}
   	/**
   	 * 通过包含RParamer注解的参数获取key 当前返回OgnlContext对象

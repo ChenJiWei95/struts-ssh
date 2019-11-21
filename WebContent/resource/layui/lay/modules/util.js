@@ -19,23 +19,87 @@ function(t) {
     	 		error		:function	请求成功，返回状态失败
     	 		serverError	:function	请求失败，服务器异常
      		*/
+    	// 默认 application/x-www-form-urlencoded; charset=UTF-8
     	formAjax: function(object){
+    		object.isHints == void 0 && (object.isHints = !0);
     		object.loadStyle = object.loadStyle || 2;
+    		object.contentType = object.contentType || 'application/x-www-form-urlencoded';
+    		
 			//object.method != 'update' || object.method != 'add' || (parent.layer.msg("method参数有误："+object.method), parent.layer.close(index))
-			var c = layer.load(object.loadStyle);
+			var c = object.isHints && layer.load(object.loadStyle);
 			//执行 Ajax 后重载
 			e.ajax({
 				url: object.url
 				,type: 'post'	
-				//,contentType: 'application/json'
+				,contentType: object.contentType
 				,data: object.data
 				,dataType: "json"
 				,success: function(data){
-					data.code == '0' && ('function' == typeof object.success && object.success(data.data, data.msg), layer.close(c), parent.layer.msg(data.msg, object.layCallback)),
-					data.code == '2' && ('function' == typeof object.error && object.error(data.data, data.msg), layer.close(c), layer.msg(data.msg));
+					data.code == '0' && ('function' == typeof object.success && object.success(data.data, data.msg), object.isHints && (layer.close(c), parent.layer.msg(data.msg, object.layCallback))),
+					data.code == '2' && ('function' == typeof object.error && object.error(data.data, data.msg), object.isHints && (layer.close(c), layer.msg(data.msg)));
 				} 
 				,error: function(data){
-					layer.close(c),
+					object.isHints && layer.close(c),
+					layer.msg("服务器异常，操作失败！"),
+					'function' == typeof object.serverError && object.serverError(data, data.msg);
+				}
+			});
+    	} 
+        ,parseFloat: function(str){
+        	var index = 0;
+        	if((index = str.indexOf(".")) != -1){
+        		return str.substring(0, index+3);
+        	}
+        	return str+".00";
+        }
+        ,iframeAjax: function (object) {
+        	object.dataType = object.dataType || 'json';
+        	object.type = object.type || 'post';
+        	object.contentType = object.contentType || 'application/x-www-form-urlencoded';
+			var index = parent.layer.getFrameIndex(window.name); 
+			//object.method != 'update' || object.method != 'add' || (parent.layer.msg("method参数有误："+object.method), parent.layer.close(index))
+			var c = parent.layer.load(2);
+			//执行 Ajax 后重载
+			e.ajax({
+				url: object.url
+				,type: object.type	
+				,contentType: object.contentType
+				,data: object.data
+				,dataType: object.dataType
+				,success: function(data){
+					data.code == '0' && ('function' == typeof object.success && object.success(data.data, data.msg), parent.layer.close(c), parent.layer.msg(data.msg), parent.layer.close(index), object.id && parent.table.reload(object.id)),
+					data.code == '2' && ('function' == typeof object.error && object.error(data.data, data.msg), parent.layer.close(c), parent.layer.msg(data.msg), parent.layer.close(index));
+				} 
+				,error: function(data){
+					parent.layer.close(c),
+					parent.layer.msg("服务器异常，操作失败！"+data.msg),
+					'function' == typeof object.serverError && object.serverError(data, data.msg);
+					parent.layer.close(index)
+				}
+			});	
+		}
+        //contentType: 'application/json;charset=UTF-8'
+    	,CAjax: function(object){
+    		object.isHints == void 0 && (object.isHints = !0);
+    		object.loadStyle = object.loadStyle || 2;
+    		object.contentType = object.contentType || 'application/json';
+    		object.dataType = object.dataType || 'json';
+    		object.type = object.type || 'post';
+			//object.method != 'update' || object.method != 'add' || (parent.layer.msg("method参数有误："+object.method), parent.layer.close(index))
+			var c = object.isHints && layer.load(object.loadStyle);
+			//执行 Ajax 后重载
+			e.ajax({
+				url: object.url
+				,type: object.type	
+				,contentType: object.contentType
+				,data: object.data
+				,dataType: object.dataType
+				,success: function(data){
+					data.code == '0' && ('function' == typeof object.success && object.success(data.data, data.msg), object.isHints && (layer.close(c), parent.layer.msg(data.msg, object.layCallback))),
+					data.code == '2' && ('function' == typeof object.error && object.error(data.data, data.msg), object.isHints && (layer.close(c), layer.msg(data.msg)));
+				} 
+				,error: function(data){
+					object.isHints && layer.close(c),
 					layer.msg("服务器异常，操作失败！"),
 					'function' == typeof object.serverError && object.serverError(data, data.msg);
 				}

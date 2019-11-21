@@ -41,6 +41,14 @@
 	.filter label:hover {
 	    color: #a77f2a69;
 	}
+	
+	.layui-table-view .layui-form-checkbox[lay-skin=primary] i {
+		margin-top: 6px;
+	}
+	
+	.c-button, .layui-card {border-radius: 5px;}
+	.c-button {background: #555;}
+	
     /* 登录 */
     .loginUpLink {
     	float: right; margin-top: 27px; color: #ccc;
@@ -231,7 +239,7 @@
     	border-right: none;
     }
     
-    .more-btn:hover, .buyNow:hover, .addCarList:hover, .addColect:hover, .colorBtn:hover, .subtraction:hover, .addition:hover {
+    .more-btn:hover, .buyNow:hover, .addCarList:hover, .addColect:hover, .color-btn:hover, size-btn:hover, .subtraction:hover, .addition:hover {
     	border-color: #a77f2a8c !important;
     	cursor: pointer;
     }
