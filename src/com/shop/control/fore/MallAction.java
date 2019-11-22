@@ -14,8 +14,10 @@ import org.springframework.stereotype.Component;
 
 import com.shop.Constants;
 import com.shop.control.SuperActionSupport;
+import com.shop.entity.Address;
 import com.shop.entity.Goods;
 import com.shop.entity.User;
+import com.shop.service.AddressService;
 import com.shop.service.CartListService;
 import com.shop.service.GoodsService;
 /**
@@ -39,6 +41,9 @@ public class MallAction extends SuperActionSupport implements ServletRequestAwar
 	
 	@Autowired
 	private CartListService cartListServiceImpl; 
+	
+	@Autowired
+	private AddressService addressServiceImpl; 
 	
 	@Override
 	public void setServletRequest(HttpServletRequest arg0) {
@@ -89,6 +94,13 @@ public class MallAction extends SuperActionSupport implements ServletRequestAwar
 		StringBuilder eq = new StringBuilder("from Goods where type=?");
 		List<Goods> goodsList = goodsServiceImpl.findList(eq.toString(), "05");
 		request.getSession().setAttribute("goodsList", goodsList);
+	}
+	public void payment() {
+		HttpSession session = request.getSession();
+		User user = (User) session.getAttribute(Constants.LOGIN_SIGN);
+		Address address = (Address) addressServiceImpl.findList("form Address where userId = ?", user.getId());
+		session.setAttribute("address", address);
+		
 	}
 
 }

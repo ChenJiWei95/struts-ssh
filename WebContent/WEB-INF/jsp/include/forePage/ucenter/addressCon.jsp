@@ -5,7 +5,7 @@
 		<!-- <ul class="layui-tab-title">
 		    <li class="layui-this"><s:text name="shop.common.message" /></li> 
 		</ul> -->
-		<div class="layui-tab-content"> 
+		<div class="layui-tab-content">
 		   	<div class="layui-tab-item layui-show" style="width: 100%; height: 500px;">
 		   		<div class="layui-card">
 		   			<div class="layui-form layui-card-header layuiadmin-card-header-auto">

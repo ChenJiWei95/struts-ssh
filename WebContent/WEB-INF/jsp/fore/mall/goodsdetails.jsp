@@ -44,7 +44,6 @@
 		<div style="float: left; width: 55%; height: 400px;">
 			<div style="padding-left: 45px;">
 				<div style="width: 100%; height: 46px; ">
-
 					<span class="layui-badge" style="background: #a77f2a69; font-size: 12px; padding: 2px 6px;"><s:text name="shop.common.hot" /></span>
 					<label style="font-size: 16px; font-weight: bold;">${goods.name}</label>
 					<label style="float: right; " class="default-color"><s:text name="shop.common.favorableRate" /> 95%</label>
