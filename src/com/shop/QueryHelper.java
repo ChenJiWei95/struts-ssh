@@ -292,7 +292,5 @@ private static Logger log = LoggerFactory.getLogger(QueryHelper.class);
 	public void setParams(Map<String, Object> params) {
 		this.params = params;
 	}
-	
-	
 
 }

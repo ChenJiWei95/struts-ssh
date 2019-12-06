@@ -162,7 +162,7 @@
  			$(".cartlist-etc").each(function(index, val){
  				var item = $(val);
  				// 找到勾选计算总计
- 				console.log(item.find(".layui-form-checked").eq(0).prop("outerHTML"));
+ 				//console.log(item.find(".layui-form-checked").eq(0).prop("outerHTML"));
  				if(item.find(".layui-form-checked").eq(0).prop("outerHTML")){
  					sum += parseFloat(item.find(".mini-total-amount").eq(0).text());
  					oriSum += (parseFloat(item.find(".ori-price").eq(0).text().substring(1)) * parseFloat(item.find(".number").eq(0).val()));
