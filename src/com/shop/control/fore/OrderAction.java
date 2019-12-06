@@ -19,6 +19,9 @@ import org.springframework.transaction.annotation.Transactional;
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 import com.shop.Constants;
+import com.shop.Filter;
+import com.shop.Page;
+import com.shop.QueryHelper;
 import com.shop.annotation.RequestTypeAnno;
 import com.shop.control.SuperActionSupport;
 import com.shop.entity.CartList;
@@ -84,9 +87,9 @@ public class OrderAction extends SuperActionSupport implements ServletRequestAwa
 			
 			order = new Order();
 			order.setId(String.valueOf(new SnowFlakeGenerator(2, 2).nextId()));
-			order.setPaymentStatus("00");
+			order.setPaymentStatus("02");
 			order.setuId(user.getId());
-			order.setLogisticsStatus("00");
+			order.setLogisticsStatus("02");
 			
 			BigDecimal sum = new BigDecimal("0");
 			BigDecimal origSum = new BigDecimal("0");
@@ -143,6 +146,11 @@ public class OrderAction extends SuperActionSupport implements ServletRequestAwa
 	@RequestTypeAnno(RequestType.POST)
 	public String update(){
 		try {
+			Map<String, String> map = ActionUtil.getRequestParameterMap(request);
+			QueryHelper qhper = new QueryHelper();
+			Page page = new Page();
+			qhper.paramBind(request, page);
+			String hql = "UPDATE CartList"+qhper.buildAllQuery(page);
 			orderServiceImpl.update(order);
 			setMessage(new Message().success(getText("shop.error.updateOk")));
 		}catch(Exception e) {

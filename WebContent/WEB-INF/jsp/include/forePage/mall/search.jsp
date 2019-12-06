@@ -15,7 +15,9 @@
    	 					<button lay-submit lay-filter="c-form-add" class="layui-hide">search</button>
    	 				</div>
    	 				<a href="<%=basePath%>ucenter_chtml_shopcart"><i class="layui-icon layui-icon-cart" style="font-size: 32px; cursor: pointer; color: #a77f2a69; float: right; margin-top: 14px;">
-   	 					<span class="layui-badge cartListCount" style="position: absolute; margin: -35px 20px; border-radius: 10px;">${cartListCount}</span>	
+   	 					<c:if test="${cartListCount>0}">
+   	 					<span class="layui-badge cartListCount" style="position: absolute; margin: -35px 20px; border-radius: 10px;">${cartListCount}</span>
+   	 					</c:if>
    	 				</i></a>
    	 			</div>
 			</div>

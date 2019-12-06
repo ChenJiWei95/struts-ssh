@@ -83,7 +83,21 @@ private static Logger log = LoggerFactory.getLogger(QueryHelper.class);
 				filter.setOperator(Operator.fromString(params[2]));
 				filter.setValue(this.getValue(params[3],value));
 				this.page.addFilter(filter);
+			} else {
+				System.err.println(name+"属性非法！");
 			}
+		} else if(name.startsWith(SysConstant.UPDATE_PRE) && StringUtils.isNotEmpty(value)){
+			String[] params = name.split(SysConstant.QUERY_SPIT);
+			if(params.length == 3){
+				UpdateItem updateItem = new UpdateItem();
+				updateItem.setProperty(params[1].replaceAll("#", "."));
+				updateItem.setValue(this.getValue(params[2],value));
+				this.page.addUpdateItem(updateItem);
+			} else {
+				System.err.println(name+"属性非法！");
+			}
+		} else {
+			System.err.println(name+"属性非法！");
 		}
 	}
 	
@@ -179,6 +193,20 @@ private static Logger log = LoggerFactory.getLogger(QueryHelper.class);
 				}
 			}
 		}
+		return hql.toString();
+	}
+	public String buildUpdate(List<UpdateItem> items){
+		if(items.size())
+		StringBuffer hql = new StringBuffer();
+		hql.append(" set ");
+		for(UpdateItem item : items){
+			
+			hql.append(item.getProperty());
+			hql.append(item.getQueryOperator());
+			hql.append(" and ");
+			 
+		}
+		hql.delete(hql.length() - 4, hql.length());
 		return hql.toString();
 	}
 	

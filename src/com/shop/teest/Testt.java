@@ -10,6 +10,7 @@ import com.shop.QueryHelper;
 public class Testt {
 	@SuppressWarnings({ "static-access", "rawtypes" })
 	public static void main(String[] args) {
+		// 测试page
 		QueryHelper hql = new QueryHelper();
 		Page page = new Page(); 
 		page.setAlias("m");
@@ -20,7 +21,7 @@ public class Testt {
 		f1.setOperator(Operator.eq);
 		f1.setProperty("m.time");
 		f1.setValue("123");
-		f1.eq("time", "12:11:11");
+//		f1.eq("time", "12:11:11");
 		page.addFilter(f1);
 		
 		System.out.println(hql.buildAllQuery(page));

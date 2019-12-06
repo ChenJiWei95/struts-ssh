@@ -14,6 +14,7 @@ public interface SysConstant {
 	 * 查询前缀
 	 */
 	public static final String QUERY_PRE = "Qu";
+	public static final String UPDATE_PRE = "Up";
 	
 	/**
 	 * 查询分隔符 Qu_chanid_eq_s

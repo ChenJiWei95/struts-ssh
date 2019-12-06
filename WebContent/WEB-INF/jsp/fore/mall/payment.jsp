@@ -31,6 +31,13 @@
 		</div>
 		
 		<div class="layui-card">
+			<div class="layui-card-header">订单详细</div>
+			<div class="layui-card-body">
+				订单号：${order.id} &nbsp; &nbsp; &nbsp; &nbsp; 下单时间：${order.createDate}
+			</div>
+		</div>
+		
+		<div class="layui-card">
 			<div class="layui-card-header">商品明细</div>
 			<div class="layui-card-body">
 				<div class="layui-row cartlist">
@@ -40,16 +47,16 @@
 					<div class="layui-col-md2"><s:text name="shop.common.colour"/></div>
 					<div class="layui-col-md2"><s:text name="shop.common.size"/></div>
 				</div>
-				<c:forEach begin="0" items="${cartlist}" step="1" var="CartList" varStatus="varsta">
-				<div class="layui-row cartlist-etc pointer" style="overflow: hidden;" data-id="${CartList.id}">
-					<div class="layui-col-md4" lay-href="<%=basePath%>mall_chtml_goodsdetails?id=${CartList.id}">
-						<img src="<%=basePath%>${CartList.url}" width="50px" height= "50px"/>
-						<span>${CartList.name}</span>
+				<c:forEach begin="0" items="${orderItems}" step="1" var="OrderItem" varStatus="varsta">
+				<div class="layui-row cartlist-etc pointer" style="overflow: hidden;" data-id="${OrderItem.id}">
+					<div class="layui-col-md4" lay-href="<%=basePath%>mall_chtml_goodsdetails?id=${OrderItem.goodsId}">
+						<img src="<%=basePath%>${OrderItem.url}" width="50px" height= "50px"/>
+						<span>${OrderItem.name}</span>
 					</div>
-					<div class="layui-col-md2"><span>￥<fmt:formatNumber type="number" value="${CartList.price*CartList.discount}" maxFractionDigits="2"/><del class="ori-price">￥${CartList.price}</del></span></div>
-					<div class="layui-col-md2"><span>${CartList.count}</span></div>
-					<div class="layui-col-md2"><span class="color">${CartList.colour}</span></div>
-					<div class="layui-col-md2"><span class="size">${CartList.size}</span></div>
+					<div class="layui-col-md2"><span>￥<fmt:formatNumber type="number" value="${OrderItem.price*OrderItem.discount}" maxFractionDigits="2"/><del class="ori-price">￥${CartList.price}</del></span></div>
+					<div class="layui-col-md2"><span>${OrderItem.count}</span></div>
+					<div class="layui-col-md2"><span class="color">${OrderItem.colour}</span></div>
+					<div class="layui-col-md2"><span class="size">${OrderItem.size}</span></div>
 				</div>
 				</c:forEach> 
 			</div>
@@ -74,8 +81,8 @@
 		<!-- 确认支付 -->
 		<div class="layui-card">
 			<span>
-				<font class="total-amount" style="color: red; font-size: 24px;">${}元</font>
-				<del class="orig-total-amount">${}元</del>
+				<font class="total-amount" style="color: red; font-size: 24px;">${order.totalAmount}元</font>
+				<del class="orig-total-amount">${order.originalAmount}元</del>
 			</span>
 			<span class="buyNow border" shop-click="buy"><s:text name="shop.common.buy"/></span>
 		</div>
@@ -96,19 +103,19 @@
  		util.shopClick({
  			buy: function(){
  				var data1 = {};
- 				data1['logistics.id'] = ;
+ 				data1['logistics.id'] = '';
  				util.formAjax({
  					url: '<%=basePath%>logistics_save'
  					,data: data1
  				});
  				var data2 = {};
- 				data2["order.payment_status"] = "00"
- 				,data2["order.logistics_status"] = "02"
- 				,data2["order.id"] = "02"
+ 				data2["Up_paymentStatus_s"] = "00"
+ 				//,data2["order.logisticsStatus"] = "02"
+ 				,data2["Qu_id_eq_s"] = "${order.id}"
  				;
  				util.formAjax({
  					url: '<%=basePath%>order_update'
- 					,data: {id: '${goods.id}'}
+ 					,data: data2
  				});
  			}
  			,addCart: function(){

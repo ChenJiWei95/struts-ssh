@@ -16,10 +16,14 @@ import com.shop.Constants;
 import com.shop.control.SuperActionSupport;
 import com.shop.entity.Address;
 import com.shop.entity.Goods;
+import com.shop.entity.Order;
+import com.shop.entity.OrderItem;
 import com.shop.entity.User;
 import com.shop.service.AddressService;
 import com.shop.service.CartListService;
 import com.shop.service.GoodsService;
+import com.shop.service.OrderItemService;
+import com.shop.service.OrderService;
 /**
  * @version: V 1.0 
  * @Description:
@@ -44,6 +48,12 @@ public class MallAction extends SuperActionSupport implements ServletRequestAwar
 	
 	@Autowired
 	private AddressService addressServiceImpl; 
+	
+	@Autowired
+	private OrderService OrderServiceImpl; 
+	
+	@Autowired
+	private OrderItemService OrderItemServiceImpl; 
 	
 	@Override
 	public void setServletRequest(HttpServletRequest arg0) {
@@ -100,6 +110,14 @@ public class MallAction extends SuperActionSupport implements ServletRequestAwar
 		User user = (User) session.getAttribute(Constants.LOGIN_SIGN);
 		Address address = (Address) addressServiceImpl.findList("form Address where userId = ?", user.getId());
 		session.setAttribute("address", address);
+		
+		String orderId = request.getParameter("orderId");
+		Order order = OrderServiceImpl.get(orderId);
+		session.setAttribute("order", order);
+		
+		StringBuilder hql = new StringBuilder("from OrderItem where orderId=?");
+		List<OrderItem> itemList = OrderItemServiceImpl.findList(hql.toString(), order.getId());
+		session.setAttribute("orderItems", itemList);
 		
 	}
 
