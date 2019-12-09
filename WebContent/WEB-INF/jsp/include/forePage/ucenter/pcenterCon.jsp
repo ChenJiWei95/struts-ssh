@@ -39,7 +39,7 @@
 				<span>待评价</span>
 				<span class="var-color">2个</span>
 			</label>
-		</div>	
+		</div>
 	</div>
 	<!-- logistics and order s -->
 	<div class="layui-tab layui-tab-brief" lay-filter="docDemoTabBrief">
@@ -52,6 +52,22 @@
 		  <div class="layui-tab-content">
 		    <!-- 	全部订单 -->
 		    <div class="layui-tab-item layui-show" style="width: 100%; height: 500px; background-size: cover; background-image:url(<%=basePath%>resource/img/xihu.jpg);">
+			    <c:forEach begin="0" items="${orders}" step="1" var="Order" varStatus="varsta">
+			    <div class="layui-card">
+					<div class="layui-card-header">
+						订单号：${Order.id}&nbsp;&nbsp;&nbsp;&nbsp;创建时间：${Order.createDate}
+					</div>
+					<div class="layui-card-body">
+						<div>
+							item
+						</div>
+						<div>
+							<c:if test="${Order.paymentStatus eq '02'}"><a href="<%=basePath%>mall_chtml_payment?id=${Order.id}">前往支付</a></c:if>
+							<c:if test="${Order.logisticsStatus eq '00'}"><a href="<%=basePath%>mall_chtml_payment?id=${Order.id}">查看物流</a></c:if>
+						</div>
+					</div>
+			    </div>
+			    </c:forEach>
 		    </div>
 		    <!-- 	等待发货 -->
 		    <div class="layui-tab-item">

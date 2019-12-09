@@ -43,13 +43,13 @@ public class OrderAction extends SuperActionSupport implements ServletRequestAwa
 	private Order order; 
 	
 	@Autowired
-	private OrderService orderServiceImpl; 
-	
-	@Autowired
 	private CartListService cartListServiceImpl; 
 	
 	@Autowired
-	private GoodsService goodsServiceImpl; 
+	private GoodsService goodsServiceImpl;
+	
+	@Autowired
+	private OrderService orderServiceImpl; 
 	
 	@Autowired
 	private OrderItemService orderItemServiceImpl; 
@@ -84,7 +84,7 @@ public class OrderAction extends SuperActionSupport implements ServletRequestAwa
 			
 			order = new Order();
 			order.setId(String.valueOf(new SnowFlakeGenerator(2, 2).nextId()));
-			order.setPaymentStatus("00");
+			order.setPaymentStatus("02");
 			order.setuId(user.getId());
 			order.setLogisticsStatus("00");
 			
@@ -127,7 +127,7 @@ public class OrderAction extends SuperActionSupport implements ServletRequestAwa
 			orderServiceImpl.save(order);
 			
 			cartListServiceImpl.delBatch(ids);
-			setMessage(Message.success(getText("shop.error.checkoutOk")));
+			setMessage(Message.success(getText("shop.error.checkoutOk"), order.getId()));
 		} catch (Exception e) {
 			e.printStackTrace();
 			setMessage(Message.success(getText("shop.error.checkoutfail")));
@@ -144,11 +144,11 @@ public class OrderAction extends SuperActionSupport implements ServletRequestAwa
 	public String update(){
 		try {
 			orderServiceImpl.update(order);
-			setMessage(new Message().success(getText("shop.error.updateOk")));
+			setMessage(new Message().success(getText("shop.error.payOk")));
 		}catch(Exception e) {
 			log.info("异常"+e);
 			e.printStackTrace();
-			setMessage(new Message().error(getText("shop.error.updateError")));
+			setMessage(new Message().error(getText("shop.error.payError")));
 		}
 		return JSON;
 	}	

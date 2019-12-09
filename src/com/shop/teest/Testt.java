@@ -4,13 +4,16 @@ import java.util.Map.Entry;
 
 import com.shop.Filter;
 import com.shop.Filter.Operator;
+
+import sun.misc.BASE64Encoder;
+
 import com.shop.Page;
 import com.shop.QueryHelper;
 
 public class Testt {
 	@SuppressWarnings({ "static-access", "rawtypes" })
 	public static void main(String[] args) {
-		QueryHelper hql = new QueryHelper();
+		/*QueryHelper hql = new QueryHelper();
 		Page page = new Page(); 
 		page.setAlias("m");
 		page.setPage(3);
@@ -26,6 +29,7 @@ public class Testt {
 		System.out.println(hql.buildAllQuery(page));
 		
 		for(Entry<String, Object> item : hql.getParams().entrySet())
-			System.out.println(item.getKey() + " " + item.getValue());
-	}
+			System.out.println(item.getKey() + " " + item.getValue());*/
+		
+	} 
 }

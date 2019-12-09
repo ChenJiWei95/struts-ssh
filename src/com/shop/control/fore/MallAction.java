@@ -16,10 +16,14 @@ import com.shop.Constants;
 import com.shop.control.SuperActionSupport;
 import com.shop.entity.Address;
 import com.shop.entity.Goods;
+import com.shop.entity.Order;
+import com.shop.entity.OrderItem;
 import com.shop.entity.User;
 import com.shop.service.AddressService;
 import com.shop.service.CartListService;
 import com.shop.service.GoodsService;
+import com.shop.service.OrderItemService;
+import com.shop.service.OrderService;
 /**
  * @version: V 1.0 
  * @Description:
@@ -44,6 +48,12 @@ public class MallAction extends SuperActionSupport implements ServletRequestAwar
 	
 	@Autowired
 	private AddressService addressServiceImpl; 
+	
+	@Autowired
+	private OrderService orderServiceImpl; 
+	
+	@Autowired
+	private OrderItemService orderItemServiceImpl; 
 	
 	@Override
 	public void setServletRequest(HttpServletRequest arg0) {
@@ -98,8 +108,16 @@ public class MallAction extends SuperActionSupport implements ServletRequestAwar
 	public void payment() {
 		HttpSession session = request.getSession();
 		User user = (User) session.getAttribute(Constants.LOGIN_SIGN);
-		Address address = (Address) addressServiceImpl.findList("form Address where userId = ?", user.getId());
+		
+		List<Address> address = addressServiceImpl.findList("from Address where userId = ?", user.getId());
 		session.setAttribute("address", address);
+		
+		Order order = orderServiceImpl.get(request.getParameter("id"));
+		if(order != null) {
+			List<OrderItem> os = orderItemServiceImpl.findList("from OrderItem where orderId = ?", order.getId());
+			session.setAttribute("orderItems", os);
+			session.setAttribute("order", order);
+		}
 		
 	}
 

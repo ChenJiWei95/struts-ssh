@@ -1,6 +1,7 @@
 package com.shop.entity;
 
 
+import java.io.Serializable;
 import java.math.BigDecimal;
 
 import javax.persistence.Column;
@@ -11,7 +12,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "orders")
-public class Order {
+public class Order implements Serializable{
 	@Id
 	@Column(name = "id")
 	private String id;

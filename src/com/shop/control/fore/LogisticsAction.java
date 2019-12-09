@@ -14,13 +14,17 @@ import org.springframework.stereotype.Component;
 
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
+import com.shop.Constants;
+import com.shop.annotation.RequestTypeAnno;
 import com.shop.control.SuperActionSupport;
+import com.shop.entity.Address;
 import com.shop.entity.Logistics;
+import com.shop.entity.User;
+import com.shop.service.AddressService;
 import com.shop.service.LogisticsService;
 import com.shop.util.ActionUtil;
 import com.shop.util.Message;
 import com.shop.util.SnowFlakeGenerator;
-import com.shop.annotation.RequestTypeAnno;
 import com.shop.util.enums.RequestType;
 
 @Component	 		
@@ -33,6 +37,9 @@ public class LogisticsAction extends SuperActionSupport implements ServletReques
 	
 	@Autowired
 	private LogisticsService logisticsServiceImpl; 
+	
+	@Autowired
+	private AddressService addressServiceImpl;
 	
 	public Logistics getLogistics() {
 		logistics = logistics == null ? new Logistics() : logistics;
@@ -58,12 +65,25 @@ public class LogisticsAction extends SuperActionSupport implements ServletReques
 	@RequestTypeAnno(RequestType.POST)
 	public String save(){
 		try {
-			logistics.setId(String.valueOf(new SnowFlakeGenerator(2, 2).nextId()));
+			User user = (User) request.getSession().getAttribute(Constants.LOGIN_SIGN);
+			String addressId = request.getParameter("addressId");
+			log.info(addressId);
+			if(addressId == null || "".equals(addressId.trim())) setMessage(Message.error("请选择地址"));
+			Address address = addressServiceImpl.get(addressId); 
+			logistics.setArea(address.getArea());
+			logistics.setCity(address.getCity());
+			logistics.setStreet(address.getStreet());
+			logistics.setProvince(address.getProvince());
+			logistics.setName(address.getName());
+			logistics.setPhone(address.getPhone());
+			
+			logistics.setLogisticsId(String.valueOf(new SnowFlakeGenerator(2, 2).nextId()));
+			logistics.setNickname(user.getUsername());
 			logisticsServiceImpl.save(logistics);
 			setMessage(Message.success("添加成功"));
 		} catch (Exception e) {
 			e.printStackTrace();
-			setMessage(Message.success("添加失败"));
+			setMessage(Message.error("添加失败"));
 		}
 		return JSON;
 	}	
@@ -168,7 +188,7 @@ public class LogisticsAction extends SuperActionSupport implements ServletReques
 	public String get(){
 		
 		try {
-			Logistics t = logisticsServiceImpl.get(logistics.getId());	
+			Logistics t = logisticsServiceImpl.get(logistics.getLogisticsId());	
 			setMessage(new Message().success(getText("shop.error.getOk"), t));
 		}catch(Exception e) {
 			log.info("异常"+e);
