@@ -24,6 +24,8 @@ import com.shop.service.CartListService;
 import com.shop.service.GoodsService;
 import com.shop.service.OrderItemService;
 import com.shop.service.OrderService;
+import com.shop.service.impl.OrderItemServiceImpl;
+import com.shop.service.impl.OrderServiceImpl;
 /**
  * @version: V 1.0 
  * @Description:
@@ -50,10 +52,10 @@ public class MallAction extends SuperActionSupport implements ServletRequestAwar
 	private AddressService addressServiceImpl; 
 	
 	@Autowired
-	private OrderService OrderServiceImpl; 
+	private OrderService orderServiceImpl; 
 	
 	@Autowired
-	private OrderItemService OrderItemServiceImpl; 
+	private OrderItemService orderItemServiceImpl; 
 	
 	@Override
 	public void setServletRequest(HttpServletRequest arg0) {
@@ -66,7 +68,7 @@ public class MallAction extends SuperActionSupport implements ServletRequestAwar
 	
 	
 	public String chtml(){
-		backhaul(ServletActionContext.getRequest()); 
+		backhaul(request); 
 		return CHTML;
 	}
 	
@@ -112,11 +114,11 @@ public class MallAction extends SuperActionSupport implements ServletRequestAwar
 		session.setAttribute("address", address);
 		
 		String orderId = request.getParameter("orderId");
-		Order order = OrderServiceImpl.get(orderId);
+		Order order = orderServiceImpl.get(orderId);
 		session.setAttribute("order", order);
 		
 		StringBuilder hql = new StringBuilder("from OrderItem where orderId=?");
-		List<OrderItem> itemList = OrderItemServiceImpl.findList(hql.toString(), order.getId());
+		List<OrderItem> itemList = orderItemServiceImpl.findList(hql.toString(), order.getId());
 		session.setAttribute("orderItems", itemList);
 		
 	}

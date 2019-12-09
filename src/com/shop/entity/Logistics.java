@@ -1,6 +1,8 @@
 package com.shop.entity;
 
 
+import java.io.Serializable;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -9,7 +11,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "logistics")
-public class Logistics {
+public class Logistics implements Serializable{
 	@Id
 	@Column(name = "id")
 	private String logisticsId;

@@ -125,8 +125,9 @@
  			util.formAjax({
 					url: '<%=basePath%>order_save'
 					,data: data.field
-					,success: function(){
+					,success: function(data){
 						 // 跳转下单成功页
+						 self.location = "<%=basePath%>mall_chtml_payment?id="+data
 					}
 			});
  			return !1;

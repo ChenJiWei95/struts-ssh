@@ -1,8 +1,13 @@
 package com.shop.control;
 
+import java.io.UnsupportedEncodingException;
+
+import javax.servlet.http.HttpServletRequest;
+
 import org.apache.log4j.Logger;
 import org.apache.struts2.convention.annotation.Action;
 import org.apache.struts2.convention.annotation.Result;
+import org.apache.struts2.interceptor.ServletRequestAware;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
@@ -40,7 +45,7 @@ import com.shop.util.SnowFlakeGenerator;
  */
 @Component	 			// 表示此类将被spring容器托管，能实现依赖对象的控制反转，例如：@Autowired注解获取userServiceImpl对象
 @Scope("prototype")		// 表示每次获得bean都会生成一个新的对象
-public class TestAction extends SuperActionSupport implements ModelDriven<UserTest>{
+public class TestAction extends SuperActionSupport implements ServletRequestAware{
 	private static final long serialVersionUID = 7539369474585568995L;
 	private static Logger log = Logger.getLogger(TestAction.class);
 	
@@ -49,23 +54,53 @@ public class TestAction extends SuperActionSupport implements ModelDriven<UserTe
 	
 	private UserTest user = new UserTest();
 	
+	private HttpServletRequest request;
+	
+	@Override
+	public void setServletRequest(HttpServletRequest arg0) {
+		request = arg0;
+		
+	}
+	public HttpServletRequest getRequest() {  
+        return request;  
+    }
+	
 	/**
 	 * 模板驱动  获取前台参数 <br>
 	 * 实现ModelDriven接口 
 	 * @see com.opensymphony.xwork2.ModelDriven#getModel()
 	 */
-	@Override
+	/*@Override
 	public UserTest getModel() {
 		return user;
-	}
+	}*/
 
-	public String execute(){
-		log.info("配置文件的方式构建action：开始执行"); 
-		UserTest u = new UserTest();
-		u.setId(new SnowFlakeGenerator(2, 2).nextId());
-		u.setUsername("xiaoming");
-		userTestServiceImpl.save(u);
-		print("true");  // 如果是以ajax请求 返回数据 此处得有流输出，否则报此异常Can not find a java.io.InputStream with the name
+	public String update(){
+		String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+request.getContextPath()+"/";
+		log.info(basePath);
+		try {
+			log.info("配置文件的方式构建action：开始执行"); 
+			UserTest u = new UserTest();
+			Long id = new SnowFlakeGenerator(2, 2).nextId();
+			u.setId(id);
+			u.setUsername("xiaoming");
+			String str = "一句话。。。";
+			byte[] text = str.getBytes("UTF-8");
+			u.setText(text);
+			userTestServiceImpl.save(u);
+			print("true");  // 如果是以ajax请求 返回数据 此处得有流输出，否则报此异常Can not find a java.io.InputStream with the name
+			
+			UserTest b = userTestServiceImpl.get(UserTest.class, id);
+			if(b != null) {
+				log.info("==============================");
+				
+//					log.info(new String (b.getText(), "UTF-8"));
+				
+			}
+		} catch (UnsupportedEncodingException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		return SUCCESS;
 	}
 	

@@ -13,27 +13,27 @@
   <title><s:text name="shop.common.goodsDetails"/></title> 
   <link rel="stylesheet" href="<%=basePath%>resource/layui/css/layui.css" media="all">
   <link rel="stylesheet" href="<%=basePath%>resource/style/mall.css" media="all">
+  <style>
+  	.layui-card {
+  		border-radius: 5px;
+  	}
+  </style>
  </head>
  <body>
  	<%@ include file="../../include/forePage/mall/languageBt.jsp" %>
 	 
 	<%@ include file="../../include/forePage/mall/mallNav.jsp" %>
-	<div class="layui-container cartlist-cnt" style="margin-top: 40px;">
+	
+	<div class="layui-container cartlist-cnt layui-form" style="margin-top: 40px;">
 		<div class="layui-card">
 			<div class="layui-card-header">收货地址</div>
 		   	<div class="layui-card-body"> 
-				<select id="">
+				<select name="addressId">
+				<option value="">请选择地址</option>
 				<c:forEach begin="0" items="${address}" step="1" var="Address" varStatus="varsta">
-					<option value="${Address.id}">${Address.province+"-"+Address.city+"-"+Address.area+"-"+Address.street}</option>
+					<option value="${Address.id}">${Address.province}-${Address.city}-${Address.area}-${Address.street}</option>
 				</c:forEach>
 				</select>
-			</div>
-		</div>
-		
-		<div class="layui-card">
-			<div class="layui-card-header">订单详细</div>
-			<div class="layui-card-body">
-				订单号：${order.id} &nbsp; &nbsp; &nbsp; &nbsp; 下单时间：${order.createDate}
 			</div>
 		</div>
 		
@@ -48,12 +48,14 @@
 					<div class="layui-col-md2"><s:text name="shop.common.size"/></div>
 				</div>
 				<c:forEach begin="0" items="${orderItems}" step="1" var="OrderItem" varStatus="varsta">
-				<div class="layui-row cartlist-etc pointer" style="overflow: hidden;" data-id="${OrderItem.id}">
-					<div class="layui-col-md4" lay-href="<%=basePath%>mall_chtml_goodsdetails?id=${OrderItem.goodsId}">
+				<div class="layui-row cartlist-etc pointer" style="overflow: hidden;" data-id="${OrderItem.orderItemId}">
+					<div class="layui-col-md4" lay-href="<%=basePath%>mall_chtml_goodsdetails?id=${OrderItem.orderItemId}">
 						<img src="<%=basePath%>${OrderItem.url}" width="50px" height= "50px"/>
 						<span>${OrderItem.name}</span>
 					</div>
-					<div class="layui-col-md2"><span>￥<fmt:formatNumber type="number" value="${OrderItem.price*OrderItem.discount}" maxFractionDigits="2"/><del class="ori-price">￥${CartList.price}</del></span></div>
+					<div class="layui-col-md2">
+						<span>￥<fmt:formatNumber type="number" value="${OrderItem.price*OrderItem.discount}" maxFractionDigits="2"/><del class="ori-price">￥${OrderItem.price}</del></span>
+					</div>
 					<div class="layui-col-md2"><span>${OrderItem.count}</span></div>
 					<div class="layui-col-md2"><span class="color">${OrderItem.colour}</span></div>
 					<div class="layui-col-md2"><span class="size">${OrderItem.size}</span></div>
@@ -71,51 +73,97 @@
 		</div> -->
 		
 		<!-- 支付方式 -->
-		<div class="layui-card">
+		<!-- <div class="layui-card">
 			<div class="layui-card-header">支付方式</div>
 			<div class="layui-card-body">
-			
+			自动选择
 			</div>
-		</div>
+		</div> -->
 		
 		<!-- 确认支付 -->
-		<div class="layui-card">
-			<span>
-				<font class="total-amount" style="color: red; font-size: 24px;">${order.totalAmount}元</font>
-				<del class="orig-total-amount">${order.originalAmount}元</del>
-			</span>
-			<span class="buyNow border" shop-click="buy"><s:text name="shop.common.buy"/></span>
+		<%-- <c:when test="${order.paymentStatus eq '00'}">  --%>
+		<div class="layui-card" style="overflow: hidden; height: 57px; padding-top: 15px;">
+			<div style="float: right; margin-right: 20px;">
+				<span>
+					<font class="total-amount" style="color: red; font-size: 24px;">${order.totalAmount}元</font>
+					<del class="orig-total-amount">${order.originalAmount}元</del>
+				</span>
+				<%--不行 <c:when test="${order.paymentStatus eq '00'}">
+				已支付
+				</c:when>
+				<c:otherwise>
+				支付
+				</c:otherwise> --%>
+				<c:if test="${order.paymentStatus eq '00'}">
+				<span  style="margin-left: 20px;" >已支付</span>
+				</c:if>
+				<c:if test="${order.paymentStatus eq '02'}">
+				<span  style="margin-left: 20px;" class="buyNow border" shop-click="buy"><s:text name="shop.common.buy"/></span>
+				</c:if>
+				<%-- <c:if test="${order.paymentStatus eq '00'}">
+				<span  style="margin-left: 20px;" class="" >已支付</span>
+				</c:if> 
+				<c:if test="${order.paymentStatus eq '02'“><span  style="margin-left: 20px;" class="buyNow border" shop-click="buy"><s:text name="shop.common.buy"/></span></c:if> --%>
+			</div>
 		</div>
+         
+       <%--  <c:otherwise>	 
+        <div class="layui-card" style="overflow: hidden; height: 57px; padding-top: 15px;">
+			<div style="float: right; margin-right: 20px;">
+				<span>
+					<font class="total-amount" style="color: red; font-size: 24px;">${order.totalAmount}元</font>
+					<del class="orig-total-amount">${order.originalAmount}元</del>
+				</span>
+				
+			</div>
+		</div>
+        </c:otherwise> --%>
 		
 	</div>
-	
 	<!-- start bom --> 
 	<%@ include file="../../include/forePage/mall/bom.jsp" %>
 	<script src="<%=basePath%>resource/layui/layui.js"></script>
 	<script>
- 	layui.use(['layer', 'element', 'util'], function(){
+ 	layui.use(['layer', 'element', 'util', 'form'], function(){
  		var element = layui.element
  		,util = layui.util
+ 		,form = layui.form
  		,$ = layui.$
  		,layer = layui.layer;
+ 		form.render();
+ 		util.layHref(); // 链接跳转
  		util.addSubCtrlbtn(function(data){ // 加减器
  		});
  		util.shopClick({
  			buy: function(){
- 				var data1 = {};
- 				data1['logistics.id'] = '';
+ 				var addressId = $(".layui-this").eq(0).attr("lay-value");
+ 				if(addressId == void 0 || addressId == '') {
+ 					layer.msg("请选择地址");
+ 					return ;
+ 				}
+ 				var data1 = {}; 
+ 				data1['addressId']= addressId
+ 				,data1['logistics.orderId']= "${order.id}" 
+ 				;
+ 				console.log(data1);
+ 				
  				util.formAjax({
  					url: '<%=basePath%>logistics_save'
+ 					,contentType: 'application/x-www-form-urlencoded'
  					,data: data1
- 				});
- 				var data2 = {};
- 				data2["Up_paymentStatus_s"] = "00"
- 				//,data2["order.logisticsStatus"] = "02"
- 				,data2["Qu_id_eq_s"] = "${order.id}"
- 				;
- 				util.formAjax({
- 					url: '<%=basePath%>order_update'
- 					,data: data2
+ 					,success: function(){
+ 						var data2 = {};
+ 		 				data2["order.paymentStatus"] = "00"
+ 		 				,data2["order.logisticsStatus"] = "02"
+ 		 				,data2["order.id"] = "${order.id}"
+ 		 				;
+ 		 				console.log(data2);
+ 		 				util.formAjax({
+ 		 					url: '<%=basePath%>order_update'
+ 		 					,contentType: 'application/x-www-form-urlencoded'
+ 		 					,data: data2
+ 		 				});
+ 					}
  				});
  			}
  			,addCart: function(){

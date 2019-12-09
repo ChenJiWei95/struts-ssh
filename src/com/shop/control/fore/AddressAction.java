@@ -16,10 +16,12 @@ import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 import com.shop.control.SuperActionSupport;
 import com.shop.entity.Address;
+import com.shop.entity.User;
 import com.shop.service.AddressService;
 import com.shop.util.ActionUtil;
 import com.shop.util.Message;
 import com.shop.util.SnowFlakeGenerator;
+import com.shop.Constants;
 import com.shop.annotation.RequestTypeAnno;
 import com.shop.util.enums.RequestType;
 
@@ -58,7 +60,9 @@ public class AddressAction extends SuperActionSupport implements ServletRequestA
 	@RequestTypeAnno(RequestType.POST)
 	public String save(){
 		try {
+			User user = (User) request.getSession().getAttribute(Constants.LOGIN_SIGN);
 			address.setId(String.valueOf(new SnowFlakeGenerator(2, 2).nextId()));
+			address.setUserId(user.getId());
 			addressServiceImpl.save(address);
 			setMessage(Message.success("添加成功"));
 		} catch (Exception e) {
@@ -76,6 +80,8 @@ public class AddressAction extends SuperActionSupport implements ServletRequestA
 	@RequestTypeAnno(RequestType.POST)
 	public String update(){
 		try {
+			User user = (User) request.getSession().getAttribute(Constants.LOGIN_SIGN);
+			address.setUserId(user.getId());
 			addressServiceImpl.update(address);
 			setMessage(new Message().success(getText("shop.error.updateOk")));
 		}catch(Exception e) {
@@ -96,6 +102,8 @@ public class AddressAction extends SuperActionSupport implements ServletRequestA
 	public String delete(){
 		
 		try {
+			User user = (User) request.getSession().getAttribute(Constants.LOGIN_SIGN);
+			address.setUserId(user.getId());
 			addressServiceImpl.delete(address);
 			setMessage(new Message().success(getText("shop.error.deleteOk")));
 		}catch(Exception e) {
@@ -153,6 +161,9 @@ public class AddressAction extends SuperActionSupport implements ServletRequestA
 				eq.append(" AND "+item.getKey()+"=?");
 				param.add(item.getValue());
 			}
+			User user = (User) request.getSession().getAttribute(Constants.LOGIN_SIGN);
+			eq.append(" AND userId"+"=?");
+			param.add(user.getId());
 			List<Address> list = addressServiceImpl.findByPage(eq.toString(), 
 					page, 
 					limit, 

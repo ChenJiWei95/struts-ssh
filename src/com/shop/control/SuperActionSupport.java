@@ -91,7 +91,7 @@ public class SuperActionSupport extends ActionSupport {
 	 * @see
 	 * @since 1.0
 	 */
-	protected void backhaul(HttpServletRequest request,javax.servlet.http.HttpServletResponse resp){
+	protected void backhaul(HttpServletRequest request){
 		Class<?> clazz = this.getClass();
 		String path = request.getRequestURI();
 		String name = path.substring(path.lastIndexOf("_")+1);
