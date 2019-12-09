@@ -6,7 +6,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.apache.log4j.Logger;
-import org.apache.struts2.ServletActionContext;
 import org.apache.struts2.interceptor.ServletRequestAware;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
@@ -24,8 +23,6 @@ import com.shop.service.CartListService;
 import com.shop.service.GoodsService;
 import com.shop.service.OrderItemService;
 import com.shop.service.OrderService;
-import com.shop.service.impl.OrderItemServiceImpl;
-import com.shop.service.impl.OrderServiceImpl;
 /**
  * @version: V 1.0 
  * @Description:
@@ -110,10 +107,10 @@ public class MallAction extends SuperActionSupport implements ServletRequestAwar
 	public void payment() {
 		HttpSession session = request.getSession();
 		User user = (User) session.getAttribute(Constants.LOGIN_SIGN);
-		Address address = (Address) addressServiceImpl.findList("form Address where userId = ?", user.getId());
+		List<Address> address = addressServiceImpl.findList("from Address where userId = ?", user.getId());
 		session.setAttribute("address", address);
 		
-		String orderId = request.getParameter("orderId");
+		String orderId = request.getParameter("id");
 		Order order = orderServiceImpl.get(orderId);
 		session.setAttribute("order", order);
 		

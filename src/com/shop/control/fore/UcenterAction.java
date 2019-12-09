@@ -1,8 +1,10 @@
 package com.shop.control.fore;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.apache.log4j.Logger;
 import org.apache.struts2.ServletActionContext;
@@ -15,9 +17,14 @@ import com.shop.Constants;
 import com.shop.control.SuperActionSupport;
 import com.shop.entity.CartList;
 import com.shop.entity.Collection;
+import com.shop.entity.Order;
+import com.shop.entity.OrderItem;
 import com.shop.entity.User;
 import com.shop.service.CartListService;
 import com.shop.service.CollectionService;
+import com.shop.service.LogisticsService;
+import com.shop.service.OrderItemService;
+import com.shop.service.OrderService;
 /**
  * @version: V 1.0 
  * @Description:
@@ -39,6 +46,15 @@ public class UcenterAction extends SuperActionSupport implements ServletRequestA
 	
 	@Autowired
 	private CollectionService collectionServiceImpl; 
+	
+	@Autowired
+	private OrderService orderServiceImpl; 
+	
+	@Autowired
+	private OrderItemService orderItemServiceImpl; 
+	
+	@Autowired
+	private LogisticsService logisticsServiceImpl;
 	
 	@Override
 	public void setServletRequest(HttpServletRequest arg0) {
@@ -71,6 +87,30 @@ public class UcenterAction extends SuperActionSupport implements ServletRequestA
 		hql.append("AND userId = ?");
 		List<Collection> list = collectionServiceImpl.findList(hql.toString(), user.getId());
 		request.getSession().setAttribute("collList", list);
+	}
+	
+	public void pcenter(){
+		HttpSession session = request.getSession();
+		User user = (User) session.getAttribute(Constants.LOGIN_SIGN);
+		log.info("========================pcenter");
+		
+		List<Order> orders = orderServiceImpl.findList("from Order where uId = (?) ORDER BY create_date desc", user.getId());
+		request.getSession().setAttribute("orders", orders);
+		
+		log.info("orders size "+orders.size());
+		
+		// 收集order id 作为查询orders的依据
+		StringBuilder hql = new StringBuilder("from OrderItem where");
+		Object[] parame = new Object[orders.size()];
+		for(int i = 0; i < orders.size(); i++){
+			hql.append(" orderId=? OR");
+			parame[i] = orders.get(i).getId();
+		} 
+		if(orders.size() > 0) hql.delete(hql.length()-3, hql.length());// 删除多余or 
+		List<OrderItem> itemList = orderItemServiceImpl.findList(hql.toString(), parame);
+		
+		session.setAttribute("orderItems", itemList);
+		
 	}
 
 }

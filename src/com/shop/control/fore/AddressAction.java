@@ -162,7 +162,7 @@ public class AddressAction extends SuperActionSupport implements ServletRequestA
 				param.add(item.getValue());
 			}
 			User user = (User) request.getSession().getAttribute(Constants.LOGIN_SIGN);
-			eq.append(" AND userId"+"=?");
+			eq.append(" AND userId=?");
 			param.add(user.getId());
 			List<Address> list = addressServiceImpl.findByPage(eq.toString(), 
 					page, 
@@ -175,6 +175,36 @@ public class AddressAction extends SuperActionSupport implements ServletRequestA
 			setMessage(new Message().error(getText("shop.error.getError")));
 		}
 		return JSON;
+		
+		
+		/*try {
+			Map<String, String> map = ActionUtil.getRequestParameterMap(request);
+			Integer limit = Integer.parseInt(map.get("limit"));
+			Integer page = Integer.parseInt(map.get("page"));
+			map.remove("limit");
+			map.remove("page");
+			
+			StringBuilder eq = new StringBuilder("from Address where 1=1");
+			Object[] param = new Object[map.size()+1];
+			int count = 0;
+			for(Map.Entry<String, String> item : map.entrySet()) {
+				eq.append(" AND "+item.getKey()+"=?");
+				param[count++] = item.getValue();
+			}
+			User user = (User) request.getSession().getAttribute(Constants.LOGIN_SIGN);
+			eq.append(" AND userId"+"=?");
+			param[count++] = user.getId();
+			List<Address> list = addressServiceImpl.findByPage(eq.toString(), 
+					page, 
+					limit, 
+					param);
+			setMessage(new Message().success(getText("shop.error.getOk"), list));
+		}catch(Exception e) {
+			log.info("异常"+e);
+			e.printStackTrace();
+			setMessage(new Message().error(getText("shop.error.getError")));
+		}
+		return JSON;*/
 		
 	}	
 	

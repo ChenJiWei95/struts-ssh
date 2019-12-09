@@ -381,7 +381,7 @@ public class BaseServiceImpl<T> implements BaseService<T> {
 	@Transactional(readOnly=true)
 	public List<T> findByPage(String hql, int page, int size, Object...values) throws DBException {
 		// TODO Auto-generated method stub
-		return baseDao.findByPage(hql, page, size);
+		return baseDao.findByPage(hql, page, size, values);
 	}
 
 }

@@ -148,10 +148,13 @@ public class OrderAction extends SuperActionSupport implements ServletRequestAwa
 		try {
 			Map<String, String> map = ActionUtil.getRequestParameterMap(request);
 			QueryHelper qhper = new QueryHelper();
+			/*qhper.addCloumnAlias("paymentStatus", "payment_status");
+			qhper.addCloumnAlias("logisticsStatus", "logistics_status");*/
 			Page page = new Page();
 			qhper.paramBind(request, page);
-			String hql = "UPDATE CartList"+qhper.buildAllQuery(page);
-			orderServiceImpl.update(order);
+			String hql = "UPDATE Order"+qhper.buildAllQuery(page);
+			log.info(hql.toString());
+			orderServiceImpl.update(hql, qhper.getParams());
 			setMessage(new Message().success(getText("shop.error.payOk")));
 		}catch(Exception e) {
 			log.info("异常"+e);

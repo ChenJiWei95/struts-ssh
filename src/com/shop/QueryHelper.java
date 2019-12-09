@@ -38,7 +38,23 @@ private static Logger log = LoggerFactory.getLogger(QueryHelper.class);
 	@SuppressWarnings("rawtypes")
 	private Page page;//存在对应查询及排序信息
 	private StringBuffer hql;
+	private Map<String,String> cloumnAlias = new HashMap<String, String>();	//前端列 别名 防止前端列名中有下划线影响列名解析  
 	private Map<String,Object> params = new HashMap<String, Object>();//查询参数及对应值
+	
+	/**
+	 * 前端列名 别名 防止前端列名中有下划线影响列名解析 	<br>
+	 * 前端设定为createDate 实际数据库为 create_date   <br>
+	 * 因此调用addCloumnAlias("createDate", "create_date"); 在生成sql语句时将列名转化为真实列名 <br>
+	 * <p>	 
+	 * @param alias
+	 * @param cloumn
+	 * void
+	 * @see
+	 * @since 1.0
+	 */
+	public void addCloumnAlias(String alias, String cloumn){
+		this.cloumnAlias.put(alias, cloumn);
+	}
 	
 	/**
 	 * 查询参数绑定
@@ -234,9 +250,10 @@ private static Logger log = LoggerFactory.getLogger(QueryHelper.class);
 		hql.append(" set ");
 		for(UpdateItem item : items){
 			
-			hql.append(item.getProperty());
+			String trueCloumn = this.cloumnAlias.get(item.getProperty());
+			hql.append(trueCloumn == null ? item.getProperty() : trueCloumn);
 			hql.append(item.getQueryOperator());
-			hql.append(item.getValue());
+			hql.append(item.getValue()); 
 			hql.append(", ");
 			 
 		}
