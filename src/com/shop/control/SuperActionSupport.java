@@ -91,13 +91,14 @@ public class SuperActionSupport extends ActionSupport {
 	 * @see
 	 * @since 1.0
 	 */
-	protected void backhaul(HttpServletRequest request){
+	protected void backhaul(HttpServletRequest request,javax.servlet.http.HttpServletResponse resp){
 		Class<?> clazz = this.getClass();
 		String path = request.getRequestURI();
 		String name = path.substring(path.lastIndexOf("_")+1);
 		try {
 			Method method = clazz.getMethod(name);
 			if(method != null) method.invoke(this);
+			
 		} catch (SecurityException | IllegalAccessException | IllegalArgumentException | InvocationTargetException e) {
 			e.printStackTrace();
 		} catch (NoSuchMethodException e){

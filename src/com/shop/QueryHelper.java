@@ -35,9 +35,10 @@ public class QueryHelper {
 	
 private static Logger log = LoggerFactory.getLogger(QueryHelper.class);
 	
+	@SuppressWarnings("rawtypes")
 	private Page page;//存在对应查询及排序信息
 	private StringBuffer hql;
-	private Map<String,Object> params = new HashMap<String, Object>();;//查询参数及对应值
+	private Map<String,Object> params = new HashMap<String, Object>();//查询参数及对应值
 	
 	/**
 	 * 查询参数绑定
@@ -91,7 +92,7 @@ private static Logger log = LoggerFactory.getLogger(QueryHelper.class);
 			if(params.length == 3){
 				UpdateItem updateItem = new UpdateItem();
 				updateItem.setProperty(params[1].replaceAll("#", "."));
-				updateItem.setValue(this.getValue(params[2],value));
+				updateItem.setValue(this.getValue2(params[2],value));
 				this.page.addUpdateItem(updateItem);
 			} else {
 				System.err.println(name+"属性非法！");
@@ -100,7 +101,29 @@ private static Logger log = LoggerFactory.getLogger(QueryHelper.class);
 			System.err.println(name+"属性非法！");
 		}
 	}
-	
+	/**
+	 * update 语句中获取值
+	 * <p>	 
+	 * @param valueType
+	 * @param value
+	 * @return
+	 * Object
+	 * @see
+	 * @since 1.0
+	 */
+	private Object getValue2(String valueType,String value) {
+		value = value.trim();
+		try {
+			if(StringUtils.endsWithIgnoreCase(valueType, "s")){
+				return "'"+value+"'";
+			}
+			return value;
+		} catch (Exception e) {
+			log.error("类型转换失败",e);
+		}
+		
+		return null;
+	}
 	/**
 	 * 将对应类型转换
 	 * @param valueType
@@ -152,6 +175,7 @@ private static Logger log = LoggerFactory.getLogger(QueryHelper.class);
 	 */
 	public String buildAllQuery(Page page){
 		hql = new StringBuffer();
+		hql.append(this.buildUpdate(page.getUpdateItems()));
 		hql.append(this.buildQuery(page.getFilters()));
 		hql.append(this.buildOrder(page.getOrders(),page.getAlias()));
 		return hql.toString();
@@ -195,18 +219,28 @@ private static Logger log = LoggerFactory.getLogger(QueryHelper.class);
 		}
 		return hql.toString();
 	}
+	/**
+	 * 例如： SET name='cjw' AND age='12'
+	 * <p>	 
+	 * @param items
+	 * @return
+	 * String
+	 * @see
+	 * @since 1.0
+	 */
 	public String buildUpdate(List<UpdateItem> items){
-		if(items.size())
+		if(items.size() == 0) return "";
 		StringBuffer hql = new StringBuffer();
 		hql.append(" set ");
 		for(UpdateItem item : items){
 			
 			hql.append(item.getProperty());
 			hql.append(item.getQueryOperator());
-			hql.append(" and ");
+			hql.append(item.getValue());
+			hql.append(", ");
 			 
 		}
-		hql.delete(hql.length() - 4, hql.length());
+		hql.delete(hql.length() - 2, hql.length());
 		return hql.toString();
 	}
 	
