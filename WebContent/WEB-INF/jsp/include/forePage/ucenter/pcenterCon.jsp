@@ -94,7 +94,7 @@
 			          <a href="javascript:;" class="media-left" style="float: left;">
 			             <img src="<%=basePath%>resource/img/good2.png" height="46px" width="46px">
 			          </a>
-			          <div class="pad-btm">
+			          <div class="pad-btm"> 
 			            <p class="fontColor"><a href="javascript:;">胡歌</a></p>
 			            <p class="min-font">
 			              <span class="layui-breadcrumb" lay-separator="-">
