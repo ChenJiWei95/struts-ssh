@@ -49,7 +49,7 @@
 				</div>
 				<c:forEach begin="0" items="${orderItems}" step="1" var="OrderItem" varStatus="varsta">
 				<div class="layui-row cartlist-etc pointer" style="overflow: hidden;" data-id="${OrderItem.orderItemId}">
-					<div class="layui-col-md4" lay-href="<%=basePath%>mall_chtml_goodsdetails?id=${OrderItem.orderItemId}">
+					<div class="layui-col-md4" lay-href="<%=basePath%>mall_chtml_goodsdetails?id=${OrderItem.goodsId}">
 						<img src="<%=basePath%>${OrderItem.url}" width="50px" height= "50px"/>
 						<span>${OrderItem.name}</span>
 					</div>

@@ -145,21 +145,28 @@ public class OrderAction extends SuperActionSupport implements ServletRequestAwa
 	@SuppressWarnings("static-access")
 	@RequestTypeAnno(RequestType.POST)
 	public String update(){
+		String textErr = "";
 		try {
 			Map<String, String> map = ActionUtil.getRequestParameterMap(request);
 			QueryHelper qhper = new QueryHelper();
-			/*qhper.addCloumnAlias("paymentStatus", "payment_status");
-			qhper.addCloumnAlias("logisticsStatus", "logistics_status");*/
 			Page page = new Page();
 			qhper.paramBind(request, page);
 			String hql = "UPDATE Order"+qhper.buildAllQuery(page);
 			log.info(hql.toString());
-			orderServiceImpl.update(hql, qhper.getParams());
-			setMessage(new Message().success(getText("shop.error.payOk")));
+			Map<String, Object> parame = qhper.getParams();
+			orderServiceImpl.update(hql, parame);
+			String textOk = "shop.error.payOk";
+			textErr = "shop.error.payError";
+			log.info(qhper.getUpdateParams().get("paymentStatus"));
+			if(Constants.SHOP_STATUS_CANCEL.equals(qhper.getUpdateParams().get("paymentStatus"))) {// 返回信息调控
+				textOk = "shop.error.cancelOk";
+				textErr = "shop.error.cancelError";
+			}
+			setMessage(new Message().success(getText(textOk)));
 		}catch(Exception e) {
 			log.info("异常"+e);
 			e.printStackTrace();
-			setMessage(new Message().error(getText("shop.error.payError")));
+			setMessage(new Message().error(getText(textErr)));
 		}
 		return JSON;
 	}	

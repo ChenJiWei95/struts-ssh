@@ -43,7 +43,7 @@
 					<input type="checkbox" name="${CartList.id}" lay-skin="primary" title="" lay-filter="selected" class="select-box">
 				</div>
 			</div>
-			<div class="layui-col-md3" lay-href="<%=basePath%>mall_chtml_goodsdetails?id=${CartList.id}">
+			<div class="layui-col-md3" lay-href="<%=basePath%>mall_chtml_goodsdetails?id=${CartList.goodsId}">
 				<%-- <div style="background-image: url(<%=basePath%>resource/img/good2.png); width: 100px; height: 100px; float: left;"></div>
 				 --%><img src="<%=basePath%>${CartList.url}" width="100px" height= "100px"/>
 				<span>${CartList.name}</span>

@@ -59,7 +59,18 @@
  			}
  			,
  			cancelOrder: function(e){
- 				
+ 				var data1 = {};
+ 				var str = e.parents(".p-order").eq(0).find(".p-label-number-id").eq(0).text();
+ 				console.log(str);
+ 				console.log(str.substring(str.indexOf("：")+1));
+ 				data1["Up_paymentStatus_s"] = '03'// 已退款
+ 				,data1["Qu_id_eq_s"] = str.substring(str.indexOf("：")+1);
+ 				; 
+ 				util.formAjax({
+	 				url: '<%=basePath%>order_update'
+	 				,contentType: 'application/x-www-form-urlencoded'
+	 				,data: data1
+	 			});
  			}
  		});
  	})

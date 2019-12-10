@@ -55,8 +55,8 @@
 			    <c:forEach begin="0" items="${orders}" step="1" var="Order" varStatus="varsta">
 			    <div class="layui-card p-order">
 					<div class="layui-card-header">
-						<label class="p-label-number-id">订单号：${Order.id}</label>
-						<label class="p-label-status">
+						<label class="p-label-number-id default-color">订单号：${Order.id}</label>
+						<label class="p-label-status var-color">
 						<c:choose>
 							<c:when test="${Order.paymentStatus eq '02'}">
 								待付款
@@ -66,6 +66,9 @@
 							</c:when>
 							<c:when test="${Order.paymentStatus eq '00' and Order.logisticsStatus eq '01'}">
 								已发货
+							</c:when>
+							<c:when test="${Order.paymentStatus eq '03'}">
+								订单取消
 							</c:when> 
 							<c:otherwise>
 								订单已完成
@@ -86,7 +89,7 @@
 							<c:if test="${OrderItem.orderId eq Order.id}">
 							<c:set value="${OrderItem.count+sum}" var="sum" />
 							<div class="layui-row cartlist-etc pointer" style="overflow: hidden;" data-id="${OrderItem.orderItemId}">
-								<div class="layui-col-md4" lay-href="<%=basePath%>mall_chtml_goodsdetails?id=${OrderItem.orderItemId}">
+								<div class="layui-col-md4" lay-href="<%=basePath%>mall_chtml_goodsdetails?id=${OrderItem.goodsId}">
 									<img src="<%=basePath%>${OrderItem.url}" width="50px" height= "50px"/>
 									<span>${OrderItem.name}</span>
 								</div>
@@ -101,14 +104,14 @@
 						</c:forEach>
 					</div>
 					<div class="p-order-total">
-						<label>共${sum}件</label>
-						<label class="p-label-totalAmount">应付总额：${Order.totalAmount}</label>
+						<label class="default-color">共${sum}件</label>
+						<label class="p-label-totalAmount default-color">应付总额：${Order.totalAmount}</label>
 					</div>
 					<div class="p-order-details">
-						<label>${Order.createDate}</label> 
+						<label class="default-color">${Order.createDate}</label> 
 						<c:if test="${Order.paymentStatus eq '02'}"><label class="p-label-btn pointer label-red" lay-href="<%=basePath%>mall_chtml_payment?id=${Order.id}">支付</label></c:if>
 						<label class="p-label-btn pointer" lay-href="<%=basePath%>mall_chtml_payment?id=${Order.id}">订单详情</label>
-						<c:if test="${Order.paymentStatus eq '00' and Order.logisticsStatus eq '02'}"><label class="p-label-btn pointer" shop-click="cancelOrder">取消订单</label></c:if> 
+						<c:if test="${(Order.paymentStatus eq '00' or Order.paymentStatus eq '02') and Order.logisticsStatus eq '02'}"><label class="p-label-btn pointer" shop-click="cancelOrder">取消订单</label></c:if> 
 					</div>
 			    </div>
 			    </c:forEach>

@@ -7,4 +7,6 @@ public class Constants {
 	public final static String LOGIN_SIGN 				= "USER_TOKEN";
 	// 自定type
 	public final static String COLOR_SIGN 				= "colorSign";
+	
+	public final static String SHOP_STATUS_CANCEL		= "03";
 }
