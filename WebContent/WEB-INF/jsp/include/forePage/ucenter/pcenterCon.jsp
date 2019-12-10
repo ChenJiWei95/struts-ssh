@@ -51,73 +51,268 @@
 		  </ul>
 		  <div class="layui-tab-content">
 		    <!-- 	全部订单 -->
-		    <div class="layui-tab-item layui-show" style="width: 100%; height: 500px; background-size: cover; background-image:url(<%=basePath%>resource/img/xihu.jpg);">
+		    <div class="layui-tab-item layui-show" style="">
 			    <c:forEach begin="0" items="${orders}" step="1" var="Order" varStatus="varsta">
-			    <div class="layui-card">
+			    <div class="layui-card p-order">
 					<div class="layui-card-header">
-						订单号：${Order.id}&nbsp;&nbsp;&nbsp;&nbsp;创建时间：${Order.createDate}
+						<label class="p-label-number-id">订单号：${Order.id}</label>
+						<label class="p-label-status">
+						<c:choose>
+							<c:when test="${Order.paymentStatus eq '02'}">
+								待付款
+							</c:when>
+							<c:when test="${Order.paymentStatus eq '00' and Order.logisticsStatus eq '02'}">
+								等待发货
+							</c:when>
+							<c:when test="${Order.paymentStatus eq '00' and Order.logisticsStatus eq '01'}">
+								已发货
+							</c:when> 
+							<c:otherwise>
+								订单已完成
+							</c:otherwise>
+						</c:choose>
+						</label>
 					</div>
 					<div class="layui-card-body">
-						<div>
-							item
-						</div>
-						<div>
-							<c:if test="${Order.paymentStatus eq '02'}"><a href="<%=basePath%>mall_chtml_payment?id=${Order.id}">前往支付</a></c:if>
-							<c:if test="${Order.logisticsStatus eq '00'}"><a href="<%=basePath%>mall_chtml_payment?id=${Order.id}">查看物流</a></c:if>
-						</div>
+						<div class="layui-row cartlist">
+							<div class="layui-col-md4"><s:text name="shop.common.goods"/></div>
+							<div class="layui-col-md2"><s:text name="shop.common.price"/></div>
+							<div class="layui-col-md2"><s:text name="shop.common.count"/></div>
+							<div class="layui-col-md2"><s:text name="shop.common.colour"/></div>
+							<div class="layui-col-md2"><s:text name="shop.common.size"/></div>
+						</div>  
+						<c:set value="0" var="sum" />
+						<c:forEach begin="0" items="${orderItems}" step="1" var="OrderItem" varStatus="varsta">
+							<c:if test="${OrderItem.orderId eq Order.id}">
+							<c:set value="${OrderItem.count+sum}" var="sum" />
+							<div class="layui-row cartlist-etc pointer" style="overflow: hidden;" data-id="${OrderItem.orderItemId}">
+								<div class="layui-col-md4" lay-href="<%=basePath%>mall_chtml_goodsdetails?id=${OrderItem.orderItemId}">
+									<img src="<%=basePath%>${OrderItem.url}" width="50px" height= "50px"/>
+									<span>${OrderItem.name}</span>
+								</div>
+								<div class="layui-col-md2">
+									<span>￥<fmt:formatNumber type="number" value="${OrderItem.price*OrderItem.discount}" maxFractionDigits="2"/><del class="ori-price">￥${OrderItem.price}</del></span>
+								</div>
+								<div class="layui-col-md2"><span>${OrderItem.count}</span></div>
+								<div class="layui-col-md2"><span class="color">${OrderItem.colour}</span></div>
+								<div class="layui-col-md2"><span class="size">${OrderItem.size}</span></div>
+							</div>
+							</c:if>
+						</c:forEach>
+					</div>
+					<div class="p-order-total">
+						<label>共${sum}件</label>
+						<label class="p-label-totalAmount">应付总额：${Order.totalAmount}</label>
+					</div>
+					<div class="p-order-details">
+						<label>${Order.createDate}</label> 
+						<c:if test="${Order.paymentStatus eq '02'}"><label class="p-label-btn pointer label-red" lay-href="<%=basePath%>mall_chtml_payment?id=${Order.id}">支付</label></c:if>
+						<label class="p-label-btn pointer" lay-href="<%=basePath%>mall_chtml_payment?id=${Order.id}">订单详情</label>
+						<c:if test="${Order.paymentStatus eq '00' and Order.logisticsStatus eq '02'}"><label class="p-label-btn pointer" shop-click="cancelOrder">取消订单</label></c:if> 
 					</div>
 			    </div>
 			    </c:forEach>
 		    </div>
-		    <!-- 	等待发货 -->
+		    <!-- END 全部订单 -->
+		    
+		    <!-- 	等待发货 
+		    ${Order.paymentStatus eq '00' and Order.logisticsStatus eq '02'}
+		    -->
 		    <div class="layui-tab-item">
-				<div class="layui-fluid layadmin-message-fluid">
-	  			 <div class="layui-row">
-				 <div class="layui-col-md12 layadmin-homepage-list-imgtxt message-content">
-			       <div class="media-body">
-			          <a href="javascript:;" class="media-left" style="float: left;">
-			             <img src="<%=basePath%>resource/img/good4.png" height="46px" width="46px">
-			          </a>
-			          <div class="pad-btm">
-			            <p class="fontColor"><a href="javascript:;">胡歌</a></p>
-			            <p class="min-font">
-			              <span class="layui-breadcrumb" lay-separator="-">
-			                <a href="javascript:;" class="layui-icon layui-icon-cellphone"></a>
-			                <a href="javascript:;">从移动</a>
-			                <a href="javascript:;">11分钟前</a>
-			              </span>
-			            </p>         
-			         </div>
-			          <p class="message-text">历经打磨，@索尼中国 再献新作品—OLED电视A8F完美诞生。很开心一起参加了A8F的“首映礼”！[鼓掌]正如我们演员对舞台的热爱，索尼对科技与艺术的追求才创造出了让人惊喜的作品。作为A1兄弟款，A8F沿袭了黑科技“屏幕发声技术”和高清画质，色彩的出众表现和高端音质，让人在体验的时候如同身临其境。A8F，这次的“视帝”要颁发给你！  索尼官网预售： O网页链接 索尼旗舰店预售：</p>
-			       </div>
-			       <div class="media-body">
-			          <a href="javascript:;" class="media-left" style="float: left;">
-			             <img src="<%=basePath%>resource/img/good2.png" height="46px" width="46px">
-			          </a>
-			          <div class="pad-btm"> 
-			            <p class="fontColor"><a href="javascript:;">胡歌</a></p>
-			            <p class="min-font">
-			              <span class="layui-breadcrumb" lay-separator="-">
-			                <a href="javascript:;" class="layui-icon layui-icon-cellphone"></a>
-			                <a href="javascript:;">从移动</a>
-			                <a href="javascript:;">11分钟前</a>
-			              </span>
-			            </p>         
-			         </div>
-			          <p class="message-text">历经打磨，@索尼中国 再献新作品—OLED电视A8F完美诞生。很开心一起参加了A8F的“首映礼”！[鼓掌]正如我们演员对舞台的热爱，索尼对科技与艺术的追求才创造出了让人惊喜的作品。作为A1兄弟款，A8F沿袭了黑科技“屏幕发声技术”和高清画质，色彩的出众表现和高端音质，让人在体验的时候如同身临其境。A8F，这次的“视帝”要颁发给你！  索尼官网预售： O网页链接 索尼旗舰店预售：</p>
-			       </div>
-			       <div class="layui-row message-content-btn">
-			          <a href="javascript:;" class="layui-btn more-btn">更多</a>
-			       </div>
-			     </div>
+				<c:forEach begin="0" items="${orders}" step="1" var="Order" varStatus="varsta">
+			    <c:if test ="${Order.paymentStatus eq '00' and Order.logisticsStatus eq '02'}">
+			    <div class="layui-card p-order">
+					<div class="layui-card-header">
+						<label class="p-label-number-id">订单号：${Order.id}</label>
+						<label class="p-label-status">
+						<c:choose>
+							<c:when test="${Order.paymentStatus eq '02'}">
+								待付款
+							</c:when>
+							<c:when test="${Order.paymentStatus eq '00' and Order.logisticsStatus eq '02'}">
+								等待发货
+							</c:when>
+							<c:when test="${Order.paymentStatus eq '00' and Order.logisticsStatus eq '01'}">
+								已发货
+							</c:when> 
+							<c:otherwise>
+								订单已完成
+							</c:otherwise>
+						</c:choose>
+						</label>
+					</div>
+					<div class="layui-card-body">
+						<div class="layui-row cartlist">
+							<div class="layui-col-md4"><s:text name="shop.common.goods"/></div>
+							<div class="layui-col-md2"><s:text name="shop.common.price"/></div>
+							<div class="layui-col-md2"><s:text name="shop.common.count"/></div>
+							<div class="layui-col-md2"><s:text name="shop.common.colour"/></div>
+							<div class="layui-col-md2"><s:text name="shop.common.size"/></div>
+						</div>  
+						<c:set value="0" var="sum" />
+						<c:forEach begin="0" items="${orderItems}" step="1" var="OrderItem" varStatus="varsta">
+							<c:if test="${OrderItem.orderId eq Order.id}">
+							<c:set value="${OrderItem.count+sum}" var="sum" />
+							<div class="layui-row cartlist-etc pointer" style="overflow: hidden;" data-id="${OrderItem.orderItemId}">
+								<div class="layui-col-md4" lay-href="<%=basePath%>mall_chtml_goodsdetails?id=${OrderItem.orderItemId}">
+									<img src="<%=basePath%>${OrderItem.url}" width="50px" height= "50px"/>
+									<span>${OrderItem.name}</span>
+								</div>
+								<div class="layui-col-md2">
+									<span>￥<fmt:formatNumber type="number" value="${OrderItem.price*OrderItem.discount}" maxFractionDigits="2"/><del class="ori-price">￥${OrderItem.price}</del></span>
+								</div>
+								<div class="layui-col-md2"><span>${OrderItem.count}</span></div>
+								<div class="layui-col-md2"><span class="color">${OrderItem.colour}</span></div>
+								<div class="layui-col-md2"><span class="size">${OrderItem.size}</span></div>
+							</div>
+							</c:if>
+						</c:forEach>
+					</div>
+					<div class="p-order-total">
+						<label>共${sum}件</label>
+						<label class="p-label-totalAmount">应付总额：${Order.totalAmount}</label>
+					</div>
+					<div class="p-order-details">
+						<label>${Order.createDate}</label> 
+						<c:if test="${Order.paymentStatus eq '02'}"><label class="p-label-btn pointer label-red" lay-href="<%=basePath%>mall_chtml_payment?id=${Order.id}">支付</label></c:if>
+						<label class="p-label-btn pointer" lay-href="<%=basePath%>mall_chtml_payment?id=${Order.id}">订单详情</label>
+						<c:if test="${Order.paymentStatus eq '00' and Order.logisticsStatus eq '02'}"><label class="p-label-btn pointer" shop-click="cancelOrder">取消订单</label></c:if> 
+					</div>
 			    </div>
-			   </div>
+			    </c:if>
+			    </c:forEach> 
 			</div>
-			<!-- 已发货 -->
-			<div class="layui-tab-item layui-show" style="width: 100%; height: 500px; background-size: cover; background-image:url(<%=basePath%>resource/img/xihu.jpg);">
+			<!-- 已发货 
+			Order.paymentStatus eq '00' and Order.logisticsStatus eq '01'}
+			-->
+			<div class="layui-tab-item">
+		    	<c:forEach begin="0" items="${orders}" step="1" var="Order" varStatus="varsta">
+			    <c:if test ="${Order.paymentStatus eq '00' and Order.logisticsStatus eq '01'}">
+			    <div class="layui-card p-order">
+					<div class="layui-card-header">
+						<label class="p-label-number-id">订单号：${Order.id}</label>
+						<label class="p-label-status">
+						<c:choose>
+							<c:when test="${Order.paymentStatus eq '02'}">
+								待付款
+							</c:when>
+							<c:when test="${Order.paymentStatus eq '00' and Order.logisticsStatus eq '02'}">
+								等待发货
+							</c:when>
+							<c:when test="${Order.paymentStatus eq '00' and Order.logisticsStatus eq '01'}">
+								已发货
+							</c:when> 
+							<c:otherwise>
+								订单已完成
+							</c:otherwise>
+						</c:choose>
+						</label>
+					</div>
+					<div class="layui-card-body">
+						<div class="layui-row cartlist">
+							<div class="layui-col-md4"><s:text name="shop.common.goods"/></div>
+							<div class="layui-col-md2"><s:text name="shop.common.price"/></div>
+							<div class="layui-col-md2"><s:text name="shop.common.count"/></div>
+							<div class="layui-col-md2"><s:text name="shop.common.colour"/></div>
+							<div class="layui-col-md2"><s:text name="shop.common.size"/></div>
+						</div>  
+						<c:set value="0" var="sum" />
+						<c:forEach begin="0" items="${orderItems}" step="1" var="OrderItem" varStatus="varsta">
+							<c:if test="${OrderItem.orderId eq Order.id}">
+							<c:set value="${OrderItem.count+sum}" var="sum" />
+							<div class="layui-row cartlist-etc pointer" style="overflow: hidden;" data-id="${OrderItem.orderItemId}">
+								<div class="layui-col-md4" lay-href="<%=basePath%>mall_chtml_goodsdetails?id=${OrderItem.orderItemId}">
+									<img src="<%=basePath%>${OrderItem.url}" width="50px" height= "50px"/>
+									<span>${OrderItem.name}</span>
+								</div>
+								<div class="layui-col-md2">
+									<span>￥<fmt:formatNumber type="number" value="${OrderItem.price*OrderItem.discount}" maxFractionDigits="2"/><del class="ori-price">￥${OrderItem.price}</del></span>
+								</div>
+								<div class="layui-col-md2"><span>${OrderItem.count}</span></div>
+								<div class="layui-col-md2"><span class="color">${OrderItem.colour}</span></div>
+								<div class="layui-col-md2"><span class="size">${OrderItem.size}</span></div>
+							</div>
+							</c:if>
+						</c:forEach>
+					</div>
+					<div class="p-order-total">
+						<label>共${sum}件</label>
+						<label class="p-label-totalAmount">应付总额：${Order.totalAmount}</label>
+					</div>
+					<div class="p-order-details">
+						<label>${Order.createDate}</label> 
+						<c:if test="${Order.paymentStatus eq '02'}"><label class="p-label-btn pointer label-red" lay-href="<%=basePath%>mall_chtml_payment?id=${Order.id}">支付</label></c:if>
+						<label class="p-label-btn pointer" lay-href="<%=basePath%>mall_chtml_payment?id=${Order.id}">订单详情</label>
+						<c:if test="${Order.paymentStatus eq '00' and Order.logisticsStatus eq '02'}"><label class="p-label-btn pointer" shop-click="cancelOrder">取消订单</label></c:if> 
+					</div>
+			    </div>
+			    </c:if>
+			    </c:forEach> 
 		    </div>
 		  	<!-- 完成订单 -->
-		    <div class="layui-tab-item layui-show" style="width: 100%; height: 500px; background-size: cover; background-image:url(<%=basePath%>resource/img/xihu.jpg);">
+		    <div class="layui-tab-item">
+		   		<c:forEach begin="0" items="${orders}" step="1" var="Order" varStatus="varsta">
+			    <c:if test ="${Order.paymentStatus eq '00' and Order.logisticsStatus eq '00'}">
+			    <div class="layui-card p-order">
+					<div class="layui-card-header">
+						<label class="p-label-number-id">订单号：${Order.id}</label>
+						<label class="p-label-status">
+						<c:choose>
+							<c:when test="${Order.paymentStatus eq '02'}">
+								待付款
+							</c:when>
+							<c:when test="${Order.paymentStatus eq '00' and Order.logisticsStatus eq '02'}">
+								等待发货
+							</c:when>
+							<c:when test="${Order.paymentStatus eq '00' and Order.logisticsStatus eq '01'}">
+								已发货
+							</c:when> 
+							<c:otherwise>
+								订单已完成
+							</c:otherwise>
+						</c:choose>
+						</label>
+					</div>
+					<div class="layui-card-body">
+						<div class="layui-row cartlist">
+							<div class="layui-col-md4"><s:text name="shop.common.goods"/></div>
+							<div class="layui-col-md2"><s:text name="shop.common.price"/></div>
+							<div class="layui-col-md2"><s:text name="shop.common.count"/></div>
+							<div class="layui-col-md2"><s:text name="shop.common.colour"/></div>
+							<div class="layui-col-md2"><s:text name="shop.common.size"/></div>
+						</div>  
+						<c:set value="0" var="sum" />
+						<c:forEach begin="0" items="${orderItems}" step="1" var="OrderItem" varStatus="varsta">
+							<c:if test="${OrderItem.orderId eq Order.id}">
+							<c:set value="${OrderItem.count+sum}" var="sum" />
+							<div class="layui-row cartlist-etc pointer" style="overflow: hidden;" data-id="${OrderItem.orderItemId}">
+								<div class="layui-col-md4" lay-href="<%=basePath%>mall_chtml_goodsdetails?id=${OrderItem.orderItemId}">
+									<img src="<%=basePath%>${OrderItem.url}" width="50px" height= "50px"/>
+									<span>${OrderItem.name}</span>
+								</div>
+								<div class="layui-col-md2">
+									<span>￥<fmt:formatNumber type="number" value="${OrderItem.price*OrderItem.discount}" maxFractionDigits="2"/><del class="ori-price">￥${OrderItem.price}</del></span>
+								</div>
+								<div class="layui-col-md2"><span>${OrderItem.count}</span></div>
+								<div class="layui-col-md2"><span class="color">${OrderItem.colour}</span></div>
+								<div class="layui-col-md2"><span class="size">${OrderItem.size}</span></div>
+							</div>
+							</c:if>
+						</c:forEach>
+					</div>
+					<div class="p-order-total">
+						<label>共${sum}件</label>
+						<label class="p-label-totalAmount">应付总额：${Order.totalAmount}</label>
+					</div>
+					<div class="p-order-details">
+						<label>${Order.createDate}</label> 
+						<c:if test="${Order.paymentStatus eq '02'}"><label class="p-label-btn pointer label-red" lay-href="<%=basePath%>mall_chtml_payment?id=${Order.id}">支付</label></c:if>
+						<label class="p-label-btn pointer" lay-href="<%=basePath%>mall_chtml_payment?id=${Order.id}">订单详情</label>
+						<c:if test="${Order.paymentStatus eq '00' and Order.logisticsStatus eq '02'}"><label class="p-label-btn pointer" shop-click="cancelOrder">取消订单</label></c:if> 
+					</div>
+			    </div>
+			    </c:if>
+			    </c:forEach> 
 		    </div>
 		  </div>
 	</div>

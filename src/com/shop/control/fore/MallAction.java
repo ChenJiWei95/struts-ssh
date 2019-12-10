@@ -6,7 +6,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.apache.log4j.Logger;
-import org.apache.struts2.ServletActionContext;
 import org.apache.struts2.interceptor.ServletRequestAware;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
@@ -66,7 +65,7 @@ public class MallAction extends SuperActionSupport implements ServletRequestAwar
 	
 	
 	public String chtml(){
-		backhaul(ServletActionContext.getRequest()); 
+		backhaul(request); 
 		return CHTML;
 	}
 	
@@ -108,16 +107,16 @@ public class MallAction extends SuperActionSupport implements ServletRequestAwar
 	public void payment() {
 		HttpSession session = request.getSession();
 		User user = (User) session.getAttribute(Constants.LOGIN_SIGN);
-		
 		List<Address> address = addressServiceImpl.findList("from Address where userId = ?", user.getId());
 		session.setAttribute("address", address);
 		
-		Order order = orderServiceImpl.get(request.getParameter("id"));
-		if(order != null) {
-			List<OrderItem> os = orderItemServiceImpl.findList("from OrderItem where orderId = ?", order.getId());
-			session.setAttribute("orderItems", os);
-			session.setAttribute("order", order);
-		}
+		String orderId = request.getParameter("id");
+		Order order = orderServiceImpl.get(orderId);
+		session.setAttribute("order", order);
+		
+		StringBuilder hql = new StringBuilder("from OrderItem where orderId=?");
+		List<OrderItem> itemList = orderItemServiceImpl.findList(hql.toString(), order.getId());
+		session.setAttribute("orderItems", itemList);
 		
 	}
 

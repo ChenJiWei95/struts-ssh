@@ -4,6 +4,8 @@
 
 <%@ include file="../../include/forePage/common.jsp" %>
 
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
  <head>
@@ -38,10 +40,28 @@
 	<%@ include file="../../include/forePage/mall/bom.jsp" %>
 	<script src="<%=basePath%>resource/layui/layui.js"></script>
 	<script>
- 	layui.use(['layer', 'element'], function(){
- 		var element = layui.element;
+ 	layui.use(['layer', 'element', 'util'], function(){
+ 		var element = layui.element
+ 		,$ = layui.$
+ 		,layer = layui.layer
+ 		,util = layui.util;
  		layui.layer.msg("<s:text name="shop.common.homeLayuiAlert"/>");
  		layui.$(".pcenter").eq(0).addClass("var-color");
+ 		util.layHref(); // 链接跳转
+ 		util.shopClick({
+ 			payment: function(e){
+ 				console.log("-----");
+ 				console.log(e.parents(".p-order").eq(0).find(".p-label-number-id").eq(0));
+ 				//self.location = "<%=basePath%>mall_chtml_payment?id="+data
+ 			}
+ 			,orderDetails: function(e){
+ 				
+ 			}
+ 			,
+ 			cancelOrder: function(e){
+ 				
+ 			}
+ 		});
  	})
 	</script>
  </body>

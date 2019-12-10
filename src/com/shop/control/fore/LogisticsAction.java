@@ -80,10 +80,10 @@ public class LogisticsAction extends SuperActionSupport implements ServletReques
 			logistics.setLogisticsId(String.valueOf(new SnowFlakeGenerator(2, 2).nextId()));
 			logistics.setNickname(user.getUsername());
 			logisticsServiceImpl.save(logistics);
-			setMessage(Message.success("添加成功"));
+			setMessage(Message.success("支付处理中..."));
 		} catch (Exception e) {
 			e.printStackTrace();
-			setMessage(Message.error("添加失败"));
+			setMessage(Message.error("支付操作失败"));
 		}
 		return JSON;
 	}	
@@ -97,11 +97,11 @@ public class LogisticsAction extends SuperActionSupport implements ServletReques
 	public String update(){
 		try {
 			logisticsServiceImpl.update(logistics);
-			setMessage(new Message().success(getText("shop.error.updateOk")));
+			setMessage(new Message().success("支付处理中..."));
 		}catch(Exception e) {
 			log.info("异常"+e);
 			e.printStackTrace();
-			setMessage(new Message().error(getText("shop.error.updateError")));
+			setMessage(new Message().error("支付操作失败"));
 		}
 		return JSON;
 	}	

@@ -764,3 +764,32 @@
 		height: 40px;
 		border-radius: 100%
 	}
+	
+	/* pcenter */
+	.p-label-number-id{
+		color: #555;
+		line-height: 46px;
+	}
+	.p-order-total, .p-order-details{
+		padding: 6px 16px;
+		color: #555;
+	}
+	.p-order-details {
+		height: 30px;
+	}
+	.p-label-btn {
+	    border: 1px solid #a77f2a8c;
+	    border-radius: 4px;
+	    padding: 4px 10px;
+	    color: #a77f2a69;
+	    background: #fbf6f2;
+	}
+	.label-red {
+		border-color: #ffb100;
+		color: #ffb100;
+	}
+	.p-label-totalAmount,.p-label-cancel,.p-label-details,.p-label-btn, .p-label-status {
+		float: right;
+	    margin-right: 16px;
+	}
+	

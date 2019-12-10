@@ -19,6 +19,9 @@ import org.springframework.transaction.annotation.Transactional;
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 import com.shop.Constants;
+import com.shop.Filter;
+import com.shop.Page;
+import com.shop.QueryHelper;
 import com.shop.annotation.RequestTypeAnno;
 import com.shop.control.SuperActionSupport;
 import com.shop.entity.CartList;
@@ -86,7 +89,7 @@ public class OrderAction extends SuperActionSupport implements ServletRequestAwa
 			order.setId(String.valueOf(new SnowFlakeGenerator(2, 2).nextId()));
 			order.setPaymentStatus("02");
 			order.setuId(user.getId());
-			order.setLogisticsStatus("00");
+			order.setLogisticsStatus("02");
 			
 			BigDecimal sum = new BigDecimal("0");
 			BigDecimal origSum = new BigDecimal("0");
@@ -143,7 +146,15 @@ public class OrderAction extends SuperActionSupport implements ServletRequestAwa
 	@RequestTypeAnno(RequestType.POST)
 	public String update(){
 		try {
-			orderServiceImpl.update(order);
+			Map<String, String> map = ActionUtil.getRequestParameterMap(request);
+			QueryHelper qhper = new QueryHelper();
+			/*qhper.addCloumnAlias("paymentStatus", "payment_status");
+			qhper.addCloumnAlias("logisticsStatus", "logistics_status");*/
+			Page page = new Page();
+			qhper.paramBind(request, page);
+			String hql = "UPDATE Order"+qhper.buildAllQuery(page);
+			log.info(hql.toString());
+			orderServiceImpl.update(hql, qhper.getParams());
 			setMessage(new Message().success(getText("shop.error.payOk")));
 		}catch(Exception e) {
 			log.info("异常"+e);

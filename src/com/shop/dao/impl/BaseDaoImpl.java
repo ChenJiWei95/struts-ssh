@@ -149,7 +149,7 @@ public class BaseDaoImpl<T> implements BaseDao<T> {
 
 	public void update(T entity) throws DBException {
 		Assert.notNull(entity);
-		this.getCurrentSession().update(entity);
+		this.getCurrentSession().update(entity); 
 	}
 
 	public void update(T entity, Session session) throws DBException {

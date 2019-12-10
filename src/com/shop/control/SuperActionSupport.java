@@ -98,6 +98,7 @@ public class SuperActionSupport extends ActionSupport {
 		try {
 			Method method = clazz.getMethod(name);
 			if(method != null) method.invoke(this);
+			
 		} catch (SecurityException | IllegalAccessException | IllegalArgumentException | InvocationTargetException e) {
 			e.printStackTrace();
 		} catch (NoSuchMethodException e){

@@ -16,10 +16,9 @@
    	 				</div>
    	 				<a href="<%=basePath%>ucenter_chtml_shopcart">
    	 					<i class="layui-icon layui-icon-cart" style="font-size: 32px; cursor: pointer; color: #a77f2a69; float: right; margin-top: 14px;">
-   	 					<c:if test="${cartListCount>0}">
-   	 					<span class="layui-badge cartListCount" style="position: absolute; margin: -35px 20px; border-radius: 10px;"></span>	
-   	 					</c:if>
-   	 				</i></a>
+   	 						<span class="layui-badge cartListCount <c:if test="${cartListCount eq 0}">layui-hide</c:if>" style="position: absolute; margin: -35px 20px; border-radius: 10px;">${cartListCount}</span>	
+   	 					</i>
+   	 				</a>
    	 			</div>
 			</div>
 		</div>

@@ -2,8 +2,6 @@
     pageEncoding="UTF-8"%>
 <%@taglib prefix="s" uri="/struts-tags" %>
 
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-
 <%@ include file="../../include/forePage/common.jsp" %>
 
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
@@ -155,15 +153,20 @@
  					,data: data1
  					,success: function(){
  						var data2 = {};
- 		 				data2["order.paymentStatus"] = "00"
- 		 				,data2["order.logisticsStatus"] = "02"
- 		 				,data2["order.id"] = "${order.id}"
+ 		 				data2["Up_paymentStatus_s"] = "00"
+ 		 				,data2["Up_logisticsStatus_s"] = "02"
+ 		 				,data2["Qu_id_eq_s"] = "${order.id}"
  		 				;
  		 				console.log(data2);
  		 				util.formAjax({
  		 					url: '<%=basePath%>order_update'
  		 					,contentType: 'application/x-www-form-urlencoded'
  		 					,data: data2
+ 		 					,success: function(){
+ 		 						setTimeout(function(){
+ 		 							self.location = "<%=basePath%>ucenter_chtml_pcenter"
+ 		 						}, 1000);
+ 		 					}
  		 				});
  					}
  				});

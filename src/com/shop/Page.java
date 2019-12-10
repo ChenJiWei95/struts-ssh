@@ -42,6 +42,8 @@ public class Page<T> implements Serializable {
 	
 	private List<Filter> filters = new ArrayList<Filter>();//过滤查询
 	
+	private List<UpdateItem> updateItem = new ArrayList<>();//修改项
+	
 	private List<Order> orders = new ArrayList<Order>();//排序
 	
 	/**
@@ -172,6 +174,14 @@ public class Page<T> implements Serializable {
 	public void setFilters(List<Filter> filters) {
 		this.filters = filters;
 	}
+	
+	public List<UpdateItem> getUpdateItems() {
+		return updateItem;
+	}
+	
+	public void setUpdateItems(List<UpdateItem> updateItem) {
+		this.updateItem = updateItem;
+	}
 
 	public List<Order> getOrders() {
 		return orders;
@@ -183,6 +193,10 @@ public class Page<T> implements Serializable {
 	
 	public void addFilter(Filter filter){
 		filters.add(filter);
+	}
+	
+	public void addUpdateItem(UpdateItem updateItem){
+		this.updateItem.add(updateItem);
 	}
 	
 	public void addOrder(Order order){
