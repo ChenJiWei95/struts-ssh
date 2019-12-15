@@ -52,7 +52,7 @@ function(t) {
         	}
         	return str+".00";
         }
-        ,iframeAjax: function (object) {
+        ,iframeAjax: function (object) {// 使用完后 需要关掉自身
         	object.dataType = object.dataType || 'json';
         	object.type = object.type || 'post';
         	object.contentType = object.contentType || 'application/x-www-form-urlencoded';
@@ -80,11 +80,11 @@ function(t) {
 		}
         //contentType: 'application/json;charset=UTF-8'
     	,CAjax: function(object){
-    		object.isHints == void 0 && (object.isHints = !0);
-    		object.loadStyle = object.loadStyle || 2;
-    		object.contentType = object.contentType || 'application/json';
-    		object.dataType = object.dataType || 'json';
-    		object.type = object.type || 'post';
+    		object.isHints == void 0 && (object.isHints = !0);	// 	ture则提示 加载提示和结果提示
+    		object.loadStyle = object.loadStyle || 2;			//	加载提示的样式 默认为2
+    		object.contentType = object.contentType || 'application/json';	// 默认application/json
+    		object.dataType = object.dataType || 'json';					// 返回 数据默认json
+    		object.type = object.type || 'post';							// 默认请求方式post
 			//object.method != 'update' || object.method != 'add' || (parent.layer.msg("method参数有误："+object.method), parent.layer.close(index))
 			var c = object.isHints && layer.load(object.loadStyle);
 			//执行 Ajax 后重载
