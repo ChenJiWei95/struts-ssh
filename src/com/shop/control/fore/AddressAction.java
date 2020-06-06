@@ -14,15 +14,15 @@ import org.springframework.stereotype.Component;
 
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
+import com.shop.Constants;
+import com.shop.annotation.RequestTypeAnno;
 import com.shop.control.SuperActionSupport;
 import com.shop.entity.Address;
 import com.shop.entity.User;
 import com.shop.service.AddressService;
 import com.shop.util.ActionUtil;
+import com.shop.util.CommonUtil;
 import com.shop.util.Message;
-import com.shop.util.SnowFlakeGenerator;
-import com.shop.Constants;
-import com.shop.annotation.RequestTypeAnno;
 import com.shop.util.enums.RequestType;
 
 @Component	
@@ -61,7 +61,7 @@ public class AddressAction extends SuperActionSupport implements ServletRequestA
 	public String save(){
 		try {
 			User user = (User) request.getSession().getAttribute(Constants.LOGIN_SIGN);
-			address.setId(String.valueOf(new SnowFlakeGenerator(2, 2).nextId()));
+			address.setId(CommonUtil.getId());
 			address.setUserId(user.getId());
 			addressServiceImpl.save(address);
 			setMessage(Message.success("添加成功"));

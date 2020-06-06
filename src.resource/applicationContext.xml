@@ -12,15 +12,6 @@
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd
 		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.2.xsd">
 	<!-- property中的name字段必须与示例中的属性名相同 -->
-	<!-- 
-	注入
-	<bean id="userDao" class="com.shop.test.DaoImpl">
-		<property name="name" value="cjw"></property>
-	</bean>
-	<bean id="userService" class="com.shop.test.ServiceImpl">
-		<property name="dao" ref="userDao"></property>
-	</bean> 
-	-->
 	
 	<!-- 注解部分 测试 -->
 	
@@ -46,7 +37,7 @@
         <property name="hostName" value="${redis.host}" />
         <!-- 端口号 -->
         <property name="port" value="${redis.port}" />
-		<!-- <property name="password" value="${redis.password}" /> -->
+		<property name="password" value="${redis.password}" />
         <!-- 超时时间 默认2000-->
         <property name="timeout" value="${redis.timeout}" />
         <!-- 连接池配置引用 -->
@@ -81,9 +72,6 @@
         <!-- <property name="redisTemplate" ref="redisTemplate" />   -->
         <constructor-arg ref="redisTemplate" />
     </bean> 
-	
-	<!-- //使用AOP注解 -->
-	<aop:aspectj-autoproxy />
 	
 	<!-- 使用Annotation自动注册Bean，解决事物失效问题：在主容器中不扫描@Controller注解，在SpringMvc中只扫描@Controller注解。 -->
 	<context:component-scan base-package="com" /> 
@@ -124,12 +112,13 @@
 		</property>
 		<!-- 
 		指定映射的文件路径 
-		-->
 		<property name="mappingDirectoryLocations">
 			 <list>
 			 	<value>WEB-INF/mapping</value>
 			 </list>
 		</property>
+		-->
+		
 		<!-- 
 		指定classpath下具体映射文件名 
 		利用list同时指定多个 映射文件-->
@@ -158,8 +147,10 @@
 	<!-- 使用annotation注解方式配置事务 -->
 	<tx:annotation-driven transaction-manager="transactionManager"/>
 	
-	<!-- 切面编程 -->
+	<!-- 切面编程 -->	
 	<aop:aspectj-autoproxy proxy-target-class="true"/>
+	<!-- //使用AOP注解 -->
+	<aop:aspectj-autoproxy />
 	
 	<!-- autowire="byName" 当前对象中有自动注解属性时需配置 -->
 	<!--

@@ -92,23 +92,40 @@ public class UcenterAction extends SuperActionSupport implements ServletRequestA
 	public void pcenter(){
 		HttpSession session = request.getSession();
 		User user = (User) session.getAttribute(Constants.LOGIN_SIGN);
+		request.setAttribute("username", user.getUsername());
+		
+		// 待发货
+		String countHql = "from Order where paymentStatus = '00' and logisticsStatus = (?) and uId = (?)";
+		long deliveredCount = orderServiceImpl.count(countHql, "02",user.getId());
+		request.setAttribute("delivered", deliveredCount);
+		// 已发货
+		long receivedCount = orderServiceImpl.count(countHql, "01",user.getId());
+		request.setAttribute("received", receivedCount);
+		// 优惠券
+		request.setAttribute("coupon", 0);
+		// 礼品卡
+		request.setAttribute("giftCard", 0);
+		// 积分
+		request.setAttribute("integral", 10);
+		// 待评价
+		request.setAttribute("toBeEvaluate", 0);
 		log.info("========================pcenter");
 		
 		List<Order> orders = orderServiceImpl.findList("from Order where uId = (?) ORDER BY create_date desc", user.getId());
 		request.getSession().setAttribute("orders", orders);
 		
-		log.info("orders size "+orders.size());
-		
-		// 收集order id 作为查询orders的依据
-		StringBuilder hql = new StringBuilder("from OrderItem where");
-		Object[] parame = new Object[orders.size()];
-		for(int i = 0; i < orders.size(); i++){
-			hql.append(" orderId=? OR");
-			parame[i] = orders.get(i).getId();
-		} 
-		if(orders.size() > 0) hql.delete(hql.length()-3, hql.length());// 删除多余or 
-		List<OrderItem> itemList = orderItemServiceImpl.findList(hql.toString(), parame);
-		
+		List<OrderItem> itemList = null;
+		if(orders.size() > 0){
+			// 收集order id 作为查询orders的依据
+			StringBuilder hql = new StringBuilder("from OrderItem where");
+			Object[] parame = new Object[orders.size()];
+			for(int i = 0; i < orders.size(); i++){
+				hql.append(" orderId=? OR");
+				parame[i] = orders.get(i).getId();
+			} 
+			if(orders.size() > 0) hql.delete(hql.length()-3, hql.length());// 删除多余or 
+			itemList = orderItemServiceImpl.findList(hql.toString(), parame);
+		} else itemList = new ArrayList<>(0);
 		session.setAttribute("orderItems", itemList);
 		
 	}

@@ -18,8 +18,8 @@ import com.shop.control.SuperActionSupport;
 import com.shop.entity.UserAddress;
 import com.shop.service.UserAddressService;
 import com.shop.util.ActionUtil;
+import com.shop.util.CommonUtil;
 import com.shop.util.Message;
-import com.shop.util.SnowFlakeGenerator;
 
 @Component	 		
 @Scope("prototype")
@@ -59,7 +59,7 @@ public class UserAddressAction extends SuperActionSupport implements ServletRequ
 	 */
 	public String save(){
 		try {
-			userAddress.setId(String.valueOf(new SnowFlakeGenerator(2, 2).nextId()));
+			userAddress.setId(CommonUtil.getId());
 			userAddressServiceImpl.save(userAddress);
 			setMessage(Message.success("添加成功", userAddress));
 		} catch (Exception e) {

@@ -37,6 +37,7 @@ public class SuperActionSupport extends ActionSupport {
 	public static final String MAIN 	= "main"; 		// 主要页面跳转处理
 	public static final String ERROR 	= "error"; 		// 错误页面
 	public static final String LOGIN 	= "login"; 		// 登录页面
+	public static final String ADMIN_LOGIN 	= "adminlogin"; 		// 后台登录页面
 	
 	/*
 	inputStream属性和配置文件中的inputStream对应，并且需要gettersetter方法getInputStream，setInputStream

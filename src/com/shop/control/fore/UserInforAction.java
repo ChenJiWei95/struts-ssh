@@ -18,8 +18,8 @@ import com.shop.control.SuperActionSupport;
 import com.shop.entity.UserInfor;
 import com.shop.service.UserInforService;
 import com.shop.util.ActionUtil;
+import com.shop.util.CommonUtil;
 import com.shop.util.Message;
-import com.shop.util.SnowFlakeGenerator;
 
 @Component	 		
 @Scope("prototype")
@@ -55,7 +55,7 @@ public class UserInforAction extends SuperActionSupport implements ServletReques
 	 */
 	public String save(){
 		try {
-			userInfor.setId(String.valueOf(new SnowFlakeGenerator(2, 2).nextId()));
+			userInfor.setId(CommonUtil.getId());
 			userInforServiceImpl.save(userInfor);
 			setMessage(Message.success("添加成功", userInfor));
 		} catch (Exception e) {

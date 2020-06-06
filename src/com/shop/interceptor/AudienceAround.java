@@ -69,6 +69,9 @@ public class AudienceAround {
 	    		
 	    	
 	    	log.info("代理对象："+joinPoint.getTarget().getClass().getName());
+	    	
+//	    	此处如果当前类没有该方法时会报错、即使父类有，也会报错
+//	    	java.lang.NoSuchMethodException
 	    	Method method = joinPoint.getTarget().getClass().getMethod(joinPoint.getSignature().getName(), 
 	    			clazz);
 	    	

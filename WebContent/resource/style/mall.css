@@ -156,6 +156,7 @@
     	padding-left: 0;
     	padding-right: 0;
     	cursor: pointer;
+    	min-height: 350px;
     }
     
     .cartlist-cnt .layui-form-checkbox, .settlement-bar .layui-form-checkbox {

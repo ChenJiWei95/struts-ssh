@@ -35,6 +35,9 @@ public class Goods implements Serializable {
 	
 	@Column(name = "msg")
 	private String msg;
+	
+	@Column(name = "type")
+	private String type;
 
 	public String getId() {
 		return id;
@@ -98,6 +101,14 @@ public class Goods implements Serializable {
 
 	public void setMsg(String msg) {
 		this.msg = msg;
+	}
+
+	public String getType() {
+		return type;
+	}
+
+	public void setType(String type) {
+		this.type = type;
 	}
 	
 }

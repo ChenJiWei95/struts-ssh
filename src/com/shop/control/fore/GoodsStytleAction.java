@@ -18,8 +18,8 @@ import com.shop.control.SuperActionSupport;
 import com.shop.entity.GoodsStytle;
 import com.shop.service.GoodsStytleService;
 import com.shop.util.ActionUtil;
+import com.shop.util.CommonUtil;
 import com.shop.util.Message;
-import com.shop.util.SnowFlakeGenerator;
 
 @Component	 		
 @Scope("prototype")
@@ -55,7 +55,7 @@ public class GoodsStytleAction extends SuperActionSupport implements ServletRequ
 	 */
 	public String save(){
 		try {
-			goodsStytle.setId(String.valueOf(new SnowFlakeGenerator(2, 2).nextId()));
+			goodsStytle.setId(CommonUtil.getId());
 			goodsStytleServiceImpl.save(goodsStytle);
 			setMessage(Message.success("添加成功", goodsStytle));
 		} catch (Exception e) {

@@ -123,7 +123,7 @@ public class BaseServiceImpl<T> implements BaseService<T> {
 		return baseDao.findAll();
 	}
 
-	@Transactional(readOnly = true)
+	@Transactional(readOnly = true) 
 	public List<T> findAll(Class<T> c) throws DBException {
 		
 		return baseDao.findAll(c);

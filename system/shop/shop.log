@@ -1,0 +1,1397 @@
+[INFO ] 01:03:18:712 [SchemaUpdate.execute:182] HHH000228: Running hbm2ddl schema update 
+[INFO ] 01:03:18:714 [SchemaUpdate.execute:193] HHH000102: Fetching database metadata 
+[INFO ] 01:03:19:46 [SchemaUpdate.execute:205] HHH000396: Updating schema 
+[INFO ] 01:03:19:78 [TableMetadata.<init>:65] HHH000261: Table found: shop.user 
+[INFO ] 01:03:19:79 [TableMetadata.<init>:66] HHH000037: Columns: [login_count, password, id, state, text, username] 
+[INFO ] 01:03:19:79 [TableMetadata.<init>:68] HHH000108: Foreign keys: [] 
+[INFO ] 01:03:19:80 [TableMetadata.<init>:69] HHH000126: Indexes: [primary] 
+[INFO ] 01:03:19:94 [TableMetadata.<init>:65] HHH000261: Table found: shop.address 
+[INFO ] 01:03:19:95 [TableMetadata.<init>:66] HHH000037: Columns: [area, province, city, phone, user_id, street, name, nickname, id] 
+[INFO ] 01:03:19:95 [TableMetadata.<init>:68] HHH000108: Foreign keys: [] 
+[INFO ] 01:03:19:95 [TableMetadata.<init>:69] HHH000126: Indexes: [primary] 
+[INFO ] 01:03:19:110 [TableMetadata.<init>:65] HHH000261: Table found: shop.cart_list 
+[INFO ] 01:03:19:111 [TableMetadata.<init>:66] HHH000037: Columns: [colour, g_id, u_id, size, price, count, name, discount, id, url] 
+[INFO ] 01:03:19:112 [TableMetadata.<init>:68] HHH000108: Foreign keys: [] 
+[INFO ] 01:03:19:114 [TableMetadata.<init>:69] HHH000126: Indexes: [primary] 
+[INFO ] 01:03:19:129 [TableMetadata.<init>:65] HHH000261: Table found: shop.collection 
+[INFO ] 01:03:19:130 [TableMetadata.<init>:66] HHH000037: Columns: [user_id, price, name, goods_id, id, url] 
+[INFO ] 01:03:19:131 [TableMetadata.<init>:68] HHH000108: Foreign keys: [] 
+[INFO ] 01:03:19:131 [TableMetadata.<init>:69] HHH000126: Indexes: [primary] 
+[INFO ] 01:03:19:144 [TableMetadata.<init>:65] HHH000261: Table found: shop.goods 
+[INFO ] 01:03:19:144 [TableMetadata.<init>:66] HHH000037: Columns: [msg, price, name, discount, id, create_date, type, update_date, url] 
+[INFO ] 01:03:19:145 [TableMetadata.<init>:68] HHH000108: Foreign keys: [] 
+[INFO ] 01:03:19:145 [TableMetadata.<init>:69] HHH000126: Indexes: [primary] 
+[INFO ] 01:03:19:164 [TableMetadata.<init>:65] HHH000261: Table found: shop.goods_style 
+[INFO ] 01:03:19:165 [TableMetadata.<init>:66] HHH000037: Columns: [color, color_sign, goods_id, id, url] 
+[INFO ] 01:03:19:165 [TableMetadata.<init>:68] HHH000108: Foreign keys: [] 
+[INFO ] 01:03:19:165 [TableMetadata.<init>:69] HHH000126: Indexes: [primary] 
+[INFO ] 01:03:19:186 [TableMetadata.<init>:65] HHH000261: Table found: shop.logistics 
+[INFO ] 01:03:19:186 [TableMetadata.<init>:66] HHH000037: Columns: [area, province, city, phone, street, name, nickname, id, order_id] 
+[INFO ] 01:03:19:193 [TableMetadata.<init>:68] HHH000108: Foreign keys: [] 
+[INFO ] 01:03:19:193 [TableMetadata.<init>:69] HHH000126: Indexes: [primary] 
+[INFO ] 01:03:19:209 [TableMetadata.<init>:65] HHH000261: Table found: shop.order_item 
+[INFO ] 01:03:19:210 [TableMetadata.<init>:66] HHH000037: Columns: [colour, total, g_id, size, price, count, name, discount, id, order_id, url] 
+[INFO ] 01:03:19:210 [TableMetadata.<init>:68] HHH000108: Foreign keys: [] 
+[INFO ] 01:03:19:211 [TableMetadata.<init>:69] HHH000126: Indexes: [primary] 
+[INFO ] 01:03:19:225 [TableMetadata.<init>:65] HHH000261: Table found: shop.orders 
+[INFO ] 01:03:19:225 [TableMetadata.<init>:66] HHH000037: Columns: [u_id, total_amount, original_amount, payment_status, id, create_date, logistics_status] 
+[INFO ] 01:03:19:225 [TableMetadata.<init>:68] HHH000108: Foreign keys: [] 
+[INFO ] 01:03:19:226 [TableMetadata.<init>:69] HHH000126: Indexes: [primary] 
+[INFO ] 01:03:19:236 [TableMetadata.<init>:65] HHH000261: Table found: shop.user 
+[INFO ] 01:03:19:236 [TableMetadata.<init>:66] HHH000037: Columns: [login_count, password, id, state, text, username] 
+[INFO ] 01:03:19:237 [TableMetadata.<init>:68] HHH000108: Foreign keys: [] 
+[INFO ] 01:03:19:237 [TableMetadata.<init>:69] HHH000126: Indexes: [primary] 
+[INFO ] 01:03:19:251 [TableMetadata.<init>:65] HHH000261: Table found: shop.user_address 
+[INFO ] 01:03:19:251 [TableMetadata.<init>:66] HHH000037: Columns: [area, user_infor_id, province, city, street, id] 
+[INFO ] 01:03:19:252 [TableMetadata.<init>:68] HHH000108: Foreign keys: [] 
+[INFO ] 01:03:19:252 [TableMetadata.<init>:69] HHH000126: Indexes: [primary] 
+[INFO ] 01:03:19:265 [TableMetadata.<init>:65] HHH000261: Table found: shop.user_infor 
+[INFO ] 01:03:19:265 [TableMetadata.<init>:66] HHH000037: Columns: [msg, u_id, phone, name, id, email] 
+[INFO ] 01:03:19:265 [TableMetadata.<init>:68] HHH000108: Foreign keys: [] 
+[INFO ] 01:03:19:266 [TableMetadata.<init>:69] HHH000126: Indexes: [primary] 
+[INFO ] 01:03:19:269 [SchemaUpdate.execute:242] HHH000232: Schema update complete 
+[INFO ] 01:32:22:993 [SchemaUpdate.execute:182] HHH000228: Running hbm2ddl schema update 
+[INFO ] 01:32:22:995 [SchemaUpdate.execute:193] HHH000102: Fetching database metadata 
+[INFO ] 01:32:23:330 [SchemaUpdate.execute:205] HHH000396: Updating schema 
+[INFO ] 01:32:23:364 [TableMetadata.<init>:65] HHH000261: Table found: shop.user 
+[INFO ] 01:32:23:365 [TableMetadata.<init>:66] HHH000037: Columns: [login_count, password, id, state, text, username] 
+[INFO ] 01:32:23:365 [TableMetadata.<init>:68] HHH000108: Foreign keys: [] 
+[INFO ] 01:32:23:366 [TableMetadata.<init>:69] HHH000126: Indexes: [primary] 
+[INFO ] 01:32:23:384 [TableMetadata.<init>:65] HHH000261: Table found: shop.address 
+[INFO ] 01:32:23:384 [TableMetadata.<init>:66] HHH000037: Columns: [area, province, city, phone, user_id, street, name, nickname, id] 
+[INFO ] 01:32:23:385 [TableMetadata.<init>:68] HHH000108: Foreign keys: [] 
+[INFO ] 01:32:23:385 [TableMetadata.<init>:69] HHH000126: Indexes: [primary] 
+[INFO ] 01:32:23:401 [TableMetadata.<init>:65] HHH000261: Table found: shop.cart_list 
+[INFO ] 01:32:23:402 [TableMetadata.<init>:66] HHH000037: Columns: [colour, g_id, u_id, size, price, count, name, discount, id, url] 
+[INFO ] 01:32:23:402 [TableMetadata.<init>:68] HHH000108: Foreign keys: [] 
+[INFO ] 01:32:23:402 [TableMetadata.<init>:69] HHH000126: Indexes: [primary] 
+[INFO ] 01:32:23:414 [TableMetadata.<init>:65] HHH000261: Table found: shop.collection 
+[INFO ] 01:32:23:416 [TableMetadata.<init>:66] HHH000037: Columns: [user_id, price, name, goods_id, id, url] 
+[INFO ] 01:32:23:416 [TableMetadata.<init>:68] HHH000108: Foreign keys: [] 
+[INFO ] 01:32:23:416 [TableMetadata.<init>:69] HHH000126: Indexes: [primary] 
+[INFO ] 01:32:23:430 [TableMetadata.<init>:65] HHH000261: Table found: shop.goods 
+[INFO ] 01:32:23:430 [TableMetadata.<init>:66] HHH000037: Columns: [msg, price, name, discount, id, create_date, type, update_date, url] 
+[INFO ] 01:32:23:430 [TableMetadata.<init>:68] HHH000108: Foreign keys: [] 
+[INFO ] 01:32:23:431 [TableMetadata.<init>:69] HHH000126: Indexes: [primary] 
+[INFO ] 01:32:23:442 [TableMetadata.<init>:65] HHH000261: Table found: shop.goods_style 
+[INFO ] 01:32:23:443 [TableMetadata.<init>:66] HHH000037: Columns: [color, color_sign, goods_id, id, url] 
+[INFO ] 01:32:23:443 [TableMetadata.<init>:68] HHH000108: Foreign keys: [] 
+[INFO ] 01:32:23:443 [TableMetadata.<init>:69] HHH000126: Indexes: [primary] 
+[INFO ] 01:32:23:455 [TableMetadata.<init>:65] HHH000261: Table found: shop.logistics 
+[INFO ] 01:32:23:456 [TableMetadata.<init>:66] HHH000037: Columns: [area, province, city, phone, street, name, nickname, id, order_id] 
+[INFO ] 01:32:23:456 [TableMetadata.<init>:68] HHH000108: Foreign keys: [] 
+[INFO ] 01:32:23:456 [TableMetadata.<init>:69] HHH000126: Indexes: [primary] 
+[INFO ] 01:32:23:473 [TableMetadata.<init>:65] HHH000261: Table found: shop.order_item 
+[INFO ] 01:32:23:474 [TableMetadata.<init>:66] HHH000037: Columns: [colour, total, g_id, size, price, count, name, discount, id, order_id, url] 
+[INFO ] 01:32:23:475 [TableMetadata.<init>:68] HHH000108: Foreign keys: [] 
+[INFO ] 01:32:23:475 [TableMetadata.<init>:69] HHH000126: Indexes: [primary] 
+[INFO ] 01:32:23:497 [TableMetadata.<init>:65] HHH000261: Table found: shop.orders 
+[INFO ] 01:32:23:497 [TableMetadata.<init>:66] HHH000037: Columns: [u_id, total_amount, original_amount, payment_status, id, create_date, logistics_status] 
+[INFO ] 01:32:23:498 [TableMetadata.<init>:68] HHH000108: Foreign keys: [] 
+[INFO ] 01:32:23:498 [TableMetadata.<init>:69] HHH000126: Indexes: [primary] 
+[INFO ] 01:32:23:515 [TableMetadata.<init>:65] HHH000261: Table found: shop.user 
+[INFO ] 01:32:23:516 [TableMetadata.<init>:66] HHH000037: Columns: [login_count, password, id, state, text, username] 
+[INFO ] 01:32:23:517 [TableMetadata.<init>:68] HHH000108: Foreign keys: [] 
+[INFO ] 01:32:23:518 [TableMetadata.<init>:69] HHH000126: Indexes: [primary] 
+[INFO ] 01:32:23:543 [TableMetadata.<init>:65] HHH000261: Table found: shop.user_address 
+[INFO ] 01:32:23:544 [TableMetadata.<init>:66] HHH000037: Columns: [area, user_infor_id, province, city, street, id] 
+[INFO ] 01:32:23:547 [TableMetadata.<init>:68] HHH000108: Foreign keys: [] 
+[INFO ] 01:32:23:547 [TableMetadata.<init>:69] HHH000126: Indexes: [primary] 
+[INFO ] 01:32:23:573 [TableMetadata.<init>:65] HHH000261: Table found: shop.user_infor 
+[INFO ] 01:32:23:574 [TableMetadata.<init>:66] HHH000037: Columns: [msg, u_id, phone, name, id, email] 
+[INFO ] 01:32:23:574 [TableMetadata.<init>:68] HHH000108: Foreign keys: [] 
+[INFO ] 01:32:23:574 [TableMetadata.<init>:69] HHH000126: Indexes: [primary] 
+[INFO ] 01:32:23:576 [SchemaUpdate.execute:242] HHH000232: Schema update complete 
+[INFO ] 01:33:14:335 [SchemaUpdate.execute:182] HHH000228: Running hbm2ddl schema update 
+[INFO ] 01:33:14:337 [SchemaUpdate.execute:193] HHH000102: Fetching database metadata 
+[INFO ] 01:33:14:589 [SchemaUpdate.execute:205] HHH000396: Updating schema 
+[INFO ] 01:33:14:615 [TableMetadata.<init>:65] HHH000261: Table found: shop.user 
+[INFO ] 01:33:14:616 [TableMetadata.<init>:66] HHH000037: Columns: [login_count, password, id, state, text, username] 
+[INFO ] 01:33:14:616 [TableMetadata.<init>:68] HHH000108: Foreign keys: [] 
+[INFO ] 01:33:14:616 [TableMetadata.<init>:69] HHH000126: Indexes: [primary] 
+[INFO ] 01:33:14:629 [TableMetadata.<init>:65] HHH000261: Table found: shop.address 
+[INFO ] 01:33:14:630 [TableMetadata.<init>:66] HHH000037: Columns: [area, province, city, phone, user_id, street, name, nickname, id] 
+[INFO ] 01:33:14:630 [TableMetadata.<init>:68] HHH000108: Foreign keys: [] 
+[INFO ] 01:33:14:631 [TableMetadata.<init>:69] HHH000126: Indexes: [primary] 
+[INFO ] 01:33:14:644 [TableMetadata.<init>:65] HHH000261: Table found: shop.cart_list 
+[INFO ] 01:33:14:644 [TableMetadata.<init>:66] HHH000037: Columns: [colour, g_id, u_id, size, price, count, name, discount, id, url] 
+[INFO ] 01:33:14:644 [TableMetadata.<init>:68] HHH000108: Foreign keys: [] 
+[INFO ] 01:33:14:645 [TableMetadata.<init>:69] HHH000126: Indexes: [primary] 
+[INFO ] 01:33:14:657 [TableMetadata.<init>:65] HHH000261: Table found: shop.collection 
+[INFO ] 01:33:14:658 [TableMetadata.<init>:66] HHH000037: Columns: [user_id, price, name, goods_id, id, url] 
+[INFO ] 01:33:14:659 [TableMetadata.<init>:68] HHH000108: Foreign keys: [] 
+[INFO ] 01:33:14:659 [TableMetadata.<init>:69] HHH000126: Indexes: [primary] 
+[INFO ] 01:33:14:669 [TableMetadata.<init>:65] HHH000261: Table found: shop.goods 
+[INFO ] 01:33:14:670 [TableMetadata.<init>:66] HHH000037: Columns: [msg, price, name, discount, id, create_date, type, update_date, url] 
+[INFO ] 01:33:14:670 [TableMetadata.<init>:68] HHH000108: Foreign keys: [] 
+[INFO ] 01:33:14:670 [TableMetadata.<init>:69] HHH000126: Indexes: [primary] 
+[INFO ] 01:33:14:681 [TableMetadata.<init>:65] HHH000261: Table found: shop.goods_style 
+[INFO ] 01:33:14:681 [TableMetadata.<init>:66] HHH000037: Columns: [color, color_sign, goods_id, id, url] 
+[INFO ] 01:33:14:682 [TableMetadata.<init>:68] HHH000108: Foreign keys: [] 
+[INFO ] 01:33:14:682 [TableMetadata.<init>:69] HHH000126: Indexes: [primary] 
+[INFO ] 01:33:14:703 [TableMetadata.<init>:65] HHH000261: Table found: shop.logistics 
+[INFO ] 01:33:14:703 [TableMetadata.<init>:66] HHH000037: Columns: [area, province, city, phone, street, name, nickname, id, order_id] 
+[INFO ] 01:33:14:704 [TableMetadata.<init>:68] HHH000108: Foreign keys: [] 
+[INFO ] 01:33:14:704 [TableMetadata.<init>:69] HHH000126: Indexes: [primary] 
+[INFO ] 01:33:14:719 [TableMetadata.<init>:65] HHH000261: Table found: shop.order_item 
+[INFO ] 01:33:14:720 [TableMetadata.<init>:66] HHH000037: Columns: [colour, total, g_id, size, price, count, name, discount, id, order_id, url] 
+[INFO ] 01:33:14:720 [TableMetadata.<init>:68] HHH000108: Foreign keys: [] 
+[INFO ] 01:33:14:720 [TableMetadata.<init>:69] HHH000126: Indexes: [primary] 
+[INFO ] 01:33:14:735 [TableMetadata.<init>:65] HHH000261: Table found: shop.orders 
+[INFO ] 01:33:14:735 [TableMetadata.<init>:66] HHH000037: Columns: [u_id, total_amount, original_amount, payment_status, id, create_date, logistics_status] 
+[INFO ] 01:33:14:736 [TableMetadata.<init>:68] HHH000108: Foreign keys: [] 
+[INFO ] 01:33:14:736 [TableMetadata.<init>:69] HHH000126: Indexes: [primary] 
+[INFO ] 01:33:14:746 [TableMetadata.<init>:65] HHH000261: Table found: shop.user 
+[INFO ] 01:33:14:747 [TableMetadata.<init>:66] HHH000037: Columns: [login_count, password, id, state, text, username] 
+[INFO ] 01:33:14:747 [TableMetadata.<init>:68] HHH000108: Foreign keys: [] 
+[INFO ] 01:33:14:747 [TableMetadata.<init>:69] HHH000126: Indexes: [primary] 
+[INFO ] 01:33:14:759 [TableMetadata.<init>:65] HHH000261: Table found: shop.user_address 
+[INFO ] 01:33:14:759 [TableMetadata.<init>:66] HHH000037: Columns: [area, user_infor_id, province, city, street, id] 
+[INFO ] 01:33:14:760 [TableMetadata.<init>:68] HHH000108: Foreign keys: [] 
+[INFO ] 01:33:14:760 [TableMetadata.<init>:69] HHH000126: Indexes: [primary] 
+[INFO ] 01:33:14:771 [TableMetadata.<init>:65] HHH000261: Table found: shop.user_infor 
+[INFO ] 01:33:14:772 [TableMetadata.<init>:66] HHH000037: Columns: [msg, u_id, phone, name, id, email] 
+[INFO ] 01:33:14:772 [TableMetadata.<init>:68] HHH000108: Foreign keys: [] 
+[INFO ] 01:33:14:772 [TableMetadata.<init>:69] HHH000126: Indexes: [primary] 
+[INFO ] 01:33:14:773 [SchemaUpdate.execute:242] HHH000232: Schema update complete 
+[INFO ] 01:33:16:520 [SchemaUpdate.execute:182] HHH000228: Running hbm2ddl schema update 
+[INFO ] 01:33:16:520 [SchemaUpdate.execute:193] HHH000102: Fetching database metadata 
+[INFO ] 01:33:16:527 [SchemaUpdate.execute:205] HHH000396: Updating schema 
+[INFO ] 01:33:16:539 [TableMetadata.<init>:65] HHH000261: Table found: shop.user 
+[INFO ] 01:33:16:540 [TableMetadata.<init>:66] HHH000037: Columns: [login_count, password, id, state, text, username] 
+[INFO ] 01:33:16:540 [TableMetadata.<init>:68] HHH000108: Foreign keys: [] 
+[INFO ] 01:33:16:540 [TableMetadata.<init>:69] HHH000126: Indexes: [primary] 
+[INFO ] 01:33:16:553 [TableMetadata.<init>:65] HHH000261: Table found: shop.address 
+[INFO ] 01:33:16:553 [TableMetadata.<init>:66] HHH000037: Columns: [area, province, city, phone, user_id, street, name, nickname, id] 
+[INFO ] 01:33:16:554 [TableMetadata.<init>:68] HHH000108: Foreign keys: [] 
+[INFO ] 01:33:16:554 [TableMetadata.<init>:69] HHH000126: Indexes: [primary] 
+[INFO ] 01:33:16:567 [TableMetadata.<init>:65] HHH000261: Table found: shop.cart_list 
+[INFO ] 01:33:16:568 [TableMetadata.<init>:66] HHH000037: Columns: [colour, g_id, u_id, size, price, count, name, discount, id, url] 
+[INFO ] 01:33:16:569 [TableMetadata.<init>:68] HHH000108: Foreign keys: [] 
+[INFO ] 01:33:16:569 [TableMetadata.<init>:69] HHH000126: Indexes: [primary] 
+[INFO ] 01:33:16:582 [TableMetadata.<init>:65] HHH000261: Table found: shop.collection 
+[INFO ] 01:33:16:582 [TableMetadata.<init>:66] HHH000037: Columns: [user_id, price, name, goods_id, id, url] 
+[INFO ] 01:33:16:582 [TableMetadata.<init>:68] HHH000108: Foreign keys: [] 
+[INFO ] 01:33:16:583 [TableMetadata.<init>:69] HHH000126: Indexes: [primary] 
+[INFO ] 01:33:16:597 [TableMetadata.<init>:65] HHH000261: Table found: shop.goods 
+[INFO ] 01:33:16:597 [TableMetadata.<init>:66] HHH000037: Columns: [msg, price, name, discount, id, create_date, type, update_date, url] 
+[INFO ] 01:33:16:598 [TableMetadata.<init>:68] HHH000108: Foreign keys: [] 
+[INFO ] 01:33:16:598 [TableMetadata.<init>:69] HHH000126: Indexes: [primary] 
+[INFO ] 01:33:16:609 [TableMetadata.<init>:65] HHH000261: Table found: shop.goods_style 
+[INFO ] 01:33:16:610 [TableMetadata.<init>:66] HHH000037: Columns: [color, color_sign, goods_id, id, url] 
+[INFO ] 01:33:16:610 [TableMetadata.<init>:68] HHH000108: Foreign keys: [] 
+[INFO ] 01:33:16:610 [TableMetadata.<init>:69] HHH000126: Indexes: [primary] 
+[INFO ] 01:33:16:625 [TableMetadata.<init>:65] HHH000261: Table found: shop.logistics 
+[INFO ] 01:33:16:625 [TableMetadata.<init>:66] HHH000037: Columns: [area, province, city, phone, street, name, nickname, id, order_id] 
+[INFO ] 01:33:16:626 [TableMetadata.<init>:68] HHH000108: Foreign keys: [] 
+[INFO ] 01:33:16:626 [TableMetadata.<init>:69] HHH000126: Indexes: [primary] 
+[INFO ] 01:33:16:640 [TableMetadata.<init>:65] HHH000261: Table found: shop.order_item 
+[INFO ] 01:33:16:640 [TableMetadata.<init>:66] HHH000037: Columns: [colour, total, g_id, size, price, count, name, discount, id, order_id, url] 
+[INFO ] 01:33:16:641 [TableMetadata.<init>:68] HHH000108: Foreign keys: [] 
+[INFO ] 01:33:16:641 [TableMetadata.<init>:69] HHH000126: Indexes: [primary] 
+[INFO ] 01:33:16:652 [TableMetadata.<init>:65] HHH000261: Table found: shop.orders 
+[INFO ] 01:33:16:653 [TableMetadata.<init>:66] HHH000037: Columns: [u_id, total_amount, original_amount, payment_status, id, create_date, logistics_status] 
+[INFO ] 01:33:16:653 [TableMetadata.<init>:68] HHH000108: Foreign keys: [] 
+[INFO ] 01:33:16:653 [TableMetadata.<init>:69] HHH000126: Indexes: [primary] 
+[INFO ] 01:33:16:664 [TableMetadata.<init>:65] HHH000261: Table found: shop.user 
+[INFO ] 01:33:16:665 [TableMetadata.<init>:66] HHH000037: Columns: [login_count, password, id, state, text, username] 
+[INFO ] 01:33:16:665 [TableMetadata.<init>:68] HHH000108: Foreign keys: [] 
+[INFO ] 01:33:16:665 [TableMetadata.<init>:69] HHH000126: Indexes: [primary] 
+[INFO ] 01:33:16:678 [TableMetadata.<init>:65] HHH000261: Table found: shop.user_address 
+[INFO ] 01:33:16:679 [TableMetadata.<init>:66] HHH000037: Columns: [area, user_infor_id, province, city, street, id] 
+[INFO ] 01:33:16:679 [TableMetadata.<init>:68] HHH000108: Foreign keys: [] 
+[INFO ] 01:33:16:679 [TableMetadata.<init>:69] HHH000126: Indexes: [primary] 
+[INFO ] 01:33:16:692 [TableMetadata.<init>:65] HHH000261: Table found: shop.user_infor 
+[INFO ] 01:33:16:692 [TableMetadata.<init>:66] HHH000037: Columns: [msg, u_id, phone, name, id, email] 
+[INFO ] 01:33:16:693 [TableMetadata.<init>:68] HHH000108: Foreign keys: [] 
+[INFO ] 01:33:16:693 [TableMetadata.<init>:69] HHH000126: Indexes: [primary] 
+[INFO ] 01:33:16:693 [SchemaUpdate.execute:242] HHH000232: Schema update complete 
+[INFO ] 01:33:43:496 [SchemaUpdate.execute:182] HHH000228: Running hbm2ddl schema update 
+[INFO ] 01:33:43:498 [SchemaUpdate.execute:193] HHH000102: Fetching database metadata 
+[INFO ] 01:33:43:750 [SchemaUpdate.execute:205] HHH000396: Updating schema 
+[INFO ] 01:33:43:776 [TableMetadata.<init>:65] HHH000261: Table found: shop.user 
+[INFO ] 01:33:43:776 [TableMetadata.<init>:66] HHH000037: Columns: [login_count, password, id, state, text, username] 
+[INFO ] 01:33:43:777 [TableMetadata.<init>:68] HHH000108: Foreign keys: [] 
+[INFO ] 01:33:43:777 [TableMetadata.<init>:69] HHH000126: Indexes: [primary] 
+[INFO ] 01:33:43:789 [TableMetadata.<init>:65] HHH000261: Table found: shop.address 
+[INFO ] 01:33:43:790 [TableMetadata.<init>:66] HHH000037: Columns: [area, province, city, phone, user_id, street, name, nickname, id] 
+[INFO ] 01:33:43:790 [TableMetadata.<init>:68] HHH000108: Foreign keys: [] 
+[INFO ] 01:33:43:791 [TableMetadata.<init>:69] HHH000126: Indexes: [primary] 
+[INFO ] 01:33:43:804 [TableMetadata.<init>:65] HHH000261: Table found: shop.cart_list 
+[INFO ] 01:33:43:804 [TableMetadata.<init>:66] HHH000037: Columns: [colour, g_id, u_id, size, price, count, name, discount, id, url] 
+[INFO ] 01:33:43:805 [TableMetadata.<init>:68] HHH000108: Foreign keys: [] 
+[INFO ] 01:33:43:805 [TableMetadata.<init>:69] HHH000126: Indexes: [primary] 
+[INFO ] 01:33:43:815 [TableMetadata.<init>:65] HHH000261: Table found: shop.collection 
+[INFO ] 01:33:43:817 [TableMetadata.<init>:66] HHH000037: Columns: [user_id, price, name, goods_id, id, url] 
+[INFO ] 01:33:43:817 [TableMetadata.<init>:68] HHH000108: Foreign keys: [] 
+[INFO ] 01:33:43:817 [TableMetadata.<init>:69] HHH000126: Indexes: [primary] 
+[INFO ] 01:33:43:829 [TableMetadata.<init>:65] HHH000261: Table found: shop.goods 
+[INFO ] 01:33:43:829 [TableMetadata.<init>:66] HHH000037: Columns: [msg, price, name, discount, id, create_date, type, update_date, url] 
+[INFO ] 01:33:43:830 [TableMetadata.<init>:68] HHH000108: Foreign keys: [] 
+[INFO ] 01:33:43:830 [TableMetadata.<init>:69] HHH000126: Indexes: [primary] 
+[INFO ] 01:33:43:839 [TableMetadata.<init>:65] HHH000261: Table found: shop.goods_style 
+[INFO ] 01:33:43:839 [TableMetadata.<init>:66] HHH000037: Columns: [color, color_sign, goods_id, id, url] 
+[INFO ] 01:33:43:840 [TableMetadata.<init>:68] HHH000108: Foreign keys: [] 
+[INFO ] 01:33:43:840 [TableMetadata.<init>:69] HHH000126: Indexes: [primary] 
+[INFO ] 01:33:43:850 [TableMetadata.<init>:65] HHH000261: Table found: shop.logistics 
+[INFO ] 01:33:43:850 [TableMetadata.<init>:66] HHH000037: Columns: [area, province, city, phone, street, name, nickname, id, order_id] 
+[INFO ] 01:33:43:851 [TableMetadata.<init>:68] HHH000108: Foreign keys: [] 
+[INFO ] 01:33:43:851 [TableMetadata.<init>:69] HHH000126: Indexes: [primary] 
+[INFO ] 01:33:43:872 [TableMetadata.<init>:65] HHH000261: Table found: shop.order_item 
+[INFO ] 01:33:43:873 [TableMetadata.<init>:66] HHH000037: Columns: [colour, total, g_id, size, price, count, name, discount, id, order_id, url] 
+[INFO ] 01:33:43:873 [TableMetadata.<init>:68] HHH000108: Foreign keys: [] 
+[INFO ] 01:33:43:874 [TableMetadata.<init>:69] HHH000126: Indexes: [primary] 
+[INFO ] 01:33:43:889 [TableMetadata.<init>:65] HHH000261: Table found: shop.orders 
+[INFO ] 01:33:43:889 [TableMetadata.<init>:66] HHH000037: Columns: [u_id, total_amount, original_amount, payment_status, id, create_date, logistics_status] 
+[INFO ] 01:33:43:890 [TableMetadata.<init>:68] HHH000108: Foreign keys: [] 
+[INFO ] 01:33:43:890 [TableMetadata.<init>:69] HHH000126: Indexes: [primary] 
+[INFO ] 01:33:43:902 [TableMetadata.<init>:65] HHH000261: Table found: shop.user 
+[INFO ] 01:33:43:903 [TableMetadata.<init>:66] HHH000037: Columns: [login_count, password, id, state, text, username] 
+[INFO ] 01:33:43:903 [TableMetadata.<init>:68] HHH000108: Foreign keys: [] 
+[INFO ] 01:33:43:904 [TableMetadata.<init>:69] HHH000126: Indexes: [primary] 
+[INFO ] 01:33:43:919 [TableMetadata.<init>:65] HHH000261: Table found: shop.user_address 
+[INFO ] 01:33:43:919 [TableMetadata.<init>:66] HHH000037: Columns: [area, user_infor_id, province, city, street, id] 
+[INFO ] 01:33:43:920 [TableMetadata.<init>:68] HHH000108: Foreign keys: [] 
+[INFO ] 01:33:43:920 [TableMetadata.<init>:69] HHH000126: Indexes: [primary] 
+[INFO ] 01:33:43:936 [TableMetadata.<init>:65] HHH000261: Table found: shop.user_infor 
+[INFO ] 01:33:43:937 [TableMetadata.<init>:66] HHH000037: Columns: [msg, u_id, phone, name, id, email] 
+[INFO ] 01:33:43:937 [TableMetadata.<init>:68] HHH000108: Foreign keys: [] 
+[INFO ] 01:33:43:938 [TableMetadata.<init>:69] HHH000126: Indexes: [primary] 
+[INFO ] 01:33:43:939 [SchemaUpdate.execute:242] HHH000232: Schema update complete 
+[INFO ] 01:33:45:762 [SchemaUpdate.execute:182] HHH000228: Running hbm2ddl schema update 
+[INFO ] 01:33:45:763 [SchemaUpdate.execute:193] HHH000102: Fetching database metadata 
+[INFO ] 01:33:45:770 [SchemaUpdate.execute:205] HHH000396: Updating schema 
+[INFO ] 01:33:45:781 [TableMetadata.<init>:65] HHH000261: Table found: shop.user 
+[INFO ] 01:33:45:781 [TableMetadata.<init>:66] HHH000037: Columns: [login_count, password, id, state, text, username] 
+[INFO ] 01:33:45:782 [TableMetadata.<init>:68] HHH000108: Foreign keys: [] 
+[INFO ] 01:33:45:782 [TableMetadata.<init>:69] HHH000126: Indexes: [primary] 
+[INFO ] 01:33:45:793 [TableMetadata.<init>:65] HHH000261: Table found: shop.address 
+[INFO ] 01:33:45:794 [TableMetadata.<init>:66] HHH000037: Columns: [area, province, city, phone, user_id, street, name, nickname, id] 
+[INFO ] 01:33:45:794 [TableMetadata.<init>:68] HHH000108: Foreign keys: [] 
+[INFO ] 01:33:45:794 [TableMetadata.<init>:69] HHH000126: Indexes: [primary] 
+[INFO ] 01:33:45:807 [TableMetadata.<init>:65] HHH000261: Table found: shop.cart_list 
+[INFO ] 01:33:45:807 [TableMetadata.<init>:66] HHH000037: Columns: [colour, g_id, u_id, size, price, count, name, discount, id, url] 
+[INFO ] 01:33:45:808 [TableMetadata.<init>:68] HHH000108: Foreign keys: [] 
+[INFO ] 01:33:45:808 [TableMetadata.<init>:69] HHH000126: Indexes: [primary] 
+[INFO ] 01:33:45:823 [TableMetadata.<init>:65] HHH000261: Table found: shop.collection 
+[INFO ] 01:33:45:823 [TableMetadata.<init>:66] HHH000037: Columns: [user_id, price, name, goods_id, id, url] 
+[INFO ] 01:33:45:823 [TableMetadata.<init>:68] HHH000108: Foreign keys: [] 
+[INFO ] 01:33:45:824 [TableMetadata.<init>:69] HHH000126: Indexes: [primary] 
+[INFO ] 01:33:45:836 [TableMetadata.<init>:65] HHH000261: Table found: shop.goods 
+[INFO ] 01:33:45:836 [TableMetadata.<init>:66] HHH000037: Columns: [msg, price, name, discount, id, create_date, type, update_date, url] 
+[INFO ] 01:33:45:836 [TableMetadata.<init>:68] HHH000108: Foreign keys: [] 
+[INFO ] 01:33:45:837 [TableMetadata.<init>:69] HHH000126: Indexes: [primary] 
+[INFO ] 01:33:45:848 [TableMetadata.<init>:65] HHH000261: Table found: shop.goods_style 
+[INFO ] 01:33:45:849 [TableMetadata.<init>:66] HHH000037: Columns: [color, color_sign, goods_id, id, url] 
+[INFO ] 01:33:45:849 [TableMetadata.<init>:68] HHH000108: Foreign keys: [] 
+[INFO ] 01:33:45:850 [TableMetadata.<init>:69] HHH000126: Indexes: [primary] 
+[INFO ] 01:33:45:863 [TableMetadata.<init>:65] HHH000261: Table found: shop.logistics 
+[INFO ] 01:33:45:864 [TableMetadata.<init>:66] HHH000037: Columns: [area, province, city, phone, street, name, nickname, id, order_id] 
+[INFO ] 01:33:45:864 [TableMetadata.<init>:68] HHH000108: Foreign keys: [] 
+[INFO ] 01:33:45:864 [TableMetadata.<init>:69] HHH000126: Indexes: [primary] 
+[INFO ] 01:33:45:882 [TableMetadata.<init>:65] HHH000261: Table found: shop.order_item 
+[INFO ] 01:33:45:882 [TableMetadata.<init>:66] HHH000037: Columns: [colour, total, g_id, size, price, count, name, discount, id, order_id, url] 
+[INFO ] 01:33:45:882 [TableMetadata.<init>:68] HHH000108: Foreign keys: [] 
+[INFO ] 01:33:45:883 [TableMetadata.<init>:69] HHH000126: Indexes: [primary] 
+[INFO ] 01:33:45:894 [TableMetadata.<init>:65] HHH000261: Table found: shop.orders 
+[INFO ] 01:33:45:894 [TableMetadata.<init>:66] HHH000037: Columns: [u_id, total_amount, original_amount, payment_status, id, create_date, logistics_status] 
+[INFO ] 01:33:45:895 [TableMetadata.<init>:68] HHH000108: Foreign keys: [] 
+[INFO ] 01:33:45:895 [TableMetadata.<init>:69] HHH000126: Indexes: [primary] 
+[INFO ] 01:33:45:906 [TableMetadata.<init>:65] HHH000261: Table found: shop.user 
+[INFO ] 01:33:45:906 [TableMetadata.<init>:66] HHH000037: Columns: [login_count, password, id, state, text, username] 
+[INFO ] 01:33:45:907 [TableMetadata.<init>:68] HHH000108: Foreign keys: [] 
+[INFO ] 01:33:45:907 [TableMetadata.<init>:69] HHH000126: Indexes: [primary] 
+[INFO ] 01:33:45:919 [TableMetadata.<init>:65] HHH000261: Table found: shop.user_address 
+[INFO ] 01:33:45:920 [TableMetadata.<init>:66] HHH000037: Columns: [area, user_infor_id, province, city, street, id] 
+[INFO ] 01:33:45:920 [TableMetadata.<init>:68] HHH000108: Foreign keys: [] 
+[INFO ] 01:33:45:921 [TableMetadata.<init>:69] HHH000126: Indexes: [primary] 
+[INFO ] 01:33:45:933 [TableMetadata.<init>:65] HHH000261: Table found: shop.user_infor 
+[INFO ] 01:33:45:933 [TableMetadata.<init>:66] HHH000037: Columns: [msg, u_id, phone, name, id, email] 
+[INFO ] 01:33:45:934 [TableMetadata.<init>:68] HHH000108: Foreign keys: [] 
+[INFO ] 01:33:45:934 [TableMetadata.<init>:69] HHH000126: Indexes: [primary] 
+[INFO ] 01:33:45:935 [SchemaUpdate.execute:242] HHH000232: Schema update complete 
+[INFO ] 01:34:25:706 [SchemaUpdate.execute:182] HHH000228: Running hbm2ddl schema update 
+[INFO ] 01:34:25:708 [SchemaUpdate.execute:193] HHH000102: Fetching database metadata 
+[INFO ] 01:34:26:3 [SchemaUpdate.execute:205] HHH000396: Updating schema 
+[INFO ] 01:34:26:33 [TableMetadata.<init>:65] HHH000261: Table found: shop.user 
+[INFO ] 01:34:26:34 [TableMetadata.<init>:66] HHH000037: Columns: [login_count, password, id, state, text, username] 
+[INFO ] 01:34:26:34 [TableMetadata.<init>:68] HHH000108: Foreign keys: [] 
+[INFO ] 01:34:26:34 [TableMetadata.<init>:69] HHH000126: Indexes: [primary] 
+[INFO ] 01:34:26:49 [TableMetadata.<init>:65] HHH000261: Table found: shop.address 
+[INFO ] 01:34:26:49 [TableMetadata.<init>:66] HHH000037: Columns: [area, province, city, phone, user_id, street, name, nickname, id] 
+[INFO ] 01:34:26:50 [TableMetadata.<init>:68] HHH000108: Foreign keys: [] 
+[INFO ] 01:34:26:50 [TableMetadata.<init>:69] HHH000126: Indexes: [primary] 
+[INFO ] 01:34:26:66 [TableMetadata.<init>:65] HHH000261: Table found: shop.cart_list 
+[INFO ] 01:34:26:66 [TableMetadata.<init>:66] HHH000037: Columns: [colour, g_id, u_id, size, price, count, name, discount, id, url] 
+[INFO ] 01:34:26:67 [TableMetadata.<init>:68] HHH000108: Foreign keys: [] 
+[INFO ] 01:34:26:67 [TableMetadata.<init>:69] HHH000126: Indexes: [primary] 
+[INFO ] 01:34:26:83 [TableMetadata.<init>:65] HHH000261: Table found: shop.collection 
+[INFO ] 01:34:26:84 [TableMetadata.<init>:66] HHH000037: Columns: [user_id, price, name, goods_id, id, url] 
+[INFO ] 01:34:26:85 [TableMetadata.<init>:68] HHH000108: Foreign keys: [] 
+[INFO ] 01:34:26:86 [TableMetadata.<init>:69] HHH000126: Indexes: [primary] 
+[INFO ] 01:34:26:100 [TableMetadata.<init>:65] HHH000261: Table found: shop.goods 
+[INFO ] 01:34:26:100 [TableMetadata.<init>:66] HHH000037: Columns: [msg, price, name, discount, id, create_date, type, update_date, url] 
+[INFO ] 01:34:26:100 [TableMetadata.<init>:68] HHH000108: Foreign keys: [] 
+[INFO ] 01:34:26:101 [TableMetadata.<init>:69] HHH000126: Indexes: [primary] 
+[INFO ] 01:34:26:114 [TableMetadata.<init>:65] HHH000261: Table found: shop.goods_style 
+[INFO ] 01:34:26:114 [TableMetadata.<init>:66] HHH000037: Columns: [color, color_sign, goods_id, id, url] 
+[INFO ] 01:34:26:114 [TableMetadata.<init>:68] HHH000108: Foreign keys: [] 
+[INFO ] 01:34:26:115 [TableMetadata.<init>:69] HHH000126: Indexes: [primary] 
+[INFO ] 01:34:26:127 [TableMetadata.<init>:65] HHH000261: Table found: shop.logistics 
+[INFO ] 01:34:26:127 [TableMetadata.<init>:66] HHH000037: Columns: [area, province, city, phone, street, name, nickname, id, order_id] 
+[INFO ] 01:34:26:128 [TableMetadata.<init>:68] HHH000108: Foreign keys: [] 
+[INFO ] 01:34:26:128 [TableMetadata.<init>:69] HHH000126: Indexes: [primary] 
+[INFO ] 01:34:26:141 [TableMetadata.<init>:65] HHH000261: Table found: shop.order_item 
+[INFO ] 01:34:26:141 [TableMetadata.<init>:66] HHH000037: Columns: [colour, total, g_id, size, price, count, name, discount, id, order_id, url] 
+[INFO ] 01:34:26:142 [TableMetadata.<init>:68] HHH000108: Foreign keys: [] 
+[INFO ] 01:34:26:142 [TableMetadata.<init>:69] HHH000126: Indexes: [primary] 
+[INFO ] 01:34:26:158 [TableMetadata.<init>:65] HHH000261: Table found: shop.orders 
+[INFO ] 01:34:26:159 [TableMetadata.<init>:66] HHH000037: Columns: [u_id, total_amount, original_amount, payment_status, id, create_date, logistics_status] 
+[INFO ] 01:34:26:160 [TableMetadata.<init>:68] HHH000108: Foreign keys: [] 
+[INFO ] 01:34:26:161 [TableMetadata.<init>:69] HHH000126: Indexes: [primary] 
+[INFO ] 01:34:26:175 [TableMetadata.<init>:65] HHH000261: Table found: shop.user 
+[INFO ] 01:34:26:176 [TableMetadata.<init>:66] HHH000037: Columns: [login_count, password, id, state, text, username] 
+[INFO ] 01:34:26:177 [TableMetadata.<init>:68] HHH000108: Foreign keys: [] 
+[INFO ] 01:34:26:177 [TableMetadata.<init>:69] HHH000126: Indexes: [primary] 
+[INFO ] 01:34:26:195 [TableMetadata.<init>:65] HHH000261: Table found: shop.user_address 
+[INFO ] 01:34:26:195 [TableMetadata.<init>:66] HHH000037: Columns: [area, user_infor_id, province, city, street, id] 
+[INFO ] 01:34:26:204 [TableMetadata.<init>:68] HHH000108: Foreign keys: [] 
+[INFO ] 01:34:26:204 [TableMetadata.<init>:69] HHH000126: Indexes: [primary] 
+[INFO ] 01:34:26:223 [TableMetadata.<init>:65] HHH000261: Table found: shop.user_infor 
+[INFO ] 01:34:26:223 [TableMetadata.<init>:66] HHH000037: Columns: [msg, u_id, phone, name, id, email] 
+[INFO ] 01:34:26:223 [TableMetadata.<init>:68] HHH000108: Foreign keys: [] 
+[INFO ] 01:34:26:224 [TableMetadata.<init>:69] HHH000126: Indexes: [primary] 
+[INFO ] 01:34:26:227 [SchemaUpdate.execute:242] HHH000232: Schema update complete 
+[INFO ] 01:34:27:872 [SchemaUpdate.execute:182] HHH000228: Running hbm2ddl schema update 
+[INFO ] 01:34:27:873 [SchemaUpdate.execute:193] HHH000102: Fetching database metadata 
+[INFO ] 01:34:27:879 [SchemaUpdate.execute:205] HHH000396: Updating schema 
+[INFO ] 01:34:27:897 [TableMetadata.<init>:65] HHH000261: Table found: shop.user 
+[INFO ] 01:34:27:898 [TableMetadata.<init>:66] HHH000037: Columns: [login_count, password, id, state, text, username] 
+[INFO ] 01:34:27:898 [TableMetadata.<init>:68] HHH000108: Foreign keys: [] 
+[INFO ] 01:34:27:899 [TableMetadata.<init>:69] HHH000126: Indexes: [primary] 
+[INFO ] 01:34:27:911 [TableMetadata.<init>:65] HHH000261: Table found: shop.address 
+[INFO ] 01:34:27:912 [TableMetadata.<init>:66] HHH000037: Columns: [area, province, city, phone, user_id, street, name, nickname, id] 
+[INFO ] 01:34:27:912 [TableMetadata.<init>:68] HHH000108: Foreign keys: [] 
+[INFO ] 01:34:27:912 [TableMetadata.<init>:69] HHH000126: Indexes: [primary] 
+[INFO ] 01:34:27:924 [TableMetadata.<init>:65] HHH000261: Table found: shop.cart_list 
+[INFO ] 01:34:27:924 [TableMetadata.<init>:66] HHH000037: Columns: [colour, g_id, u_id, size, price, count, name, discount, id, url] 
+[INFO ] 01:34:27:924 [TableMetadata.<init>:68] HHH000108: Foreign keys: [] 
+[INFO ] 01:34:27:925 [TableMetadata.<init>:69] HHH000126: Indexes: [primary] 
+[INFO ] 01:34:27:936 [TableMetadata.<init>:65] HHH000261: Table found: shop.collection 
+[INFO ] 01:34:27:937 [TableMetadata.<init>:66] HHH000037: Columns: [user_id, price, name, goods_id, id, url] 
+[INFO ] 01:34:27:937 [TableMetadata.<init>:68] HHH000108: Foreign keys: [] 
+[INFO ] 01:34:27:937 [TableMetadata.<init>:69] HHH000126: Indexes: [primary] 
+[INFO ] 01:34:27:947 [TableMetadata.<init>:65] HHH000261: Table found: shop.goods 
+[INFO ] 01:34:27:948 [TableMetadata.<init>:66] HHH000037: Columns: [msg, price, name, discount, id, create_date, type, update_date, url] 
+[INFO ] 01:34:27:948 [TableMetadata.<init>:68] HHH000108: Foreign keys: [] 
+[INFO ] 01:34:27:949 [TableMetadata.<init>:69] HHH000126: Indexes: [primary] 
+[INFO ] 01:34:27:961 [TableMetadata.<init>:65] HHH000261: Table found: shop.goods_style 
+[INFO ] 01:34:27:961 [TableMetadata.<init>:66] HHH000037: Columns: [color, color_sign, goods_id, id, url] 
+[INFO ] 01:34:27:962 [TableMetadata.<init>:68] HHH000108: Foreign keys: [] 
+[INFO ] 01:34:27:962 [TableMetadata.<init>:69] HHH000126: Indexes: [primary] 
+[INFO ] 01:34:27:973 [TableMetadata.<init>:65] HHH000261: Table found: shop.logistics 
+[INFO ] 01:34:27:974 [TableMetadata.<init>:66] HHH000037: Columns: [area, province, city, phone, street, name, nickname, id, order_id] 
+[INFO ] 01:34:27:974 [TableMetadata.<init>:68] HHH000108: Foreign keys: [] 
+[INFO ] 01:34:27:975 [TableMetadata.<init>:69] HHH000126: Indexes: [primary] 
+[INFO ] 01:34:27:990 [TableMetadata.<init>:65] HHH000261: Table found: shop.order_item 
+[INFO ] 01:34:27:990 [TableMetadata.<init>:66] HHH000037: Columns: [colour, total, g_id, size, price, count, name, discount, id, order_id, url] 
+[INFO ] 01:34:27:990 [TableMetadata.<init>:68] HHH000108: Foreign keys: [] 
+[INFO ] 01:34:27:991 [TableMetadata.<init>:69] HHH000126: Indexes: [primary] 
+[INFO ] 01:34:28:0 [TableMetadata.<init>:65] HHH000261: Table found: shop.orders 
+[INFO ] 01:34:28:0 [TableMetadata.<init>:66] HHH000037: Columns: [u_id, total_amount, original_amount, payment_status, id, create_date, logistics_status] 
+[INFO ] 01:34:28:1 [TableMetadata.<init>:68] HHH000108: Foreign keys: [] 
+[INFO ] 01:34:28:1 [TableMetadata.<init>:69] HHH000126: Indexes: [primary] 
+[INFO ] 01:34:28:12 [TableMetadata.<init>:65] HHH000261: Table found: shop.user 
+[INFO ] 01:34:28:13 [TableMetadata.<init>:66] HHH000037: Columns: [login_count, password, id, state, text, username] 
+[INFO ] 01:34:28:13 [TableMetadata.<init>:68] HHH000108: Foreign keys: [] 
+[INFO ] 01:34:28:13 [TableMetadata.<init>:69] HHH000126: Indexes: [primary] 
+[INFO ] 01:34:28:23 [TableMetadata.<init>:65] HHH000261: Table found: shop.user_address 
+[INFO ] 01:34:28:24 [TableMetadata.<init>:66] HHH000037: Columns: [area, user_infor_id, province, city, street, id] 
+[INFO ] 01:34:28:24 [TableMetadata.<init>:68] HHH000108: Foreign keys: [] 
+[INFO ] 01:34:28:24 [TableMetadata.<init>:69] HHH000126: Indexes: [primary] 
+[INFO ] 01:34:28:42 [TableMetadata.<init>:65] HHH000261: Table found: shop.user_infor 
+[INFO ] 01:34:28:43 [TableMetadata.<init>:66] HHH000037: Columns: [msg, u_id, phone, name, id, email] 
+[INFO ] 01:34:28:43 [TableMetadata.<init>:68] HHH000108: Foreign keys: [] 
+[INFO ] 01:34:28:43 [TableMetadata.<init>:69] HHH000126: Indexes: [primary] 
+[INFO ] 01:34:28:44 [SchemaUpdate.execute:242] HHH000232: Schema update complete 
+[INFO ] 01:45:22:822 [SchemaUpdate.execute:182] HHH000228: Running hbm2ddl schema update 
+[INFO ] 01:45:22:824 [SchemaUpdate.execute:193] HHH000102: Fetching database metadata 
+[INFO ] 01:45:23:180 [SchemaUpdate.execute:205] HHH000396: Updating schema 
+[INFO ] 01:45:23:212 [TableMetadata.<init>:65] HHH000261: Table found: shop.user 
+[INFO ] 01:45:23:212 [TableMetadata.<init>:66] HHH000037: Columns: [login_count, password, id, state, text, username] 
+[INFO ] 01:45:23:213 [TableMetadata.<init>:68] HHH000108: Foreign keys: [] 
+[INFO ] 01:45:23:213 [TableMetadata.<init>:69] HHH000126: Indexes: [primary] 
+[INFO ] 01:45:23:231 [TableMetadata.<init>:65] HHH000261: Table found: shop.address 
+[INFO ] 01:45:23:231 [TableMetadata.<init>:66] HHH000037: Columns: [area, province, city, phone, user_id, street, name, nickname, id] 
+[INFO ] 01:45:23:231 [TableMetadata.<init>:68] HHH000108: Foreign keys: [] 
+[INFO ] 01:45:23:232 [TableMetadata.<init>:69] HHH000126: Indexes: [primary] 
+[INFO ] 01:45:23:256 [TableMetadata.<init>:65] HHH000261: Table found: shop.cart_list 
+[INFO ] 01:45:23:257 [TableMetadata.<init>:66] HHH000037: Columns: [colour, g_id, u_id, size, price, count, name, discount, id, url] 
+[INFO ] 01:45:23:257 [TableMetadata.<init>:68] HHH000108: Foreign keys: [] 
+[INFO ] 01:45:23:257 [TableMetadata.<init>:69] HHH000126: Indexes: [primary] 
+[INFO ] 01:45:23:287 [TableMetadata.<init>:65] HHH000261: Table found: shop.collection 
+[INFO ] 01:45:23:289 [TableMetadata.<init>:66] HHH000037: Columns: [user_id, price, name, goods_id, id, url] 
+[INFO ] 01:45:23:289 [TableMetadata.<init>:68] HHH000108: Foreign keys: [] 
+[INFO ] 01:45:23:290 [TableMetadata.<init>:69] HHH000126: Indexes: [primary] 
+[INFO ] 01:45:23:317 [TableMetadata.<init>:65] HHH000261: Table found: shop.goods 
+[INFO ] 01:45:23:318 [TableMetadata.<init>:66] HHH000037: Columns: [msg, price, name, discount, id, create_date, type, update_date, url] 
+[INFO ] 01:45:23:318 [TableMetadata.<init>:68] HHH000108: Foreign keys: [] 
+[INFO ] 01:45:23:320 [TableMetadata.<init>:69] HHH000126: Indexes: [primary] 
+[INFO ] 01:45:23:335 [TableMetadata.<init>:65] HHH000261: Table found: shop.goods_style 
+[INFO ] 01:45:23:335 [TableMetadata.<init>:66] HHH000037: Columns: [color, color_sign, goods_id, id, url] 
+[INFO ] 01:45:23:336 [TableMetadata.<init>:68] HHH000108: Foreign keys: [] 
+[INFO ] 01:45:23:336 [TableMetadata.<init>:69] HHH000126: Indexes: [primary] 
+[INFO ] 01:45:23:349 [TableMetadata.<init>:65] HHH000261: Table found: shop.logistics 
+[INFO ] 01:45:23:349 [TableMetadata.<init>:66] HHH000037: Columns: [area, province, city, phone, street, name, nickname, id, order_id] 
+[INFO ] 01:45:23:350 [TableMetadata.<init>:68] HHH000108: Foreign keys: [] 
+[INFO ] 01:45:23:350 [TableMetadata.<init>:69] HHH000126: Indexes: [primary] 
+[INFO ] 01:45:23:369 [TableMetadata.<init>:65] HHH000261: Table found: shop.order_item 
+[INFO ] 01:45:23:369 [TableMetadata.<init>:66] HHH000037: Columns: [colour, total, g_id, size, price, count, name, discount, id, order_id, url] 
+[INFO ] 01:45:23:370 [TableMetadata.<init>:68] HHH000108: Foreign keys: [] 
+[INFO ] 01:45:23:370 [TableMetadata.<init>:69] HHH000126: Indexes: [primary] 
+[INFO ] 01:45:23:385 [TableMetadata.<init>:65] HHH000261: Table found: shop.orders 
+[INFO ] 01:45:23:386 [TableMetadata.<init>:66] HHH000037: Columns: [u_id, total_amount, original_amount, payment_status, id, create_date, logistics_status] 
+[INFO ] 01:45:23:386 [TableMetadata.<init>:68] HHH000108: Foreign keys: [] 
+[INFO ] 01:45:23:387 [TableMetadata.<init>:69] HHH000126: Indexes: [primary] 
+[INFO ] 01:45:23:402 [TableMetadata.<init>:65] HHH000261: Table found: shop.user 
+[INFO ] 01:45:23:402 [TableMetadata.<init>:66] HHH000037: Columns: [login_count, password, id, state, text, username] 
+[INFO ] 01:45:23:402 [TableMetadata.<init>:68] HHH000108: Foreign keys: [] 
+[INFO ] 01:45:23:403 [TableMetadata.<init>:69] HHH000126: Indexes: [primary] 
+[INFO ] 01:45:23:422 [TableMetadata.<init>:65] HHH000261: Table found: shop.user_address 
+[INFO ] 01:45:23:423 [TableMetadata.<init>:66] HHH000037: Columns: [area, user_infor_id, province, city, street, id] 
+[INFO ] 01:45:23:425 [TableMetadata.<init>:68] HHH000108: Foreign keys: [] 
+[INFO ] 01:45:23:426 [TableMetadata.<init>:69] HHH000126: Indexes: [primary] 
+[INFO ] 01:45:23:439 [TableMetadata.<init>:65] HHH000261: Table found: shop.user_infor 
+[INFO ] 01:45:23:439 [TableMetadata.<init>:66] HHH000037: Columns: [msg, u_id, phone, name, id, email] 
+[INFO ] 01:45:23:440 [TableMetadata.<init>:68] HHH000108: Foreign keys: [] 
+[INFO ] 01:45:23:440 [TableMetadata.<init>:69] HHH000126: Indexes: [primary] 
+[INFO ] 01:45:23:442 [SchemaUpdate.execute:242] HHH000232: Schema update complete 
+[INFO ] 01:47:49:361 [SchemaUpdate.execute:182] HHH000228: Running hbm2ddl schema update 
+[INFO ] 01:47:49:363 [SchemaUpdate.execute:193] HHH000102: Fetching database metadata 
+[INFO ] 01:47:49:595 [SchemaUpdate.execute:205] HHH000396: Updating schema 
+[INFO ] 01:47:49:618 [TableMetadata.<init>:65] HHH000261: Table found: shop.user 
+[INFO ] 01:47:49:618 [TableMetadata.<init>:66] HHH000037: Columns: [login_count, password, id, state, text, username] 
+[INFO ] 01:47:49:619 [TableMetadata.<init>:68] HHH000108: Foreign keys: [] 
+[INFO ] 01:47:49:619 [TableMetadata.<init>:69] HHH000126: Indexes: [primary] 
+[INFO ] 01:47:49:629 [TableMetadata.<init>:65] HHH000261: Table found: shop.address 
+[INFO ] 01:47:49:629 [TableMetadata.<init>:66] HHH000037: Columns: [area, province, city, phone, user_id, street, name, nickname, id] 
+[INFO ] 01:47:49:629 [TableMetadata.<init>:68] HHH000108: Foreign keys: [] 
+[INFO ] 01:47:49:630 [TableMetadata.<init>:69] HHH000126: Indexes: [primary] 
+[INFO ] 01:47:49:642 [TableMetadata.<init>:65] HHH000261: Table found: shop.cart_list 
+[INFO ] 01:47:49:642 [TableMetadata.<init>:66] HHH000037: Columns: [colour, g_id, u_id, size, price, count, name, discount, id, url] 
+[INFO ] 01:47:49:642 [TableMetadata.<init>:68] HHH000108: Foreign keys: [] 
+[INFO ] 01:47:49:643 [TableMetadata.<init>:69] HHH000126: Indexes: [primary] 
+[INFO ] 01:47:49:653 [TableMetadata.<init>:65] HHH000261: Table found: shop.collection 
+[INFO ] 01:47:49:654 [TableMetadata.<init>:66] HHH000037: Columns: [user_id, price, name, goods_id, id, url] 
+[INFO ] 01:47:49:655 [TableMetadata.<init>:68] HHH000108: Foreign keys: [] 
+[INFO ] 01:47:49:655 [TableMetadata.<init>:69] HHH000126: Indexes: [primary] 
+[INFO ] 01:47:49:664 [TableMetadata.<init>:65] HHH000261: Table found: shop.goods 
+[INFO ] 01:47:49:664 [TableMetadata.<init>:66] HHH000037: Columns: [msg, price, name, discount, id, create_date, type, update_date, url] 
+[INFO ] 01:47:49:665 [TableMetadata.<init>:68] HHH000108: Foreign keys: [] 
+[INFO ] 01:47:49:665 [TableMetadata.<init>:69] HHH000126: Indexes: [primary] 
+[INFO ] 01:47:49:673 [TableMetadata.<init>:65] HHH000261: Table found: shop.goods_style 
+[INFO ] 01:47:49:673 [TableMetadata.<init>:66] HHH000037: Columns: [color, color_sign, goods_id, id, url] 
+[INFO ] 01:47:49:673 [TableMetadata.<init>:68] HHH000108: Foreign keys: [] 
+[INFO ] 01:47:49:673 [TableMetadata.<init>:69] HHH000126: Indexes: [primary] 
+[INFO ] 01:47:49:682 [TableMetadata.<init>:65] HHH000261: Table found: shop.logistics 
+[INFO ] 01:47:49:682 [TableMetadata.<init>:66] HHH000037: Columns: [area, province, city, phone, street, name, nickname, id, order_id] 
+[INFO ] 01:47:49:682 [TableMetadata.<init>:68] HHH000108: Foreign keys: [] 
+[INFO ] 01:47:49:682 [TableMetadata.<init>:69] HHH000126: Indexes: [primary] 
+[INFO ] 01:47:49:691 [TableMetadata.<init>:65] HHH000261: Table found: shop.order_item 
+[INFO ] 01:47:49:692 [TableMetadata.<init>:66] HHH000037: Columns: [colour, total, g_id, size, price, count, name, discount, id, order_id, url] 
+[INFO ] 01:47:49:692 [TableMetadata.<init>:68] HHH000108: Foreign keys: [] 
+[INFO ] 01:47:49:692 [TableMetadata.<init>:69] HHH000126: Indexes: [primary] 
+[INFO ] 01:47:49:703 [TableMetadata.<init>:65] HHH000261: Table found: shop.orders 
+[INFO ] 01:47:49:703 [TableMetadata.<init>:66] HHH000037: Columns: [u_id, total_amount, original_amount, payment_status, id, create_date, logistics_status] 
+[INFO ] 01:47:49:704 [TableMetadata.<init>:68] HHH000108: Foreign keys: [] 
+[INFO ] 01:47:49:704 [TableMetadata.<init>:69] HHH000126: Indexes: [primary] 
+[INFO ] 01:47:49:717 [TableMetadata.<init>:65] HHH000261: Table found: shop.user 
+[INFO ] 01:47:49:718 [TableMetadata.<init>:66] HHH000037: Columns: [login_count, password, id, state, text, username] 
+[INFO ] 01:47:49:718 [TableMetadata.<init>:68] HHH000108: Foreign keys: [] 
+[INFO ] 01:47:49:718 [TableMetadata.<init>:69] HHH000126: Indexes: [primary] 
+[INFO ] 01:47:49:730 [TableMetadata.<init>:65] HHH000261: Table found: shop.user_address 
+[INFO ] 01:47:49:731 [TableMetadata.<init>:66] HHH000037: Columns: [area, user_infor_id, province, city, street, id] 
+[INFO ] 01:47:49:731 [TableMetadata.<init>:68] HHH000108: Foreign keys: [] 
+[INFO ] 01:47:49:731 [TableMetadata.<init>:69] HHH000126: Indexes: [primary] 
+[INFO ] 01:47:49:741 [TableMetadata.<init>:65] HHH000261: Table found: shop.user_infor 
+[INFO ] 01:47:49:742 [TableMetadata.<init>:66] HHH000037: Columns: [msg, u_id, phone, name, id, email] 
+[INFO ] 01:47:49:742 [TableMetadata.<init>:68] HHH000108: Foreign keys: [] 
+[INFO ] 01:47:49:742 [TableMetadata.<init>:69] HHH000126: Indexes: [primary] 
+[INFO ] 01:47:49:744 [SchemaUpdate.execute:242] HHH000232: Schema update complete 
+[INFO ] 01:49:03:912 [SchemaUpdate.execute:182] HHH000228: Running hbm2ddl schema update 
+[INFO ] 01:49:03:914 [SchemaUpdate.execute:193] HHH000102: Fetching database metadata 
+[INFO ] 01:49:04:270 [SchemaUpdate.execute:205] HHH000396: Updating schema 
+[INFO ] 01:49:04:307 [TableMetadata.<init>:65] HHH000261: Table found: shop.user 
+[INFO ] 01:49:04:308 [TableMetadata.<init>:66] HHH000037: Columns: [login_count, password, id, state, text, username] 
+[INFO ] 01:49:04:309 [TableMetadata.<init>:68] HHH000108: Foreign keys: [] 
+[INFO ] 01:49:04:309 [TableMetadata.<init>:69] HHH000126: Indexes: [primary] 
+[INFO ] 01:49:04:331 [TableMetadata.<init>:65] HHH000261: Table found: shop.address 
+[INFO ] 01:49:04:331 [TableMetadata.<init>:66] HHH000037: Columns: [area, province, city, phone, user_id, street, name, nickname, id] 
+[INFO ] 01:49:04:344 [TableMetadata.<init>:68] HHH000108: Foreign keys: [] 
+[INFO ] 01:49:04:344 [TableMetadata.<init>:69] HHH000126: Indexes: [primary] 
+[INFO ] 01:49:04:370 [TableMetadata.<init>:65] HHH000261: Table found: shop.cart_list 
+[INFO ] 01:49:04:371 [TableMetadata.<init>:66] HHH000037: Columns: [colour, g_id, u_id, size, price, count, name, discount, id, url] 
+[INFO ] 01:49:04:371 [TableMetadata.<init>:68] HHH000108: Foreign keys: [] 
+[INFO ] 01:49:04:372 [TableMetadata.<init>:69] HHH000126: Indexes: [primary] 
+[INFO ] 01:49:04:387 [TableMetadata.<init>:65] HHH000261: Table found: shop.collection 
+[INFO ] 01:49:04:389 [TableMetadata.<init>:66] HHH000037: Columns: [user_id, price, name, goods_id, id, url] 
+[INFO ] 01:49:04:389 [TableMetadata.<init>:68] HHH000108: Foreign keys: [] 
+[INFO ] 01:49:04:390 [TableMetadata.<init>:69] HHH000126: Indexes: [primary] 
+[INFO ] 01:49:04:408 [TableMetadata.<init>:65] HHH000261: Table found: shop.goods 
+[INFO ] 01:49:04:408 [TableMetadata.<init>:66] HHH000037: Columns: [msg, price, name, discount, id, create_date, type, update_date, url] 
+[INFO ] 01:49:04:409 [TableMetadata.<init>:68] HHH000108: Foreign keys: [] 
+[INFO ] 01:49:04:410 [TableMetadata.<init>:69] HHH000126: Indexes: [primary] 
+[INFO ] 01:49:04:434 [TableMetadata.<init>:65] HHH000261: Table found: shop.goods_style 
+[INFO ] 01:49:04:435 [TableMetadata.<init>:66] HHH000037: Columns: [color, color_sign, goods_id, id, url] 
+[INFO ] 01:49:04:435 [TableMetadata.<init>:68] HHH000108: Foreign keys: [] 
+[INFO ] 01:49:04:436 [TableMetadata.<init>:69] HHH000126: Indexes: [primary] 
+[INFO ] 01:49:04:457 [TableMetadata.<init>:65] HHH000261: Table found: shop.logistics 
+[INFO ] 01:49:04:457 [TableMetadata.<init>:66] HHH000037: Columns: [area, province, city, phone, street, name, nickname, id, order_id] 
+[INFO ] 01:49:04:458 [TableMetadata.<init>:68] HHH000108: Foreign keys: [] 
+[INFO ] 01:49:04:458 [TableMetadata.<init>:69] HHH000126: Indexes: [primary] 
+[INFO ] 01:49:04:494 [TableMetadata.<init>:65] HHH000261: Table found: shop.order_item 
+[INFO ] 01:49:04:496 [TableMetadata.<init>:66] HHH000037: Columns: [colour, total, g_id, size, price, count, name, discount, id, order_id, url] 
+[INFO ] 01:49:04:496 [TableMetadata.<init>:68] HHH000108: Foreign keys: [] 
+[INFO ] 01:49:04:497 [TableMetadata.<init>:69] HHH000126: Indexes: [primary] 
+[INFO ] 01:49:04:521 [TableMetadata.<init>:65] HHH000261: Table found: shop.orders 
+[INFO ] 01:49:04:521 [TableMetadata.<init>:66] HHH000037: Columns: [u_id, total_amount, original_amount, payment_status, id, create_date, logistics_status] 
+[INFO ] 01:49:04:522 [TableMetadata.<init>:68] HHH000108: Foreign keys: [] 
+[INFO ] 01:49:04:523 [TableMetadata.<init>:69] HHH000126: Indexes: [primary] 
+[INFO ] 01:49:04:538 [TableMetadata.<init>:65] HHH000261: Table found: shop.user 
+[INFO ] 01:49:04:538 [TableMetadata.<init>:66] HHH000037: Columns: [login_count, password, id, state, text, username] 
+[INFO ] 01:49:04:539 [TableMetadata.<init>:68] HHH000108: Foreign keys: [] 
+[INFO ] 01:49:04:539 [TableMetadata.<init>:69] HHH000126: Indexes: [primary] 
+[INFO ] 01:49:04:562 [TableMetadata.<init>:65] HHH000261: Table found: shop.user_address 
+[INFO ] 01:49:04:562 [TableMetadata.<init>:66] HHH000037: Columns: [area, user_infor_id, province, city, street, id] 
+[INFO ] 01:49:04:564 [TableMetadata.<init>:68] HHH000108: Foreign keys: [] 
+[INFO ] 01:49:04:564 [TableMetadata.<init>:69] HHH000126: Indexes: [primary] 
+[INFO ] 01:49:04:590 [TableMetadata.<init>:65] HHH000261: Table found: shop.user_infor 
+[INFO ] 01:49:04:591 [TableMetadata.<init>:66] HHH000037: Columns: [msg, u_id, phone, name, id, email] 
+[INFO ] 01:49:04:591 [TableMetadata.<init>:68] HHH000108: Foreign keys: [] 
+[INFO ] 01:49:04:591 [TableMetadata.<init>:69] HHH000126: Indexes: [primary] 
+[INFO ] 01:49:04:593 [SchemaUpdate.execute:242] HHH000232: Schema update complete 
+[INFO ] 01:49:55:620 [SchemaUpdate.execute:182] HHH000228: Running hbm2ddl schema update 
+[INFO ] 01:49:55:622 [SchemaUpdate.execute:193] HHH000102: Fetching database metadata 
+[INFO ] 01:49:55:952 [SchemaUpdate.execute:205] HHH000396: Updating schema 
+[INFO ] 01:49:55:987 [TableMetadata.<init>:65] HHH000261: Table found: shop.user 
+[INFO ] 01:49:55:987 [TableMetadata.<init>:66] HHH000037: Columns: [login_count, password, id, state, text, username] 
+[INFO ] 01:49:55:988 [TableMetadata.<init>:68] HHH000108: Foreign keys: [] 
+[INFO ] 01:49:55:988 [TableMetadata.<init>:69] HHH000126: Indexes: [primary] 
+[INFO ] 01:49:56:2 [TableMetadata.<init>:65] HHH000261: Table found: shop.address 
+[INFO ] 01:49:56:3 [TableMetadata.<init>:66] HHH000037: Columns: [area, province, city, phone, user_id, street, name, nickname, id] 
+[INFO ] 01:49:56:3 [TableMetadata.<init>:68] HHH000108: Foreign keys: [] 
+[INFO ] 01:49:56:4 [TableMetadata.<init>:69] HHH000126: Indexes: [primary] 
+[INFO ] 01:49:56:17 [TableMetadata.<init>:65] HHH000261: Table found: shop.cart_list 
+[INFO ] 01:49:56:17 [TableMetadata.<init>:66] HHH000037: Columns: [colour, g_id, u_id, size, price, count, name, discount, id, url] 
+[INFO ] 01:49:56:17 [TableMetadata.<init>:68] HHH000108: Foreign keys: [] 
+[INFO ] 01:49:56:18 [TableMetadata.<init>:69] HHH000126: Indexes: [primary] 
+[INFO ] 01:49:56:29 [TableMetadata.<init>:65] HHH000261: Table found: shop.collection 
+[INFO ] 01:49:56:30 [TableMetadata.<init>:66] HHH000037: Columns: [user_id, price, name, goods_id, id, url] 
+[INFO ] 01:49:56:31 [TableMetadata.<init>:68] HHH000108: Foreign keys: [] 
+[INFO ] 01:49:56:31 [TableMetadata.<init>:69] HHH000126: Indexes: [primary] 
+[INFO ] 01:49:56:43 [TableMetadata.<init>:65] HHH000261: Table found: shop.goods 
+[INFO ] 01:49:56:44 [TableMetadata.<init>:66] HHH000037: Columns: [msg, price, name, discount, id, create_date, type, update_date, url] 
+[INFO ] 01:49:56:44 [TableMetadata.<init>:68] HHH000108: Foreign keys: [] 
+[INFO ] 01:49:56:44 [TableMetadata.<init>:69] HHH000126: Indexes: [primary] 
+[INFO ] 01:49:56:55 [TableMetadata.<init>:65] HHH000261: Table found: shop.goods_style 
+[INFO ] 01:49:56:56 [TableMetadata.<init>:66] HHH000037: Columns: [color, color_sign, goods_id, id, url] 
+[INFO ] 01:49:56:56 [TableMetadata.<init>:68] HHH000108: Foreign keys: [] 
+[INFO ] 01:49:56:56 [TableMetadata.<init>:69] HHH000126: Indexes: [primary] 
+[INFO ] 01:49:56:69 [TableMetadata.<init>:65] HHH000261: Table found: shop.logistics 
+[INFO ] 01:49:56:72 [TableMetadata.<init>:66] HHH000037: Columns: [area, province, city, phone, street, name, nickname, id, order_id] 
+[INFO ] 01:49:56:73 [TableMetadata.<init>:68] HHH000108: Foreign keys: [] 
+[INFO ] 01:49:56:73 [TableMetadata.<init>:69] HHH000126: Indexes: [primary] 
+[INFO ] 01:49:56:92 [TableMetadata.<init>:65] HHH000261: Table found: shop.order_item 
+[INFO ] 01:49:56:92 [TableMetadata.<init>:66] HHH000037: Columns: [colour, total, g_id, size, price, count, name, discount, id, order_id, url] 
+[INFO ] 01:49:56:93 [TableMetadata.<init>:68] HHH000108: Foreign keys: [] 
+[INFO ] 01:49:56:93 [TableMetadata.<init>:69] HHH000126: Indexes: [primary] 
+[INFO ] 01:49:56:110 [TableMetadata.<init>:65] HHH000261: Table found: shop.orders 
+[INFO ] 01:49:56:111 [TableMetadata.<init>:66] HHH000037: Columns: [u_id, total_amount, original_amount, payment_status, id, create_date, logistics_status] 
+[INFO ] 01:49:56:111 [TableMetadata.<init>:68] HHH000108: Foreign keys: [] 
+[INFO ] 01:49:56:111 [TableMetadata.<init>:69] HHH000126: Indexes: [primary] 
+[INFO ] 01:49:56:122 [TableMetadata.<init>:65] HHH000261: Table found: shop.user 
+[INFO ] 01:49:56:123 [TableMetadata.<init>:66] HHH000037: Columns: [login_count, password, id, state, text, username] 
+[INFO ] 01:49:56:123 [TableMetadata.<init>:68] HHH000108: Foreign keys: [] 
+[INFO ] 01:49:56:123 [TableMetadata.<init>:69] HHH000126: Indexes: [primary] 
+[INFO ] 01:49:56:136 [TableMetadata.<init>:65] HHH000261: Table found: shop.user_address 
+[INFO ] 01:49:56:136 [TableMetadata.<init>:66] HHH000037: Columns: [area, user_infor_id, province, city, street, id] 
+[INFO ] 01:49:56:137 [TableMetadata.<init>:68] HHH000108: Foreign keys: [] 
+[INFO ] 01:49:56:137 [TableMetadata.<init>:69] HHH000126: Indexes: [primary] 
+[INFO ] 01:49:56:149 [TableMetadata.<init>:65] HHH000261: Table found: shop.user_infor 
+[INFO ] 01:49:56:149 [TableMetadata.<init>:66] HHH000037: Columns: [msg, u_id, phone, name, id, email] 
+[INFO ] 01:49:56:149 [TableMetadata.<init>:68] HHH000108: Foreign keys: [] 
+[INFO ] 01:49:56:150 [TableMetadata.<init>:69] HHH000126: Indexes: [primary] 
+[INFO ] 01:49:56:151 [SchemaUpdate.execute:242] HHH000232: Schema update complete 
+[INFO ] 01:50:16:79 [SchemaUpdate.execute:182] HHH000228: Running hbm2ddl schema update 
+[INFO ] 01:50:16:81 [SchemaUpdate.execute:193] HHH000102: Fetching database metadata 
+[INFO ] 01:50:16:325 [SchemaUpdate.execute:205] HHH000396: Updating schema 
+[INFO ] 01:50:16:348 [TableMetadata.<init>:65] HHH000261: Table found: shop.user 
+[INFO ] 01:50:16:349 [TableMetadata.<init>:66] HHH000037: Columns: [login_count, password, id, state, text, username] 
+[INFO ] 01:50:16:349 [TableMetadata.<init>:68] HHH000108: Foreign keys: [] 
+[INFO ] 01:50:16:350 [TableMetadata.<init>:69] HHH000126: Indexes: [primary] 
+[INFO ] 01:50:16:361 [TableMetadata.<init>:65] HHH000261: Table found: shop.address 
+[INFO ] 01:50:16:361 [TableMetadata.<init>:66] HHH000037: Columns: [area, province, city, phone, user_id, street, name, nickname, id] 
+[INFO ] 01:50:16:361 [TableMetadata.<init>:68] HHH000108: Foreign keys: [] 
+[INFO ] 01:50:16:362 [TableMetadata.<init>:69] HHH000126: Indexes: [primary] 
+[INFO ] 01:50:16:372 [TableMetadata.<init>:65] HHH000261: Table found: shop.cart_list 
+[INFO ] 01:50:16:373 [TableMetadata.<init>:66] HHH000037: Columns: [colour, g_id, u_id, size, price, count, name, discount, id, url] 
+[INFO ] 01:50:16:373 [TableMetadata.<init>:68] HHH000108: Foreign keys: [] 
+[INFO ] 01:50:16:373 [TableMetadata.<init>:69] HHH000126: Indexes: [primary] 
+[INFO ] 01:50:16:382 [TableMetadata.<init>:65] HHH000261: Table found: shop.collection 
+[INFO ] 01:50:16:383 [TableMetadata.<init>:66] HHH000037: Columns: [user_id, price, name, goods_id, id, url] 
+[INFO ] 01:50:16:383 [TableMetadata.<init>:68] HHH000108: Foreign keys: [] 
+[INFO ] 01:50:16:383 [TableMetadata.<init>:69] HHH000126: Indexes: [primary] 
+[INFO ] 01:50:16:393 [TableMetadata.<init>:65] HHH000261: Table found: shop.goods 
+[INFO ] 01:50:16:394 [TableMetadata.<init>:66] HHH000037: Columns: [msg, price, name, discount, id, create_date, type, update_date, url] 
+[INFO ] 01:50:16:394 [TableMetadata.<init>:68] HHH000108: Foreign keys: [] 
+[INFO ] 01:50:16:394 [TableMetadata.<init>:69] HHH000126: Indexes: [primary] 
+[INFO ] 01:50:16:403 [TableMetadata.<init>:65] HHH000261: Table found: shop.goods_style 
+[INFO ] 01:50:16:403 [TableMetadata.<init>:66] HHH000037: Columns: [color, color_sign, goods_id, id, url] 
+[INFO ] 01:50:16:404 [TableMetadata.<init>:68] HHH000108: Foreign keys: [] 
+[INFO ] 01:50:16:404 [TableMetadata.<init>:69] HHH000126: Indexes: [primary] 
+[INFO ] 01:50:16:413 [TableMetadata.<init>:65] HHH000261: Table found: shop.logistics 
+[INFO ] 01:50:16:413 [TableMetadata.<init>:66] HHH000037: Columns: [area, province, city, phone, street, name, nickname, id, order_id] 
+[INFO ] 01:50:16:413 [TableMetadata.<init>:68] HHH000108: Foreign keys: [] 
+[INFO ] 01:50:16:414 [TableMetadata.<init>:69] HHH000126: Indexes: [primary] 
+[INFO ] 01:50:16:427 [TableMetadata.<init>:65] HHH000261: Table found: shop.order_item 
+[INFO ] 01:50:16:428 [TableMetadata.<init>:66] HHH000037: Columns: [colour, total, g_id, size, price, count, name, discount, id, order_id, url] 
+[INFO ] 01:50:16:428 [TableMetadata.<init>:68] HHH000108: Foreign keys: [] 
+[INFO ] 01:50:16:428 [TableMetadata.<init>:69] HHH000126: Indexes: [primary] 
+[INFO ] 01:50:16:442 [TableMetadata.<init>:65] HHH000261: Table found: shop.orders 
+[INFO ] 01:50:16:443 [TableMetadata.<init>:66] HHH000037: Columns: [u_id, total_amount, original_amount, payment_status, id, create_date, logistics_status] 
+[INFO ] 01:50:16:443 [TableMetadata.<init>:68] HHH000108: Foreign keys: [] 
+[INFO ] 01:50:16:443 [TableMetadata.<init>:69] HHH000126: Indexes: [primary] 
+[INFO ] 01:50:16:458 [TableMetadata.<init>:65] HHH000261: Table found: shop.user 
+[INFO ] 01:50:16:458 [TableMetadata.<init>:66] HHH000037: Columns: [login_count, password, id, state, text, username] 
+[INFO ] 01:50:16:458 [TableMetadata.<init>:68] HHH000108: Foreign keys: [] 
+[INFO ] 01:50:16:459 [TableMetadata.<init>:69] HHH000126: Indexes: [primary] 
+[INFO ] 01:50:16:469 [TableMetadata.<init>:65] HHH000261: Table found: shop.user_address 
+[INFO ] 01:50:16:470 [TableMetadata.<init>:66] HHH000037: Columns: [area, user_infor_id, province, city, street, id] 
+[INFO ] 01:50:16:470 [TableMetadata.<init>:68] HHH000108: Foreign keys: [] 
+[INFO ] 01:50:16:471 [TableMetadata.<init>:69] HHH000126: Indexes: [primary] 
+[INFO ] 01:50:16:481 [TableMetadata.<init>:65] HHH000261: Table found: shop.user_infor 
+[INFO ] 01:50:16:482 [TableMetadata.<init>:66] HHH000037: Columns: [msg, u_id, phone, name, id, email] 
+[INFO ] 01:50:16:482 [TableMetadata.<init>:68] HHH000108: Foreign keys: [] 
+[INFO ] 01:50:16:482 [TableMetadata.<init>:69] HHH000126: Indexes: [primary] 
+[INFO ] 01:50:16:483 [SchemaUpdate.execute:242] HHH000232: Schema update complete 
+[INFO ] 01:53:20:483 [SchemaUpdate.execute:182] HHH000228: Running hbm2ddl schema update 
+[INFO ] 01:53:20:486 [SchemaUpdate.execute:193] HHH000102: Fetching database metadata 
+[INFO ] 01:53:20:797 [SchemaUpdate.execute:205] HHH000396: Updating schema 
+[INFO ] 01:53:20:824 [TableMetadata.<init>:65] HHH000261: Table found: shop.user 
+[INFO ] 01:53:20:825 [TableMetadata.<init>:66] HHH000037: Columns: [login_count, password, id, state, text, username] 
+[INFO ] 01:53:20:825 [TableMetadata.<init>:68] HHH000108: Foreign keys: [] 
+[INFO ] 01:53:20:826 [TableMetadata.<init>:69] HHH000126: Indexes: [primary] 
+[INFO ] 01:53:20:838 [TableMetadata.<init>:65] HHH000261: Table found: shop.address 
+[INFO ] 01:53:20:838 [TableMetadata.<init>:66] HHH000037: Columns: [area, province, city, phone, user_id, street, name, nickname, id] 
+[INFO ] 01:53:20:838 [TableMetadata.<init>:68] HHH000108: Foreign keys: [] 
+[INFO ] 01:53:20:839 [TableMetadata.<init>:69] HHH000126: Indexes: [primary] 
+[INFO ] 01:53:20:851 [TableMetadata.<init>:65] HHH000261: Table found: shop.cart_list 
+[INFO ] 01:53:20:851 [TableMetadata.<init>:66] HHH000037: Columns: [colour, g_id, u_id, size, price, count, name, discount, id, url] 
+[INFO ] 01:53:20:851 [TableMetadata.<init>:68] HHH000108: Foreign keys: [] 
+[INFO ] 01:53:20:852 [TableMetadata.<init>:69] HHH000126: Indexes: [primary] 
+[INFO ] 01:53:20:863 [TableMetadata.<init>:65] HHH000261: Table found: shop.collection 
+[INFO ] 01:53:20:864 [TableMetadata.<init>:66] HHH000037: Columns: [user_id, price, name, goods_id, id, url] 
+[INFO ] 01:53:20:865 [TableMetadata.<init>:68] HHH000108: Foreign keys: [] 
+[INFO ] 01:53:20:865 [TableMetadata.<init>:69] HHH000126: Indexes: [primary] 
+[INFO ] 01:53:20:878 [TableMetadata.<init>:65] HHH000261: Table found: shop.goods 
+[INFO ] 01:53:20:879 [TableMetadata.<init>:66] HHH000037: Columns: [msg, price, name, discount, id, create_date, type, update_date, url] 
+[INFO ] 01:53:20:879 [TableMetadata.<init>:68] HHH000108: Foreign keys: [] 
+[INFO ] 01:53:20:879 [TableMetadata.<init>:69] HHH000126: Indexes: [primary] 
+[INFO ] 01:53:20:890 [TableMetadata.<init>:65] HHH000261: Table found: shop.goods_style 
+[INFO ] 01:53:20:890 [TableMetadata.<init>:66] HHH000037: Columns: [color, color_sign, goods_id, id, url] 
+[INFO ] 01:53:20:890 [TableMetadata.<init>:68] HHH000108: Foreign keys: [] 
+[INFO ] 01:53:20:891 [TableMetadata.<init>:69] HHH000126: Indexes: [primary] 
+[INFO ] 01:53:20:901 [TableMetadata.<init>:65] HHH000261: Table found: shop.logistics 
+[INFO ] 01:53:20:902 [TableMetadata.<init>:66] HHH000037: Columns: [area, province, city, phone, street, name, nickname, id, order_id] 
+[INFO ] 01:53:20:902 [TableMetadata.<init>:68] HHH000108: Foreign keys: [] 
+[INFO ] 01:53:20:902 [TableMetadata.<init>:69] HHH000126: Indexes: [primary] 
+[INFO ] 01:53:20:917 [TableMetadata.<init>:65] HHH000261: Table found: shop.order_item 
+[INFO ] 01:53:20:917 [TableMetadata.<init>:66] HHH000037: Columns: [colour, total, g_id, size, price, count, name, discount, id, order_id, url] 
+[INFO ] 01:53:20:918 [TableMetadata.<init>:68] HHH000108: Foreign keys: [] 
+[INFO ] 01:53:20:918 [TableMetadata.<init>:69] HHH000126: Indexes: [primary] 
+[INFO ] 01:53:20:935 [TableMetadata.<init>:65] HHH000261: Table found: shop.orders 
+[INFO ] 01:53:20:935 [TableMetadata.<init>:66] HHH000037: Columns: [u_id, total_amount, original_amount, payment_status, id, create_date, logistics_status] 
+[INFO ] 01:53:20:936 [TableMetadata.<init>:68] HHH000108: Foreign keys: [] 
+[INFO ] 01:53:20:936 [TableMetadata.<init>:69] HHH000126: Indexes: [primary] 
+[INFO ] 01:53:20:953 [TableMetadata.<init>:65] HHH000261: Table found: shop.user 
+[INFO ] 01:53:20:954 [TableMetadata.<init>:66] HHH000037: Columns: [login_count, password, id, state, text, username] 
+[INFO ] 01:53:20:954 [TableMetadata.<init>:68] HHH000108: Foreign keys: [] 
+[INFO ] 01:53:20:954 [TableMetadata.<init>:69] HHH000126: Indexes: [primary] 
+[INFO ] 01:53:20:967 [TableMetadata.<init>:65] HHH000261: Table found: shop.user_address 
+[INFO ] 01:53:20:968 [TableMetadata.<init>:66] HHH000037: Columns: [area, user_infor_id, province, city, street, id] 
+[INFO ] 01:53:20:968 [TableMetadata.<init>:68] HHH000108: Foreign keys: [] 
+[INFO ] 01:53:20:968 [TableMetadata.<init>:69] HHH000126: Indexes: [primary] 
+[INFO ] 01:53:20:989 [TableMetadata.<init>:65] HHH000261: Table found: shop.user_infor 
+[INFO ] 01:53:20:990 [TableMetadata.<init>:66] HHH000037: Columns: [msg, u_id, phone, name, id, email] 
+[INFO ] 01:53:20:991 [TableMetadata.<init>:68] HHH000108: Foreign keys: [] 
+[INFO ] 01:53:20:991 [TableMetadata.<init>:69] HHH000126: Indexes: [primary] 
+[INFO ] 01:53:20:996 [SchemaUpdate.execute:242] HHH000232: Schema update complete 
+[INFO ] 01:53:23:161 [SchemaUpdate.execute:182] HHH000228: Running hbm2ddl schema update 
+[INFO ] 01:53:23:161 [SchemaUpdate.execute:193] HHH000102: Fetching database metadata 
+[INFO ] 01:53:23:171 [SchemaUpdate.execute:205] HHH000396: Updating schema 
+[INFO ] 01:53:23:183 [TableMetadata.<init>:65] HHH000261: Table found: shop.user 
+[INFO ] 01:53:23:184 [TableMetadata.<init>:66] HHH000037: Columns: [login_count, password, id, state, text, username] 
+[INFO ] 01:53:23:184 [TableMetadata.<init>:68] HHH000108: Foreign keys: [] 
+[INFO ] 01:53:23:184 [TableMetadata.<init>:69] HHH000126: Indexes: [primary] 
+[INFO ] 01:53:23:195 [TableMetadata.<init>:65] HHH000261: Table found: shop.address 
+[INFO ] 01:53:23:195 [TableMetadata.<init>:66] HHH000037: Columns: [area, province, city, phone, user_id, street, name, nickname, id] 
+[INFO ] 01:53:23:196 [TableMetadata.<init>:68] HHH000108: Foreign keys: [] 
+[INFO ] 01:53:23:196 [TableMetadata.<init>:69] HHH000126: Indexes: [primary] 
+[INFO ] 01:53:23:207 [TableMetadata.<init>:65] HHH000261: Table found: shop.cart_list 
+[INFO ] 01:53:23:207 [TableMetadata.<init>:66] HHH000037: Columns: [colour, g_id, u_id, size, price, count, name, discount, id, url] 
+[INFO ] 01:53:23:208 [TableMetadata.<init>:68] HHH000108: Foreign keys: [] 
+[INFO ] 01:53:23:208 [TableMetadata.<init>:69] HHH000126: Indexes: [primary] 
+[INFO ] 01:53:23:224 [TableMetadata.<init>:65] HHH000261: Table found: shop.collection 
+[INFO ] 01:53:23:225 [TableMetadata.<init>:66] HHH000037: Columns: [user_id, price, name, goods_id, id, url] 
+[INFO ] 01:53:23:225 [TableMetadata.<init>:68] HHH000108: Foreign keys: [] 
+[INFO ] 01:53:23:227 [TableMetadata.<init>:69] HHH000126: Indexes: [primary] 
+[INFO ] 01:53:23:244 [TableMetadata.<init>:65] HHH000261: Table found: shop.goods 
+[INFO ] 01:53:23:244 [TableMetadata.<init>:66] HHH000037: Columns: [msg, price, name, discount, id, create_date, type, update_date, url] 
+[INFO ] 01:53:23:245 [TableMetadata.<init>:68] HHH000108: Foreign keys: [] 
+[INFO ] 01:53:23:245 [TableMetadata.<init>:69] HHH000126: Indexes: [primary] 
+[INFO ] 01:53:23:256 [TableMetadata.<init>:65] HHH000261: Table found: shop.goods_style 
+[INFO ] 01:53:23:257 [TableMetadata.<init>:66] HHH000037: Columns: [color, color_sign, goods_id, id, url] 
+[INFO ] 01:53:23:257 [TableMetadata.<init>:68] HHH000108: Foreign keys: [] 
+[INFO ] 01:53:23:258 [TableMetadata.<init>:69] HHH000126: Indexes: [primary] 
+[INFO ] 01:53:23:271 [TableMetadata.<init>:65] HHH000261: Table found: shop.logistics 
+[INFO ] 01:53:23:271 [TableMetadata.<init>:66] HHH000037: Columns: [area, province, city, phone, street, name, nickname, id, order_id] 
+[INFO ] 01:53:23:272 [TableMetadata.<init>:68] HHH000108: Foreign keys: [] 
+[INFO ] 01:53:23:272 [TableMetadata.<init>:69] HHH000126: Indexes: [primary] 
+[INFO ] 01:53:23:283 [TableMetadata.<init>:65] HHH000261: Table found: shop.order_item 
+[INFO ] 01:53:23:284 [TableMetadata.<init>:66] HHH000037: Columns: [colour, total, g_id, size, price, count, name, discount, id, order_id, url] 
+[INFO ] 01:53:23:284 [TableMetadata.<init>:68] HHH000108: Foreign keys: [] 
+[INFO ] 01:53:23:284 [TableMetadata.<init>:69] HHH000126: Indexes: [primary] 
+[INFO ] 01:53:23:295 [TableMetadata.<init>:65] HHH000261: Table found: shop.orders 
+[INFO ] 01:53:23:296 [TableMetadata.<init>:66] HHH000037: Columns: [u_id, total_amount, original_amount, payment_status, id, create_date, logistics_status] 
+[INFO ] 01:53:23:296 [TableMetadata.<init>:68] HHH000108: Foreign keys: [] 
+[INFO ] 01:53:23:296 [TableMetadata.<init>:69] HHH000126: Indexes: [primary] 
+[INFO ] 01:53:23:307 [TableMetadata.<init>:65] HHH000261: Table found: shop.user 
+[INFO ] 01:53:23:307 [TableMetadata.<init>:66] HHH000037: Columns: [login_count, password, id, state, text, username] 
+[INFO ] 01:53:23:308 [TableMetadata.<init>:68] HHH000108: Foreign keys: [] 
+[INFO ] 01:53:23:308 [TableMetadata.<init>:69] HHH000126: Indexes: [primary] 
+[INFO ] 01:53:23:333 [TableMetadata.<init>:65] HHH000261: Table found: shop.user_address 
+[INFO ] 01:53:23:333 [TableMetadata.<init>:66] HHH000037: Columns: [area, user_infor_id, province, city, street, id] 
+[INFO ] 01:53:23:334 [TableMetadata.<init>:68] HHH000108: Foreign keys: [] 
+[INFO ] 01:53:23:334 [TableMetadata.<init>:69] HHH000126: Indexes: [primary] 
+[INFO ] 01:53:23:350 [TableMetadata.<init>:65] HHH000261: Table found: shop.user_infor 
+[INFO ] 01:53:23:350 [TableMetadata.<init>:66] HHH000037: Columns: [msg, u_id, phone, name, id, email] 
+[INFO ] 01:53:23:350 [TableMetadata.<init>:68] HHH000108: Foreign keys: [] 
+[INFO ] 01:53:23:350 [TableMetadata.<init>:69] HHH000126: Indexes: [primary] 
+[INFO ] 01:53:23:351 [SchemaUpdate.execute:242] HHH000232: Schema update complete 
+[INFO ] 03:40:43:541 [SchemaUpdate.execute:182] HHH000228: Running hbm2ddl schema update 
+[INFO ] 03:40:43:544 [SchemaUpdate.execute:193] HHH000102: Fetching database metadata 
+[INFO ] 03:40:43:884 [SchemaUpdate.execute:205] HHH000396: Updating schema 
+[INFO ] 03:40:43:923 [TableMetadata.<init>:65] HHH000261: Table found: shop.user 
+[INFO ] 03:40:43:923 [TableMetadata.<init>:66] HHH000037: Columns: [login_count, password, id, state, text, username] 
+[INFO ] 03:40:43:924 [TableMetadata.<init>:68] HHH000108: Foreign keys: [] 
+[INFO ] 03:40:43:924 [TableMetadata.<init>:69] HHH000126: Indexes: [primary] 
+[INFO ] 03:40:43:942 [TableMetadata.<init>:65] HHH000261: Table found: shop.address 
+[INFO ] 03:40:43:942 [TableMetadata.<init>:66] HHH000037: Columns: [area, province, city, phone, user_id, street, name, nickname, id] 
+[INFO ] 03:40:43:943 [TableMetadata.<init>:68] HHH000108: Foreign keys: [] 
+[INFO ] 03:40:43:943 [TableMetadata.<init>:69] HHH000126: Indexes: [primary] 
+[INFO ] 03:40:43:959 [TableMetadata.<init>:65] HHH000261: Table found: shop.cart_list 
+[INFO ] 03:40:43:960 [TableMetadata.<init>:66] HHH000037: Columns: [colour, g_id, u_id, size, price, count, name, discount, id, url] 
+[INFO ] 03:40:43:960 [TableMetadata.<init>:68] HHH000108: Foreign keys: [] 
+[INFO ] 03:40:43:960 [TableMetadata.<init>:69] HHH000126: Indexes: [primary] 
+[INFO ] 03:40:43:976 [TableMetadata.<init>:65] HHH000261: Table found: shop.collection 
+[INFO ] 03:40:43:978 [TableMetadata.<init>:66] HHH000037: Columns: [user_id, price, name, goods_id, id, url] 
+[INFO ] 03:40:43:979 [TableMetadata.<init>:68] HHH000108: Foreign keys: [] 
+[INFO ] 03:40:43:979 [TableMetadata.<init>:69] HHH000126: Indexes: [primary] 
+[INFO ] 03:40:44:0 [TableMetadata.<init>:65] HHH000261: Table found: shop.goods 
+[INFO ] 03:40:44:1 [TableMetadata.<init>:66] HHH000037: Columns: [msg, price, name, discount, id, create_date, type, update_date, url] 
+[INFO ] 03:40:44:1 [TableMetadata.<init>:68] HHH000108: Foreign keys: [] 
+[INFO ] 03:40:44:2 [TableMetadata.<init>:69] HHH000126: Indexes: [primary] 
+[INFO ] 03:40:44:25 [TableMetadata.<init>:65] HHH000261: Table found: shop.goods_style 
+[INFO ] 03:40:44:25 [TableMetadata.<init>:66] HHH000037: Columns: [color, color_sign, goods_id, id, url] 
+[INFO ] 03:40:44:25 [TableMetadata.<init>:68] HHH000108: Foreign keys: [] 
+[INFO ] 03:40:44:26 [TableMetadata.<init>:69] HHH000126: Indexes: [primary] 
+[INFO ] 03:40:44:41 [TableMetadata.<init>:65] HHH000261: Table found: shop.language 
+[INFO ] 03:40:44:41 [TableMetadata.<init>:66] HHH000037: Columns: [code, cn_zh, en_us, id] 
+[INFO ] 03:40:44:42 [TableMetadata.<init>:68] HHH000108: Foreign keys: [] 
+[INFO ] 03:40:44:42 [TableMetadata.<init>:69] HHH000126: Indexes: [primary] 
+[INFO ] 03:40:44:56 [TableMetadata.<init>:65] HHH000261: Table found: shop.logistics 
+[INFO ] 03:40:44:56 [TableMetadata.<init>:66] HHH000037: Columns: [area, province, city, phone, street, name, nickname, id, order_id] 
+[INFO ] 03:40:44:57 [TableMetadata.<init>:68] HHH000108: Foreign keys: [] 
+[INFO ] 03:40:44:57 [TableMetadata.<init>:69] HHH000126: Indexes: [primary] 
+[INFO ] 03:40:44:72 [TableMetadata.<init>:65] HHH000261: Table found: shop.order_item 
+[INFO ] 03:40:44:73 [TableMetadata.<init>:66] HHH000037: Columns: [colour, total, g_id, size, price, count, name, discount, id, order_id, url] 
+[INFO ] 03:40:44:73 [TableMetadata.<init>:68] HHH000108: Foreign keys: [] 
+[INFO ] 03:40:44:74 [TableMetadata.<init>:69] HHH000126: Indexes: [primary] 
+[INFO ] 03:40:44:88 [TableMetadata.<init>:65] HHH000261: Table found: shop.orders 
+[INFO ] 03:40:44:89 [TableMetadata.<init>:66] HHH000037: Columns: [u_id, total_amount, original_amount, payment_status, id, create_date, logistics_status] 
+[INFO ] 03:40:44:89 [TableMetadata.<init>:68] HHH000108: Foreign keys: [] 
+[INFO ] 03:40:44:90 [TableMetadata.<init>:69] HHH000126: Indexes: [primary] 
+[INFO ] 03:40:44:105 [TableMetadata.<init>:65] HHH000261: Table found: shop.user 
+[INFO ] 03:40:44:105 [TableMetadata.<init>:66] HHH000037: Columns: [login_count, password, id, state, text, username] 
+[INFO ] 03:40:44:108 [TableMetadata.<init>:68] HHH000108: Foreign keys: [] 
+[INFO ] 03:40:44:108 [TableMetadata.<init>:69] HHH000126: Indexes: [primary] 
+[INFO ] 03:40:44:135 [TableMetadata.<init>:65] HHH000261: Table found: shop.user_address 
+[INFO ] 03:40:44:136 [TableMetadata.<init>:66] HHH000037: Columns: [area, user_infor_id, province, city, street, id] 
+[INFO ] 03:40:44:136 [TableMetadata.<init>:68] HHH000108: Foreign keys: [] 
+[INFO ] 03:40:44:136 [TableMetadata.<init>:69] HHH000126: Indexes: [primary] 
+[INFO ] 03:40:44:149 [TableMetadata.<init>:65] HHH000261: Table found: shop.user_infor 
+[INFO ] 03:40:44:150 [TableMetadata.<init>:66] HHH000037: Columns: [msg, u_id, phone, name, id, email] 
+[INFO ] 03:40:44:150 [TableMetadata.<init>:68] HHH000108: Foreign keys: [] 
+[INFO ] 03:40:44:150 [TableMetadata.<init>:69] HHH000126: Indexes: [primary] 
+[INFO ] 03:40:44:152 [SchemaUpdate.execute:242] HHH000232: Schema update complete 
+[INFO ] 03:46:47:960 [SchemaUpdate.execute:182] HHH000228: Running hbm2ddl schema update 
+[INFO ] 03:46:47:963 [SchemaUpdate.execute:193] HHH000102: Fetching database metadata 
+[INFO ] 03:46:48:251 [SchemaUpdate.execute:205] HHH000396: Updating schema 
+[INFO ] 03:46:48:280 [TableMetadata.<init>:65] HHH000261: Table found: shop.user 
+[INFO ] 03:46:48:281 [TableMetadata.<init>:66] HHH000037: Columns: [login_count, password, id, state, text, username] 
+[INFO ] 03:46:48:282 [TableMetadata.<init>:68] HHH000108: Foreign keys: [] 
+[INFO ] 03:46:48:282 [TableMetadata.<init>:69] HHH000126: Indexes: [primary] 
+[INFO ] 03:46:48:296 [TableMetadata.<init>:65] HHH000261: Table found: shop.address 
+[INFO ] 03:46:48:296 [TableMetadata.<init>:66] HHH000037: Columns: [area, province, city, phone, user_id, street, name, nickname, id] 
+[INFO ] 03:46:48:297 [TableMetadata.<init>:68] HHH000108: Foreign keys: [] 
+[INFO ] 03:46:48:297 [TableMetadata.<init>:69] HHH000126: Indexes: [primary] 
+[INFO ] 03:46:48:312 [TableMetadata.<init>:65] HHH000261: Table found: shop.cart_list 
+[INFO ] 03:46:48:313 [TableMetadata.<init>:66] HHH000037: Columns: [colour, g_id, u_id, size, price, count, name, discount, id, url] 
+[INFO ] 03:46:48:313 [TableMetadata.<init>:68] HHH000108: Foreign keys: [] 
+[INFO ] 03:46:48:314 [TableMetadata.<init>:69] HHH000126: Indexes: [primary] 
+[INFO ] 03:46:48:326 [TableMetadata.<init>:65] HHH000261: Table found: shop.collection 
+[INFO ] 03:46:48:327 [TableMetadata.<init>:66] HHH000037: Columns: [user_id, price, name, goods_id, id, url] 
+[INFO ] 03:46:48:327 [TableMetadata.<init>:68] HHH000108: Foreign keys: [] 
+[INFO ] 03:46:48:327 [TableMetadata.<init>:69] HHH000126: Indexes: [primary] 
+[INFO ] 03:46:48:341 [TableMetadata.<init>:65] HHH000261: Table found: shop.goods 
+[INFO ] 03:46:48:341 [TableMetadata.<init>:66] HHH000037: Columns: [msg, price, name, discount, id, create_date, type, update_date, url] 
+[INFO ] 03:46:48:341 [TableMetadata.<init>:68] HHH000108: Foreign keys: [] 
+[INFO ] 03:46:48:342 [TableMetadata.<init>:69] HHH000126: Indexes: [primary] 
+[INFO ] 03:46:48:367 [TableMetadata.<init>:65] HHH000261: Table found: shop.goods_style 
+[INFO ] 03:46:48:368 [TableMetadata.<init>:66] HHH000037: Columns: [color, color_sign, goods_id, id, url] 
+[INFO ] 03:46:48:368 [TableMetadata.<init>:68] HHH000108: Foreign keys: [] 
+[INFO ] 03:46:48:368 [TableMetadata.<init>:69] HHH000126: Indexes: [primary] 
+[INFO ] 03:46:48:385 [TableMetadata.<init>:65] HHH000261: Table found: shop.language 
+[INFO ] 03:46:48:386 [TableMetadata.<init>:66] HHH000037: Columns: [code, cn_zh, en_us, id] 
+[INFO ] 03:46:48:386 [TableMetadata.<init>:68] HHH000108: Foreign keys: [] 
+[INFO ] 03:46:48:387 [TableMetadata.<init>:69] HHH000126: Indexes: [primary] 
+[INFO ] 03:46:48:400 [TableMetadata.<init>:65] HHH000261: Table found: shop.logistics 
+[INFO ] 03:46:48:401 [TableMetadata.<init>:66] HHH000037: Columns: [area, province, city, phone, street, name, nickname, id, order_id] 
+[INFO ] 03:46:48:401 [TableMetadata.<init>:68] HHH000108: Foreign keys: [] 
+[INFO ] 03:46:48:402 [TableMetadata.<init>:69] HHH000126: Indexes: [primary] 
+[INFO ] 03:46:48:413 [TableMetadata.<init>:65] HHH000261: Table found: shop.order_item 
+[INFO ] 03:46:48:414 [TableMetadata.<init>:66] HHH000037: Columns: [colour, total, g_id, size, price, count, name, discount, id, order_id, url] 
+[INFO ] 03:46:48:414 [TableMetadata.<init>:68] HHH000108: Foreign keys: [] 
+[INFO ] 03:46:48:414 [TableMetadata.<init>:69] HHH000126: Indexes: [primary] 
+[INFO ] 03:46:48:428 [TableMetadata.<init>:65] HHH000261: Table found: shop.orders 
+[INFO ] 03:46:48:428 [TableMetadata.<init>:66] HHH000037: Columns: [u_id, total_amount, original_amount, payment_status, id, create_date, logistics_status] 
+[INFO ] 03:46:48:429 [TableMetadata.<init>:68] HHH000108: Foreign keys: [] 
+[INFO ] 03:46:48:429 [TableMetadata.<init>:69] HHH000126: Indexes: [primary] 
+[INFO ] 03:46:48:441 [TableMetadata.<init>:65] HHH000261: Table found: shop.user 
+[INFO ] 03:46:48:441 [TableMetadata.<init>:66] HHH000037: Columns: [login_count, password, id, state, text, username] 
+[INFO ] 03:46:48:442 [TableMetadata.<init>:68] HHH000108: Foreign keys: [] 
+[INFO ] 03:46:48:442 [TableMetadata.<init>:69] HHH000126: Indexes: [primary] 
+[INFO ] 03:46:48:457 [TableMetadata.<init>:65] HHH000261: Table found: shop.user_address 
+[INFO ] 03:46:48:457 [TableMetadata.<init>:66] HHH000037: Columns: [area, user_infor_id, province, city, street, id] 
+[INFO ] 03:46:48:457 [TableMetadata.<init>:68] HHH000108: Foreign keys: [] 
+[INFO ] 03:46:48:457 [TableMetadata.<init>:69] HHH000126: Indexes: [primary] 
+[INFO ] 03:46:48:469 [TableMetadata.<init>:65] HHH000261: Table found: shop.user_infor 
+[INFO ] 03:46:48:469 [TableMetadata.<init>:66] HHH000037: Columns: [msg, u_id, phone, name, id, email] 
+[INFO ] 03:46:48:470 [TableMetadata.<init>:68] HHH000108: Foreign keys: [] 
+[INFO ] 03:46:48:470 [TableMetadata.<init>:69] HHH000126: Indexes: [primary] 
+[INFO ] 03:46:48:472 [SchemaUpdate.execute:242] HHH000232: Schema update complete 
+[INFO ] 03:47:29:767 [SchemaUpdate.execute:182] HHH000228: Running hbm2ddl schema update 
+[INFO ] 03:47:29:770 [SchemaUpdate.execute:193] HHH000102: Fetching database metadata 
+[INFO ] 03:47:30:76 [SchemaUpdate.execute:205] HHH000396: Updating schema 
+[INFO ] 03:47:30:103 [TableMetadata.<init>:65] HHH000261: Table found: shop.user 
+[INFO ] 03:47:30:104 [TableMetadata.<init>:66] HHH000037: Columns: [login_count, password, id, state, text, username] 
+[INFO ] 03:47:30:104 [TableMetadata.<init>:68] HHH000108: Foreign keys: [] 
+[INFO ] 03:47:30:104 [TableMetadata.<init>:69] HHH000126: Indexes: [primary] 
+[INFO ] 03:47:30:116 [TableMetadata.<init>:65] HHH000261: Table found: shop.address 
+[INFO ] 03:47:30:116 [TableMetadata.<init>:66] HHH000037: Columns: [area, province, city, phone, user_id, street, name, nickname, id] 
+[INFO ] 03:47:30:117 [TableMetadata.<init>:68] HHH000108: Foreign keys: [] 
+[INFO ] 03:47:30:117 [TableMetadata.<init>:69] HHH000126: Indexes: [primary] 
+[INFO ] 03:47:30:129 [TableMetadata.<init>:65] HHH000261: Table found: shop.cart_list 
+[INFO ] 03:47:30:130 [TableMetadata.<init>:66] HHH000037: Columns: [colour, g_id, u_id, size, price, count, name, discount, id, url] 
+[INFO ] 03:47:30:130 [TableMetadata.<init>:68] HHH000108: Foreign keys: [] 
+[INFO ] 03:47:30:130 [TableMetadata.<init>:69] HHH000126: Indexes: [primary] 
+[INFO ] 03:47:30:141 [TableMetadata.<init>:65] HHH000261: Table found: shop.collection 
+[INFO ] 03:47:30:142 [TableMetadata.<init>:66] HHH000037: Columns: [user_id, price, name, goods_id, id, url] 
+[INFO ] 03:47:30:142 [TableMetadata.<init>:68] HHH000108: Foreign keys: [] 
+[INFO ] 03:47:30:143 [TableMetadata.<init>:69] HHH000126: Indexes: [primary] 
+[INFO ] 03:47:30:154 [TableMetadata.<init>:65] HHH000261: Table found: shop.goods 
+[INFO ] 03:47:30:154 [TableMetadata.<init>:66] HHH000037: Columns: [msg, price, name, discount, id, create_date, type, update_date, url] 
+[INFO ] 03:47:30:155 [TableMetadata.<init>:68] HHH000108: Foreign keys: [] 
+[INFO ] 03:47:30:155 [TableMetadata.<init>:69] HHH000126: Indexes: [primary] 
+[INFO ] 03:47:30:164 [TableMetadata.<init>:65] HHH000261: Table found: shop.goods_style 
+[INFO ] 03:47:30:164 [TableMetadata.<init>:66] HHH000037: Columns: [color, color_sign, goods_id, id, url] 
+[INFO ] 03:47:30:165 [TableMetadata.<init>:68] HHH000108: Foreign keys: [] 
+[INFO ] 03:47:30:165 [TableMetadata.<init>:69] HHH000126: Indexes: [primary] 
+[INFO ] 03:47:30:174 [TableMetadata.<init>:65] HHH000261: Table found: shop.language 
+[INFO ] 03:47:30:174 [TableMetadata.<init>:66] HHH000037: Columns: [code, cn_zh, en_us, id] 
+[INFO ] 03:47:30:174 [TableMetadata.<init>:68] HHH000108: Foreign keys: [] 
+[INFO ] 03:47:30:174 [TableMetadata.<init>:69] HHH000126: Indexes: [primary] 
+[INFO ] 03:47:30:187 [TableMetadata.<init>:65] HHH000261: Table found: shop.logistics 
+[INFO ] 03:47:30:187 [TableMetadata.<init>:66] HHH000037: Columns: [area, province, city, phone, street, name, nickname, id, order_id] 
+[INFO ] 03:47:30:187 [TableMetadata.<init>:68] HHH000108: Foreign keys: [] 
+[INFO ] 03:47:30:188 [TableMetadata.<init>:69] HHH000126: Indexes: [primary] 
+[INFO ] 03:47:30:200 [TableMetadata.<init>:65] HHH000261: Table found: shop.order_item 
+[INFO ] 03:47:30:201 [TableMetadata.<init>:66] HHH000037: Columns: [colour, total, g_id, size, price, count, name, discount, id, order_id, url] 
+[INFO ] 03:47:30:201 [TableMetadata.<init>:68] HHH000108: Foreign keys: [] 
+[INFO ] 03:47:30:201 [TableMetadata.<init>:69] HHH000126: Indexes: [primary] 
+[INFO ] 03:47:30:215 [TableMetadata.<init>:65] HHH000261: Table found: shop.orders 
+[INFO ] 03:47:30:215 [TableMetadata.<init>:66] HHH000037: Columns: [u_id, total_amount, original_amount, payment_status, id, create_date, logistics_status] 
+[INFO ] 03:47:30:215 [TableMetadata.<init>:68] HHH000108: Foreign keys: [] 
+[INFO ] 03:47:30:216 [TableMetadata.<init>:69] HHH000126: Indexes: [primary] 
+[INFO ] 03:47:30:226 [TableMetadata.<init>:65] HHH000261: Table found: shop.user 
+[INFO ] 03:47:30:227 [TableMetadata.<init>:66] HHH000037: Columns: [login_count, password, id, state, text, username] 
+[INFO ] 03:47:30:227 [TableMetadata.<init>:68] HHH000108: Foreign keys: [] 
+[INFO ] 03:47:30:228 [TableMetadata.<init>:69] HHH000126: Indexes: [primary] 
+[INFO ] 03:47:30:242 [TableMetadata.<init>:65] HHH000261: Table found: shop.user_address 
+[INFO ] 03:47:30:242 [TableMetadata.<init>:66] HHH000037: Columns: [area, user_infor_id, province, city, street, id] 
+[INFO ] 03:47:30:242 [TableMetadata.<init>:68] HHH000108: Foreign keys: [] 
+[INFO ] 03:47:30:242 [TableMetadata.<init>:69] HHH000126: Indexes: [primary] 
+[INFO ] 03:47:30:250 [TableMetadata.<init>:65] HHH000261: Table found: shop.user_infor 
+[INFO ] 03:47:30:250 [TableMetadata.<init>:66] HHH000037: Columns: [msg, u_id, phone, name, id, email] 
+[INFO ] 03:47:30:250 [TableMetadata.<init>:68] HHH000108: Foreign keys: [] 
+[INFO ] 03:47:30:251 [TableMetadata.<init>:69] HHH000126: Indexes: [primary] 
+[INFO ] 03:47:30:252 [SchemaUpdate.execute:242] HHH000232: Schema update complete 
+[INFO ] 03:48:09:686 [SchemaUpdate.execute:182] HHH000228: Running hbm2ddl schema update 
+[INFO ] 03:48:09:688 [SchemaUpdate.execute:193] HHH000102: Fetching database metadata 
+[INFO ] 03:48:10:55 [SchemaUpdate.execute:205] HHH000396: Updating schema 
+[INFO ] 03:48:10:92 [TableMetadata.<init>:65] HHH000261: Table found: shop.user 
+[INFO ] 03:48:10:93 [TableMetadata.<init>:66] HHH000037: Columns: [login_count, password, id, state, text, username] 
+[INFO ] 03:48:10:93 [TableMetadata.<init>:68] HHH000108: Foreign keys: [] 
+[INFO ] 03:48:10:94 [TableMetadata.<init>:69] HHH000126: Indexes: [primary] 
+[INFO ] 03:48:10:108 [TableMetadata.<init>:65] HHH000261: Table found: shop.address 
+[INFO ] 03:48:10:109 [TableMetadata.<init>:66] HHH000037: Columns: [area, province, city, phone, user_id, street, name, nickname, id] 
+[INFO ] 03:48:10:110 [TableMetadata.<init>:68] HHH000108: Foreign keys: [] 
+[INFO ] 03:48:10:110 [TableMetadata.<init>:69] HHH000126: Indexes: [primary] 
+[INFO ] 03:48:10:133 [TableMetadata.<init>:65] HHH000261: Table found: shop.cart_list 
+[INFO ] 03:48:10:134 [TableMetadata.<init>:66] HHH000037: Columns: [colour, g_id, u_id, size, price, count, name, discount, id, url] 
+[INFO ] 03:48:10:135 [TableMetadata.<init>:68] HHH000108: Foreign keys: [] 
+[INFO ] 03:48:10:135 [TableMetadata.<init>:69] HHH000126: Indexes: [primary] 
+[INFO ] 03:48:10:156 [TableMetadata.<init>:65] HHH000261: Table found: shop.collection 
+[INFO ] 03:48:10:158 [TableMetadata.<init>:66] HHH000037: Columns: [user_id, price, name, goods_id, id, url] 
+[INFO ] 03:48:10:159 [TableMetadata.<init>:68] HHH000108: Foreign keys: [] 
+[INFO ] 03:48:10:159 [TableMetadata.<init>:69] HHH000126: Indexes: [primary] 
+[INFO ] 03:48:10:175 [TableMetadata.<init>:65] HHH000261: Table found: shop.goods 
+[INFO ] 03:48:10:176 [TableMetadata.<init>:66] HHH000037: Columns: [msg, price, name, discount, id, create_date, type, update_date, url] 
+[INFO ] 03:48:10:176 [TableMetadata.<init>:68] HHH000108: Foreign keys: [] 
+[INFO ] 03:48:10:176 [TableMetadata.<init>:69] HHH000126: Indexes: [primary] 
+[INFO ] 03:48:10:192 [TableMetadata.<init>:65] HHH000261: Table found: shop.goods_style 
+[INFO ] 03:48:10:192 [TableMetadata.<init>:66] HHH000037: Columns: [color, color_sign, goods_id, id, url] 
+[INFO ] 03:48:10:193 [TableMetadata.<init>:68] HHH000108: Foreign keys: [] 
+[INFO ] 03:48:10:194 [TableMetadata.<init>:69] HHH000126: Indexes: [primary] 
+[INFO ] 03:48:10:215 [TableMetadata.<init>:65] HHH000261: Table found: shop.language 
+[INFO ] 03:48:10:216 [TableMetadata.<init>:66] HHH000037: Columns: [code, cn_zh, en_us, id] 
+[INFO ] 03:48:10:231 [TableMetadata.<init>:68] HHH000108: Foreign keys: [] 
+[INFO ] 03:48:10:231 [TableMetadata.<init>:69] HHH000126: Indexes: [primary] 
+[INFO ] 03:48:10:260 [TableMetadata.<init>:65] HHH000261: Table found: shop.logistics 
+[INFO ] 03:48:10:262 [TableMetadata.<init>:66] HHH000037: Columns: [area, province, city, phone, street, name, nickname, id, order_id] 
+[INFO ] 03:48:10:263 [TableMetadata.<init>:68] HHH000108: Foreign keys: [] 
+[INFO ] 03:48:10:264 [TableMetadata.<init>:69] HHH000126: Indexes: [primary] 
+[INFO ] 03:48:10:282 [TableMetadata.<init>:65] HHH000261: Table found: shop.order_item 
+[INFO ] 03:48:10:283 [TableMetadata.<init>:66] HHH000037: Columns: [colour, total, g_id, size, price, count, name, discount, id, order_id, url] 
+[INFO ] 03:48:10:283 [TableMetadata.<init>:68] HHH000108: Foreign keys: [] 
+[INFO ] 03:48:10:283 [TableMetadata.<init>:69] HHH000126: Indexes: [primary] 
+[INFO ] 03:48:10:295 [TableMetadata.<init>:65] HHH000261: Table found: shop.orders 
+[INFO ] 03:48:10:296 [TableMetadata.<init>:66] HHH000037: Columns: [u_id, total_amount, original_amount, payment_status, id, create_date, logistics_status] 
+[INFO ] 03:48:10:296 [TableMetadata.<init>:68] HHH000108: Foreign keys: [] 
+[INFO ] 03:48:10:297 [TableMetadata.<init>:69] HHH000126: Indexes: [primary] 
+[INFO ] 03:48:10:315 [TableMetadata.<init>:65] HHH000261: Table found: shop.user 
+[INFO ] 03:48:10:316 [TableMetadata.<init>:66] HHH000037: Columns: [login_count, password, id, state, text, username] 
+[INFO ] 03:48:10:324 [TableMetadata.<init>:68] HHH000108: Foreign keys: [] 
+[INFO ] 03:48:10:325 [TableMetadata.<init>:69] HHH000126: Indexes: [primary] 
+[INFO ] 03:48:10:345 [TableMetadata.<init>:65] HHH000261: Table found: shop.user_address 
+[INFO ] 03:48:10:345 [TableMetadata.<init>:66] HHH000037: Columns: [area, user_infor_id, province, city, street, id] 
+[INFO ] 03:48:10:346 [TableMetadata.<init>:68] HHH000108: Foreign keys: [] 
+[INFO ] 03:48:10:346 [TableMetadata.<init>:69] HHH000126: Indexes: [primary] 
+[INFO ] 03:48:10:361 [TableMetadata.<init>:65] HHH000261: Table found: shop.user_infor 
+[INFO ] 03:48:10:361 [TableMetadata.<init>:66] HHH000037: Columns: [msg, u_id, phone, name, id, email] 
+[INFO ] 03:48:10:361 [TableMetadata.<init>:68] HHH000108: Foreign keys: [] 
+[INFO ] 03:48:10:362 [TableMetadata.<init>:69] HHH000126: Indexes: [primary] 
+[INFO ] 03:48:10:363 [SchemaUpdate.execute:242] HHH000232: Schema update complete 
+[INFO ] 03:49:08:248 [SchemaUpdate.execute:182] HHH000228: Running hbm2ddl schema update 
+[INFO ] 03:49:08:250 [SchemaUpdate.execute:193] HHH000102: Fetching database metadata 
+[INFO ] 03:49:08:558 [SchemaUpdate.execute:205] HHH000396: Updating schema 
+[INFO ] 03:49:08:589 [TableMetadata.<init>:65] HHH000261: Table found: shop.user 
+[INFO ] 03:49:08:590 [TableMetadata.<init>:66] HHH000037: Columns: [login_count, password, id, state, text, username] 
+[INFO ] 03:49:08:590 [TableMetadata.<init>:68] HHH000108: Foreign keys: [] 
+[INFO ] 03:49:08:590 [TableMetadata.<init>:69] HHH000126: Indexes: [primary] 
+[INFO ] 03:49:08:602 [TableMetadata.<init>:65] HHH000261: Table found: shop.address 
+[INFO ] 03:49:08:602 [TableMetadata.<init>:66] HHH000037: Columns: [area, province, city, phone, user_id, street, name, nickname, id] 
+[INFO ] 03:49:08:602 [TableMetadata.<init>:68] HHH000108: Foreign keys: [] 
+[INFO ] 03:49:08:603 [TableMetadata.<init>:69] HHH000126: Indexes: [primary] 
+[INFO ] 03:49:08:616 [TableMetadata.<init>:65] HHH000261: Table found: shop.cart_list 
+[INFO ] 03:49:08:616 [TableMetadata.<init>:66] HHH000037: Columns: [colour, g_id, u_id, size, price, count, name, discount, id, url] 
+[INFO ] 03:49:08:617 [TableMetadata.<init>:68] HHH000108: Foreign keys: [] 
+[INFO ] 03:49:08:617 [TableMetadata.<init>:69] HHH000126: Indexes: [primary] 
+[INFO ] 03:49:08:626 [TableMetadata.<init>:65] HHH000261: Table found: shop.collection 
+[INFO ] 03:49:08:628 [TableMetadata.<init>:66] HHH000037: Columns: [user_id, price, name, goods_id, id, url] 
+[INFO ] 03:49:08:628 [TableMetadata.<init>:68] HHH000108: Foreign keys: [] 
+[INFO ] 03:49:08:628 [TableMetadata.<init>:69] HHH000126: Indexes: [primary] 
+[INFO ] 03:49:08:640 [TableMetadata.<init>:65] HHH000261: Table found: shop.goods 
+[INFO ] 03:49:08:640 [TableMetadata.<init>:66] HHH000037: Columns: [msg, price, name, discount, id, create_date, type, update_date, url] 
+[INFO ] 03:49:08:641 [TableMetadata.<init>:68] HHH000108: Foreign keys: [] 
+[INFO ] 03:49:08:641 [TableMetadata.<init>:69] HHH000126: Indexes: [primary] 
+[INFO ] 03:49:08:651 [TableMetadata.<init>:65] HHH000261: Table found: shop.goods_style 
+[INFO ] 03:49:08:652 [TableMetadata.<init>:66] HHH000037: Columns: [color, color_sign, goods_id, id, url] 
+[INFO ] 03:49:08:652 [TableMetadata.<init>:68] HHH000108: Foreign keys: [] 
+[INFO ] 03:49:08:652 [TableMetadata.<init>:69] HHH000126: Indexes: [primary] 
+[INFO ] 03:49:08:664 [TableMetadata.<init>:65] HHH000261: Table found: shop.language 
+[INFO ] 03:49:08:664 [TableMetadata.<init>:66] HHH000037: Columns: [code, cn_zh, en_us, id] 
+[INFO ] 03:49:08:665 [TableMetadata.<init>:68] HHH000108: Foreign keys: [] 
+[INFO ] 03:49:08:665 [TableMetadata.<init>:69] HHH000126: Indexes: [primary] 
+[INFO ] 03:49:08:684 [TableMetadata.<init>:65] HHH000261: Table found: shop.logistics 
+[INFO ] 03:49:08:684 [TableMetadata.<init>:66] HHH000037: Columns: [area, province, city, phone, street, name, nickname, id, order_id] 
+[INFO ] 03:49:08:685 [TableMetadata.<init>:68] HHH000108: Foreign keys: [] 
+[INFO ] 03:49:08:685 [TableMetadata.<init>:69] HHH000126: Indexes: [primary] 
+[INFO ] 03:49:08:698 [TableMetadata.<init>:65] HHH000261: Table found: shop.order_item 
+[INFO ] 03:49:08:698 [TableMetadata.<init>:66] HHH000037: Columns: [colour, total, g_id, size, price, count, name, discount, id, order_id, url] 
+[INFO ] 03:49:08:698 [TableMetadata.<init>:68] HHH000108: Foreign keys: [] 
+[INFO ] 03:49:08:699 [TableMetadata.<init>:69] HHH000126: Indexes: [primary] 
+[INFO ] 03:49:08:712 [TableMetadata.<init>:65] HHH000261: Table found: shop.orders 
+[INFO ] 03:49:08:712 [TableMetadata.<init>:66] HHH000037: Columns: [u_id, total_amount, original_amount, payment_status, id, create_date, logistics_status] 
+[INFO ] 03:49:08:713 [TableMetadata.<init>:68] HHH000108: Foreign keys: [] 
+[INFO ] 03:49:08:713 [TableMetadata.<init>:69] HHH000126: Indexes: [primary] 
+[INFO ] 03:49:08:725 [TableMetadata.<init>:65] HHH000261: Table found: shop.user 
+[INFO ] 03:49:08:726 [TableMetadata.<init>:66] HHH000037: Columns: [login_count, password, id, state, text, username] 
+[INFO ] 03:49:08:726 [TableMetadata.<init>:68] HHH000108: Foreign keys: [] 
+[INFO ] 03:49:08:726 [TableMetadata.<init>:69] HHH000126: Indexes: [primary] 
+[INFO ] 03:49:08:742 [TableMetadata.<init>:65] HHH000261: Table found: shop.user_address 
+[INFO ] 03:49:08:743 [TableMetadata.<init>:66] HHH000037: Columns: [area, user_infor_id, province, city, street, id] 
+[INFO ] 03:49:08:743 [TableMetadata.<init>:68] HHH000108: Foreign keys: [] 
+[INFO ] 03:49:08:743 [TableMetadata.<init>:69] HHH000126: Indexes: [primary] 
+[INFO ] 03:49:08:753 [TableMetadata.<init>:65] HHH000261: Table found: shop.user_infor 
+[INFO ] 03:49:08:753 [TableMetadata.<init>:66] HHH000037: Columns: [msg, u_id, phone, name, id, email] 
+[INFO ] 03:49:08:753 [TableMetadata.<init>:68] HHH000108: Foreign keys: [] 
+[INFO ] 03:49:08:753 [TableMetadata.<init>:69] HHH000126: Indexes: [primary] 
+[INFO ] 03:49:08:755 [SchemaUpdate.execute:242] HHH000232: Schema update complete 
+[INFO ] 03:52:54:53 [SchemaUpdate.execute:182] HHH000228: Running hbm2ddl schema update 
+[INFO ] 03:52:54:55 [SchemaUpdate.execute:193] HHH000102: Fetching database metadata 
+[INFO ] 03:52:54:392 [SchemaUpdate.execute:205] HHH000396: Updating schema 
+[INFO ] 03:52:54:426 [TableMetadata.<init>:65] HHH000261: Table found: shop.user 
+[INFO ] 03:52:54:426 [TableMetadata.<init>:66] HHH000037: Columns: [login_count, password, id, state, text, username] 
+[INFO ] 03:52:54:427 [TableMetadata.<init>:68] HHH000108: Foreign keys: [] 
+[INFO ] 03:52:54:427 [TableMetadata.<init>:69] HHH000126: Indexes: [primary] 
+[INFO ] 03:52:54:445 [TableMetadata.<init>:65] HHH000261: Table found: shop.address 
+[INFO ] 03:52:54:446 [TableMetadata.<init>:66] HHH000037: Columns: [area, province, city, phone, user_id, street, name, nickname, id] 
+[INFO ] 03:52:54:446 [TableMetadata.<init>:68] HHH000108: Foreign keys: [] 
+[INFO ] 03:52:54:447 [TableMetadata.<init>:69] HHH000126: Indexes: [primary] 
+[INFO ] 03:52:54:473 [TableMetadata.<init>:65] HHH000261: Table found: shop.cart_list 
+[INFO ] 03:52:54:474 [TableMetadata.<init>:66] HHH000037: Columns: [colour, g_id, u_id, size, price, count, name, discount, id, url] 
+[INFO ] 03:52:54:475 [TableMetadata.<init>:68] HHH000108: Foreign keys: [] 
+[INFO ] 03:52:54:476 [TableMetadata.<init>:69] HHH000126: Indexes: [primary] 
+[INFO ] 03:52:54:492 [TableMetadata.<init>:65] HHH000261: Table found: shop.collection 
+[INFO ] 03:52:54:493 [TableMetadata.<init>:66] HHH000037: Columns: [user_id, price, name, goods_id, id, url] 
+[INFO ] 03:52:54:494 [TableMetadata.<init>:68] HHH000108: Foreign keys: [] 
+[INFO ] 03:52:54:494 [TableMetadata.<init>:69] HHH000126: Indexes: [primary] 
+[INFO ] 03:52:54:508 [TableMetadata.<init>:65] HHH000261: Table found: shop.goods 
+[INFO ] 03:52:54:509 [TableMetadata.<init>:66] HHH000037: Columns: [msg, price, name, discount, id, create_date, type, update_date, url] 
+[INFO ] 03:52:54:509 [TableMetadata.<init>:68] HHH000108: Foreign keys: [] 
+[INFO ] 03:52:54:510 [TableMetadata.<init>:69] HHH000126: Indexes: [primary] 
+[INFO ] 03:52:54:524 [TableMetadata.<init>:65] HHH000261: Table found: shop.goods_style 
+[INFO ] 03:52:54:524 [TableMetadata.<init>:66] HHH000037: Columns: [color, color_sign, goods_id, id, url] 
+[INFO ] 03:52:54:525 [TableMetadata.<init>:68] HHH000108: Foreign keys: [] 
+[INFO ] 03:52:54:525 [TableMetadata.<init>:69] HHH000126: Indexes: [primary] 
+[INFO ] 03:52:54:539 [TableMetadata.<init>:65] HHH000261: Table found: shop.language 
+[INFO ] 03:52:54:540 [TableMetadata.<init>:66] HHH000037: Columns: [code, cn_zh, en_us, id] 
+[INFO ] 03:52:54:540 [TableMetadata.<init>:68] HHH000108: Foreign keys: [] 
+[INFO ] 03:52:54:541 [TableMetadata.<init>:69] HHH000126: Indexes: [primary] 
+[INFO ] 03:52:54:571 [TableMetadata.<init>:65] HHH000261: Table found: shop.logistics 
+[INFO ] 03:52:54:571 [TableMetadata.<init>:66] HHH000037: Columns: [area, province, city, phone, street, name, nickname, id, order_id] 
+[INFO ] 03:52:54:572 [TableMetadata.<init>:68] HHH000108: Foreign keys: [] 
+[INFO ] 03:52:54:573 [TableMetadata.<init>:69] HHH000126: Indexes: [primary] 
+[INFO ] 03:52:54:595 [TableMetadata.<init>:65] HHH000261: Table found: shop.order_item 
+[INFO ] 03:52:54:596 [TableMetadata.<init>:66] HHH000037: Columns: [colour, total, g_id, size, price, count, name, discount, id, order_id, url] 
+[INFO ] 03:52:54:596 [TableMetadata.<init>:68] HHH000108: Foreign keys: [] 
+[INFO ] 03:52:54:596 [TableMetadata.<init>:69] HHH000126: Indexes: [primary] 
+[INFO ] 03:52:54:611 [TableMetadata.<init>:65] HHH000261: Table found: shop.orders 
+[INFO ] 03:52:54:612 [TableMetadata.<init>:66] HHH000037: Columns: [u_id, total_amount, original_amount, payment_status, id, create_date, logistics_status] 
+[INFO ] 03:52:54:612 [TableMetadata.<init>:68] HHH000108: Foreign keys: [] 
+[INFO ] 03:52:54:613 [TableMetadata.<init>:69] HHH000126: Indexes: [primary] 
+[INFO ] 03:52:54:627 [TableMetadata.<init>:65] HHH000261: Table found: shop.user 
+[INFO ] 03:52:54:627 [TableMetadata.<init>:66] HHH000037: Columns: [login_count, password, id, state, text, username] 
+[INFO ] 03:52:54:628 [TableMetadata.<init>:68] HHH000108: Foreign keys: [] 
+[INFO ] 03:52:54:628 [TableMetadata.<init>:69] HHH000126: Indexes: [primary] 
+[INFO ] 03:52:54:659 [TableMetadata.<init>:65] HHH000261: Table found: shop.user_address 
+[INFO ] 03:52:54:660 [TableMetadata.<init>:66] HHH000037: Columns: [area, user_infor_id, province, city, street, id] 
+[INFO ] 03:52:54:660 [TableMetadata.<init>:68] HHH000108: Foreign keys: [] 
+[INFO ] 03:52:54:660 [TableMetadata.<init>:69] HHH000126: Indexes: [primary] 
+[INFO ] 03:52:54:672 [TableMetadata.<init>:65] HHH000261: Table found: shop.user_infor 
+[INFO ] 03:52:54:672 [TableMetadata.<init>:66] HHH000037: Columns: [msg, u_id, phone, name, id, email] 
+[INFO ] 03:52:54:672 [TableMetadata.<init>:68] HHH000108: Foreign keys: [] 
+[INFO ] 03:52:54:673 [TableMetadata.<init>:69] HHH000126: Indexes: [primary] 
+[INFO ] 03:52:54:675 [SchemaUpdate.execute:242] HHH000232: Schema update complete 
+[INFO ] 03:57:03:131 [SchemaUpdate.execute:182] HHH000228: Running hbm2ddl schema update 
+[INFO ] 03:57:03:133 [SchemaUpdate.execute:193] HHH000102: Fetching database metadata 
+[INFO ] 03:57:03:405 [SchemaUpdate.execute:205] HHH000396: Updating schema 
+[INFO ] 03:57:03:434 [TableMetadata.<init>:65] HHH000261: Table found: shop.user 
+[INFO ] 03:57:03:434 [TableMetadata.<init>:66] HHH000037: Columns: [login_count, password, id, state, text, username] 
+[INFO ] 03:57:03:435 [TableMetadata.<init>:68] HHH000108: Foreign keys: [] 
+[INFO ] 03:57:03:435 [TableMetadata.<init>:69] HHH000126: Indexes: [primary] 
+[INFO ] 03:57:03:449 [TableMetadata.<init>:65] HHH000261: Table found: shop.address 
+[INFO ] 03:57:03:450 [TableMetadata.<init>:66] HHH000037: Columns: [area, province, city, phone, user_id, street, name, nickname, id] 
+[INFO ] 03:57:03:450 [TableMetadata.<init>:68] HHH000108: Foreign keys: [] 
+[INFO ] 03:57:03:450 [TableMetadata.<init>:69] HHH000126: Indexes: [primary] 
+[INFO ] 03:57:03:462 [TableMetadata.<init>:65] HHH000261: Table found: shop.cart_list 
+[INFO ] 03:57:03:462 [TableMetadata.<init>:66] HHH000037: Columns: [colour, g_id, u_id, size, price, count, name, discount, id, url] 
+[INFO ] 03:57:03:463 [TableMetadata.<init>:68] HHH000108: Foreign keys: [] 
+[INFO ] 03:57:03:463 [TableMetadata.<init>:69] HHH000126: Indexes: [primary] 
+[INFO ] 03:57:03:476 [TableMetadata.<init>:65] HHH000261: Table found: shop.collection 
+[INFO ] 03:57:03:478 [TableMetadata.<init>:66] HHH000037: Columns: [user_id, price, name, goods_id, id, url] 
+[INFO ] 03:57:03:478 [TableMetadata.<init>:68] HHH000108: Foreign keys: [] 
+[INFO ] 03:57:03:479 [TableMetadata.<init>:69] HHH000126: Indexes: [primary] 
+[INFO ] 03:57:03:492 [TableMetadata.<init>:65] HHH000261: Table found: shop.goods 
+[INFO ] 03:57:03:492 [TableMetadata.<init>:66] HHH000037: Columns: [msg, price, name, discount, id, create_date, type, update_date, url] 
+[INFO ] 03:57:03:493 [TableMetadata.<init>:68] HHH000108: Foreign keys: [] 
+[INFO ] 03:57:03:493 [TableMetadata.<init>:69] HHH000126: Indexes: [primary] 
+[INFO ] 03:57:03:504 [TableMetadata.<init>:65] HHH000261: Table found: shop.goods_style 
+[INFO ] 03:57:03:504 [TableMetadata.<init>:66] HHH000037: Columns: [color, color_sign, goods_id, id, url] 
+[INFO ] 03:57:03:504 [TableMetadata.<init>:68] HHH000108: Foreign keys: [] 
+[INFO ] 03:57:03:505 [TableMetadata.<init>:69] HHH000126: Indexes: [primary] 
+[INFO ] 03:57:03:519 [TableMetadata.<init>:65] HHH000261: Table found: shop.language 
+[INFO ] 03:57:03:519 [TableMetadata.<init>:66] HHH000037: Columns: [code, cn_zh, en_us, id] 
+[INFO ] 03:57:03:520 [TableMetadata.<init>:68] HHH000108: Foreign keys: [] 
+[INFO ] 03:57:03:520 [TableMetadata.<init>:69] HHH000126: Indexes: [primary] 
+[INFO ] 03:57:03:536 [TableMetadata.<init>:65] HHH000261: Table found: shop.logistics 
+[INFO ] 03:57:03:537 [TableMetadata.<init>:66] HHH000037: Columns: [area, province, city, phone, street, name, nickname, id, order_id] 
+[INFO ] 03:57:03:537 [TableMetadata.<init>:68] HHH000108: Foreign keys: [] 
+[INFO ] 03:57:03:537 [TableMetadata.<init>:69] HHH000126: Indexes: [primary] 
+[INFO ] 03:57:03:552 [TableMetadata.<init>:65] HHH000261: Table found: shop.order_item 
+[INFO ] 03:57:03:552 [TableMetadata.<init>:66] HHH000037: Columns: [colour, total, g_id, size, price, count, name, discount, id, order_id, url] 
+[INFO ] 03:57:03:553 [TableMetadata.<init>:68] HHH000108: Foreign keys: [] 
+[INFO ] 03:57:03:553 [TableMetadata.<init>:69] HHH000126: Indexes: [primary] 
+[INFO ] 03:57:03:567 [TableMetadata.<init>:65] HHH000261: Table found: shop.orders 
+[INFO ] 03:57:03:567 [TableMetadata.<init>:66] HHH000037: Columns: [u_id, total_amount, original_amount, payment_status, id, create_date, logistics_status] 
+[INFO ] 03:57:03:567 [TableMetadata.<init>:68] HHH000108: Foreign keys: [] 
+[INFO ] 03:57:03:568 [TableMetadata.<init>:69] HHH000126: Indexes: [primary] 
+[INFO ] 03:57:03:578 [TableMetadata.<init>:65] HHH000261: Table found: shop.user 
+[INFO ] 03:57:03:579 [TableMetadata.<init>:66] HHH000037: Columns: [login_count, password, id, state, text, username] 
+[INFO ] 03:57:03:579 [TableMetadata.<init>:68] HHH000108: Foreign keys: [] 
+[INFO ] 03:57:03:580 [TableMetadata.<init>:69] HHH000126: Indexes: [primary] 
+[INFO ] 03:57:03:591 [TableMetadata.<init>:65] HHH000261: Table found: shop.user_address 
+[INFO ] 03:57:03:591 [TableMetadata.<init>:66] HHH000037: Columns: [area, user_infor_id, province, city, street, id] 
+[INFO ] 03:57:03:591 [TableMetadata.<init>:68] HHH000108: Foreign keys: [] 
+[INFO ] 03:57:03:592 [TableMetadata.<init>:69] HHH000126: Indexes: [primary] 
+[INFO ] 03:57:03:604 [TableMetadata.<init>:65] HHH000261: Table found: shop.user_infor 
+[INFO ] 03:57:03:604 [TableMetadata.<init>:66] HHH000037: Columns: [msg, u_id, phone, name, id, email] 
+[INFO ] 03:57:03:604 [TableMetadata.<init>:68] HHH000108: Foreign keys: [] 
+[INFO ] 03:57:03:605 [TableMetadata.<init>:69] HHH000126: Indexes: [primary] 
+[INFO ] 03:57:03:607 [SchemaUpdate.execute:242] HHH000232: Schema update complete 
+[INFO ] 04:01:10:202 [SchemaUpdate.execute:182] HHH000228: Running hbm2ddl schema update 
+[INFO ] 04:01:10:204 [SchemaUpdate.execute:193] HHH000102: Fetching database metadata 
+[INFO ] 04:01:10:488 [SchemaUpdate.execute:205] HHH000396: Updating schema 
+[INFO ] 04:01:10:515 [TableMetadata.<init>:65] HHH000261: Table found: shop.user 
+[INFO ] 04:01:10:516 [TableMetadata.<init>:66] HHH000037: Columns: [login_count, password, id, state, text, username] 
+[INFO ] 04:01:10:516 [TableMetadata.<init>:68] HHH000108: Foreign keys: [] 
+[INFO ] 04:01:10:516 [TableMetadata.<init>:69] HHH000126: Indexes: [primary] 
+[INFO ] 04:01:10:527 [TableMetadata.<init>:65] HHH000261: Table found: shop.address 
+[INFO ] 04:01:10:527 [TableMetadata.<init>:66] HHH000037: Columns: [area, province, city, phone, user_id, street, name, nickname, id] 
+[INFO ] 04:01:10:527 [TableMetadata.<init>:68] HHH000108: Foreign keys: [] 
+[INFO ] 04:01:10:527 [TableMetadata.<init>:69] HHH000126: Indexes: [primary] 
+[INFO ] 04:01:10:538 [TableMetadata.<init>:65] HHH000261: Table found: shop.cart_list 
+[INFO ] 04:01:10:539 [TableMetadata.<init>:66] HHH000037: Columns: [colour, g_id, u_id, size, price, count, name, discount, id, url] 
+[INFO ] 04:01:10:539 [TableMetadata.<init>:68] HHH000108: Foreign keys: [] 
+[INFO ] 04:01:10:539 [TableMetadata.<init>:69] HHH000126: Indexes: [primary] 
+[INFO ] 04:01:10:549 [TableMetadata.<init>:65] HHH000261: Table found: shop.collection 
+[INFO ] 04:01:10:550 [TableMetadata.<init>:66] HHH000037: Columns: [user_id, price, name, goods_id, id, url] 
+[INFO ] 04:01:10:551 [TableMetadata.<init>:68] HHH000108: Foreign keys: [] 
+[INFO ] 04:01:10:551 [TableMetadata.<init>:69] HHH000126: Indexes: [primary] 
+[INFO ] 04:01:10:561 [TableMetadata.<init>:65] HHH000261: Table found: shop.goods 
+[INFO ] 04:01:10:561 [TableMetadata.<init>:66] HHH000037: Columns: [msg, price, name, discount, id, create_date, type, update_date, url] 
+[INFO ] 04:01:10:561 [TableMetadata.<init>:68] HHH000108: Foreign keys: [] 
+[INFO ] 04:01:10:562 [TableMetadata.<init>:69] HHH000126: Indexes: [primary] 
+[INFO ] 04:01:10:570 [TableMetadata.<init>:65] HHH000261: Table found: shop.goods_style 
+[INFO ] 04:01:10:571 [TableMetadata.<init>:66] HHH000037: Columns: [color, color_sign, goods_id, id, url] 
+[INFO ] 04:01:10:571 [TableMetadata.<init>:68] HHH000108: Foreign keys: [] 
+[INFO ] 04:01:10:571 [TableMetadata.<init>:69] HHH000126: Indexes: [primary] 
+[INFO ] 04:01:10:580 [TableMetadata.<init>:65] HHH000261: Table found: shop.language 
+[INFO ] 04:01:10:581 [TableMetadata.<init>:66] HHH000037: Columns: [code, cn_zh, en_us, id] 
+[INFO ] 04:01:10:581 [TableMetadata.<init>:68] HHH000108: Foreign keys: [] 
+[INFO ] 04:01:10:581 [TableMetadata.<init>:69] HHH000126: Indexes: [primary] 
+[INFO ] 04:01:10:592 [TableMetadata.<init>:65] HHH000261: Table found: shop.logistics 
+[INFO ] 04:01:10:593 [TableMetadata.<init>:66] HHH000037: Columns: [area, province, city, phone, street, name, nickname, id, order_id] 
+[INFO ] 04:01:10:593 [TableMetadata.<init>:68] HHH000108: Foreign keys: [] 
+[INFO ] 04:01:10:593 [TableMetadata.<init>:69] HHH000126: Indexes: [primary] 
+[INFO ] 04:01:10:605 [TableMetadata.<init>:65] HHH000261: Table found: shop.order_item 
+[INFO ] 04:01:10:605 [TableMetadata.<init>:66] HHH000037: Columns: [colour, total, g_id, size, price, count, name, discount, id, order_id, url] 
+[INFO ] 04:01:10:605 [TableMetadata.<init>:68] HHH000108: Foreign keys: [] 
+[INFO ] 04:01:10:606 [TableMetadata.<init>:69] HHH000126: Indexes: [primary] 
+[INFO ] 04:01:10:619 [TableMetadata.<init>:65] HHH000261: Table found: shop.orders 
+[INFO ] 04:01:10:620 [TableMetadata.<init>:66] HHH000037: Columns: [u_id, total_amount, original_amount, payment_status, id, create_date, logistics_status] 
+[INFO ] 04:01:10:620 [TableMetadata.<init>:68] HHH000108: Foreign keys: [] 
+[INFO ] 04:01:10:620 [TableMetadata.<init>:69] HHH000126: Indexes: [primary] 
+[INFO ] 04:01:10:630 [TableMetadata.<init>:65] HHH000261: Table found: shop.user 
+[INFO ] 04:01:10:631 [TableMetadata.<init>:66] HHH000037: Columns: [login_count, password, id, state, text, username] 
+[INFO ] 04:01:10:631 [TableMetadata.<init>:68] HHH000108: Foreign keys: [] 
+[INFO ] 04:01:10:632 [TableMetadata.<init>:69] HHH000126: Indexes: [primary] 
+[INFO ] 04:01:10:645 [TableMetadata.<init>:65] HHH000261: Table found: shop.user_address 
+[INFO ] 04:01:10:646 [TableMetadata.<init>:66] HHH000037: Columns: [area, user_infor_id, province, city, street, id] 
+[INFO ] 04:01:10:646 [TableMetadata.<init>:68] HHH000108: Foreign keys: [] 
+[INFO ] 04:01:10:647 [TableMetadata.<init>:69] HHH000126: Indexes: [primary] 
+[INFO ] 04:01:10:655 [TableMetadata.<init>:65] HHH000261: Table found: shop.user_infor 
+[INFO ] 04:01:10:656 [TableMetadata.<init>:66] HHH000037: Columns: [msg, u_id, phone, name, id, email] 
+[INFO ] 04:01:10:656 [TableMetadata.<init>:68] HHH000108: Foreign keys: [] 
+[INFO ] 04:01:10:656 [TableMetadata.<init>:69] HHH000126: Indexes: [primary] 
+[INFO ] 04:01:10:658 [SchemaUpdate.execute:242] HHH000232: Schema update complete 
+[INFO ] 13:42:53:201 [SchemaUpdate.execute:182] HHH000228: Running hbm2ddl schema update 
+[INFO ] 13:42:53:204 [SchemaUpdate.execute:193] HHH000102: Fetching database metadata 
+[INFO ] 13:42:53:531 [SchemaUpdate.execute:205] HHH000396: Updating schema 
+[INFO ] 13:42:53:564 [TableMetadata.<init>:65] HHH000261: Table found: shop.user 
+[INFO ] 13:42:53:565 [TableMetadata.<init>:66] HHH000037: Columns: [login_count, password, id, state, text, username] 
+[INFO ] 13:42:53:565 [TableMetadata.<init>:68] HHH000108: Foreign keys: [] 
+[INFO ] 13:42:53:565 [TableMetadata.<init>:69] HHH000126: Indexes: [primary] 
+[INFO ] 13:42:53:578 [TableMetadata.<init>:65] HHH000261: Table found: shop.address 
+[INFO ] 13:42:53:579 [TableMetadata.<init>:66] HHH000037: Columns: [area, province, city, phone, user_id, street, name, nickname, id] 
+[INFO ] 13:42:53:579 [TableMetadata.<init>:68] HHH000108: Foreign keys: [] 
+[INFO ] 13:42:53:580 [TableMetadata.<init>:69] HHH000126: Indexes: [primary] 
+[INFO ] 13:42:53:607 [TableMetadata.<init>:65] HHH000261: Table found: shop.cart_list 
+[INFO ] 13:42:53:607 [TableMetadata.<init>:66] HHH000037: Columns: [colour, g_id, u_id, size, price, count, name, discount, id, url] 
+[INFO ] 13:42:53:607 [TableMetadata.<init>:68] HHH000108: Foreign keys: [] 
+[INFO ] 13:42:53:607 [TableMetadata.<init>:69] HHH000126: Indexes: [primary] 
+[INFO ] 13:42:53:618 [TableMetadata.<init>:65] HHH000261: Table found: shop.collection 
+[INFO ] 13:42:53:619 [TableMetadata.<init>:66] HHH000037: Columns: [user_id, price, name, goods_id, id, url] 
+[INFO ] 13:42:53:619 [TableMetadata.<init>:68] HHH000108: Foreign keys: [] 
+[INFO ] 13:42:53:619 [TableMetadata.<init>:69] HHH000126: Indexes: [primary] 
+[INFO ] 13:42:53:632 [TableMetadata.<init>:65] HHH000261: Table found: shop.goods 
+[INFO ] 13:42:53:632 [TableMetadata.<init>:66] HHH000037: Columns: [msg, price, name, discount, id, create_date, type, update_date, url] 
+[INFO ] 13:42:53:632 [TableMetadata.<init>:68] HHH000108: Foreign keys: [] 
+[INFO ] 13:42:53:633 [TableMetadata.<init>:69] HHH000126: Indexes: [primary] 
+[INFO ] 13:42:53:644 [TableMetadata.<init>:65] HHH000261: Table found: shop.goods_style 
+[INFO ] 13:42:53:644 [TableMetadata.<init>:66] HHH000037: Columns: [color, color_sign, goods_id, id, url] 
+[INFO ] 13:42:53:645 [TableMetadata.<init>:68] HHH000108: Foreign keys: [] 
+[INFO ] 13:42:53:645 [TableMetadata.<init>:69] HHH000126: Indexes: [primary] 
+[INFO ] 13:42:53:657 [TableMetadata.<init>:65] HHH000261: Table found: shop.language 
+[INFO ] 13:42:53:657 [TableMetadata.<init>:66] HHH000037: Columns: [code, cn_zh, en_us, id] 
+[INFO ] 13:42:53:658 [TableMetadata.<init>:68] HHH000108: Foreign keys: [] 
+[INFO ] 13:42:53:658 [TableMetadata.<init>:69] HHH000126: Indexes: [primary] 
+[INFO ] 13:42:53:669 [TableMetadata.<init>:65] HHH000261: Table found: shop.logistics 
+[INFO ] 13:42:53:670 [TableMetadata.<init>:66] HHH000037: Columns: [area, province, city, phone, street, name, nickname, id, order_id] 
+[INFO ] 13:42:53:670 [TableMetadata.<init>:68] HHH000108: Foreign keys: [] 
+[INFO ] 13:42:53:671 [TableMetadata.<init>:69] HHH000126: Indexes: [primary] 
+[INFO ] 13:42:53:683 [TableMetadata.<init>:65] HHH000261: Table found: shop.order_item 
+[INFO ] 13:42:53:684 [TableMetadata.<init>:66] HHH000037: Columns: [colour, total, g_id, size, price, count, name, discount, id, order_id, url] 
+[INFO ] 13:42:53:684 [TableMetadata.<init>:68] HHH000108: Foreign keys: [] 
+[INFO ] 13:42:53:684 [TableMetadata.<init>:69] HHH000126: Indexes: [primary] 
+[INFO ] 13:42:53:702 [TableMetadata.<init>:65] HHH000261: Table found: shop.orders 
+[INFO ] 13:42:53:704 [TableMetadata.<init>:66] HHH000037: Columns: [u_id, total_amount, original_amount, payment_status, id, create_date, logistics_status] 
+[INFO ] 13:42:53:705 [TableMetadata.<init>:68] HHH000108: Foreign keys: [] 
+[INFO ] 13:42:53:705 [TableMetadata.<init>:69] HHH000126: Indexes: [primary] 
+[INFO ] 13:42:53:722 [TableMetadata.<init>:65] HHH000261: Table found: shop.user 
+[INFO ] 13:42:53:722 [TableMetadata.<init>:66] HHH000037: Columns: [login_count, password, id, state, text, username] 
+[INFO ] 13:42:53:723 [TableMetadata.<init>:68] HHH000108: Foreign keys: [] 
+[INFO ] 13:42:53:723 [TableMetadata.<init>:69] HHH000126: Indexes: [primary] 
+[INFO ] 13:42:53:736 [TableMetadata.<init>:65] HHH000261: Table found: shop.user_address 
+[INFO ] 13:42:53:737 [TableMetadata.<init>:66] HHH000037: Columns: [area, user_infor_id, province, city, street, id] 
+[INFO ] 13:42:53:737 [TableMetadata.<init>:68] HHH000108: Foreign keys: [] 
+[INFO ] 13:42:53:737 [TableMetadata.<init>:69] HHH000126: Indexes: [primary] 
+[INFO ] 13:42:53:755 [TableMetadata.<init>:65] HHH000261: Table found: shop.user_infor 
+[INFO ] 13:42:53:756 [TableMetadata.<init>:66] HHH000037: Columns: [msg, u_id, phone, name, id, email] 
+[INFO ] 13:42:53:756 [TableMetadata.<init>:68] HHH000108: Foreign keys: [] 
+[INFO ] 13:42:53:756 [TableMetadata.<init>:69] HHH000126: Indexes: [primary] 
+[INFO ] 13:42:53:758 [SchemaUpdate.execute:242] HHH000232: Schema update complete 
+[INFO ] 13:43:12:918 [SchemaUpdate.execute:182] HHH000228: Running hbm2ddl schema update 
+[INFO ] 13:43:12:920 [SchemaUpdate.execute:193] HHH000102: Fetching database metadata 
+[INFO ] 13:43:13:180 [SchemaUpdate.execute:205] HHH000396: Updating schema 
+[INFO ] 13:43:13:208 [TableMetadata.<init>:65] HHH000261: Table found: shop.user 
+[INFO ] 13:43:13:208 [TableMetadata.<init>:66] HHH000037: Columns: [login_count, password, id, state, text, username] 
+[INFO ] 13:43:13:209 [TableMetadata.<init>:68] HHH000108: Foreign keys: [] 
+[INFO ] 13:43:13:209 [TableMetadata.<init>:69] HHH000126: Indexes: [primary] 
+[INFO ] 13:43:13:222 [TableMetadata.<init>:65] HHH000261: Table found: shop.address 
+[INFO ] 13:43:13:222 [TableMetadata.<init>:66] HHH000037: Columns: [area, province, city, phone, user_id, street, name, nickname, id] 
+[INFO ] 13:43:13:222 [TableMetadata.<init>:68] HHH000108: Foreign keys: [] 
+[INFO ] 13:43:13:223 [TableMetadata.<init>:69] HHH000126: Indexes: [primary] 
+[INFO ] 13:43:13:237 [TableMetadata.<init>:65] HHH000261: Table found: shop.cart_list 
+[INFO ] 13:43:13:238 [TableMetadata.<init>:66] HHH000037: Columns: [colour, g_id, u_id, size, price, count, name, discount, id, url] 
+[INFO ] 13:43:13:238 [TableMetadata.<init>:68] HHH000108: Foreign keys: [] 
+[INFO ] 13:43:13:239 [TableMetadata.<init>:69] HHH000126: Indexes: [primary] 
+[INFO ] 13:43:13:251 [TableMetadata.<init>:65] HHH000261: Table found: shop.collection 
+[INFO ] 13:43:13:253 [TableMetadata.<init>:66] HHH000037: Columns: [user_id, price, name, goods_id, id, url] 
+[INFO ] 13:43:13:253 [TableMetadata.<init>:68] HHH000108: Foreign keys: [] 
+[INFO ] 13:43:13:254 [TableMetadata.<init>:69] HHH000126: Indexes: [primary] 
+[INFO ] 13:43:13:266 [TableMetadata.<init>:65] HHH000261: Table found: shop.goods 
+[INFO ] 13:43:13:266 [TableMetadata.<init>:66] HHH000037: Columns: [msg, price, name, discount, id, create_date, type, update_date, url] 
+[INFO ] 13:43:13:267 [TableMetadata.<init>:68] HHH000108: Foreign keys: [] 
+[INFO ] 13:43:13:267 [TableMetadata.<init>:69] HHH000126: Indexes: [primary] 
+[INFO ] 13:43:13:279 [TableMetadata.<init>:65] HHH000261: Table found: shop.goods_style 
+[INFO ] 13:43:13:279 [TableMetadata.<init>:66] HHH000037: Columns: [color, color_sign, goods_id, id, url] 
+[INFO ] 13:43:13:279 [TableMetadata.<init>:68] HHH000108: Foreign keys: [] 
+[INFO ] 13:43:13:280 [TableMetadata.<init>:69] HHH000126: Indexes: [primary] 
+[INFO ] 13:43:13:292 [TableMetadata.<init>:65] HHH000261: Table found: shop.language 
+[INFO ] 13:43:13:293 [TableMetadata.<init>:66] HHH000037: Columns: [code, cn_zh, en_us, id] 
+[INFO ] 13:43:13:295 [TableMetadata.<init>:68] HHH000108: Foreign keys: [] 
+[INFO ] 13:43:13:295 [TableMetadata.<init>:69] HHH000126: Indexes: [primary] 
+[INFO ] 13:43:13:313 [TableMetadata.<init>:65] HHH000261: Table found: shop.logistics 
+[INFO ] 13:43:13:313 [TableMetadata.<init>:66] HHH000037: Columns: [area, province, city, phone, street, name, nickname, id, order_id] 
+[INFO ] 13:43:13:313 [TableMetadata.<init>:68] HHH000108: Foreign keys: [] 
+[INFO ] 13:43:13:314 [TableMetadata.<init>:69] HHH000126: Indexes: [primary] 
+[INFO ] 13:43:13:326 [TableMetadata.<init>:65] HHH000261: Table found: shop.order_item 
+[INFO ] 13:43:13:327 [TableMetadata.<init>:66] HHH000037: Columns: [colour, total, g_id, size, price, count, name, discount, id, order_id, url] 
+[INFO ] 13:43:13:328 [TableMetadata.<init>:68] HHH000108: Foreign keys: [] 
+[INFO ] 13:43:13:328 [TableMetadata.<init>:69] HHH000126: Indexes: [primary] 
+[INFO ] 13:43:13:342 [TableMetadata.<init>:65] HHH000261: Table found: shop.orders 
+[INFO ] 13:43:13:342 [TableMetadata.<init>:66] HHH000037: Columns: [u_id, total_amount, original_amount, payment_status, id, create_date, logistics_status] 
+[INFO ] 13:43:13:343 [TableMetadata.<init>:68] HHH000108: Foreign keys: [] 
+[INFO ] 13:43:13:343 [TableMetadata.<init>:69] HHH000126: Indexes: [primary] 
+[INFO ] 13:43:13:355 [TableMetadata.<init>:65] HHH000261: Table found: shop.user 
+[INFO ] 13:43:13:356 [TableMetadata.<init>:66] HHH000037: Columns: [login_count, password, id, state, text, username] 
+[INFO ] 13:43:13:357 [TableMetadata.<init>:68] HHH000108: Foreign keys: [] 
+[INFO ] 13:43:13:357 [TableMetadata.<init>:69] HHH000126: Indexes: [primary] 
+[INFO ] 13:43:13:372 [TableMetadata.<init>:65] HHH000261: Table found: shop.user_address 
+[INFO ] 13:43:13:373 [TableMetadata.<init>:66] HHH000037: Columns: [area, user_infor_id, province, city, street, id] 
+[INFO ] 13:43:13:373 [TableMetadata.<init>:68] HHH000108: Foreign keys: [] 
+[INFO ] 13:43:13:373 [TableMetadata.<init>:69] HHH000126: Indexes: [primary] 
+[INFO ] 13:43:13:383 [TableMetadata.<init>:65] HHH000261: Table found: shop.user_infor 
+[INFO ] 13:43:13:383 [TableMetadata.<init>:66] HHH000037: Columns: [msg, u_id, phone, name, id, email] 
+[INFO ] 13:43:13:383 [TableMetadata.<init>:68] HHH000108: Foreign keys: [] 
+[INFO ] 13:43:13:383 [TableMetadata.<init>:69] HHH000126: Indexes: [primary] 
+[INFO ] 13:43:13:385 [SchemaUpdate.execute:242] HHH000232: Schema update complete 
+[INFO ] 15:46:28:547 [InitStander.afterPropertiesSet:30] zh_CN 
+[INFO ] 15:46:29:340 [SchemaUpdate.execute:182] HHH000228: Running hbm2ddl schema update 
+[INFO ] 15:46:29:340 [SchemaUpdate.execute:193] HHH000102: Fetching database metadata 
+[INFO ] 15:46:29:583 [SchemaUpdate.execute:205] HHH000396: Updating schema 
+[INFO ] 15:46:29:611 [TableMetadata.<init>:65] HHH000261: Table found: shop.user 
+[INFO ] 15:46:29:611 [TableMetadata.<init>:66] HHH000037: Columns: [login_count, password, id, state, text, username] 
+[INFO ] 15:46:29:612 [TableMetadata.<init>:68] HHH000108: Foreign keys: [] 
+[INFO ] 15:46:29:612 [TableMetadata.<init>:69] HHH000126: Indexes: [primary] 
+[INFO ] 15:46:29:627 [TableMetadata.<init>:65] HHH000261: Table found: shop.address 
+[INFO ] 15:46:29:627 [TableMetadata.<init>:66] HHH000037: Columns: [area, province, city, phone, user_id, street, name, nickname, id] 
+[INFO ] 15:46:29:628 [TableMetadata.<init>:68] HHH000108: Foreign keys: [] 
+[INFO ] 15:46:29:628 [TableMetadata.<init>:69] HHH000126: Indexes: [primary] 
+[INFO ] 15:46:29:642 [TableMetadata.<init>:65] HHH000261: Table found: shop.cart_list 
+[INFO ] 15:46:29:643 [TableMetadata.<init>:66] HHH000037: Columns: [colour, g_id, u_id, size, price, count, name, discount, id, url] 
+[INFO ] 15:46:29:643 [TableMetadata.<init>:68] HHH000108: Foreign keys: [] 
+[INFO ] 15:46:29:643 [TableMetadata.<init>:69] HHH000126: Indexes: [primary] 
+[INFO ] 15:46:29:659 [TableMetadata.<init>:65] HHH000261: Table found: shop.collection 
+[INFO ] 15:46:29:660 [TableMetadata.<init>:66] HHH000037: Columns: [user_id, price, name, goods_id, id, url] 
+[INFO ] 15:46:29:660 [TableMetadata.<init>:68] HHH000108: Foreign keys: [] 
+[INFO ] 15:46:29:660 [TableMetadata.<init>:69] HHH000126: Indexes: [primary] 
+[INFO ] 15:46:29:673 [TableMetadata.<init>:65] HHH000261: Table found: shop.goods 
+[INFO ] 15:46:29:674 [TableMetadata.<init>:66] HHH000037: Columns: [msg, price, name, discount, id, create_date, type, update_date, url] 
+[INFO ] 15:46:29:674 [TableMetadata.<init>:68] HHH000108: Foreign keys: [] 
+[INFO ] 15:46:29:674 [TableMetadata.<init>:69] HHH000126: Indexes: [primary] 
+[INFO ] 15:46:29:686 [TableMetadata.<init>:65] HHH000261: Table found: shop.goods_style 
+[INFO ] 15:46:29:687 [TableMetadata.<init>:66] HHH000037: Columns: [color, color_sign, goods_id, id, url] 
+[INFO ] 15:46:29:687 [TableMetadata.<init>:68] HHH000108: Foreign keys: [] 
+[INFO ] 15:46:29:687 [TableMetadata.<init>:69] HHH000126: Indexes: [primary] 
+[INFO ] 15:46:29:715 [TableMetadata.<init>:65] HHH000261: Table found: shop.language 
+[INFO ] 15:46:29:726 [TableMetadata.<init>:66] HHH000037: Columns: [code, cn_zh, en_us, id] 
+[INFO ] 15:46:29:726 [TableMetadata.<init>:68] HHH000108: Foreign keys: [] 
+[INFO ] 15:46:29:726 [TableMetadata.<init>:69] HHH000126: Indexes: [primary] 
+[INFO ] 15:46:29:745 [TableMetadata.<init>:65] HHH000261: Table found: shop.logistics 
+[INFO ] 15:46:29:746 [TableMetadata.<init>:66] HHH000037: Columns: [area, province, city, phone, street, name, nickname, id, order_id] 
+[INFO ] 15:46:29:746 [TableMetadata.<init>:68] HHH000108: Foreign keys: [] 
+[INFO ] 15:46:29:746 [TableMetadata.<init>:69] HHH000126: Indexes: [primary] 
+[INFO ] 15:46:29:764 [TableMetadata.<init>:65] HHH000261: Table found: shop.order_item 
+[INFO ] 15:46:29:765 [TableMetadata.<init>:66] HHH000037: Columns: [colour, total, g_id, size, price, count, name, discount, id, order_id, url] 
+[INFO ] 15:46:29:765 [TableMetadata.<init>:68] HHH000108: Foreign keys: [] 
+[INFO ] 15:46:29:765 [TableMetadata.<init>:69] HHH000126: Indexes: [primary] 
+[INFO ] 15:46:29:781 [TableMetadata.<init>:65] HHH000261: Table found: shop.orders 
+[INFO ] 15:46:29:782 [TableMetadata.<init>:66] HHH000037: Columns: [u_id, total_amount, original_amount, payment_status, id, create_date, logistics_status] 
+[INFO ] 15:46:29:782 [TableMetadata.<init>:68] HHH000108: Foreign keys: [] 
+[INFO ] 15:46:29:782 [TableMetadata.<init>:69] HHH000126: Indexes: [primary] 
+[INFO ] 15:46:29:795 [TableMetadata.<init>:65] HHH000261: Table found: shop.user 
+[INFO ] 15:46:29:795 [TableMetadata.<init>:66] HHH000037: Columns: [login_count, password, id, state, text, username] 
+[INFO ] 15:46:29:795 [TableMetadata.<init>:68] HHH000108: Foreign keys: [] 
+[INFO ] 15:46:29:796 [TableMetadata.<init>:69] HHH000126: Indexes: [primary] 
+[INFO ] 15:46:29:811 [TableMetadata.<init>:65] HHH000261: Table found: shop.user_address 
+[INFO ] 15:46:29:812 [TableMetadata.<init>:66] HHH000037: Columns: [area, user_infor_id, province, city, street, id] 
+[INFO ] 15:46:29:812 [TableMetadata.<init>:68] HHH000108: Foreign keys: [] 
+[INFO ] 15:46:29:813 [TableMetadata.<init>:69] HHH000126: Indexes: [primary] 
+[INFO ] 15:46:29:825 [TableMetadata.<init>:65] HHH000261: Table found: shop.user_infor 
+[INFO ] 15:46:29:826 [TableMetadata.<init>:66] HHH000037: Columns: [msg, u_id, phone, name, id, email] 
+[INFO ] 15:46:29:826 [TableMetadata.<init>:68] HHH000108: Foreign keys: [] 
+[INFO ] 15:46:29:827 [TableMetadata.<init>:69] HHH000126: Indexes: [primary] 
+[INFO ] 15:46:29:829 [SchemaUpdate.execute:242] HHH000232: Schema update complete 

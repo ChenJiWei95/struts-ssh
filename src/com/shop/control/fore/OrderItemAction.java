@@ -14,15 +14,15 @@ import org.springframework.stereotype.Component;
 
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
+import com.shop.annotation.RequestTypeAnno;
 import com.shop.control.SuperActionSupport;
 import com.shop.entity.OrderItem;
 import com.shop.service.OrderItemService;
 import com.shop.util.ActionUtil;
 import com.shop.util.Message;
-import com.shop.util.SnowFlakeGenerator;
-import com.shop.annotation.RequestTypeAnno;
 import com.shop.util.enums.RequestType;
 
+@SuppressWarnings("serial")
 @Component	 		
 @Scope("prototype")
 public class OrderItemAction extends SuperActionSupport implements ServletRequestAware{
@@ -58,7 +58,7 @@ public class OrderItemAction extends SuperActionSupport implements ServletReques
 	@RequestTypeAnno(RequestType.POST)
 	public String save(){
 		try {
-			orderItem.setId(String.valueOf(new SnowFlakeGenerator(2, 2).nextId()));
+//			orderItem.setId(CommonUtil.getId());
 			orderItemServiceImpl.save(orderItem);
 			setMessage(Message.success("添加成功"));
 		} catch (Exception e) {
@@ -168,8 +168,8 @@ public class OrderItemAction extends SuperActionSupport implements ServletReques
 	public String get(){
 		
 		try {
-			OrderItem t = orderItemServiceImpl.get(orderItem.getId());	
-			setMessage(new Message().success(getText("shop.error.getOk"), t));
+//			OrderItem t = orderItemServiceImpl.get(orderItem.getId());	
+//			setMessage(new Message().success(getText("shop.error.getOk"), t));
 		}catch(Exception e) {
 			log.info("异常"+e);
 			e.printStackTrace();

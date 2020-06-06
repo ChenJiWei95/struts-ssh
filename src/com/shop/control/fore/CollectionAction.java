@@ -1,6 +1,5 @@
 package com.shop.control.fore;
 
-import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -18,13 +17,12 @@ import com.alibaba.fastjson.JSONObject;
 import com.shop.Constants;
 import com.shop.annotation.RequestTypeAnno;
 import com.shop.control.SuperActionSupport;
-import com.shop.entity.CartList;
 import com.shop.entity.Collection;
 import com.shop.entity.User;
 import com.shop.service.CollectionService;
 import com.shop.util.ActionUtil;
+import com.shop.util.CommonUtil;
 import com.shop.util.Message;
-import com.shop.util.SnowFlakeGenerator;
 import com.shop.util.enums.RequestType;
 
 @Component	 		
@@ -69,7 +67,7 @@ public class CollectionAction extends SuperActionSupport implements ServletReque
 				return JSON;
 			}
 				
-			collection.setId(String.valueOf(new SnowFlakeGenerator(2, 2).nextId()));
+			collection.setId(CommonUtil.getId());
 			collection.setUserId(user.getId()); user = null;
 			collectionServiceImpl.save(collection);
 			setMessage(Message.success(getText("shop.error.collSuccess"), collection));

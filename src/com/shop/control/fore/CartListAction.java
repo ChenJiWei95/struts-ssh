@@ -20,14 +20,12 @@ import com.shop.Constants;
 import com.shop.annotation.RequestTypeAnno;
 import com.shop.control.SuperActionSupport;
 import com.shop.entity.CartList;
-import com.shop.entity.Goods;
 import com.shop.entity.ResponseData;
 import com.shop.entity.User;
 import com.shop.service.CartListService;
-import com.shop.service.GoodsService;
 import com.shop.util.ActionUtil;
+import com.shop.util.CommonUtil;
 import com.shop.util.Message;
-import com.shop.util.SnowFlakeGenerator;
 import com.shop.util.enums.RequestType;
 
 @Component	 		
@@ -73,7 +71,7 @@ public class CartListAction extends SuperActionSupport implements ServletRequest
 				setMessage(Message.success(getText("shop.error.cartSuccess")));
 				return JSON;
 			}
-			cartList.setId(String.valueOf(new SnowFlakeGenerator(2, 2).nextId()));
+			cartList.setId(CommonUtil.getId());
 			cartList.setUserId(user.getId());
 			cartListServiceImpl.save(cartList);
 			user = null; 

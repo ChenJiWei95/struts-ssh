@@ -14,8 +14,8 @@ import com.shop.entity.User;
 import com.shop.entity.UserInfor;
 import com.shop.service.UserInforService;
 import com.shop.service.UserService;
+import com.shop.util.CommonUtil;
 import com.shop.util.Message;
-import com.shop.util.SnowFlakeGenerator;
 /**
  * @version: V 1.0 
  * @Description:
@@ -72,12 +72,12 @@ public class UserAction extends SuperActionSupport implements ServletRequestAwar
 				setMessage(new Message().error(getText("shop.error.usernameExists")));
 				return JSON;
 			}
-			String id = String.valueOf(new SnowFlakeGenerator(2,2).nextId());
+			String id = CommonUtil.getId();
 			user.setId(id);
 			user.setLoginCount(0);
 			user.setState(Constants.COMMON_STATUS_ENABLEED);
 			userServiceImpl.save(user);
-			userInfor.setId(String.valueOf(new SnowFlakeGenerator(2,2).nextId()));
+			userInfor.setId(CommonUtil.getId());
 			userInfor.setUserId(id);
 			userInforServiceImpl.save(userInfor);
 			setMessage(new Message().success(getText("shop.error.registerOk")));

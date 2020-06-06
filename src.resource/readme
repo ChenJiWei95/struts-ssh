@@ -61,7 +61,7 @@ hibernate：
 			infor.setPhone_number((String) obj.get("phoneNumber"));
 			infor.setSex((String) obj.get("sex"));
 			infor.setTrueName((String) obj.get("trueName"));
-			menber.setInfor(infor);	  //只需要在主键对象设置外键对象，不要执行infor的set方法
+			menber.setInfor(infor);	  //只需要在主键对象设置外键对象，不要执行infor的save方法
 			getSession().save(menber);//只需要操作主键对象，外键对象将会自动关联操作
 	* Query查询所有 
 		例如：from Merchant 中的Merchant需要使用类名

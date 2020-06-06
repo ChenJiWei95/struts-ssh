@@ -1,8 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@taglib prefix="s" uri="/struts-tags" %>
-<%@ taglib prefix="my" uri="/WEB-INF/custom.tld"%>
+
 <%@ include file="../include/forePage/common.jsp" %>
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
  <head>
@@ -13,27 +14,7 @@
  	
  </head>
  <body> 
- 	<my:text name="shop.common.goodsDetails"/>
- 	<%@ include file="../include/forePage/mall/languageBt.jsp" %>
-	
-	<!-- start site nav -->
-	
-	<%@ include file="../include/forePage/mall/siteNav.jsp" %>
-	
-	<!-- start search -->
-	<%@ include file="../include/forePage/mall/search.jsp" %>
-	
-	<!-- start mall nav -->
-	<%@ include file="../include/forePage/mall/mallNav.jsp" %>
-	
-	<!-- start flow picture -->
-	<%@ include file="../include/forePage/mall/flowPic.jsp" %>
-	
-	<!-- start popularClassifi -->
-	<%@ include file="../include/forePage/mall/popularClassifi.jsp" %>
-	
-	<!-- start bom -->
-	<%@ include file="../include/forePage/mall/bom.jsp" %>
+ 	<h1>后台</h1>
 	
 	<script src="<%=basePath%>resource/layui/layui.js"></script>
 	<script>
@@ -41,6 +22,7 @@
  		var element = layui.element
  		,carousel = layui.carousel;
  		layui.layer.msg("<s:text name="shop.common.homeLayuiAlert"/>");
+ 		/*
  		carousel.render({
  		    elem: '#test2'
  		    ,interval: 1800
@@ -48,6 +30,7 @@
  		    ,height: '480px'
  		    ,anim: 'fade' 
  		});
+ 		*/
  	})
 	</script>
  </body>

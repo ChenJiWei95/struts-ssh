@@ -19,8 +19,8 @@ import com.shop.control.SuperActionSupport;
 import com.shop.entity.Goods;
 import com.shop.service.GoodsService;
 import com.shop.util.ActionUtil;
+import com.shop.util.CommonUtil;
 import com.shop.util.Message;
-import com.shop.util.SnowFlakeGenerator;
 import com.shop.util.enums.RequestType;
 
 @Component	 		
@@ -51,7 +51,7 @@ public class GoodsAction extends SuperActionSupport implements ServletRequestAwa
 	@RequestTypeAnno(RequestType.POST)
 	public String save(){
 		try {
-			goods.setId(String.valueOf(new SnowFlakeGenerator(2, 2).nextId()));
+			goods.setId(CommonUtil.getId());
 			goodsServiceImpl.save(goods);
 			setMessage(Message.success("添加成功", goods));
 		} catch (Exception e) {

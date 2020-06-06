@@ -19,7 +19,6 @@ import org.springframework.transaction.annotation.Transactional;
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 import com.shop.Constants;
-import com.shop.Filter;
 import com.shop.Page;
 import com.shop.QueryHelper;
 import com.shop.annotation.RequestTypeAnno;
@@ -33,8 +32,8 @@ import com.shop.service.GoodsService;
 import com.shop.service.OrderItemService;
 import com.shop.service.OrderService;
 import com.shop.util.ActionUtil;
+import com.shop.util.CommonUtil;
 import com.shop.util.Message;
-import com.shop.util.SnowFlakeGenerator;
 import com.shop.util.enums.RequestType;
 
 @Component	 		
@@ -86,7 +85,7 @@ public class OrderAction extends SuperActionSupport implements ServletRequestAwa
 			// 结算之后为已支付
 			
 			order = new Order();
-			order.setId(String.valueOf(new SnowFlakeGenerator(2, 2).nextId()));
+			order.setId(CommonUtil.getId());
 			order.setPaymentStatus("02");
 			order.setuId(user.getId());
 			order.setLogisticsStatus("02");
@@ -99,8 +98,11 @@ public class OrderAction extends SuperActionSupport implements ServletRequestAwa
 			for(Entry<String, String> item : map.entrySet()) {
 				ids[count++] = item.getKey();
 				CartList cart = cartListServiceImpl.get(item.getKey());
+				if(cart == null){
+					throw new Exception("cart="+cart+"; id = " + item.getKey());
+				}
 				OrderItem oi = new OrderItem();
-				oi.setOrderItemId(String.valueOf(new SnowFlakeGenerator(2, 2).nextId()));
+				oi.setOrderItemId(CommonUtil.getId());
 				oi.setOrderId(order.getId());
 				oi.setSize(cart.getSize());
 				oi.setColour(cart.getColour());

@@ -45,7 +45,6 @@ public class TempJava {
 	private static String mybatisConfig = srcPath("config/mybatis-config.xml"); 
 	// 要执行的命令下标  对应 前缀和后缀
 	// 0 	自动生成dao层代码 接口模式
-	// 8  	自动生成dao实现层代码 接口模式
 	// 1 	自动生成service层代码
 	// 2 	自动生成实体层代码
 	// 3 	自动生成mapper配置代码
@@ -53,24 +52,25 @@ public class TempJava {
 	// 5 	自动生成control层代码
 	// 6 	自动生成mybatise配置文件代码
 	// 7  	自动生成前端代码
+	// 8  	自动生成dao实现层代码 接口模式
 //	private static Integer[] commond = {0, 1, 2, 3, 4, 5, 6, 7};
 //	private static Integer[] commond = {};
 //	private static Integer[] commond = {0, 1, 2, 3, 4, 5, 6};
-	private static Integer[] commond = {2, 1, 0, 4, 5, 8};
+	private static Integer[] commond = {2, 1, 0, 4, 8};
 //	private static Integer[] commond = {2, 1, 0, 4, 8};
 //	private static Integer[] commond = {5};
 	// 实体类策略  普通通【GENERAL_STRATEGY】 hibernate注解【HIBER_ANNOTATION_STRATEGY】
 	private static String entityStrategy = HIBER_ANNOTATION_STRATEGY;
 	
 	public static void main(String[] args) throws IOException {
-		String fileds 	= "id province city area street userId name phone nickname";
-		String columns	= "id province city area street user_id name phone nickname";	// 其中的值对应 fileds 用于数据库表字段的对应
-		String types  	= "String String String String String String String String String"; // BigDecimal String Integer
+		String fileds 	= "id code cnZh enUs";
+		String columns	= "id code cn_zh en_us";	// 其中的值对应 fileds 用于数据库表字段的对应
+		String types  	= "String String String String"; // BigDecimal String Integer
 		String texts 	= "ID 描述 时间 状态";
 		
 		ContextConfig c = new ContextConfig();
-		c.setTable("address");
-		c.setName_("address");
+		c.setTable("language");
+		c.setName_("language");
 		c.setFileds(fileds);
 		c.setColumns(columns);
 		c.setTypes(types);

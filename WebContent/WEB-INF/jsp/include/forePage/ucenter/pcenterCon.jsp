@@ -7,37 +7,38 @@
 			<img src="<%=basePath%>resource/img/xihu.jpg" width="80" height="80"/>
 		</div>
 		<div style="float: left; line-height: 20px; padding-top: 24px; border-right: 1px solid #e6e6e6bf; width: 15%; height: 56px; text-align: center; ">
-			<label style="display: block;">13430394603</label>
+			<label style="display: block;">${username}</label>
 			<label style="display: block;"><i class="layui-icon layui-icon-star"></i></label>
 		</div>
 		<div class="info-tab">
 			<label style="display: block;">
-				<span>优惠券</span>
-				<span class="var-color">3张</span>
-			</label>
-			<label style="display: block;">
 				<span>待发货</span>
-				<span class="var-color">1个</span>
+				<span class="var-color">${delivered}&nbsp;个</span>
+			</label>
+			
+			<label style="display: block;">
+				<span>礼品卡</span>
+				<span class="var-color">${giftCard}&nbsp;张</span>
 			</label>
 		</div>	
 		<div  class="info-tab">
 			<label style="display: block;">
-				<span>礼品卡</span>
-				<span class="var-color">1张</span>
+				<span>待收货</span>
+				<span class="var-color">${received}&nbsp;个</span>
 			</label>
 			<label style="display: block;">
-				<span>待收货</span>
-				<span class="var-color">6个</span>
+				<span>优惠券</span>
+				<span class="var-color">${coupon}&nbsp;张</span>
 			</label>
 		</div>	
 		<div class="info-tab">
 			<label style="display: block;">
 				<span>积分</span>
-				<span class="var-color">6666</span>
+				<span class="var-color">${integral}</span>
 			</label>
 			<label style="display: block;">
 				<span>待评价</span>
-				<span class="var-color">2个</span>
+				<span class="var-color">${toBeEvaluate}&nbsp;个</span>
 			</label>
 		</div>
 	</div>
@@ -55,7 +56,7 @@
 			    <c:forEach begin="0" items="${orders}" step="1" var="Order" varStatus="varsta">
 			    <div class="layui-card p-order">
 					<div class="layui-card-header">
-						<label class="p-label-number-id default-color">订单号：${Order.id}</label>
+						<label class="p-label-number-id">订单号：${Order.id}</label>
 						<label class="p-label-status var-color">
 						<c:choose>
 							<c:when test="${Order.paymentStatus eq '02'}">
@@ -104,11 +105,11 @@
 						</c:forEach>
 					</div>
 					<div class="p-order-total">
-						<label class="default-color">共${sum}件</label>
-						<label class="p-label-totalAmount default-color">应付总额：${Order.totalAmount}</label>
+						<label class="">共${sum}件</label>
+						<label class="p-label-totalAmount">应付总额：${Order.totalAmount}</label>
 					</div>
 					<div class="p-order-details">
-						<label class="default-color">${Order.createDate}</label> 
+						<label class="">${Order.createDate}</label> 
 						<c:if test="${Order.paymentStatus eq '02'}"><label class="p-label-btn pointer label-red" lay-href="<%=basePath%>mall_chtml_payment?id=${Order.id}">支付</label></c:if>
 						<label class="p-label-btn pointer" lay-href="<%=basePath%>mall_chtml_payment?id=${Order.id}">订单详情</label>
 						<c:if test="${(Order.paymentStatus eq '00' or Order.paymentStatus eq '02') and Order.logisticsStatus eq '02'}"><label class="p-label-btn pointer" shop-click="cancelOrder">取消订单</label></c:if> 

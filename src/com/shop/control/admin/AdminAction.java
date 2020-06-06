@@ -1,4 +1,4 @@
-package com.shop.control.fore;
+package com.shop.control.admin;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -13,7 +13,6 @@ import com.shop.Constants;
 import com.shop.control.SuperActionSupport;
 import com.shop.entity.User;
 import com.shop.service.CartListService;
-import com.shop.util.SpringUtils;
 
 /**
  * @version: V-1.0 
@@ -26,15 +25,12 @@ import com.shop.util.SpringUtils;
  */
 @Component 				// 表示此类将被spring容器托管，能实现依赖对象的控制反转，例如：@Autowired注解获取userServiceImpl对象
 @Scope("prototype")		// 表示每次获得bean都会生成一个新的对象
-public class ForeAction extends SuperActionSupport implements ServletRequestAware{
+public class AdminAction extends SuperActionSupport implements ServletRequestAware{
 	private static final long serialVersionUID = 7539369474585568995L;
 	
-	private static final Logger log = Logger.getLogger(ForeAction.class); // 日志对象
+	private static final Logger log = Logger.getLogger(AdminAction.class); // 日志对象
 	
 	private HttpServletRequest request;
-	
-	@Autowired
-	private CartListService cartListServiceImpl; 
 	
 	@Override  
     public void setServletRequest(HttpServletRequest arg0) {  
@@ -46,15 +42,15 @@ public class ForeAction extends SuperActionSupport implements ServletRequestAwar
     }
 	
 	public String main(){	 
-		
 		backhaul(request);
 		return MAIN;
 	}
 	
 	public void index() {
-		HttpSession session = (HttpSession) request.getSession();
-		User user = (User) session.getAttribute(Constants.LOGIN_SIGN);
-		session.setAttribute("username", user.getUsername());
-		request.getSession().setAttribute("cartListCount", cartListServiceImpl.count("from CartList where userId = ?", user.getId()));
+		log.info("admin/index.jsp");
+//		HttpSession session = (HttpSession) request.getSession();
+//		User user = (User) session.getAttribute(Constants.LOGIN_SIGN);
+//		session.setAttribute("username", user.getUsername());
+//		session.setAttribute("cartListCount", cartListServiceImpl.count("from CartList where userId = ?", user.getId()));
 	}
 }

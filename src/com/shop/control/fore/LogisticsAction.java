@@ -23,8 +23,8 @@ import com.shop.entity.User;
 import com.shop.service.AddressService;
 import com.shop.service.LogisticsService;
 import com.shop.util.ActionUtil;
+import com.shop.util.CommonUtil;
 import com.shop.util.Message;
-import com.shop.util.SnowFlakeGenerator;
 import com.shop.util.enums.RequestType;
 
 @Component	 		
@@ -77,7 +77,7 @@ public class LogisticsAction extends SuperActionSupport implements ServletReques
 			logistics.setName(address.getName());
 			logistics.setPhone(address.getPhone());
 			
-			logistics.setLogisticsId(String.valueOf(new SnowFlakeGenerator(2, 2).nextId()));
+			logistics.setLogisticsId(CommonUtil.getId());
 			logistics.setNickname(user.getUsername());
 			logisticsServiceImpl.save(logistics);
 			setMessage(Message.success("支付处理中..."));
