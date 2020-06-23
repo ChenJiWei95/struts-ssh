@@ -15,5 +15,7 @@ public class Constants {
 	public final static String LANGUAGE_EN_US		= "en_US";
 	public final static String LANGUAGE_ZH_CN		= "zh_CN";
 	public final static String LANGUAGE_SIGN		= "LANGUAGE_SIGN";
+	public final static String LANGUAGE_CURRENT		= "LANGUAGE_CURRENT";
+	public final static String CI18N_CLASS_NAME		= "ci18nHibernate";
 	
 }

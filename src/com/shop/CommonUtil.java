@@ -1,4 +1,4 @@
-package com.shop.util;
+package com.shop;
 
 import java.io.File;
 import java.io.FileInputStream;

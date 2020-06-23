@@ -14,7 +14,7 @@
  </head>
  <body> 
  	<my:text name="shop.common.goodsDetails"/>
- 	<%@ include file="../include/forePage/mall/languageBt.jsp" %>
+ 	<%-- <%@ include file="../include/forePage/mall/languageBt.jsp" %> --%>
 	
 	<!-- start site nav -->
 	
@@ -37,7 +37,7 @@
 	
 	<script src="<%=basePath%>resource/layui/layui.js"></script>
 	<script>
- 	layui.use(['carousel', 'layer', 'element'], function(){
+ 	layui.use(['carousel', 'layer', 'element', 'form'], function(){
  		var element = layui.element
  		,carousel = layui.carousel;
  		layui.layer.msg("<s:text name="shop.common.homeLayuiAlert"/>");
@@ -48,6 +48,10 @@
  		    ,height: '480px'
  		    ,anim: 'fade' 
  		});
+ 		<%-- layui.form.on('select(lang)', function(data){
+ 			layui.layer.msg("select(lang)");
+ 			window.local = "<%=basePath%>${URIPath}?request_locale="+data.value;
+ 		}) --%>
  	})
 	</script>
  </body>

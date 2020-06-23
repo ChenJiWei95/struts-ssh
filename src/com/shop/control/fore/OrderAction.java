@@ -19,16 +19,18 @@ import org.springframework.transaction.annotation.Transactional;
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 import com.shop.Constants;
-import com.shop.Page;
-import com.shop.QueryHelper;
 import com.shop.annotation.RequestTypeAnno;
 import com.shop.control.SuperActionSupport;
+import com.shop.entity.Address;
 import com.shop.entity.CartList;
+import com.shop.entity.Logistics;
 import com.shop.entity.Order;
 import com.shop.entity.OrderItem;
 import com.shop.entity.User;
+import com.shop.service.AddressService;
 import com.shop.service.CartListService;
 import com.shop.service.GoodsService;
+import com.shop.service.LogisticsService;
 import com.shop.service.OrderItemService;
 import com.shop.service.OrderService;
 import com.shop.util.ActionUtil;
@@ -36,6 +38,7 @@ import com.shop.util.CommonUtil;
 import com.shop.util.Message;
 import com.shop.util.enums.RequestType;
 
+@Transactional
 @Component	 		
 @Scope("prototype")
 public class OrderAction extends SuperActionSupport implements ServletRequestAware{
@@ -51,13 +54,19 @@ public class OrderAction extends SuperActionSupport implements ServletRequestAwa
 	private GoodsService goodsServiceImpl;
 	
 	@Autowired
+	private AddressService addressServiceImpl;
+	
+	@Autowired
 	private OrderService orderServiceImpl; 
+	
+	@Autowired
+	private LogisticsService logisticsServiceImpl;  
 	
 	@Autowired
 	private OrderItemService orderItemServiceImpl; 
 	
 	public Order getOrder() {
-		order = order == null ? new Order() : order;
+		order = (order == null ? new Order() : order);
 		return order;
 	}	
 	
@@ -77,7 +86,7 @@ public class OrderAction extends SuperActionSupport implements ServletRequestAwa
 	 * 链接格式 当前类为例：user(类前缀)_save(方法)
 	 * @return
 	 */
-	@Transactional
+	
 	@RequestTypeAnno(RequestType.POST)
 	public String save(){
 		try {
@@ -93,6 +102,7 @@ public class OrderAction extends SuperActionSupport implements ServletRequestAwa
 			BigDecimal sum = new BigDecimal("0");
 			BigDecimal origSum = new BigDecimal("0");
 			Map<String, String> map = ActionUtil.getRequestParameterMap(request);
+			map.remove("all");
 			Serializable[] ids = new Serializable[map.size()];
 			int count = 0;
 			for(Entry<String, String> item : map.entrySet()) {
@@ -150,23 +160,42 @@ public class OrderAction extends SuperActionSupport implements ServletRequestAwa
 		String textErr = "";
 		try {
 			Map<String, String> map = ActionUtil.getRequestParameterMap(request);
-			QueryHelper qhper = new QueryHelper();
-			Page page = new Page();
-			qhper.paramBind(request, page);
-			String hql = "UPDATE Order"+qhper.buildAllQuery(page);
-			log.info(hql.toString());
-			Map<String, Object> parame = qhper.getParams();
-			orderServiceImpl.update(hql, parame);
-			String textOk = "shop.error.payOk";
-			textErr = "shop.error.payError";
-			log.info(qhper.getUpdateParams().get("paymentStatus"));
-			if(Constants.SHOP_STATUS_CANCEL.equals(qhper.getUpdateParams().get("paymentStatus"))) {// 返回信息调控
-				textOk = "shop.error.cancelOk";
-				textErr = "shop.error.cancelError";
+			if("payment".equals(map.get("method"))){
+				User user = (User) request.getSession().getAttribute(Constants.LOGIN_SIGN);
+				for(Map.Entry<String, String> item : map.entrySet())
+					log.info(item.getKey()+" " +item.getValue());
+				log.info(order);
+				
+				order = orderServiceImpl.get(map.get("id"));
+				order.setPaymentStatus(map.get("paymentStatus"));
+				order.setLogisticsStatus(map.get("logisticsStatus"));
+				orderServiceImpl.update(order);
+				
+				Logistics logistics = new Logistics();
+				Address address = addressServiceImpl.get(map.get("addressId")); 
+				logistics.setArea(address.getArea());
+				logistics.setCity(address.getCity());
+				logistics.setStreet(address.getStreet());
+				logistics.setProvince(address.getProvince());
+				logistics.setName(address.getName());
+				logistics.setPhone(address.getPhone());
+				logistics.setOrderId(order.getId());
+				
+				logistics.setLogisticsId(CommonUtil.getId());
+				logistics.setNickname(user.getUsername());
+				logisticsServiceImpl.save(logistics);
+				
+				String textOk = "shop.error.payOk";
+				textErr = "shop.error.payError";
+				if(Constants.SHOP_STATUS_CANCEL.equals(order.getPaymentStatus())) {// 返回信息调控
+					textOk = "shop.error.cancelOk";
+					textErr = "shop.error.cancelError";
+				}
+				setMessage(new Message().success(getText(textOk)));
+			}else {
+				setMessage(new Message().error(getText(textErr)));
 			}
-			setMessage(new Message().success(getText(textOk)));
 		}catch(Exception e) {
-			log.info("异常"+e);
 			e.printStackTrace();
 			setMessage(new Message().error(getText(textErr)));
 		}

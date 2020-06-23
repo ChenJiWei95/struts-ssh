@@ -9,10 +9,12 @@ import java.lang.reflect.Method;
 import javax.servlet.http.HttpServletRequest;
 
 import org.apache.log4j.Logger;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import com.opensymphony.xwork2.ActionSupport;
 import com.shop.util.Message;
 import com.shop.util.TimeUtil;
+import com.shop.util.i18n.AbstractCi18nCore;
 /**
  * Action父类，当请求需要返回数据时继承此类<b>
  * <p>
@@ -26,6 +28,9 @@ import com.shop.util.TimeUtil;
  * @since 1.0
  */ 
 public class SuperActionSupport extends ActionSupport {
+	
+	@Autowired
+	private AbstractCi18nCore Ci18nHibernate;
 	
 	private static final Logger log = Logger.getLogger(SuperActionSupport.class); // 日志对象
 	
@@ -200,6 +205,10 @@ public class SuperActionSupport extends ActionSupport {
 	
 	protected String getNowTime() {
 		return TimeUtil.getDatetime();
+	}
+	
+	public String getText(String code){
+		return Ci18nHibernate.execute(code);
 	}
 	
 }

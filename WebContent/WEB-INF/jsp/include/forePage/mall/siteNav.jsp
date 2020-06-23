@@ -13,10 +13,14 @@
 			  <a href="<%=basePath%>fore_main_register" style="line-height: 40px; padding: 10px;">
 			  	<s:text name="shop.common.register"/> 
 			  </a>
-			  <%-- <a href="<%=basePath%>ucenter_chtml_myorder" style="line-height: 40px; padding: 10px;">
-			  	<s:text name="shop.common.orders"/>
-			  </a> --%>
-			  <a href="<%=basePath%>ucenter_chtml_pcenter" style="line-height: 40px; padding: 10px;"><s:text name="shop.common.personalCenter"/></a> 
+			  <a href="<%=basePath%>ucenter_chtml_pcenter" style="line-height: 40px; padding: 10px;">
+			  	<s:text name="shop.common.personalCenter"/></a> 
+			  <a class="default-color" style="line-height: 40px; padding: 10px;"
+			  	href="<%=basePath%>${URIPath}?request_locale=zh_CN">
+			  	<s:text name="shop.common.chinese"/></a>
+			  <a class="default-color" style="line-height: 40px; padding: 10px;"
+			  	href="<%=basePath%>${URIPath}?request_locale=en_US">
+			  	<s:text name="shop.common.english"/></a>
 			</span>
 		</div>
 		<hr>

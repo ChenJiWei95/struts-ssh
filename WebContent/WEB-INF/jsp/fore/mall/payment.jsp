@@ -143,33 +143,24 @@
  				}
  				var data1 = {}; 
  				data1['addressId']= addressId
- 				,data1['logistics.orderId']= "${order.id}" 
+ 				,data1['orderId']= "${order.id}" 
  				;
- 				console.log(data1);
- 				
+ 				var data2 = {};
+ 				data2["method"] = "payment"
+	 			,data2["paymentStatus"] = "00"
+	 			,data2["logisticsStatus"] = "02"
+	 			,data2["id"] = "${order.id}"
+	 			;
+	 			layui.layer.msg("支付处理中...");
  				util.formAjax({
- 					url: '<%=basePath%>logistics_save'
- 					,contentType: 'application/x-www-form-urlencoded'
- 					,data: data1
- 					,success: function(){
- 						var data2 = {};
- 		 				data2["Up_paymentStatus_s"] = "00"
- 		 				,data2["Up_logisticsStatus_s"] = "02"
- 		 				,data2["Qu_id_eq_s"] = "${order.id}"
- 		 				;
- 		 				console.log(data2);
- 		 				util.formAjax({
- 		 					url: '<%=basePath%>order_update'
- 		 					,contentType: 'application/x-www-form-urlencoded'
- 		 					,data: data2
- 		 					,success: function(){
- 		 						setTimeout(function(){
- 		 							self.location = "<%=basePath%>ucenter_chtml_pcenter"
- 		 						}, 1000);
- 		 					}
- 		 				});
- 					}
- 				});
+	 				url: '<%=basePath%>order_update'
+	 				,data: $.extend(data2, data1)
+	 				,success: function(){
+	 					setTimeout(function(){
+	 						self.location = "<%=basePath%>ucenter_chtml_pcenter"
+	 					}, 1000);
+	 				}
+	 			});
  			}
  			,addCart: function(){
  				var data = {};

@@ -13,7 +13,7 @@ import com.shop.util.enums.Operator;
  * @className Filter 
  * @date 2014-10-23 下午05:19:00
  */
-public class Filter implements Serializable {
+public class ORFilter implements Serializable {
 
 	private static final long serialVersionUID = -8712382358441065075L;
 
@@ -38,7 +38,7 @@ public class Filter implements Serializable {
 	/**
 	 * 初始化一个新创建的Filter对象
 	 */
-	public Filter() {
+	public ORFilter() {
 	}
 
 	/**
@@ -51,7 +51,7 @@ public class Filter implements Serializable {
 	 * @param value
 	 *            值
 	 */
-	public Filter(String property, Operator operator, Object value) {
+	public ORFilter(String property, Operator operator, Object value) {
 		this.property = property;
 		this.operator = operator;
 		this.value = value;
@@ -70,7 +70,7 @@ public class Filter implements Serializable {
 	 *            忽略类型 ： IGNORE_TYPE
 	 *            例如： a.id = b.admin_id 这是不需要类型转换的
 	 */
-	public Filter(String property, Operator operator, Object value, String ignoreType) {
+	public ORFilter(String property, Operator operator, Object value, String ignoreType) {
 		this.property = property;
 		this.operator = operator;
 		this.value = value;
@@ -90,13 +90,15 @@ public class Filter implements Serializable {
 	 * @param ignoreCase
 	 *            忽略大小写
 	 */
-	public Filter(String property, Operator operator, Object value, boolean ignoreCase) {
+	public ORFilter(String property, Operator operator, Object value, boolean ignoreCase) {
 		this.property = property;
 		this.operator = operator;
 		this.value = value;
 		this.ignoreCase = ignoreCase;
 	}
 
+	 
+
 	/**
 	 * 返回等于筛选
 	 * 
@@ -106,8 +108,8 @@ public class Filter implements Serializable {
 	 *            值
 	 * @return 等于筛选
 	 */
-	public static Filter eq(String property, Object value) {
-		return new Filter(property, Operator.eq, value);
+	public static ORFilter eq(String property, Object value) {
+		return new ORFilter(property, Operator.eq, value);
 	}
 
 	/**
@@ -121,8 +123,8 @@ public class Filter implements Serializable {
 	 *            忽略大小写
 	 * @return 等于筛选
 	 */
-	public static Filter eq(String property, Object value, boolean ignoreCase) {
-		return new Filter(property, Operator.eq, value, ignoreCase);
+	public static ORFilter eq(String property, Object value, boolean ignoreCase) {
+		return new ORFilter(property, Operator.eq, value, ignoreCase);
 	}
 
 	/**
@@ -134,8 +136,8 @@ public class Filter implements Serializable {
 	 *            值
 	 * @return 不等于筛选
 	 */
-	public static Filter ne(String property, Object value) {
-		return new Filter(property, Operator.ne, value);
+	public static ORFilter ne(String property, Object value) {
+		return new ORFilter(property, Operator.ne, value);
 	}
 
 	/**
@@ -149,8 +151,8 @@ public class Filter implements Serializable {
 	 *            忽略大小写
 	 * @return 不等于筛选
 	 */
-	public static Filter ne(String property, Object value, boolean ignoreCase) {
-		return new Filter(property, Operator.ne, value, ignoreCase);
+	public static ORFilter ne(String property, Object value, boolean ignoreCase) {
+		return new ORFilter(property, Operator.ne, value, ignoreCase);
 	}
 
 	/**
@@ -162,8 +164,8 @@ public class Filter implements Serializable {
 	 *            值
 	 * @return 大于筛选
 	 */
-	public static Filter gt(String property, Object value) {
-		return new Filter(property, Operator.gt, value);
+	public static ORFilter gt(String property, Object value) {
+		return new ORFilter(property, Operator.gt, value);
 	}
 
 	/**
@@ -175,8 +177,8 @@ public class Filter implements Serializable {
 	 *            值
 	 * @return 小于筛选
 	 */
-	public static Filter lt(String property, Object value) {
-		return new Filter(property, Operator.lt, value);
+	public static ORFilter lt(String property, Object value) {
+		return new ORFilter(property, Operator.lt, value);
 	}
 
 	/**
@@ -188,8 +190,8 @@ public class Filter implements Serializable {
 	 *            值
 	 * @return 大于等于筛选
 	 */
-	public static Filter ge(String property, Object value) {
-		return new Filter(property, Operator.ge, value);
+	public static ORFilter ge(String property, Object value) {
+		return new ORFilter(property, Operator.ge, value);
 	}
 
 	/**
@@ -201,8 +203,8 @@ public class Filter implements Serializable {
 	 *            值
 	 * @return 小于等于筛选
 	 */
-	public static Filter le(String property, Object value) {
-		return new Filter(property, Operator.le, value);
+	public static ORFilter le(String property, Object value) {
+		return new ORFilter(property, Operator.le, value);
 	}
 
 	/**
@@ -214,8 +216,8 @@ public class Filter implements Serializable {
 	 *            值
 	 * @return 相似筛选
 	 */
-	public static Filter like(String property, Object value) {
-		return new Filter(property, Operator.lk, value);
+	public static ORFilter like(String property, Object value) {
+		return new ORFilter(property, Operator.lk, value);
 	}
 
 	/**
@@ -227,8 +229,8 @@ public class Filter implements Serializable {
 	 *            值
 	 * @return 包含筛选
 	 */
-	public static Filter in(String property, Object value) {
-		return new Filter(property, Operator.in, value);
+	public static ORFilter in(String property, Object value) {
+		return new ORFilter(property, Operator.in, value);
 	}
 
 	/**
@@ -238,8 +240,8 @@ public class Filter implements Serializable {
 	 *            属性
 	 * @return 为Null筛选
 	 */
-	public static Filter isNull(String property) {
-		return new Filter(property, Operator.is, null);
+	public static ORFilter isNull(String property) {
+		return new ORFilter(property, Operator.is, null);
 	}
 
 	/**
@@ -249,8 +251,8 @@ public class Filter implements Serializable {
 	 *            属性
 	 * @return 不为Null筛选
 	 */
-	public static Filter isNotNull(String property) {
-		return new Filter(property, Operator.no, null);
+	public static ORFilter isNotNull(String property) {
+		return new ORFilter(property, Operator.no, null);
 	}
 
 	/**
@@ -258,7 +260,7 @@ public class Filter implements Serializable {
 	 * 
 	 * @return 忽略大小写筛选
 	 */
-	public Filter ignoreCase() {
+	public ORFilter ignoreCase() {
 		this.ignoreCase = true;
 		return this;
 	}
@@ -372,7 +374,7 @@ public class Filter implements Serializable {
 		if (this == obj) {
 			return true;
 		}
-		Filter other = (Filter) obj;
+		ORFilter other = (ORFilter) obj;
 		return new EqualsBuilder().append(getProperty(), other.getProperty()).append(getOperator(), other.getOperator()).append(getValue(), other.getValue()).isEquals();
 	}
 

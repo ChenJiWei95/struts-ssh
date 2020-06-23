@@ -37,7 +37,7 @@
         <property name="hostName" value="${redis.host}" />
         <!-- 端口号 -->
         <property name="port" value="${redis.port}" />
-		<property name="password" value="${redis.password}" />
+		<!-- <property name="password" value="${redis.password}" /> -->
         <!-- 超时时间 默认2000-->
         <property name="timeout" value="${redis.timeout}" />
         <!-- 连接池配置引用 -->

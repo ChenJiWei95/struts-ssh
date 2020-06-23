@@ -28,19 +28,27 @@ public class Page<T> implements Serializable {
 	private List<T> content = new ArrayList<T>();
 
 	/** 总记录数 */
-	private long total;
+//	private long total;
+	private long count ;
+	private Object data;
 
 	/** 页码 */
 	private int page = DEFAULT_PAGE_NUMBER;// 当前页
 	/** 每页记录数 */
-	private int rows = DEFAULT_PAGE_SIZE;// 每页显示记录数
+//	private int rows = DEFAULT_PAGE_SIZE;// 每页显示记录数
 	
 	private String sort;// 排序字段
+	private String msg;// 
 	private String order;// asc/desc
+	private String code;// 0/1
+	
+	/** 每页记录数 */
+	private int limit = DEFAULT_PAGE_SIZE;// 每页显示记录数
 	
 	private String alias;//查询别名
 	
 	private List<Filter> filters = new ArrayList<Filter>();//过滤查询
+	private List<ORFilter> oRFilters = new ArrayList<ORFilter>();//过滤查询 'OR'
 	
 	private List<UpdateItem> updateItem = new ArrayList<>();//修改项
 	
@@ -50,7 +58,7 @@ public class Page<T> implements Serializable {
 	 * 初始化一个新创建的Page对象
 	 */
 	public Page() {
-		this.total = 0L;
+		this.count = 0L;
 	}
 
 	/**
@@ -59,9 +67,50 @@ public class Page<T> implements Serializable {
 	 * @param total
 	 *            总记录数
 	 */
-	public Page(List<T> content, long total) {
-		this.content.addAll(content);
-		this.total = total;
+	public Page(Object data, long total, String msg) {
+		this.data = data;
+		this.count = total;
+		this.msg = msg;
+	}
+
+	/**
+	 * 默认为 10
+	 * <p>	 
+	 * @return
+	 * int
+	 * @see
+	 * @since 1.0
+	 */
+	public int getLimit() {
+		return limit;
+	}
+
+	public void setLimit(int limit) {
+		this.limit = limit;
+	}
+
+	public long getCount() {
+		return count;
+	}
+
+	public void setCount(long count) {
+		this.count = count;
+	}
+
+	public Object getData() {
+		return data;
+	}
+
+	public void setData(Object data) {
+		this.data = data;
+	}
+
+	public String getCode() {
+		return code;
+	}
+
+	public void setCode(String code) {
+		this.code = code;
 	}
 
 	/**
@@ -70,7 +119,17 @@ public class Page<T> implements Serializable {
 	 * @return 总页数
 	 */
 	public int getTotalPages() {
-		return (int) Math.ceil((double) getTotal() / (double) this.rows);
+		return (int) Math.ceil((double) getCount() / (double) this.limit);
+	}
+
+	
+
+	public String getMsg() {
+		return msg;
+	}
+
+	public void setMsg(String msg) {
+		this.msg = msg;
 	}
 
 	/**
@@ -92,24 +151,7 @@ public class Page<T> implements Serializable {
 	}
 
 	/**
-	 * 获取总记录数
-	 * 
-	 * @return 总记录数
-	 */
-	public long getTotal() {
-		return total;
-	}
-	
-	/**
-	 * 设置总条数
-	 * @param total
-	 */
-	public void setTotal(long total) {
-		this.total = total;
-	}
-
-	/**
-	 * 获取页码
+	 * 获取页码 默认为1
 	 * 
 	 * @return 页码
 	 */
@@ -131,24 +173,7 @@ public class Page<T> implements Serializable {
 	}
 	
 	public int getPageSize(){
-		return this.rows;
-	}
-
-	/**
-	 * 设置每页记录数
-	 * 
-	 * @param rows
-	 *            每页记录数
-	 */
-	public void setRows(int rows) {
-		if (rows < 1 || rows > MAX_PAGE_SIZE) {
-			rows = DEFAULT_PAGE_SIZE;
-		}
-		this.rows = rows;
-	}
-	
-	public int getRows() {
-		return rows;
+		return this.limit;
 	}
 
 	public String getSort() {
@@ -169,6 +194,9 @@ public class Page<T> implements Serializable {
 
 	public List<Filter> getFilters() {
 		return filters;
+	}
+	public List<ORFilter> getORFilters() {
+		return this.oRFilters;
 	}
 
 	public void setFilters(List<Filter> filters) {
@@ -195,10 +223,26 @@ public class Page<T> implements Serializable {
 		filters.add(filter);
 	}
 	
+	public void setORFilters(List<ORFilter> oRFilters) {
+		this.oRFilters = oRFilters;
+	}
+	public void addORFilters(ORFilter orf) {
+		this.oRFilters.add(orf);
+	}
+	
 	public void addUpdateItem(UpdateItem updateItem){
 		this.updateItem.add(updateItem);
 	}
 	
+	/**
+	 * 排序
+	 * <p>使用案例：<br>
+	 * page.addOrder(Order.desc("a.create_date"));	 
+	 * @param order
+	 * void
+	 * @see
+	 * @since 1.0
+	 */
 	public void addOrder(Order order){
 		this.orders.add(order);
 	}
@@ -210,7 +254,6 @@ public class Page<T> implements Serializable {
 	public void setAlias(String alias) {
 		this.alias = alias;
 	}
-	
 	
 	public boolean getHasPrevious() {
 		
@@ -240,4 +283,5 @@ public class Page<T> implements Serializable {
 		
 		return page + 1;
 	}
+
 }

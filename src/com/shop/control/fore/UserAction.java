@@ -75,6 +75,7 @@ public class UserAction extends SuperActionSupport implements ServletRequestAwar
 			String id = CommonUtil.getId();
 			user.setId(id);
 			user.setLoginCount(0);
+			user.setCreateDate(com.shop.util.TimeUtil.getDatetime());
 			user.setState(Constants.COMMON_STATUS_ENABLEED);
 			userServiceImpl.save(user);
 			userInfor.setId(CommonUtil.getId());
@@ -216,13 +217,12 @@ public class UserAction extends SuperActionSupport implements ServletRequestAwar
 			User temp;
 			if(null != (temp = userServiceImpl.find("from User where username = ?", user.getUsername()))) {
 			    System.out.println(temp);
-				if (temp.getLoginCount() >= 5) {
-			    	setMessage(new Message().error(getText("shop.error.accountLocked")));
-			    } else if(Constants.COMMON_STATUS_DISABLEED.equals(temp.getState())) {
-					setMessage(new Message().error(getText("shop.error.accountsDisabled")));
-				} else if(!temp.getPassword().equals(user.getPassword())) {
+				if (!Constants.COMMON_STATUS_ENABLEED.equals(temp.getState())) {
+					setMessage(new Message().error(getText("shop.error.accountsError")));
+			    } else if(!temp.getPassword().equals(user.getPassword())) {
 					setMessage(new Message().error(getText("shop.error.passError")));
 					temp.setLoginCount(temp.getLoginCount()+1);
+					if(temp.getLoginCount() == 5) temp.setState("01");
 					userServiceImpl.update(temp);
 			    }else {
 			    	if (temp.getLoginCount() > 0) {

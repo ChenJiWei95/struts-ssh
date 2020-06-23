@@ -353,7 +353,7 @@ public class BaseDaoImpl<T> implements BaseDao<T> {
 		query.setMaxResults(page.getPageSize());
 
 		page.setContent(query.list());
-		page.setTotal(total);
+		page.setCount(total);
 
 		return page;
 	}
@@ -378,7 +378,7 @@ public class BaseDaoImpl<T> implements BaseDao<T> {
 		query.setMaxResults(page.getPageSize());
 
 		page.setContent(query.list());
-		page.setTotal(total);
+		page.setCount(total);
 
 		return page;
 	}
@@ -399,7 +399,7 @@ public class BaseDaoImpl<T> implements BaseDao<T> {
 		query.setMaxResults(page.getPageSize());
 
 		page.setContent(query.list());
-		page.setTotal(total);
+		page.setCount(total);
 
 		return page;
 	}
@@ -452,7 +452,7 @@ public class BaseDaoImpl<T> implements BaseDao<T> {
 		query.setMaxResults(page.getPageSize());
 		query.setResultTransformer(Transformers.ALIAS_TO_ENTITY_MAP); //当我们不加这个方法时，查出来的list是一个没有跟字段对应，即["a","b","c"]，如果加上setResultTransformer这个方法，list里面的元素就会成为一个跟数据库字段
 		page.setContent(query.list());
-		page.setTotal(total);
+		page.setCount(total);
 
 		return page;
 	}
@@ -475,7 +475,7 @@ public class BaseDaoImpl<T> implements BaseDao<T> {
 		query.setFirstResult((page.getPage() - 1) * page.getPageSize());
 		query.setMaxResults(page.getPageSize());
 		page.setContent(query.list());
-		page.setTotal(total);
+		page.setCount(total);
 
 		return page;
 	}
@@ -688,7 +688,7 @@ public class BaseDaoImpl<T> implements BaseDao<T> {
 //		System.out.println(query.list().toString());
 
 		page.setContent(query.list());
-		page.setTotal(total);
+		page.setCount(total);
 
 		return page;
 	}
@@ -940,7 +940,7 @@ public class BaseDaoImpl<T> implements BaseDao<T> {
 		query.setMaxResults(page.getPageSize());
 
 		page.setContent(query.list());
-		page.setTotal(total);
+		page.setCount(total);
 
 		return page;
 	}

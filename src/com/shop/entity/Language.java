@@ -15,10 +15,10 @@ public class Language {
 	private String id;
 	@Column(name = "code")
 	private String code;
-	@Column(name = "cn_zh")
-	private String cnZh;
-	@Column(name = "en_us")
-	private String enUs;
+	@Column(name = "zh_CN")
+	private String zhcn;
+	@Column(name = "en_US")
+	private String enus;
 
 
 	public String getId() {
@@ -33,16 +33,17 @@ public class Language {
 	public void setCode(String code) {
 		this.code = code;
 	}
-	public String getCnZh() {
-		return cnZh;
+	public String getZhcn() {
+		return zhcn;
 	}
-	public void setCnZh(String cnZh) {
-		this.cnZh = cnZh;
+	public void setZhcn(String zhcn) {
+		this.zhcn = zhcn;
 	}
-	public String getEnUs() {
-		return enUs;
+	public String getEnus() {
+		return enus;
 	}
-	public void setEnUs(String enUs) {
-		this.enUs = enUs;
+	public void setEnus(String enus) {
+		this.enus = enus;
 	}
+	
 }

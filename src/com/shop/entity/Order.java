@@ -10,6 +10,7 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 
+@SuppressWarnings("serial")
 @Entity
 @Table(name = "orders")
 public class Order implements Serializable{
@@ -70,5 +71,17 @@ public class Order implements Serializable{
 	}
 	public void setuId(String uId) {
 		this.uId = uId;
+	}
+	
+	public String toString(){
+		return Order.class + "["
+				+ " createDate = " + createDate + ","
+				+ " id = " + id + ","
+				+ " paymentStatus = " + paymentStatus + ","
+				+ " logisticsStatus = " + logisticsStatus + ","
+				+ " totalAmount = " + totalAmount + ","
+				+ " uId = " + uId + ","
+				+ " originalAmount = " + originalAmount + ","
+			+"]";
 	}
 }

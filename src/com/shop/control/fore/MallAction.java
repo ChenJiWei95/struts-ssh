@@ -111,13 +111,16 @@ public class MallAction extends SuperActionSupport implements ServletRequestAwar
 		session.setAttribute("address", address);
 		
 		String orderId = request.getParameter("id");
-		Order order = orderServiceImpl.get(orderId);
-		session.setAttribute("order", order);
-		
-		StringBuilder hql = new StringBuilder("from OrderItem where orderId=?");
-		List<OrderItem> itemList = orderItemServiceImpl.findList(hql.toString(), order.getId());
-		session.setAttribute("orderItems", itemList);
-		
+		if(null != orderId && !"".equals(orderId)){
+			Order order = orderServiceImpl.get(orderId);
+			session.setAttribute("order", order);
+			
+			StringBuilder hql = new StringBuilder("from OrderItem where orderId=?");
+			List<OrderItem> itemList = orderItemServiceImpl.findList(hql.toString(), order.getId());
+			session.setAttribute("orderItems", itemList);
+		} else {
+			log.error("id 为空："+orderId);
+		}
 	}
 
 }

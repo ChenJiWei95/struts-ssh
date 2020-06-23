@@ -23,6 +23,12 @@ public class User implements Serializable {
 	@Column(name = "state")
 	private String state;
 	
+	@Column(name = "create_date")
+	private String createDate;
+	
+	@Column(name = "modify_date")
+	private String modifyDate;
+	
 	@Column(name = "login_count")
 	private Integer loginCount;
 
@@ -66,6 +72,22 @@ public class User implements Serializable {
 		this.loginCount = loginCount;
 	}
 	
+	public String getCreateDate() {
+		return createDate;
+	}
+
+	public void setCreateDate(String createDate) {
+		this.createDate = createDate;
+	}
+
+	public String getModifyDate() {
+		return modifyDate;
+	}
+
+	public void setModifyDate(String modifyDate) {
+		this.modifyDate = modifyDate;
+	}
+
 	public String toString(){
 		return User.class + "["
 				+ " password = " + password + ","
@@ -73,6 +95,8 @@ public class User implements Serializable {
 				+ " username = " + username + ","
 				+ " state = " + state + ","
 				+ " loginCount = " + loginCount + ","
+				+ " createDate = " + createDate + ","
+				+ " modifyDate = " + modifyDate + ","
 			+"]";
 	}
 	
