@@ -9,12 +9,12 @@ import java.lang.reflect.Method;
 import javax.servlet.http.HttpServletRequest;
 
 import org.apache.log4j.Logger;
-import org.springframework.beans.factory.annotation.Autowired;
+import org.apache.struts2.ServletActionContext;
 
 import com.opensymphony.xwork2.ActionSupport;
+import com.shop.entity.UserTest;
 import com.shop.util.Message;
-import com.shop.util.TimeUtil;
-import com.shop.util.i18n.AbstractCi18nCore;
+import com.shop.util.SnowFlakeGenerator;
 /**
  * Action父类，当请求需要返回数据时继承此类<b>
  * <p>
@@ -29,9 +29,6 @@ import com.shop.util.i18n.AbstractCi18nCore;
  */ 
 public class SuperActionSupport extends ActionSupport {
 	
-	@Autowired
-	private AbstractCi18nCore Ci18nHibernate;
-	
 	private static final Logger log = Logger.getLogger(SuperActionSupport.class); // 日志对象
 	
 	private static final long serialVersionUID = 1L;
@@ -41,8 +38,7 @@ public class SuperActionSupport extends ActionSupport {
 	public static final String CHTML 	= "chtml"; 		// 页面跳转处理
 	public static final String MAIN 	= "main"; 		// 主要页面跳转处理
 	public static final String ERROR 	= "error"; 		// 错误页面
-	public static final String LOGIN 	= "login"; 		// 登录页面
-	public static final String ADMIN_LOGIN 	= "adminlogin"; 		// 后台登录页面
+	public static final String LOGIN 	= "login"; 	// 登录页面
 	
 	/*
 	inputStream属性和配置文件中的inputStream对应，并且需要gettersetter方法getInputStream，setInputStream
@@ -104,7 +100,6 @@ public class SuperActionSupport extends ActionSupport {
 		try {
 			Method method = clazz.getMethod(name);
 			if(method != null) method.invoke(this);
-			
 		} catch (SecurityException | IllegalAccessException | IllegalArgumentException | InvocationTargetException e) {
 			e.printStackTrace();
 		} catch (NoSuchMethodException e){
@@ -121,6 +116,7 @@ public class SuperActionSupport extends ActionSupport {
 	public String chtml(){
 		
 		// 不支持
+		new UnsupportedOperationException("不支持：save");
 		return ERROR;
 		
 	}
@@ -133,6 +129,7 @@ public class SuperActionSupport extends ActionSupport {
 	public String save(){
 		
 		// 不支持
+		new UnsupportedOperationException("不支持：save");
 		return ERROR;
 		
 	}	
@@ -145,6 +142,7 @@ public class SuperActionSupport extends ActionSupport {
 	public String update(){
 		
 		// 不支持
+		new UnsupportedOperationException("不支持：update");
 		return ERROR;
 		
 	}	
@@ -157,6 +155,7 @@ public class SuperActionSupport extends ActionSupport {
 	public String delete(){
 		
 		// 不支持
+		new UnsupportedOperationException("不支持：delete");
 		return ERROR;
 		
 	}	
@@ -169,12 +168,14 @@ public class SuperActionSupport extends ActionSupport {
 	public String list(){
 		
 		// 不支持
+		new UnsupportedOperationException("不支持：list");
 		return ERROR;
 		
 	}	
 	
 	public String main(){
 		
+		new UnsupportedOperationException("不支持：main");
 		return ERROR;
 		
 	}
@@ -184,9 +185,11 @@ public class SuperActionSupport extends ActionSupport {
 	 * 链接格式 当前类为例：testAjax(类前缀)_list(方法)
 	 * @return
 	 */
+	@SuppressWarnings("static-access")
 	public String get(){
 		
 		// 不支持
+		new UnsupportedOperationException("不支持：main");
 		return ERROR;
 		
 	}
@@ -196,19 +199,13 @@ public class SuperActionSupport extends ActionSupport {
 	 * 链接格式 当前类为例：testAjax(类前缀)_list(方法)
 	 * @return
 	 */
+	@SuppressWarnings("static-access")
 	public String delBatch(){
 		
 		// 不支持
+		new UnsupportedOperationException("不支持：main");
 		return ERROR;
 		
-	}
-	
-	protected String getNowTime() {
-		return TimeUtil.getDatetime();
-	}
-	
-	public String getText(String code){
-		return Ci18nHibernate.execute(code);
 	}
 	
 }

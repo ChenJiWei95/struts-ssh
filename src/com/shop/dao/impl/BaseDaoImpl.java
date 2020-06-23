@@ -655,7 +655,6 @@ public class BaseDaoImpl<T> implements BaseDao<T> {
 			}
 			System.out.println(hql);
 		}
-
 		//所有占位符拼接完成后进行数据库查询条数
 		Object count = query.uniqueResult();*/
 		

@@ -3,7 +3,7 @@
 	"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
     "http://struts.apache.org/dtds/struts-2.3.dtd">
 <struts>
-	<!-- 添加此配置能够解决struts2注解问题，扫描注解类 -->
+	<!-- 添加此注解能够解决struts2注解问题，扫描注解类 -->
 	<constant name="struts.convention.action.packages" value="com.shop.control" />
 	<!-- struts2的action由spirng负责实例化 -->
 	<constant name="struts.objectFactory" value="spring" /> 
@@ -11,14 +11,8 @@
 	<!-- constant用于常量的配置 -->
 	 
 	<!-- 是否开启动态方法调用 -->
-	<!-- 在Struts 2的核心jar包-struts2-core中 default.properties默认为true -->
-	<!-- 使用*通配符调用，此处疑问：我认为应该使用true 
-			网上得到答案是：不管设置为true还是false都可以使用通配符
-			动态方法调用是指‘！’的使用
-			http://localhost:8080/Hello/com.ll.Test!hello.action，即调用Test包里的hello方法 -->
 	<constant name="struts.enable.DynamicMethodInvocation" value="false" />
 	
-	<!-- i18 资源文件前缀 message_en_US.properties、message_zh_CN.properties -->
 	<constant name="struts.custom.i18n.resources" value="message"/>
 	
 	<!-- 是否使用开发者模式 保存后即已默认加载了已变更内容。无需重启server -->
@@ -27,17 +21,12 @@
 	<package name="default" namespace="/" extends="json-default">
 		<interceptors>
 			<interceptor name="commonInterceptor" class="com.shop.interceptor.CommonInterceptor" />
-			<interceptor name="privilegeInterceptor" class="com.shop.interceptor.PrivilegeInterceptor" />
-			<!-- 拦截器：判断方法注解的信息:请求类型的注解 -->
-			<interceptor name="requestTypeInterceptor" class="com.shop.interceptor.RequestTypeInterceptor" />
 			<interceptor-stack name="parentStack">
 				<interceptor-ref name="paramsPrepareParamsStack">
 					<param name="prepare.alwaysInvokePrepare">false</param>
 				</interceptor-ref>
 				<interceptor-ref name="defaultStack"></interceptor-ref>
 				<interceptor-ref name="commonInterceptor" />
-				<interceptor-ref name="requestTypeInterceptor" />
-				<interceptor-ref name="privilegeInterceptor" />
 			</interceptor-stack>
 		</interceptors>
 		<!-- 设置默认的拦截器栈 设置为参数准备拦截器栈 在放入model之前先把参数给栈顶的Action对象 -->
@@ -61,11 +50,8 @@
 		<!-- 通配符
 		
 		 -->
-		<action name="*_*_*" class="{1}Action" method="{2}">
-			<!-- <interceptor-ref name="defaultStack">     -->
-                <!-- 渲染页面前刷新model在ValueStack的root的引用 -->    
-              <!--   <param name="modelDriven.refreshModelBeforeResult">true</param>    
-            </interceptor-ref> -->
+		<action name="*_*_*" class="{1}Action" method="{2}"> 
+            <!-- 拦截栈 -->
             <interceptor-ref name="parentStack" />
 			<result name="stream" type="stream">
 				<!-- 以流的方式反回一个文本 -->
@@ -76,14 +62,12 @@
 			<result name="json" type="json">
 				<!-- name=root代表着该对象会被序列化，对应action中的message的属性名，此处我定义回传对象为Message -->
 		   		<param name="root">message</param>
-		  	</result>   
-		  	<result name="error">WEB-INF/jsp/fore/error.jsp</result>
+		  	</result>  
 		  	<result name="chtml">WEB-INF/jsp/fore/{1}/{3}.jsp</result>
 		  	<result name="main">WEB-INF/jsp/{1}/{3}.jsp</result>
-		  	<result name="login">WEB-INF/jsp/fore/login.jsp</result>
-		  	<result name="adminlogin">WEB-INF/jsp/admin/login.jsp</result>
-		  	<allowed-methods>login, update, save, delete, list, get, delBatch, chtml, main, count, adminlogin</allowed-methods>
+			<result name="error">WEB-INF/jsp/fore/error.jsp</result>
+			<result name="login">WEB-INF/jsp/fore/login.jsp</result>
+		  	<allowed-methods>login, update, save, delete, list, get, delBatch, chtml, main</allowed-methods>
 		</action>
-		 
 	</package>
 </struts>

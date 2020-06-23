@@ -49,7 +49,6 @@ public interface BaseService<T>{
 	 * @param entity
 	 * @throws DBException
 	 */
-	
 	public void update(T entity) throws DBException;
 
 	/**

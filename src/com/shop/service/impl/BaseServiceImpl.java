@@ -15,9 +15,6 @@ import org.springframework.transaction.annotation.Transactional;
 import com.shop.Filter;
 import com.shop.Order;
 import com.shop.Page;
-import com.shop.annotation.RCacheEvict;
-import com.shop.annotation.RCacheable;
-import com.shop.annotation.RParamer;
 import com.shop.dao.BaseDao;
 import com.shop.exception.DBException;
 import com.shop.service.BaseService;
@@ -39,7 +36,7 @@ public class BaseServiceImpl<T> implements BaseService<T> {
 
 	public void setBaseDao(BaseDao<T> baseDao) {
 		this.baseDao = baseDao;
-	} 
+	}
 
 	@Transactional(readOnly = true)
 	public long count(String hql, String... values) throws DBException {
@@ -84,7 +81,7 @@ public class BaseServiceImpl<T> implements BaseService<T> {
 	}
 
 	@Transactional(readOnly = true)
-	public T get(String id) throws DBException {
+	public T get(Serializable id) throws DBException {
 		
 		return baseDao.get(id);
 	}
@@ -123,7 +120,7 @@ public class BaseServiceImpl<T> implements BaseService<T> {
 		return baseDao.findAll();
 	}
 
-	@Transactional(readOnly = true) 
+	@Transactional(readOnly = true)
 	public List<T> findAll(Class<T> c) throws DBException {
 		
 		return baseDao.findAll(c);
@@ -220,13 +217,12 @@ public class BaseServiceImpl<T> implements BaseService<T> {
 	}
 
 	@Transactional
-//	@RCacheEvict(key="#user.id")
 	public void update(T entity) throws DBException {
 		
 		baseDao.update(entity);
 
 	}
-	 
+	//老建峰指导写出来的
 	@Transactional(propagation=Propagation.REQUIRED)
 	public void updateWithTransction(T entity) throws DBException {
 		
@@ -266,6 +262,7 @@ public class BaseServiceImpl<T> implements BaseService<T> {
 
 	@Transactional
 	public long updateBySql(String sql, String... values) throws DBException {
+		
 		return baseDao.updateBySql(sql, values);
 	}
 
@@ -319,7 +316,6 @@ public class BaseServiceImpl<T> implements BaseService<T> {
 
 	@Transactional
 	public void delBatch(Serializable[] ids) throws DBException {
-		
 		baseDao.delBatch(ids);
 	}
 
@@ -375,13 +371,6 @@ public class BaseServiceImpl<T> implements BaseService<T> {
 	public Page<T> findPageByDateType(Page page, String selectConditions, String tables, String specialCondetions, String dateType) throws DBException {
 		
 		return baseDao.findPageByDateType(page, selectConditions, tables, specialCondetions, dateType);
-	}
-
-	@Override
-	@Transactional(readOnly=true)
-	public List<T> findByPage(String hql, int page, int size, Object...values) throws DBException {
-		// TODO Auto-generated method stub
-		return baseDao.findByPage(hql, page, size, values);
 	}
 
 }
