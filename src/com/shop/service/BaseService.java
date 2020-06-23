@@ -10,8 +10,6 @@ import org.hibernate.criterion.Criterion;
 import com.shop.Filter;
 import com.shop.Order;
 import com.shop.Page;
-import com.shop.annotation.RCacheEvict;
-import com.shop.annotation.RCacheable;
 import com.shop.exception.DBException;
 
 /**
@@ -107,7 +105,7 @@ public interface BaseService<T>{
 	 * @return
 	 * @throws DBException
 	 */
-	public T get(String id) throws DBException;
+	public T get(Serializable id) throws DBException;
 
 	/**
 	 * 根据id获取对象
@@ -190,8 +188,6 @@ public interface BaseService<T>{
 	 * @throws DBException
 	 */
 	public List<T> findList(String hql, Object... values) throws DBException;
-	
-	public List<T> findByPage(String hql, int page, int size, Object...values) throws DBException;
 
 	/**
 	 * 通过hql和条件获取对象列表
